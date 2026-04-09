@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SENTIMENT — Creating Safe & Supportive Spaces for Intimate Communication</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;1,9..144,300;1,9..144,400&family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="/public/css/main.css">
+</head>
+<body class="lang-de">
+
+<div class="ambient"></div>
+
+<div class="site">
+
+  <!-- TICKER -->
+  <div class="ticker-bar" aria-hidden="true">
+    <div class="ticker-track">
+      <span>SENTIMENT · Creating Safe &amp; Supportive Spaces</span>
+      <span data-de>IT-Sicherheit schützt Privatsphäre</span>
+      <span data-en>IT Security Protects Privacy</span>
+      <span>KunstWerk Köln · 11. Dez 2026 – 22. Jan 2027</span>
+      <span data-de>Stärkt Demokratie</span>
+      <span data-en>Supports Democracy</span>
+      <span>Intimacy · Care · Privacy · CPDP 2026</span>
+      <span>SENTIMENT · Creating Safe &amp; Supportive Spaces</span>
+      <span data-de>IT-Sicherheit schützt Privatsphäre</span>
+      <span data-en>IT Security Protects Privacy</span>
+      <span>KunstWerk Köln · 11. Dez 2026 – 22. Jan 2027</span>
+      <span data-de>Stärkt Demokratie</span>
+      <span data-en>Supports Democracy</span>
+      <span>Intimacy · Care · Privacy · CPDP 2026</span>
+    </div>
+  </div>
+
+  <!-- NAV -->
+  <nav>
+    <div class="container nav-inner">
+      <div class="brand">SENTIMENT</div>
+      <button class="hamburger" id="hamburger" aria-label="Menü" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="nav-right">
+        <div class="theme-sw">
+          <span class="sw-lbl on" data-de>Dunkel</span>
+          <span class="sw-lbl on" data-en>Dark</span>
+          <div class="sw-track" id="sw-track" role="switch" aria-label="Farbmodus" tabindex="0">
+            <div class="sw-thumb"></div>
+          </div>
+          <span class="sw-lbl" data-de>Hell</span>
+          <span class="sw-lbl" data-en>Light</span>
+        </div>
+        <div class="lang-g">
+          <button class="lang-b on" data-l="de">DE</button>
+          <button class="lang-b"    data-l="en">EN</button>
+        </div>
+      </div>
+    </div>
+    <div class="nav-menu" id="nav-menu">
+      <a href="#program"  data-de onclick="closeMenu()">Programm</a>
+      <a href="#program"  data-en onclick="closeMenu()">Program</a>
+      <a href="#register" data-de onclick="closeMenu()">Anmelden</a>
+      <a href="#register" data-en onclick="closeMenu()">Register</a>
+      <a href="#about"    data-de onclick="closeMenu()">Über das Projekt</a>
+      <a href="#about"    data-en onclick="closeMenu()">About</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero container" id="hero">
+    <div class="hero-grid">
+
+      <div class="panel hero-copy reveal visible">
+        <div>
+          <span class="eyebrow" data-de>Ausstellung · KunstWerk Köln · 2026–2027</span>
+          <span class="eyebrow" data-en>Exhibition · KunstWerk Cologne · 2026–2027</span>
+          <h1>Senti&shy;ment</h1>
+          <p class="hero-subtitle">
+            Creating Safe &amp; Supportive Spaces for Intimate Communication
+            with Human-Chatbot Interactions
+          </p>
+          <p class="lede" data-de>
+            Ein interdisziplinäres Forschungs- und Kunstprojekt, gefördert vom BMFTR,
+            über die Gestaltung und gesellschaftlichen Implikationen intimer Kommunikation
+            mit KI-basierten Dialogsystemen.
+          </p>
+          <p class="lede" data-en>
+            An interdisciplinary research and art project, funded by BMFTR, on the design
+            and societal implications of intimate communication with AI-based dialogue systems.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#program"  data-de>↓ Programm</a>
+            <a class="btn btn-primary" href="#program"  data-en>↓ Program</a>
+            <a class="btn btn-lilac"   href="#register" data-de>Anmelden</a>
+            <a class="btn btn-lilac"   href="#register" data-en>Register</a>
+          </div>
+        </div>
+        <div>
+          <div class="hero-stats">
+            <div class="stat-item">
+              <div class="stat-label" data-de>Vernissage</div>
+              <div class="stat-label" data-en>Opening</div>
+              <div class="stat-val">11. Dez 2026</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-label" data-de>Laufzeit bis</div>
+              <div class="stat-label" data-en>Closing</div>
+              <div class="stat-val">22. Jan 2027</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-label" data-de>Ort</div>
+              <div class="stat-label" data-en>Venue</div>
+              <div class="stat-val">KunstWerk Köln</div>
+            </div>
+          </div>
+          <div class="pill-ticker" aria-hidden="true">
+            <div class="pill-track">
+              <span>Intimacy</span><span>Care</span><span>Privacy</span>
+              <span>Democracy</span><span>BMFTR</span><span>Chatbots</span>
+              <span>Köln</span><span>CPDP 2026</span><span>Research</span>
+              <span>Intimacy</span><span>Care</span><span>Privacy</span>
+              <span>Democracy</span><span>BMFTR</span><span>Chatbots</span>
+              <span>Köln</span><span>CPDP 2026</span><span>Research</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel hero-stage reveal visible">
+        <div class="stage-meta">
+          <span>SENTIMENT · KunstWerk Köln</span>
+          <span>11. Dez 2026 – 22. Jan 2027</span>
+        </div>
+        <div class="stage-visual">
+          <div id="p5-stage"></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- PROGRAM BAR -->
+  <div class="sec-bar" id="program">
+    <div class="container sec-bar-in">
+      <span class="sec-n">01</span>
+      <span class="sec-t" data-de>Programm</span>
+      <span class="sec-t" data-en>Program</span>
+      <span class="sec-m" data-de>11. Dez 2026 – 22. Jan 2027</span>
+      <span class="sec-m" data-en>11 Dec 2026 – 22 Jan 2027</span>
+    </div>
+  </div>
+
+  <!-- TIMETABLE — geladen aus /api/events -->
+  <section>
+    <div class="container timetable-wrap">
+      <div class="filter-row" id="formatFilters">
+        <button class="chip active" data-format="all"       data-de>Alle Formate</button>
+        <button class="chip active" data-format="all"       data-en>All Formats</button>
+        <button class="chip"        data-format="talk">Talk</button>
+        <button class="chip"        data-format="workshop">Workshop</button>
+        <button class="chip"        data-format="tour"      data-de>Führung</button>
+        <button class="chip"        data-format="tour"      data-en>Tour</button>
+        <button class="chip"        data-format="screening">Screening</button>
+        <button class="chip"        data-format="lecture">Lecture</button>
+      </div>
+      <div class="events-grid reveal" id="scheduleList">
+        <div class="no-results" id="loading-msg">Programm wird geladen …</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REGISTER BAR -->
+  <div class="sec-bar" id="register">
+    <div class="container sec-bar-in">
+      <span class="sec-n">02</span>
+      <span class="sec-t" data-de>Anmeldung</span>
+      <span class="sec-t" data-en>Register</span>
+      <span class="sec-m" data-de>Newsletter &amp; Veranstaltungen</span>
+      <span class="sec-m" data-en>Newsletter &amp; Events</span>
+    </div>
+  </div>
+
+  <!-- REGISTER -->
+  <section>
+    <div class="container">
+      <div class="register-wrap">
+
+        <div class="reveal">
+          <h2 data-de>Anmelden &amp;<br>informiert bleiben.</h2>
+          <h2 data-en>Register &amp;<br>stay informed.</h2>
+          <p style="margin-top:12px" data-de>
+            Melde dich für einzelne Veranstaltungen an und abonniere den Newsletter unter
+            <a href="https://project-sentiment.org/#newsletter"
+               style="color:var(--muted);text-decoration:underline;text-underline-offset:3px"
+               target="_blank">project-sentiment.org</a>.
+          </p>
+          <p style="margin-top:12px" data-en>
+            Register for individual events and subscribe to the newsletter at
+            <a href="https://project-sentiment.org/#newsletter"
+               style="color:var(--muted);text-decoration:underline;text-underline-offset:3px"
+               target="_blank">project-sentiment.org</a>.
+          </p>
+          <div class="venue-block">
+            <strong data-de>Ausstellungsort</strong>
+            <strong data-en>Venue</strong>
+            KunstWerk e.V.<br>
+            Deutz-Mülheimer Str. 115<br>
+            51063 Cologne
+          </div>
+        </div>
+
+        <div class="reveal">
+          <!--
+            FORMSPREE einrichten:
+            1. formspree.io → Account anlegen
+            2. Neue Form erstellen → Form-ID kopieren
+            3. action-URL unten ersetzen: https://formspree.io/f/DEINE_ID
+          -->
+          <form class="register-form" id="reg-form"
+                action="https://formspree.io/f/YOUR_FORM_ID"
+                method="POST">
+            <div class="form-row">
+              <div class="field">
+                <label data-de>Vorname *</label>
+                <label data-en>First Name *</label>
+                <input type="text" name="vorname" id="inp-fn" required autocomplete="given-name">
+              </div>
+              <div class="field">
+                <label data-de>Nachname *</label>
+                <label data-en>Last Name *</label>
+                <input type="text" name="nachname" required autocomplete="family-name">
+              </div>
+            </div>
+            <div class="field">
+              <label>E-Mail *</label>
+              <input type="email" name="email" required autocomplete="email">
+            </div>
+            <div class="field">
+              <label data-de>Veranstaltung *</label>
+              <label data-en>Event *</label>
+              <select name="event" id="registerSelect" required></select>
+            </div>
+            <div class="field">
+              <label data-de>Nachricht / Barrierefreiheit (optional)</label>
+              <label data-en>Message / Accessibility (optional)</label>
+              <textarea name="nachricht"></textarea>
+            </div>
+            <!-- Honeypot-Feld gegen Spam -->
+            <input type="text"   name="_gotcha"  style="display:none" tabindex="-1" autocomplete="off">
+            <input type="hidden" name="_subject" value="Anmeldung — SENTIMENT Köln">
+            <button type="submit" class="submit-btn" id="sub-btn">
+              <span data-de>Jetzt anmelden →</span>
+              <span data-en>Register now →</span>
+            </button>
+            <p class="form-legal" data-de>
+              Keine Weitergabe persönlicher Daten. Verarbeitung gemäß DSGVO.
+            </p>
+            <p class="form-legal" data-en>
+              No sharing of personal data. Processing according to GDPR.
+            </p>
+          </form>
+          <div class="ok-box" id="ok-box">
+            <h3 data-de>Angemeldet ✓</h3>
+            <h3 data-en>Registered ✓</h3>
+            <p data-de>Danke! Du erhältst eine Bestätigung per E-Mail.</p>
+            <p data-en>Thank you! You will receive a confirmation by email.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT BAR -->
+  <div class="sec-bar" id="about">
+    <div class="container sec-bar-in">
+      <span class="sec-n">03</span>
+      <span class="sec-t" data-de>Über das Projekt</span>
+      <span class="sec-t" data-en>About</span>
+      <span class="sec-m">BMFTR · 2026</span>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <section>
+    <div class="container about-grid">
+
+      <article class="panel about-main reveal">
+        <span class="about-tag" data-de>Forschungs- und Kunstprojekt</span>
+        <span class="about-tag" data-en>Research &amp; Art Project</span>
+        <h3 data-de>
+          Intime Kommunikation mit Chatbots —
+          zwischen Nähe, Vertrauen und Verantwortung
+        </h3>
+        <h3 data-en>
+          Intimate communication with chatbots —
+          between closeness, trust, and responsibility
+        </h3>
+        <p data-de>
+          Das vom BMFTR geförderte Projekt SENTIMENT untersucht aus interdisziplinärer
+          Perspektive die Gestaltung, Nutzung und gesellschaftlichen Implikationen
+          intimer Kommunikation mit KI-basierten Dialogsystemen und Chatbots.
+        </p>
+        <p data-en>
+          Funded by the BMFTR, SENTIMENT examines from an interdisciplinary perspective
+          the design, use, and societal implications of intimate communication with
+          AI-based dialogue systems and chatbots.
+        </p>
+        <p data-de>
+          Im Dialog von Wissenschaft und künstlerischer Forschung entstehen experimentelle
+          Formate, die Fragen von Nähe, Vertrauen, Intimität, Datenschutz und Verantwortung
+          in Mensch-KI-Beziehungen öffentlich verhandelbar machen.
+        </p>
+        <p data-en>
+          In the dialogue between science and artistic research, experimental formats emerge
+          that make questions of closeness, trust, intimacy, data protection, and responsibility
+          in human-AI relationships publicly negotiable.
+        </p>
+      </article>
+
+      <article class="panel cpdp-card reveal">
+        <div class="cpdp-label">CPDP 2026 · Brüssel</div>
+        <h3 data-de>
+          SENTIMENT bei den Computers, Privacy &amp; Data Protection 2026
+        </h3>
+        <h3 data-en>
+          SENTIMENT at Computers, Privacy &amp; Data Protection 2026
+        </h3>
+        <div class="cpdp-items">
+          <div class="cpdp-item">
+            <div class="cpdp-dot"></div>
+            <span data-de>Panel im Engineering Privacy Track — SENTIMENT Partnerinstitutionen</span>
+            <span data-en>Panel in the Engineering Privacy Track — SENTIMENT partner institutions</span>
+          </div>
+          <div class="cpdp-item">
+            <div class="cpdp-dot"></div>
+            <span data-de>Programmslot im Culture Club — SENTIMENT Arts (75 Min.)</span>
+            <span data-en>Programme slot in the Culture Club — SENTIMENT Arts (75 min.)</span>
+          </div>
+          <div class="cpdp-item">
+            <div class="cpdp-dot"></div>
+            <span>Radio Avatar.fm</span>
+          </div>
+          <div class="cpdp-item">
+            <div class="cpdp-dot"></div>
+            <span data-de>Pop-up-Ausstellung SENTIMENT im CPDP-Konferenzgebäude</span>
+            <span data-en>Pop-up exhibition SENTIMENT in the CPDP conference building</span>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container footer-box">
+      <span>SENTIMENT · KunstWerk e.V. · Deutz-Mülheimer Str. 115 · 51063 Köln</span>
+      <a href="https://project-sentiment.org" target="_blank">project-sentiment.org</a>
+      <span data-de>Gefördert vom BMFTR</span>
+      <span data-en>Funded by BMFTR</span>
+    </div>
+  </footer>
+
+</div>
+
+<!-- p5.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.4/p5.min.js"></script>
+<!-- App -->
+<script src="/public/js/main.js"></script>
+
+</body>
+</html>
