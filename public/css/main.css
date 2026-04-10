@@ -603,9 +603,13 @@ textarea { min-height: 90px; padding: 11px 14px; resize: vertical; }
 .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; padding: 28px 0 52px; }
 .about-main { padding: clamp(22px,3vw,36px); }
 .about-main h3 {
-  font-family: var(--serif); font-size: clamp(20px,2.4vw,30px);
-  font-weight: 300; font-style: italic;
-  letter-spacing: -.03em; line-height: 1.1; margin-bottom: 14px;
+  font-family: var(--serif);
+  font-size: clamp(28px, 4vw, 48px);
+  font-weight: 300;
+  font-style: italic;
+  line-height: .94;
+  letter-spacing: -.04em;
+  margin-bottom: 14px;
 }
 .about-main p { font-size: 14px; line-height: 1.72; color: var(--muted); margin-bottom: 10px; }
 .about-main p:last-child { margin-bottom: 0; }
@@ -619,8 +623,12 @@ textarea { min-height: 90px; padding: 11px 14px; resize: vertical; }
   text-transform: uppercase; color: var(--muted2);
 }
 .cpdp-card h3 {
-  font-family: var(--serif); font-size: clamp(18px,2vw,24px);
-  font-weight: 300; font-style: italic; letter-spacing: -.02em; line-height: 1.1;
+  font-family: var(--serif);
+  font-size: clamp(22px, 3vw, 38px);
+  font-weight: 300;
+  font-style: italic;
+  line-height: .94;
+  letter-spacing: -.04em;
 }
 .cpdp-items { display: flex; flex-direction: column; }
 .cpdp-item {
