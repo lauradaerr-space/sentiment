@@ -433,15 +433,6 @@ body.light .ev-format.lecture   { color:#6b21a8; border-color:rgba(107,33,168,.2
   grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
   gap: 16px;
 }
-.person-card.artist-card { cursor: default; }
-.person-card.artist-card:hover { transform: none; }
-.person-badge-pending {
-  margin-top: auto;
-  font-family: var(--mono); font-size: 8px; letter-spacing: .1em;
-  text-transform: uppercase; color: var(--muted2);
-  padding: 4px 10px; border-radius: 999px;
-  border: 1px solid var(--border); background: var(--panel);
-}
 .person-card {
   border: 1px solid var(--border);
   background: linear-gradient(160deg, var(--panel-strong), var(--panel));

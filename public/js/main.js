@@ -177,21 +177,16 @@ function renderTeam() {
   const grid = document.getElementById('teamGrid');
   if (!grid) return;
 
-  const artistBadge = lang === 'de' ? 'Weitere Infos folgen' : 'More info to follow';
-
-  grid.innerHTML = TEAM.map(p => {
-    const isArtist = p.type === 'artist';
-    return `
-    <div class="person-card reveal${isArtist ? ' artist-card' : ''}" data-person="${p.id}" data-type="${p.type}">
+  grid.innerHTML = TEAM.map(p => `
+    <div class="person-card reveal" data-person="${p.id}">
       <div class="person-avatar"><img src="${p.image}" alt="${p.name}" onerror="this.replaceWith(document.createTextNode('${p.initials}'))"></div>
       <div class="person-name">${p.name}</div>
       <div class="person-role">${lang === 'de' ? p.role_de : p.role_en}</div>
       <div class="person-bio-short">${lang === 'de' ? p.bio_short_de : p.bio_short_en}</div>
-      ${isArtist ? `<div class="person-badge-pending">${artistBadge}</div>` : ''}
-    </div>`;
-  }).join('');
+    </div>
+  `).join('');
 
-  grid.querySelectorAll('.person-card[data-type="researcher"]').forEach(card => {
+  grid.querySelectorAll('.person-card').forEach(card => {
     card.addEventListener('click', () => {
       const person = TEAM.find(p => p.id === card.dataset.person);
       if (person) openPersonModal(person);
