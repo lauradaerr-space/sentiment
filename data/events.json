@@ -37,6 +37,25 @@
       "descDE": "",
       "id": "evt-1775824479895",
       "published": true
+    },
+    {
+      "title": "Exhibtion",
+      "titleDE": "Ausstellung",
+      "dateFrom": "2026-12-12",
+      "dateTo": "2027-01-21",
+      "time": "14:00",
+      "timeEnd": "20:00",
+      "format": "other",
+      "category": "koeln",
+      "location": "Kunstwerk Köln",
+      "language": "DE",
+      "capacity": 50,
+      "who": "Laura + Joel",
+      "status": "Offen",
+      "descEN": "",
+      "descDE": "",
+      "id": "evt-1775824595282",
+      "published": false
     }
   ],
   "tasks": [
