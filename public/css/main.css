@@ -458,10 +458,10 @@ body.light .ev-format.lecture   { color:#6b21a8; border-color:rgba(107,33,168,.2
   display: inline-flex; align-items: center; gap: 5px;
   padding: 8px 14px; border-radius: 999px; border: 1px solid var(--border);
   font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
-  background: var(--text); color: var(--bg); cursor: pointer;
+  background: var(--lilac); color: #fff; cursor: pointer;
   transition: background .16s, transform .16s; white-space: nowrap;
 }
-.reg-btn:hover    { background: var(--red); color: #fff; transform: translateY(-1px); }
+.reg-btn:hover    { background: #a793ff; color: #fff; transform: translateY(-1px); }
 .reg-btn:disabled { opacity: .3; cursor: not-allowed; transform: none !important; }
 .no-results {
   padding: 60px 0; text-align: center;
