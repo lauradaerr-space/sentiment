@@ -76,7 +76,7 @@ body {
   background-color: var(--bg);
   background-image: linear-gradient(rgba(10,10,8,0.7), rgba(10,10,8,0.7)), url('/public/img/12-pic.png');
   background-size: cover;
-  background-position: center;
+  background-position: center 30%;
   background-attachment: fixed;
   background-repeat: no-repeat;
 }
