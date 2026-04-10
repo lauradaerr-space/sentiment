@@ -18,25 +18,6 @@
       "id": "evt-1775806714405",
       "published": false,
       "timeEnd": ""
-    },
-    {
-      "title": "Opening",
-      "titleDE": "Eröffnung",
-      "dateFrom": "2026-12-11",
-      "dateTo": "2026-12-11",
-      "time": "18:00",
-      "timeEnd": "",
-      "format": "other",
-      "category": "koeln",
-      "location": "Kunstwerk Köln",
-      "language": "DE",
-      "capacity": "",
-      "who": "",
-      "status": "Offen",
-      "descEN": "",
-      "descDE": "",
-      "id": "evt-1775815158141",
-      "published": true
     }
   ],
   "tasks": [
