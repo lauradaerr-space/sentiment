@@ -114,8 +114,26 @@
     tbody.innerHTML = sorted.map(function (r) {
       var d = r.timestamp ? new Date(r.timestamp) : null;
       var dateStr = d ? (String(d.getDate()).padStart(2,'0') + '.' + String(d.getMonth()+1).padStart(2,'0') + '.' + d.getFullYear() + ' ' + String(d.getHours()).padStart(2,'0') + ':' + String(d.getMinutes()).padStart(2,'0')) : '';
-      return '<tr><td>' + dateStr + '</td><td>' + (r.vorname || '') + ' ' + (r.nachname || '') + '</td><td>' + (r.email || '') + '</td><td>' + (r.event || '') + '</td><td>' + (r.personen || '1') + '</td><td>' + (r.bereich || '') + '</td><td title="' + (r.nachricht || '').replace(/"/g, '&quot;') + '">' + (r.nachricht || '') + '</td></tr>';
+      return '<tr><td>' + dateStr + '</td><td>' + (r.vorname || '') + ' ' + (r.nachname || '') + '</td><td>' + (r.email || '') + '</td><td>' + (r.event || '') + '</td><td>' + (r.personen || '1') + '</td><td>' + (r.bereich || '') + '</td><td title="' + (r.nachricht || '').replace(/"/g, '&quot;') + '">' + (r.nachricht || '') + '</td><td><button class="reg-del-btn" data-id="' + r.id + '">&times;</button></td></tr>';
     }).join('');
+
+    tbody.querySelectorAll('.reg-del-btn').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        if (!confirm('Anmeldung wirklich löschen?')) return;
+        deleteRegistration(btn.dataset.id);
+      });
+    });
+  }
+
+  function deleteRegistration(id) {
+    registrations = registrations.filter(function (r) { return r.id !== id; });
+    renderRegistrations();
+    // save to backend
+    fetch('/api/register', {
+      method: 'DELETE',
+      headers: { 'Content-Type': 'application/json', 'X-Admin-Token': 'sentiment2026' },
+      body: JSON.stringify({ registrations: registrations })
+    }).catch(function () { setSyncStatus('error'); });
   }
 
   // CSV export

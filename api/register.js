@@ -92,7 +92,7 @@ function sendConfirmationEmail(to, vorname, eventName, personen) {
 
 module.exports = async (req, res) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, DELETE, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type, X-Admin-Token');
 
   if (req.method === 'OPTIONS') return res.status(200).end();
@@ -156,6 +156,30 @@ module.exports = async (req, res) => {
       return res.status(200).json({ ok: true });
     } catch (e) {
       return res.status(500).json({ error: 'Failed to save registration' });
+    }
+  }
+
+  // DELETE — admin overwrites registrations list
+  if (req.method === 'DELETE') {
+    if (req.headers['x-admin-token'] !== 'sentiment2026') {
+      return res.status(401).json({ error: 'Unauthorized' });
+    }
+    try {
+      const { registrations } = req.body || {};
+      if (!Array.isArray(registrations)) {
+        return res.status(400).json({ error: 'Invalid data' });
+      }
+      const current = await githubRequest('GET', PATH);
+      const sha = current.body.sha;
+      const content = Buffer.from(JSON.stringify(registrations, null, 2)).toString('base64');
+      await githubRequest('PUT', PATH, {
+        message: 'admin: update registrations',
+        content,
+        sha
+      });
+      return res.status(200).json({ ok: true });
+    } catch (e) {
+      return res.status(500).json({ error: 'Failed to update registrations' });
     }
   }
 
