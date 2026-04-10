@@ -8,5 +8,16 @@
     "bereich": "academia",
     "nachricht": "Ich komme mit 2",
     "timestamp": "2026-04-10T10:01:38.222Z"
+  },
+  {
+    "id": "reg-1775815623312",
+    "vorname": "Laura",
+    "nachname": "Därr",
+    "email": "laura.daerr@googlemail.com",
+    "event": "Opening",
+    "bereich": "art",
+    "personen": "5",
+    "nachricht": "Test",
+    "timestamp": "2026-04-10T10:07:03.312Z"
   }
 ]
