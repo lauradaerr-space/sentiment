@@ -602,5 +602,8 @@ new p5(p => {
 }, 'p5-stage');
 
 /* ══ INIT ══ */
+const stageVideo = document.getElementById('stageVideo');
+if (stageVideo) stageVideo.playbackRate = 0.75;
+
 renderTeam();
 loadEvents();
