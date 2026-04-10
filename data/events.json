@@ -148,11 +148,11 @@
       "id": "task-1775807359855"
     },
     {
-      "title": "Interview fragen klären",
+      "title": "Interview Fragen Avatar klären",
       "category": "cpdp",
       "status": "Offen",
       "due": "2026-04-15",
-      "linkedEventId": "",
+      "linkedEventId": "evt-1775849166451",
       "who": [
         "Jessica Szczuka",
         "Lisa Mühl",
