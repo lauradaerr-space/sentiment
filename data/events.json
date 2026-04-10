@@ -113,6 +113,25 @@
       "descDE": "",
       "id": "evt-1775849100666",
       "published": true
+    },
+    {
+      "title": "CPDP - Radio - Avatar.fm",
+      "titleDE": "CPDP - Radio - Avatar.fm",
+      "dateFrom": "2026-05-19",
+      "dateTo": "2026-05-22",
+      "time": "",
+      "timeEnd": "",
+      "format": "other",
+      "category": "cpdp",
+      "location": "Maison de la Poste, CPDP and online",
+      "language": "DE/EN",
+      "capacity": "",
+      "who": "",
+      "status": "Bestätigt",
+      "descEN": "",
+      "descDE": "",
+      "id": "evt-1775849166451",
+      "published": false
     }
   ],
   "tasks": [
