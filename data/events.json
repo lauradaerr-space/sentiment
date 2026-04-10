@@ -18,6 +18,25 @@
       "descDE": "",
       "id": "evt-1775824421996",
       "published": true
+    },
+    {
+      "title": "Finissage",
+      "titleDE": "Finissage",
+      "dateFrom": "2027-01-22",
+      "dateTo": "2027-01-22",
+      "time": "18:00",
+      "timeEnd": "",
+      "format": "other",
+      "category": "koeln",
+      "location": "Kunstwerk Köln",
+      "language": "DE",
+      "capacity": 400,
+      "who": "Laura + Joel",
+      "status": "Bestätigt",
+      "descEN": "",
+      "descDE": "",
+      "id": "evt-1775824479895",
+      "published": false
     }
   ],
   "tasks": [
