@@ -70,6 +70,22 @@
       "status": "Offen",
       "linkedEventId": "evt-1775824421996",
       "id": "task-1775807359855"
+    },
+    {
+      "title": "Interview fragen klären",
+      "category": "cpdp",
+      "status": "Offen",
+      "due": "2026-04-15",
+      "linkedEventId": "",
+      "who": [
+        "Jessica Szczuka",
+        "Lisa Mühl",
+        "Joel Baumann",
+        "Laura Därr",
+        "Veelasha Moonsamy",
+        "Christian Geminn"
+      ],
+      "id": "task-1775847989818"
     }
   ]
 }
