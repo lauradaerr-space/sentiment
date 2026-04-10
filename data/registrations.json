@@ -8,5 +8,16 @@
     "bereich": "academia",
     "nachricht": "Ich komme mit 2",
     "timestamp": "2026-04-10T10:01:38.222Z"
+  },
+  {
+    "id": "reg-1775849366236",
+    "vorname": "Basti",
+    "nachname": "irgendwas",
+    "email": "laura.daerr@googlemail.com",
+    "event": "CPDP - Culture Club",
+    "bereich": "art",
+    "personen": "2",
+    "nachricht": "",
+    "timestamp": "2026-04-10T19:29:26.236Z"
   }
 ]
