@@ -222,14 +222,25 @@
   }
 
   /* ────── TABS ────── */
+  var tabBarEl = document.querySelector('.tab-bar');
   document.querySelectorAll('.tab').forEach(function (btn) {
     btn.addEventListener('click', function () {
       document.querySelectorAll('.tab').forEach(function (t) { t.classList.remove('active'); });
       document.querySelectorAll('.tab-content').forEach(function (c) { c.classList.remove('active'); });
       btn.classList.add('active');
       document.getElementById('tab-' + btn.dataset.tab).classList.add('active');
+      // close burger menu on tab select
+      if (tabBarEl) tabBarEl.classList.remove('mobile-open');
     });
   });
+
+  /* ────── ADMIN BURGER ────── */
+  var adminBurger = document.getElementById('adminBurger');
+  if (adminBurger && tabBarEl) {
+    adminBurger.addEventListener('click', function () {
+      tabBarEl.classList.toggle('mobile-open');
+    });
+  }
 
   function switchToTab(name) {
     document.querySelectorAll('.tab').forEach(function (t) {
