@@ -63,10 +63,11 @@
       "title": "Catering",
       "category": "koeln",
       "who": [
-        "Jessica Szczuka"
+        "Jessica Szczuka",
+        "Lisa Mühl"
       ],
-      "due": "2026-04-24",
-      "status": "In Bearbeitung",
+      "due": "2026-06-01",
+      "status": "Offen",
       "linkedEventId": "evt-1775824421996",
       "id": "task-1775807359855"
     }
