@@ -99,6 +99,17 @@
         "Christian Geminn"
       ],
       "id": "task-1775848101887"
+    },
+    {
+      "title": "Präsentation Panel setzen",
+      "category": "cpdp",
+      "status": "Offen",
+      "due": "2026-04-20",
+      "linkedEventId": "",
+      "who": [
+        "Laura Därr"
+      ],
+      "id": "task-1775848141987"
     }
   ]
 }
