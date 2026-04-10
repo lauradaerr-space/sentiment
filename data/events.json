@@ -86,6 +86,19 @@
         "Christian Geminn"
       ],
       "id": "task-1775847989818"
+    },
+    {
+      "title": "Präsentation Panel",
+      "category": "cpdp",
+      "status": "Offen",
+      "due": "2026-04-14",
+      "linkedEventId": "",
+      "who": [
+        "Jessica Szczuka",
+        "Lisa Mühl",
+        "Christian Geminn"
+      ],
+      "id": "task-1775848101887"
     }
   ]
 }
