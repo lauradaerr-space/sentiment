@@ -157,7 +157,9 @@ body.light .nav-logo { filter: invert(1); }
   height: clamp(80px, 14vw, 160px);
   width: auto;
   display: block;
+  transition: filter .32s var(--ease);
 }
+body.light .hero-logo-img { filter: invert(1); }
 
 .hamburger {
   display: flex; flex-direction: column; gap: 5px;
