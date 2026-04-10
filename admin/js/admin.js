@@ -440,6 +440,15 @@
     if (e.target === eventModal) closeEventModal();
   });
 
+  // Add linked task from event modal
+  document.getElementById('btn-add-linked-task').addEventListener('click', function () {
+    if (!editingEventId) return;
+    var ev = data.events.find(function (e) { return e.id === editingEventId; });
+    var evId = editingEventId;
+    closeEventModal();
+    openTaskModal(null, evId, ev ? ev.category : 'cpdp');
+  });
+
   btnPublish.addEventListener('click', function () {
     if (!editingEventId) return;
     var ev = data.events.find(function (e) { return e.id === editingEventId; });
@@ -668,7 +677,7 @@
     });
   }
 
-  function openTaskModal(id) {
+  function openTaskModal(id, preLinkedEventId, preCategory) {
     editingTaskId = id;
     taskForm.reset();
     populateEventDropdown('');
@@ -687,6 +696,8 @@
     } else {
       document.getElementById('task-modal-title').textContent = 'Neue Aufgabe';
       taskBtnDelete.classList.add('hidden');
+      if (preLinkedEventId) populateEventDropdown(preLinkedEventId);
+      if (preCategory) taskForm.category.value = preCategory;
     }
 
     taskModal.classList.add('open');

@@ -422,6 +422,14 @@ button, input, select, textarea { font: inherit; }
   color: var(--muted2); letter-spacing: .06em;
   padding: 6px 0;
 }
+.btn-add-linked-task {
+  margin-top: 6px; padding: 6px 14px; border-radius: 7px;
+  border: 1px dashed var(--border2); background: none;
+  color: var(--muted); font-size: 11px; cursor: pointer;
+  transition: color .14s, border-color .14s, background .14s;
+  width: 100%; text-align: center;
+}
+.btn-add-linked-task:hover { color: var(--text); background: var(--panel); border-color: var(--muted); }
 
 /* ── TASKS ── */
 .tasks-toolbar {
