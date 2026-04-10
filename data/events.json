@@ -1,23 +1,4 @@
 {
-  "events": [
-    {
-      "title": "Austellungsende",
-      "titleDE": "Austellungsende",
-      "dateFrom": "2027-01-22",
-      "dateTo": "2027-01-22",
-      "time": "",
-      "format": "tour",
-      "category": "koeln",
-      "location": "Kunstwerk Köln",
-      "language": "DE",
-      "capacity": "",
-      "who": "",
-      "status": "Offen",
-      "descEN": "Ende",
-      "descDE": "End",
-      "id": "evt-1775806140373",
-      "published": true
-    }
-  ],
+  "events": [],
   "tasks": []
 }
