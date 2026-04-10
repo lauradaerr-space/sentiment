@@ -177,28 +177,21 @@ function renderTeam() {
   const grid = document.getElementById('teamGrid');
   if (!grid) return;
 
-  const researchers = TEAM.filter(p => p.type === 'researcher');
-  const artists = TEAM.filter(p => p.type === 'artist');
+  const artistBadge = lang === 'de' ? 'Weitere Infos folgen' : 'More info to follow';
 
-  const renderCard = p => `
-    <div class="person-card reveal" data-person="${p.id}">
+  grid.innerHTML = TEAM.map(p => {
+    const isArtist = p.type === 'artist';
+    return `
+    <div class="person-card reveal${isArtist ? ' artist-card' : ''}" data-person="${p.id}" data-type="${p.type}">
       <div class="person-avatar"><img src="${p.image}" alt="${p.name}" onerror="this.replaceWith(document.createTextNode('${p.initials}'))"></div>
       <div class="person-name">${p.name}</div>
       <div class="person-role">${lang === 'de' ? p.role_de : p.role_en}</div>
       <div class="person-bio-short">${lang === 'de' ? p.bio_short_de : p.bio_short_en}</div>
-    </div>
-  `;
+      ${isArtist ? `<div class="person-badge-pending">${artistBadge}</div>` : ''}
+    </div>`;
+  }).join('');
 
-  const artistNote = lang === 'de' ? 'Weitere Informationen folgen' : 'More information to follow';
-
-  grid.innerHTML =
-    `<div class="team-section-label">${lang === 'de' ? 'Forscher:innen' : 'Researchers'}</div>` +
-    researchers.map(renderCard).join('') +
-    `<div class="team-section-label">${lang === 'de' ? 'Künstler:innen & Gestalter:innen' : 'Artists & Designers'}</div>` +
-    artists.map(renderCard).join('') +
-    `<div class="team-note">${artistNote}</div>`;
-
-  grid.querySelectorAll('.person-card').forEach(card => {
+  grid.querySelectorAll('.person-card[data-type="researcher"]').forEach(card => {
     card.addEventListener('click', () => {
       const person = TEAM.find(p => p.id === card.dataset.person);
       if (person) openPersonModal(person);
