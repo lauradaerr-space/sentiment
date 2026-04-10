@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SENTIMENT — Intern</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;1,9..144,300;1,9..144,400&family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/admin/css/admin.css">
+</head>
+<body>
+
+<!-- LOGIN -->
+<div id="login-screen">
+  <div class="login-box">
+    <div class="login-brand">SENTIMENT — Intern</div>
+    <input type="password" id="pw-input" placeholder="Passwort" autofocus>
+    <button id="pw-btn">Anmelden</button>
+    <div id="pw-error"></div>
+  </div>
+</div>
+
+<!-- APP -->
+<div id="app" style="display:none">
+
+  <!-- TOP BAR -->
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="topbar-brand">SENTIMENT — Intern</div>
+      <div class="topbar-right">
+        <div class="sync-indicator" id="sync-dot" title="Gespeichert"></div>
+        <button class="btn-logout" id="btn-logout">Logout</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- TABS -->
+  <div class="tab-bar">
+    <button class="tab active" data-tab="kalender">Kalender</button>
+    <button class="tab" data-tab="aufgaben">Aufgaben</button>
+  </div>
+
+  <!-- KALENDER TAB -->
+  <div class="tab-content active" id="tab-kalender">
+    <div class="cal-toolbar">
+      <button class="cal-nav" id="cal-prev">&larr;</button>
+      <div class="cal-month" id="cal-month-label"></div>
+      <button class="cal-nav" id="cal-next">&rarr;</button>
+      <button class="cal-nav" id="cal-today">Heute</button>
+    </div>
+    <div class="cal-grid">
+      <div class="cal-header">Mo</div>
+      <div class="cal-header">Di</div>
+      <div class="cal-header">Mi</div>
+      <div class="cal-header">Do</div>
+      <div class="cal-header">Fr</div>
+      <div class="cal-header">Sa</div>
+      <div class="cal-header">So</div>
+    </div>
+    <div class="cal-days" id="cal-days"></div>
+  </div>
+
+  <!-- AUFGABEN TAB -->
+  <div class="tab-content" id="tab-aufgaben">
+    <div class="tasks-toolbar">
+      <div class="tasks-title">Aufgaben</div>
+      <button class="btn-add" id="btn-add-task">+ Neue Aufgabe</button>
+    </div>
+    <div class="tasks-categories" id="tasks-list"></div>
+  </div>
+
+</div>
+
+<!-- EVENT MODAL -->
+<div class="modal-overlay" id="event-modal">
+  <div class="modal">
+    <div class="modal-header">
+      <div class="modal-title" id="modal-title">Neues Event</div>
+      <button class="modal-close" id="modal-close">&times;</button>
+    </div>
+    <form class="modal-form" id="event-form">
+      <div class="form-row">
+        <div class="field">
+          <label>Titel (EN)</label>
+          <input type="text" name="title" required>
+        </div>
+        <div class="field">
+          <label>Titel (DE)</label>
+          <input type="text" name="titleDE">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="field">
+          <label>Datum von</label>
+          <input type="date" name="dateFrom" required>
+        </div>
+        <div class="field">
+          <label>Datum bis</label>
+          <input type="date" name="dateTo">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="field">
+          <label>Uhrzeit</label>
+          <input type="time" name="time">
+        </div>
+        <div class="field">
+          <label>Format</label>
+          <select name="format">
+            <option value="talk">Talk</option>
+            <option value="workshop">Workshop</option>
+            <option value="tour">Führung / Tour</option>
+            <option value="screening">Screening</option>
+            <option value="lecture">Lecture</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="field">
+          <label>Kategorie</label>
+          <select name="category">
+            <option value="cpdp">CPDP Brüssel</option>
+            <option value="koeln">Ausstellung Köln</option>
+            <option value="pub">Publikation</option>
+            <option value="pr">PR / Social</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Ort</label>
+          <input type="text" name="location">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="field">
+          <label>Sprache</label>
+          <select name="language">
+            <option value="DE">Deutsch</option>
+            <option value="EN">English</option>
+            <option value="DE/EN">DE/EN</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Kapazität</label>
+          <input type="number" name="capacity" min="0">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="field">
+          <label>Verantwortlich</label>
+          <input type="text" name="who">
+        </div>
+        <div class="field">
+          <label>Status</label>
+          <select name="status">
+            <option value="Offen">Offen</option>
+            <option value="In Planung">In Planung</option>
+            <option value="Bestätigt">Bestätigt</option>
+            <option value="Erledigt">Erledigt</option>
+          </select>
+        </div>
+      </div>
+      <div class="field">
+        <label>Beschreibung (EN)</label>
+        <textarea name="descEN" rows="3"></textarea>
+      </div>
+      <div class="field">
+        <label>Beschreibung (DE)</label>
+        <textarea name="descDE" rows="3"></textarea>
+      </div>
+      <div class="modal-actions">
+        <div class="modal-actions-left">
+          <button type="button" class="btn-publish" id="btn-publish">Veröffentlichen</button>
+          <button type="button" class="btn-delete" id="btn-delete">Löschen</button>
+        </div>
+        <div class="modal-actions-right">
+          <button type="button" class="btn-cancel" id="btn-cancel">Abbrechen</button>
+          <button type="submit" class="btn-save">Speichern</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- TASK MODAL -->
+<div class="modal-overlay" id="task-modal">
+  <div class="modal modal-sm">
+    <div class="modal-header">
+      <div class="modal-title" id="task-modal-title">Neue Aufgabe</div>
+      <button class="modal-close" id="task-modal-close">&times;</button>
+    </div>
+    <form class="modal-form" id="task-form">
+      <div class="field">
+        <label>Titel</label>
+        <input type="text" name="title" required>
+      </div>
+      <div class="form-row">
+        <div class="field">
+          <label>Kategorie</label>
+          <select name="category">
+            <option value="cpdp">CPDP Brüssel</option>
+            <option value="koeln">Ausstellung Köln</option>
+            <option value="pub">Publikation</option>
+            <option value="pr">PR / Social</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Verantwortlich</label>
+          <input type="text" name="who">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="field">
+          <label>Fällig am</label>
+          <input type="date" name="due">
+        </div>
+        <div class="field">
+          <label>Status</label>
+          <select name="status">
+            <option value="Offen">Offen</option>
+            <option value="In Bearbeitung">In Bearbeitung</option>
+            <option value="Erledigt">Erledigt</option>
+          </select>
+        </div>
+      </div>
+      <div class="modal-actions">
+        <div class="modal-actions-left">
+          <button type="button" class="btn-delete" id="task-btn-delete">Löschen</button>
+        </div>
+        <div class="modal-actions-right">
+          <button type="button" class="btn-cancel" id="task-btn-cancel">Abbrechen</button>
+          <button type="submit" class="btn-save">Speichern</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script src="/admin/js/admin.js"></script>
+</body>
+</html>
