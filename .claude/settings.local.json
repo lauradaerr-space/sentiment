@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npx vercel:*)",
+      "Bash(curl -sI https://sentiment-exhibition.vercel.app/admin/)",
+      "Bash(curl -sI https://sentiment-exhibition.vercel.app/admin/js/admin.js)",
+      "Bash(curl -sI https://sentiment-exhibition.vercel.app/)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)"
+    ]
+  }
+}

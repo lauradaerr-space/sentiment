@@ -37,8 +37,15 @@
 
   <!-- TABS -->
   <div class="tab-bar">
+    <button class="tab" data-tab="uebersicht">Übersicht</button>
     <button class="tab active" data-tab="kalender">Kalender</button>
     <button class="tab" data-tab="aufgaben">Aufgaben</button>
+  </div>
+
+  <!-- ÜBERSICHT TAB -->
+  <div class="tab-content" id="tab-uebersicht">
+    <div class="overview-title">April 2026 — Januar 2027</div>
+    <div class="overview-grid" id="overview-grid"></div>
   </div>
 
   <!-- KALENDER TAB -->
@@ -67,10 +74,21 @@
       <div class="tasks-title">Aufgaben</div>
       <button class="btn-add" id="btn-add-task">+ Neue Aufgabe</button>
     </div>
+    <div class="tasks-filter" id="tasks-filter">
+      <button class="chip active" data-cat="all">Alle</button>
+      <button class="chip" data-cat="cpdp">CPDP Brüssel</button>
+      <button class="chip" data-cat="koeln">Ausstellung Köln</button>
+      <button class="chip" data-cat="pub">Publikation</button>
+      <button class="chip" data-cat="pr">PR / Social</button>
+      <button class="chip" data-cat="other">Other</button>
+    </div>
     <div class="tasks-categories" id="tasks-list"></div>
   </div>
 
 </div>
+
+<!-- WARNING TOAST -->
+<div class="toast" id="toast"></div>
 
 <!-- EVENT MODAL -->
 <div class="modal-overlay" id="event-modal">
@@ -102,9 +120,15 @@
       </div>
       <div class="form-row">
         <div class="field">
-          <label>Uhrzeit</label>
+          <label>Uhrzeit von</label>
           <input type="time" name="time">
         </div>
+        <div class="field">
+          <label>Uhrzeit bis</label>
+          <input type="time" name="timeEnd">
+        </div>
+      </div>
+      <div class="form-row">
         <div class="field">
           <label>Format</label>
           <select name="format">
@@ -113,25 +137,25 @@
             <option value="tour">Führung / Tour</option>
             <option value="screening">Screening</option>
             <option value="lecture">Lecture</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Kategorie</label>
+          <select name="category" id="event-category">
+            <option value="cpdp">CPDP Brüssel</option>
+            <option value="koeln">Ausstellung Köln</option>
+            <option value="pub">Publikation (intern)</option>
+            <option value="pr">PR / Social (intern)</option>
+            <option value="other">Other (intern)</option>
           </select>
         </div>
       </div>
       <div class="form-row">
-        <div class="field">
-          <label>Kategorie</label>
-          <select name="category">
-            <option value="cpdp">CPDP Brüssel</option>
-            <option value="koeln">Ausstellung Köln</option>
-            <option value="pub">Publikation</option>
-            <option value="pr">PR / Social</option>
-          </select>
-        </div>
         <div class="field">
           <label>Ort</label>
           <input type="text" name="location">
         </div>
-      </div>
-      <div class="form-row">
         <div class="field">
           <label>Sprache</label>
           <select name="language">
@@ -140,25 +164,25 @@
             <option value="DE/EN">DE/EN</option>
           </select>
         </div>
+      </div>
+      <div class="form-row">
         <div class="field">
           <label>Kapazität</label>
           <input type="number" name="capacity" min="0">
         </div>
-      </div>
-      <div class="form-row">
         <div class="field">
           <label>Verantwortlich</label>
           <input type="text" name="who">
         </div>
-        <div class="field">
-          <label>Status</label>
-          <select name="status">
-            <option value="Offen">Offen</option>
-            <option value="In Planung">In Planung</option>
-            <option value="Bestätigt">Bestätigt</option>
-            <option value="Erledigt">Erledigt</option>
-          </select>
-        </div>
+      </div>
+      <div class="field">
+        <label>Status</label>
+        <select name="status">
+          <option value="Offen">Offen</option>
+          <option value="In Planung">In Planung</option>
+          <option value="Bestätigt">Bestätigt</option>
+          <option value="Erledigt">Erledigt</option>
+        </select>
       </div>
       <div class="field">
         <label>Beschreibung (EN)</label>
@@ -168,6 +192,13 @@
         <label>Beschreibung (DE)</label>
         <textarea name="descDE" rows="3"></textarea>
       </div>
+
+      <!-- Linked tasks -->
+      <div class="field" id="linked-tasks-section">
+        <label>Verknüpfte Aufgaben</label>
+        <div class="linked-tasks-list" id="linked-tasks-list"></div>
+      </div>
+
       <div class="modal-actions">
         <div class="modal-actions-left">
           <button type="button" class="btn-publish" id="btn-publish">Veröffentlichen</button>
@@ -202,6 +233,7 @@
             <option value="koeln">Ausstellung Köln</option>
             <option value="pub">Publikation</option>
             <option value="pr">PR / Social</option>
+            <option value="other">Other</option>
           </select>
         </div>
         <div class="field">
@@ -222,6 +254,12 @@
             <option value="Erledigt">Erledigt</option>
           </select>
         </div>
+      </div>
+      <div class="field">
+        <label>Verknüpftes Event</label>
+        <select name="linkedEventId" id="task-linked-event">
+          <option value="">— Kein Event —</option>
+        </select>
       </div>
       <div class="modal-actions">
         <div class="modal-actions-left">

@@ -23,6 +23,7 @@
   --cat-koeln: #a66bf5;
   --cat-pub:   #4ade80;
   --cat-pr:    #f472b6;
+  --cat-other: #fbbf24;
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -139,6 +140,54 @@ button, input, select, textarea { font: inherit; }
 }
 .tab-content.active { display: block; }
 
+/* ── OVERVIEW / YEAR VIEW ── */
+.overview-title {
+  font-family: var(--serif); font-size: 22px;
+  font-weight: 300; font-style: italic;
+  letter-spacing: -.02em; margin-bottom: 20px;
+}
+.overview-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 14px;
+}
+.ov-month {
+  border: 1px solid var(--border); border-radius: 12px;
+  background: var(--panel); padding: 12px;
+  cursor: pointer;
+  transition: background .14s, border-color .14s, transform .16s;
+}
+.ov-month:hover { background: var(--panel-mid); border-color: var(--border2); transform: translateY(-2px); }
+.ov-month-label {
+  font-family: var(--mono); font-size: 10px;
+  letter-spacing: .12em; text-transform: uppercase;
+  color: var(--muted); margin-bottom: 8px;
+}
+.ov-mini-grid {
+  display: grid; grid-template-columns: repeat(7, 1fr);
+  gap: 2px;
+}
+.ov-mini-header {
+  font-family: var(--mono); font-size: 7px;
+  text-align: center; color: var(--muted2);
+  padding: 1px 0;
+}
+.ov-mini-day {
+  aspect-ratio: 1; border-radius: 3px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 8px; color: var(--muted2);
+}
+.ov-mini-day.empty { visibility: hidden; }
+.ov-mini-day.has-event { position: relative; }
+.ov-mini-day .ov-dot {
+  position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);
+  width: 4px; height: 4px; border-radius: 50%;
+}
+.ov-month-count {
+  margin-top: 6px; font-family: var(--mono); font-size: 9px;
+  color: var(--muted2); letter-spacing: .06em;
+}
+
 /* ── CALENDAR ── */
 .cal-toolbar {
   display: flex; align-items: center; gap: 12px;
@@ -198,6 +247,7 @@ button, input, select, textarea { font: inherit; }
 .cal-event.cat-koeln { background: rgba(166,107,245,.2); color: var(--cat-koeln); border-left: 2px solid var(--cat-koeln); }
 .cal-event.cat-pub   { background: rgba(74,222,128,.2);  color: var(--cat-pub);   border-left: 2px solid var(--cat-pub); }
 .cal-event.cat-pr    { background: rgba(244,114,182,.2); color: var(--cat-pr);    border-left: 2px solid var(--cat-pr); }
+.cal-event.cat-other { background: rgba(251,191,36,.2);  color: var(--cat-other); border-left: 2px solid var(--cat-other); }
 
 .cal-event.unpublished { opacity: .55; }
 
@@ -209,6 +259,19 @@ button, input, select, textarea { font: inherit; }
 }
 .pub-badge.published   { background: rgba(74,222,128,.2); color: var(--cat-pub); }
 .pub-badge.unpublished { background: rgba(255,255,255,.08); color: var(--muted2); }
+.pub-badge.internal    { background: rgba(251,191,36,.15); color: var(--cat-other); }
+
+/* ── TOAST ── */
+.toast {
+  position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%);
+  padding: 10px 20px; border-radius: 10px;
+  background: rgba(204,43,29,.9); color: #fff;
+  font-size: 12px; font-weight: 600; letter-spacing: .04em;
+  z-index: 9000;
+  opacity: 0; pointer-events: none;
+  transition: opacity .3s;
+}
+.toast.show { opacity: 1; }
 
 /* ── MODAL ── */
 .modal-overlay {
@@ -277,6 +340,10 @@ button, input, select, textarea { font: inherit; }
 .modal-form textarea:focus { border-color: var(--text); }
 .modal-form textarea { resize: vertical; min-height: 60px; }
 
+/* color scheme fix for date/time pickers */
+.modal-form input[type="date"],
+.modal-form input[type="time"] { color-scheme: dark; }
+
 .modal-actions {
   display: flex; align-items: center; justify-content: space-between;
   gap: 10px; padding-top: 8px;
@@ -329,15 +396,55 @@ button, input, select, textarea { font: inherit; }
 }
 .btn-publish.hidden { display: none; }
 
+/* ── LINKED TASKS in event modal ── */
+.linked-tasks-list {
+  display: flex; flex-direction: column; gap: 4px;
+}
+.linked-task-item {
+  display: flex; align-items: center; gap: 8px;
+  padding: 6px 10px; border-radius: 6px;
+  border: 1px solid var(--border); background: var(--panel);
+  font-size: 12px;
+}
+.linked-task-item .lt-status {
+  width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0;
+}
+.linked-task-item .lt-status.offen           { background: var(--muted2); }
+.linked-task-item .lt-status.in-bearbeitung  { background: #fbbf24; }
+.linked-task-item .lt-status.erledigt        { background: var(--cat-pub); }
+.linked-task-item .lt-title { flex: 1; color: var(--muted); }
+.linked-task-item .lt-who {
+  font-family: var(--mono); font-size: 9px;
+  color: var(--muted2); letter-spacing: .06em;
+}
+.linked-tasks-empty {
+  font-family: var(--mono); font-size: 10px;
+  color: var(--muted2); letter-spacing: .06em;
+  padding: 6px 0;
+}
+
 /* ── TASKS ── */
 .tasks-toolbar {
   display: flex; align-items: center; justify-content: space-between;
-  margin-bottom: 20px;
+  margin-bottom: 12px;
 }
 .tasks-title {
   font-family: var(--serif); font-size: 22px;
   font-weight: 300; font-style: italic;
 }
+.tasks-filter {
+  display: flex; gap: 6px; flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+.chip {
+  appearance: none; padding: 5px 12px; border-radius: 999px;
+  border: 1px solid var(--border); background: var(--panel);
+  color: var(--muted); font-size: 11px; font-weight: 500;
+  cursor: pointer; transition: background .14s, color .14s;
+}
+.chip:hover { background: var(--panel-strong); color: var(--text); }
+.chip.active { background: var(--text); border-color: transparent; color: var(--bg); }
+
 .btn-add {
   padding: 9px 18px; border-radius: 9px;
   border: 1px solid var(--border); background: var(--panel);
@@ -360,6 +467,19 @@ button, input, select, textarea { font: inherit; }
 }
 .task-category-dot {
   width: 6px; height: 6px; border-radius: 50%;
+}
+
+.task-event-group {
+  margin-left: 12px; margin-bottom: 12px;
+}
+.task-event-label {
+  font-size: 11px; font-weight: 600; color: var(--muted);
+  padding: 6px 0 2px; display: flex; align-items: center; gap: 6px;
+}
+.task-event-label::before {
+  content: ''; display: inline-block;
+  width: 3px; height: 3px; border-radius: 50%;
+  background: var(--muted2);
 }
 
 .task-item {
@@ -425,6 +545,7 @@ button, input, select, textarea { font: inherit; }
   .cal-event { font-size: 8px; padding: 2px 4px; }
   .modal-form .form-row { grid-template-columns: 1fr; }
   .modal { margin: 12px; }
+  .overview-grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); }
 }
 @media (max-width: 480px) {
   .cal-header { font-size: 8px; padding: 6px 2px; }

@@ -2,19 +2,19 @@
 (function () {
   'use strict';
 
-  const PASSWORD = 'sentiment2026';
-  const API = '/api/events';
+  var PASSWORD = 'sentiment2026';
+  var API = '/api/events';
+  var INTERNAL_CATS = ['pub', 'pr', 'other'];
 
-  let data = { events: [], tasks: [] };
-  let currentMonth = new Date();
-  let editingEventId = null;
-  let editingTaskId = null;
+  var data = { events: [], tasks: [] };
+  var currentMonth = new Date();
+  var editingEventId = null;
+  var editingTaskId = null;
+  var taskFilterCat = 'all';
 
   /* ────── AUTH ────── */
   function checkAuth() {
-    if (sessionStorage.getItem('sentiment-auth') === 'ok') {
-      showApp();
-    }
+    if (sessionStorage.getItem('sentiment-auth') === 'ok') showApp();
   }
 
   function showApp() {
@@ -29,8 +29,7 @@
   });
 
   function tryLogin() {
-    var val = document.getElementById('pw-input').value;
-    if (val === PASSWORD) {
+    if (document.getElementById('pw-input').value === PASSWORD) {
       sessionStorage.setItem('sentiment-auth', 'ok');
       showApp();
     } else {
@@ -55,17 +54,13 @@
       .then(function (r) { return r.json(); })
       .then(function (d) {
         if (Array.isArray(d)) {
-          // legacy: plain events array — wrap it
-          if (d.length > 0 && d[0].title !== undefined && !d[0].due) {
-            data = { events: d, tasks: [] };
-          } else {
-            data = { events: [], tasks: [] };
-          }
+          data = (d.length && d[0].title !== undefined && !d[0].due)
+            ? { events: d, tasks: [] }
+            : { events: [], tasks: [] };
         } else {
           data = { events: d.events || [], tasks: d.tasks || [] };
         }
-        renderCalendar();
-        renderTasks();
+        renderAll();
         setSyncStatus('ok');
       })
       .catch(function () { setSyncStatus('error'); });
@@ -78,10 +73,24 @@
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ events: data })
     })
-      .then(function (r) {
-        setSyncStatus(r.ok ? 'ok' : 'error');
-      })
+      .then(function (r) { setSyncStatus(r.ok ? 'ok' : 'error'); })
       .catch(function () { setSyncStatus('error'); });
+  }
+
+  function renderAll() {
+    renderOverview();
+    renderCalendar();
+    renderTasks();
+  }
+
+  /* ────── TOAST ────── */
+  var toastTimer;
+  function showToast(msg) {
+    var el = document.getElementById('toast');
+    el.textContent = msg;
+    el.classList.add('show');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function () { el.classList.remove('show'); }, 3000);
   }
 
   /* ────── TABS ────── */
@@ -94,10 +103,128 @@
     });
   });
 
-  /* ────── CALENDAR ────── */
+  function switchToTab(name) {
+    document.querySelectorAll('.tab').forEach(function (t) {
+      t.classList.toggle('active', t.dataset.tab === name);
+    });
+    document.querySelectorAll('.tab-content').forEach(function (c) {
+      c.classList.toggle('active', c.id === 'tab-' + name);
+    });
+  }
+
+  /* ────── HELPERS ────── */
   var MONTHS = ['Januar', 'Februar', 'März', 'April', 'Mai', 'Juni',
     'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember'];
+  var MONTHS_SHORT = ['Jan', 'Feb', 'Mär', 'Apr', 'Mai', 'Jun',
+    'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Dez'];
 
+  function fmt(d) {
+    return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
+  }
+
+  function formatDateShort(s) {
+    if (!s) return '';
+    var p = s.split('-');
+    return p[2] + '.' + p[1] + '.';
+  }
+
+  function catColor(cat) {
+    var map = { cpdp: 'var(--cat-cpdp)', koeln: 'var(--cat-koeln)', pub: 'var(--cat-pub)', pr: 'var(--cat-pr)', other: 'var(--cat-other)' };
+    return map[cat] || 'var(--muted2)';
+  }
+
+  var ALL_CATS = [
+    { key: 'cpdp',  label: 'CPDP Brüssel' },
+    { key: 'koeln', label: 'Ausstellung Köln' },
+    { key: 'pub',   label: 'Publikation' },
+    { key: 'pr',    label: 'PR / Social' },
+    { key: 'other', label: 'Other' }
+  ];
+
+  function getEventTitle(ev) {
+    return ev ? (ev.titleDE || ev.title || 'Event') : '';
+  }
+
+  /* ────── OVERVIEW ────── */
+  function renderOverview() {
+    var container = document.getElementById('overview-grid');
+    container.innerHTML = '';
+
+    // Apr 2026 (month 3) through Jan 2027 (month 0 of 2027) = 10 months
+    var months = [];
+    for (var m = 3; m <= 11; m++) months.push({ year: 2026, month: m });
+    months.push({ year: 2027, month: 0 });
+
+    months.forEach(function (spec) {
+      var card = document.createElement('div');
+      card.className = 'ov-month';
+
+      var label = document.createElement('div');
+      label.className = 'ov-month-label';
+      label.textContent = MONTHS_SHORT[spec.month] + ' ' + spec.year;
+      card.appendChild(label);
+
+      var grid = document.createElement('div');
+      grid.className = 'ov-mini-grid';
+
+      // Day-of-week headers
+      ['M', 'D', 'M', 'D', 'F', 'S', 'S'].forEach(function (d) {
+        var hd = document.createElement('div');
+        hd.className = 'ov-mini-header';
+        hd.textContent = d;
+        grid.appendChild(hd);
+      });
+
+      var first = new Date(spec.year, spec.month, 1);
+      var startDay = (first.getDay() + 6) % 7;
+      var daysInMonth = new Date(spec.year, spec.month + 1, 0).getDate();
+      var eventCount = 0;
+
+      // Empty leading cells
+      for (var i = 0; i < startDay; i++) {
+        var empty = document.createElement('div');
+        empty.className = 'ov-mini-day empty';
+        grid.appendChild(empty);
+      }
+
+      for (var d = 1; d <= daysInMonth; d++) {
+        var dateStr = fmt(new Date(spec.year, spec.month, d));
+        var dayEvents = data.events.filter(function (ev) {
+          return dateStr >= ev.dateFrom && dateStr <= (ev.dateTo || ev.dateFrom);
+        });
+
+        var cell = document.createElement('div');
+        cell.className = 'ov-mini-day' + (dayEvents.length ? ' has-event' : '');
+        cell.textContent = d;
+
+        if (dayEvents.length) {
+          eventCount += dayEvents.length;
+          var dot = document.createElement('span');
+          dot.className = 'ov-dot';
+          dot.style.background = catColor(dayEvents[0].category);
+          cell.appendChild(dot);
+        }
+        grid.appendChild(cell);
+      }
+
+      card.appendChild(grid);
+
+      var count = document.createElement('div');
+      count.className = 'ov-month-count';
+      count.textContent = eventCount + ' Event' + (eventCount !== 1 ? 's' : '');
+      card.appendChild(count);
+
+      card.addEventListener('click', function () {
+        currentMonth = new Date(spec.year, spec.month, 1);
+        renderCalendar();
+        switchToTab('kalender');
+      });
+
+      container.appendChild(card);
+    });
+  }
+
+  /* ────── CALENDAR ────── */
   document.getElementById('cal-prev').addEventListener('click', function () {
     currentMonth = new Date(currentMonth.getFullYear(), currentMonth.getMonth() - 1, 1);
     renderCalendar();
@@ -117,38 +244,26 @@
     document.getElementById('cal-month-label').textContent = MONTHS[month] + ' ' + year;
 
     var first = new Date(year, month, 1);
-    var startDay = (first.getDay() + 6) % 7; // Monday = 0
+    var startDay = (first.getDay() + 6) % 7;
     var daysInMonth = new Date(year, month + 1, 0).getDate();
     var prevDays = new Date(year, month, 0).getDate();
-
     var container = document.getElementById('cal-days');
     container.innerHTML = '';
+    var todayStr = fmt(new Date());
 
-    var today = new Date();
-    var todayStr = fmt(today);
-
-    // Previous month days
     for (var i = startDay - 1; i >= 0; i--) {
-      var d = prevDays - i;
-      var date = new Date(year, month - 1, d);
-      container.appendChild(createDayCell(date, true));
+      container.appendChild(createDayCell(new Date(year, month - 1, prevDays - i), true));
     }
-
-    // Current month days
     for (var d = 1; d <= daysInMonth; d++) {
       var date = new Date(year, month, d);
       var cell = createDayCell(date, false);
       if (fmt(date) === todayStr) cell.classList.add('today');
       container.appendChild(cell);
     }
-
-    // Fill remaining cells to complete grid
     var total = container.children.length;
-    var rows = Math.ceil(total / 7);
-    var remaining = rows * 7 - total;
+    var remaining = Math.ceil(total / 7) * 7 - total;
     for (var i = 1; i <= remaining; i++) {
-      var date = new Date(year, month + 1, i);
-      container.appendChild(createDayCell(date, true));
+      container.appendChild(createDayCell(new Date(year, month + 1, i), true));
     }
   }
 
@@ -167,6 +282,7 @@
     });
 
     dayEvents.forEach(function (ev) {
+      var isInternal = INTERNAL_CATS.indexOf(ev.category) !== -1;
       var chip = document.createElement('div');
       chip.className = 'cal-event cat-' + (ev.category || 'cpdp') + (ev.published ? '' : ' unpublished');
 
@@ -174,8 +290,13 @@
       if (ev.time) titleText = ev.time + ' ' + titleText;
 
       var badge = document.createElement('span');
-      badge.className = 'pub-badge ' + (ev.published ? 'published' : 'unpublished');
-      badge.textContent = ev.published ? 'Live' : 'Entwurf';
+      if (isInternal) {
+        badge.className = 'pub-badge internal';
+        badge.textContent = 'Intern';
+      } else {
+        badge.className = 'pub-badge ' + (ev.published ? 'published' : 'unpublished');
+        badge.textContent = ev.published ? 'Live' : 'Entwurf';
+      }
 
       chip.textContent = titleText;
       chip.appendChild(badge);
@@ -192,12 +313,6 @@
     });
 
     return cell;
-  }
-
-  function fmt(d) {
-    var mm = String(d.getMonth() + 1).padStart(2, '0');
-    var dd = String(d.getDate()).padStart(2, '0');
-    return d.getFullYear() + '-' + mm + '-' + dd;
   }
 
   /* ────── EVENT MODAL ────── */
@@ -219,6 +334,7 @@
       eventForm.dateFrom.value = ev.dateFrom || '';
       eventForm.dateTo.value = ev.dateTo || '';
       eventForm.time.value = ev.time || '';
+      eventForm.timeEnd.value = ev.timeEnd || '';
       eventForm.format.value = ev.format || 'talk';
       eventForm.category.value = ev.category || 'cpdp';
       eventForm.location.value = ev.location || '';
@@ -231,26 +347,87 @@
 
       btnPublish.classList.remove('hidden');
       btnDelete.classList.remove('hidden');
-      updatePublishBtn(ev.published);
+      updatePublishBtn(ev);
+
+      renderLinkedTasks(ev.id);
     } else {
       document.getElementById('modal-title').textContent = 'Neues Event';
       if (defaultDate) eventForm.dateFrom.value = defaultDate;
       btnPublish.classList.add('hidden');
       btnDelete.classList.add('hidden');
+      renderLinkedTasks(null);
     }
 
     eventModal.classList.add('open');
   }
 
-  function updatePublishBtn(published) {
-    if (published) {
+  function renderLinkedTasks(eventId) {
+    var container = document.getElementById('linked-tasks-list');
+    var section = document.getElementById('linked-tasks-section');
+
+    if (!eventId) {
+      section.style.display = 'none';
+      return;
+    }
+    section.style.display = '';
+
+    var linked = data.tasks.filter(function (t) { return t.linkedEventId === eventId; });
+    if (!linked.length) {
+      container.innerHTML = '<div class="linked-tasks-empty">Keine verknüpften Aufgaben</div>';
+      return;
+    }
+
+    container.innerHTML = '';
+    linked.forEach(function (t) {
+      var row = document.createElement('div');
+      row.className = 'linked-task-item';
+
+      var dot = document.createElement('span');
+      dot.className = 'lt-status ' + (t.status || 'Offen').toLowerCase().replace(/ /g, '-');
+
+      var title = document.createElement('span');
+      title.className = 'lt-title';
+      title.textContent = t.title || '';
+
+      var who = document.createElement('span');
+      who.className = 'lt-who';
+      who.textContent = t.who || '';
+
+      row.appendChild(dot);
+      row.appendChild(title);
+      row.appendChild(who);
+      container.appendChild(row);
+    });
+  }
+
+  function updatePublishBtn(ev) {
+    var isInternal = INTERNAL_CATS.indexOf((ev && ev.category) || eventForm.category.value) !== -1;
+    if (isInternal) {
+      btnPublish.textContent = 'Nur intern';
+      btnPublish.classList.add('is-published');
+      btnPublish.disabled = true;
+    } else if (ev && ev.published) {
       btnPublish.textContent = 'Unveröffentlichen';
       btnPublish.classList.add('is-published');
+      btnPublish.disabled = false;
     } else {
       btnPublish.textContent = 'Veröffentlichen';
       btnPublish.classList.remove('is-published');
+      btnPublish.disabled = false;
     }
   }
+
+  // Update publish button when category changes
+  document.getElementById('event-category').addEventListener('change', function () {
+    if (editingEventId) {
+      var ev = data.events.find(function (e) { return e.id === editingEventId; });
+      // If switching to internal, unpublish
+      if (ev && INTERNAL_CATS.indexOf(this.value) !== -1 && ev.published) {
+        ev.published = false;
+      }
+      updatePublishBtn(ev);
+    }
+  });
 
   function closeEventModal() {
     eventModal.classList.remove('open');
@@ -267,19 +444,31 @@
     if (!editingEventId) return;
     var ev = data.events.find(function (e) { return e.id === editingEventId; });
     if (!ev) return;
+
+    // Block publishing internal categories
+    if (INTERNAL_CATS.indexOf(ev.category) !== -1) {
+      showToast('Diese Kategorie ist nur intern sichtbar');
+      return;
+    }
+
     ev.published = !ev.published;
-    updatePublishBtn(ev.published);
+    updatePublishBtn(ev);
     saveData();
     renderCalendar();
+    renderOverview();
   });
 
   btnDelete.addEventListener('click', function () {
     if (!editingEventId) return;
     if (!confirm('Event wirklich löschen?')) return;
+    // Unlink tasks
+    data.tasks.forEach(function (t) {
+      if (t.linkedEventId === editingEventId) t.linkedEventId = '';
+    });
     data.events = data.events.filter(function (e) { return e.id !== editingEventId; });
     saveData();
     closeEventModal();
-    renderCalendar();
+    renderAll();
   });
 
   eventForm.addEventListener('submit', function (e) {
@@ -289,10 +478,18 @@
     fd.forEach(function (v, k) { obj[k] = v; });
     if (obj.capacity) obj.capacity = parseInt(obj.capacity, 10);
 
+    // Force unpublish for internal categories
+    if (INTERNAL_CATS.indexOf(obj.category) !== -1) {
+      obj.published = false;
+    }
+
     if (editingEventId) {
       var ev = data.events.find(function (e) { return e.id === editingEventId; });
       if (ev) {
+        var wasCat = ev.category;
         Object.keys(obj).forEach(function (k) { ev[k] = obj[k]; });
+        // If category changed to internal, force unpublish
+        if (INTERNAL_CATS.indexOf(obj.category) !== -1) ev.published = false;
       }
     } else {
       obj.id = 'evt-' + Date.now();
@@ -302,23 +499,34 @@
 
     saveData();
     closeEventModal();
-    renderCalendar();
+    renderAll();
   });
 
   /* ────── TASKS ────── */
-  var TASK_CATEGORIES = [
-    { key: 'cpdp',  label: 'CPDP Brüssel',     color: 'var(--cat-cpdp)' },
-    { key: 'koeln', label: 'Ausstellung Köln',  color: 'var(--cat-koeln)' },
-    { key: 'pub',   label: 'Publikation',        color: 'var(--cat-pub)' },
-    { key: 'pr',    label: 'PR / Social',        color: 'var(--cat-pr)' }
-  ];
+  // Filter chips
+  document.querySelectorAll('#tasks-filter .chip').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      taskFilterCat = btn.dataset.cat;
+      document.querySelectorAll('#tasks-filter .chip').forEach(function (c) {
+        c.classList.toggle('active', c.dataset.cat === taskFilterCat);
+      });
+      renderTasks();
+    });
+  });
 
   function renderTasks() {
     var container = document.getElementById('tasks-list');
     container.innerHTML = '';
 
-    TASK_CATEGORIES.forEach(function (cat) {
-      var tasks = data.tasks.filter(function (t) { return t.category === cat.key; });
+    var catsToShow = taskFilterCat === 'all'
+      ? ALL_CATS
+      : ALL_CATS.filter(function (c) { return c.key === taskFilterCat; });
+
+    catsToShow.forEach(function (cat) {
+      var catTasks = data.tasks.filter(function (t) { return t.category === cat.key; });
+      if (taskFilterCat !== 'all' && catTasks.length === 0) {
+        // Still show section even if empty when filtered
+      }
 
       var section = document.createElement('div');
       section.className = 'task-category';
@@ -327,21 +535,52 @@
       header.className = 'task-category-header';
       var dot = document.createElement('span');
       dot.className = 'task-category-dot';
-      dot.style.background = cat.color;
+      dot.style.background = catColor(cat.key);
       header.appendChild(dot);
-      header.appendChild(document.createTextNode(cat.label + ' (' + tasks.length + ')'));
+      header.appendChild(document.createTextNode(cat.label + ' (' + catTasks.length + ')'));
       section.appendChild(header);
 
-      if (tasks.length === 0) {
+      if (catTasks.length === 0) {
         var empty = document.createElement('div');
         empty.className = 'no-tasks';
         empty.textContent = 'Keine Aufgaben';
         section.appendChild(empty);
-      }
+      } else {
+        // Group tasks: linked to events vs unlinked
+        var linked = {};
+        var unlinked = [];
 
-      tasks.forEach(function (task) {
-        section.appendChild(createTaskItem(task));
-      });
+        catTasks.forEach(function (t) {
+          if (t.linkedEventId) {
+            if (!linked[t.linkedEventId]) linked[t.linkedEventId] = [];
+            linked[t.linkedEventId].push(t);
+          } else {
+            unlinked.push(t);
+          }
+        });
+
+        // Render linked groups
+        Object.keys(linked).forEach(function (evId) {
+          var ev = data.events.find(function (e) { return e.id === evId; });
+          var group = document.createElement('div');
+          group.className = 'task-event-group';
+
+          var groupLabel = document.createElement('div');
+          groupLabel.className = 'task-event-label';
+          groupLabel.textContent = getEventTitle(ev);
+          group.appendChild(groupLabel);
+
+          linked[evId].forEach(function (task) {
+            group.appendChild(createTaskItem(task));
+          });
+          section.appendChild(group);
+        });
+
+        // Render unlinked tasks
+        unlinked.forEach(function (task) {
+          section.appendChild(createTaskItem(task));
+        });
+      }
 
       container.appendChild(section);
     });
@@ -399,18 +638,11 @@
     return row;
   }
 
-  function formatDateShort(dateStr) {
-    if (!dateStr) return '';
-    var parts = dateStr.split('-');
-    return parts[2] + '.' + parts[1] + '.';
-  }
-
   function toggleTaskStatus(id) {
     var task = data.tasks.find(function (t) { return t.id === id; });
     if (!task) return;
     var order = ['Offen', 'In Bearbeitung', 'Erledigt'];
-    var idx = order.indexOf(task.status);
-    task.status = order[(idx + 1) % order.length];
+    task.status = order[(order.indexOf(task.status) + 1) % order.length];
     saveData();
     renderTasks();
   }
@@ -424,9 +656,22 @@
     openTaskModal(null);
   });
 
+  function populateEventDropdown(selectedId) {
+    var sel = document.getElementById('task-linked-event');
+    sel.innerHTML = '<option value="">— Kein Event —</option>';
+    data.events.forEach(function (ev) {
+      var opt = document.createElement('option');
+      opt.value = ev.id;
+      opt.textContent = getEventTitle(ev) + (ev.dateFrom ? ' (' + formatDateShort(ev.dateFrom) + ')' : '');
+      if (ev.id === selectedId) opt.selected = true;
+      sel.appendChild(opt);
+    });
+  }
+
   function openTaskModal(id) {
     editingTaskId = id;
     taskForm.reset();
+    populateEventDropdown('');
 
     if (id) {
       var t = data.tasks.find(function (tk) { return tk.id === id; });
@@ -437,6 +682,7 @@
       taskForm.who.value = t.who || '';
       taskForm.due.value = t.due || '';
       taskForm.status.value = t.status || 'Offen';
+      populateEventDropdown(t.linkedEventId || '');
       taskBtnDelete.classList.remove('hidden');
     } else {
       document.getElementById('task-modal-title').textContent = 'Neue Aufgabe';
@@ -474,9 +720,7 @@
 
     if (editingTaskId) {
       var t = data.tasks.find(function (tk) { return tk.id === editingTaskId; });
-      if (t) {
-        Object.keys(obj).forEach(function (k) { t[k] = obj[k]; });
-      }
+      if (t) Object.keys(obj).forEach(function (k) { t[k] = obj[k]; });
     } else {
       obj.id = 'task-' + Date.now();
       data.tasks.push(obj);
@@ -486,11 +730,6 @@
     closeTaskModal();
     renderTasks();
   });
-
-  /* ────── API data shape ────── */
-  // The API stores { events: [...], tasks: [...] } as the top-level payload.
-  // saveData sends POST { events: { events: [...], tasks: [...] } }
-  // because the API handler expects req.body.events as the value to persist.
 
   /* ────── INIT ────── */
   checkAuth();

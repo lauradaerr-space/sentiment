@@ -16,7 +16,8 @@ async function loadEvents() {
     const data = await res.json();
     // Nur veröffentlichte Events anzeigen
     const list = Array.isArray(data) ? data : (data.events || []);
-    allEvents = list.filter(e => e.published);
+    const INTERNAL = ['pub', 'pr', 'other'];
+    allEvents = list.filter(e => e.published && INTERNAL.indexOf(e.category) === -1);
   } catch (e) {
     allEvents = [];
   }
