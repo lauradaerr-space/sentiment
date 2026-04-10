@@ -75,13 +75,28 @@
       <div class="tasks-title">Aufgaben</div>
       <button class="btn-add" id="btn-add-task">+ Neue Aufgabe</button>
     </div>
-    <div class="tasks-filter" id="tasks-filter">
-      <button class="chip active" data-cat="all">Alle</button>
-      <button class="chip" data-cat="cpdp">CPDP Brüssel</button>
-      <button class="chip" data-cat="koeln">Ausstellung Köln</button>
-      <button class="chip" data-cat="pub">Publikation</button>
-      <button class="chip" data-cat="pr">PR / Social</button>
-      <button class="chip" data-cat="other">Other</button>
+    <div class="tasks-filters">
+      <div class="tasks-filter" id="tasks-filter">
+        <button class="chip active" data-cat="all">Alle</button>
+        <button class="chip" data-cat="cpdp">CPDP Brüssel</button>
+        <button class="chip" data-cat="koeln">Ausstellung Köln</button>
+        <button class="chip" data-cat="pub">Publikation</button>
+        <button class="chip" data-cat="pr">PR / Social</button>
+        <button class="chip" data-cat="other">Other</button>
+      </div>
+      <div class="tasks-filter-person">
+        <select id="tasks-person-filter">
+          <option value="all">Alle Personen</option>
+          <option value="Jessica Szczuka">Jessica Szczuka</option>
+          <option value="Lisa Mühl">Lisa Mühl</option>
+          <option value="Joel Baumann">Joel Baumann</option>
+          <option value="Laura Därr">Laura Därr</option>
+          <option value="Veelasha Moonsamy">Veelasha Moonsamy</option>
+          <option value="Ramya Kandula">Ramya Kandula</option>
+          <option value="Maxi Nebel">Maxi Nebel</option>
+          <option value="Christian Geminn">Christian Geminn</option>
+        </select>
+      </div>
     </div>
     <div class="tasks-categories" id="tasks-list"></div>
   </div>
@@ -268,22 +283,29 @@
           </select>
         </div>
         <div class="field">
-          <label>Verantwortlich</label>
-          <input type="text" name="who">
-        </div>
-      </div>
-      <div class="form-row">
-        <div class="field">
-          <label>Fällig am</label>
-          <input type="date" name="due">
-        </div>
-        <div class="field">
           <label>Status</label>
           <select name="status">
             <option value="Offen">Offen</option>
             <option value="In Bearbeitung">In Bearbeitung</option>
             <option value="Erledigt">Erledigt</option>
           </select>
+        </div>
+      </div>
+      <div class="field">
+        <label>Fällig am</label>
+        <input type="date" name="due">
+      </div>
+      <div class="field">
+        <label>Verantwortlich</label>
+        <div class="who-checkboxes" id="task-who-checks">
+          <label class="who-check"><input type="checkbox" value="Jessica Szczuka"> Jessica Szczuka</label>
+          <label class="who-check"><input type="checkbox" value="Lisa Mühl"> Lisa Mühl</label>
+          <label class="who-check"><input type="checkbox" value="Joel Baumann"> Joel Baumann</label>
+          <label class="who-check"><input type="checkbox" value="Laura Därr"> Laura Därr</label>
+          <label class="who-check"><input type="checkbox" value="Veelasha Moonsamy"> Veelasha Moonsamy</label>
+          <label class="who-check"><input type="checkbox" value="Ramya Kandula"> Ramya Kandula</label>
+          <label class="who-check"><input type="checkbox" value="Maxi Nebel"> Maxi Nebel</label>
+          <label class="who-check"><input type="checkbox" value="Christian Geminn"> Christian Geminn</label>
         </div>
       </div>
       <div class="field">

@@ -459,9 +459,14 @@ button, input, select, textarea { font: inherit; }
   font-family: var(--serif); font-size: 22px;
   font-weight: 300; font-style: italic;
 }
+.tasks-filters { margin-bottom: 16px; display: flex; flex-direction: column; gap: 10px; }
 .tasks-filter {
   display: flex; gap: 6px; flex-wrap: wrap;
-  margin-bottom: 20px;
+}
+.tasks-filter-person select {
+  padding: 6px 12px; border-radius: 8px;
+  border: 1px solid var(--border); background: var(--bg);
+  color: var(--text); font-size: 12px; outline: none;
 }
 .chip {
   appearance: none; padding: 5px 12px; border-radius: 999px;
@@ -513,11 +518,15 @@ button, input, select, textarea { font: inherit; }
   display: flex; align-items: center; gap: 12px;
   padding: 10px 12px;
   border-bottom: 1px solid var(--border);
+  border-left: 3px solid transparent;
   cursor: pointer;
   transition: background .14s;
   border-radius: 6px;
 }
 .task-item:hover { background: var(--panel); }
+.task-item.done { opacity: .5; }
+.task-item.overdue { border-left-color: var(--red); }
+.task-item.due-soon { border-left-color: var(--cat-other); }
 
 .task-checkbox {
   width: 18px; height: 18px; border-radius: 5px;
@@ -555,6 +564,24 @@ button, input, select, textarea { font: inherit; }
 .task-status-badge.offen { color: var(--muted2); }
 .task-status-badge.in-bearbeitung { color: #fbbf24; border-color: rgba(251,191,36,.3); }
 .task-status-badge.erledigt { color: var(--cat-pub); border-color: rgba(74,222,128,.3); }
+.task-status-badge.overdue { color: var(--red); border-color: rgba(204,43,29,.3); }
+.task-status-badge.due-soon { color: var(--cat-other); border-color: rgba(251,191,36,.3); }
+
+/* who checkboxes */
+.who-checkboxes {
+  display: flex; flex-wrap: wrap; gap: 6px 12px;
+  padding: 8px 0;
+}
+.who-check {
+  display: flex; align-items: center; gap: 6px;
+  font-size: 12px; color: var(--muted); cursor: pointer;
+  font-family: var(--sans); letter-spacing: 0;
+  text-transform: none;
+}
+.who-check input[type="checkbox"] {
+  width: 15px; height: 15px; accent-color: var(--lilac);
+  cursor: pointer;
+}
 
 .no-tasks {
   padding: 40px; text-align: center;

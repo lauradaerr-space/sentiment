@@ -11,6 +11,7 @@
   var editingEventId = null;
   var editingTaskId = null;
   var taskFilterCat = 'all';
+  var taskFilterPerson = 'all';
 
   /* ────── AUTH ────── */
   function checkAuth() {
@@ -284,9 +285,10 @@
           cell.appendChild(dot);
         } else if (dayTasks.length) {
           taskCount += dayTasks.length;
+          var hasOverdue = dayTasks.some(function (t) { return getTaskUrgency(t) === 'overdue'; });
           var dot = document.createElement('span');
           dot.className = 'ov-dot';
-          dot.style.background = 'var(--muted2)';
+          dot.style.background = hasOverdue ? 'var(--red)' : 'var(--muted2)';
           cell.appendChild(dot);
         }
         grid.appendChild(cell);
@@ -294,12 +296,20 @@
 
       card.appendChild(grid);
 
+      // count overdue per month
+      var overdueCount = data.tasks.filter(function (t) {
+        if (t.status === 'Erledigt' || !t.due) return false;
+        var dp = t.due.split('-');
+        return parseInt(dp[0]) === spec.year && parseInt(dp[1]) - 1 === spec.month && t.due < fmt(new Date());
+      }).length;
+
       var count = document.createElement('div');
       count.className = 'ov-month-count';
       var parts = [];
       if (eventCount) parts.push(eventCount + ' Event' + (eventCount !== 1 ? 's' : ''));
       if (taskCount) parts.push(taskCount + ' Aufgabe' + (taskCount !== 1 ? 'n' : ''));
-      count.textContent = parts.length ? parts.join(' · ') : 'Keine Einträge';
+      if (overdueCount) parts.push('<span style="color:var(--red)">' + overdueCount + ' überfällig</span>');
+      count.innerHTML = parts.length ? parts.join(' · ') : 'Keine Einträge';
       card.appendChild(count);
 
       card.addEventListener('click', function () {
@@ -627,6 +637,30 @@
     });
   });
 
+  // Person filter
+  document.getElementById('tasks-person-filter').addEventListener('change', function () {
+    taskFilterPerson = this.value;
+    renderTasks();
+  });
+
+  function getTaskUrgency(task) {
+    if (task.status === 'Erledigt') return 'done';
+    if (!task.due) return '';
+    var today = fmt(new Date());
+    if (task.due < today) return 'overdue';
+    var d = new Date();
+    d.setDate(d.getDate() + 7);
+    if (task.due <= fmt(d)) return 'due-soon';
+    return '';
+  }
+
+  function taskMatchesPerson(task) {
+    if (taskFilterPerson === 'all') return true;
+    var who = task.who;
+    if (Array.isArray(who)) return who.indexOf(taskFilterPerson) !== -1;
+    return (who || '') === taskFilterPerson;
+  }
+
   function renderTasks() {
     var container = document.getElementById('tasks-list');
     container.innerHTML = '';
@@ -636,7 +670,9 @@
       : ALL_CATS.filter(function (c) { return c.key === taskFilterCat; });
 
     catsToShow.forEach(function (cat) {
-      var catTasks = data.tasks.filter(function (t) { return t.category === cat.key; });
+      var catTasks = data.tasks.filter(function (t) {
+        return t.category === cat.key && taskMatchesPerson(t);
+      });
       if (taskFilterCat !== 'all' && catTasks.length === 0) {
         // Still show section even if empty when filtered
       }
@@ -701,8 +737,9 @@
 
   function createTaskItem(task) {
     var isDone = task.status === 'Erledigt';
+    var urgency = getTaskUrgency(task);
     var row = document.createElement('div');
-    row.className = 'task-item' + (isDone ? ' done' : '');
+    row.className = 'task-item' + (isDone ? ' done' : '') + (urgency === 'overdue' ? ' overdue' : '') + (urgency === 'due-soon' ? ' due-soon' : '');
 
     var cb = document.createElement('div');
     cb.className = 'task-checkbox' + (isDone ? ' done' : '');
@@ -719,26 +756,40 @@
     var meta = document.createElement('div');
     meta.className = 'task-meta';
 
-    if (task.who) {
+    var whoList = Array.isArray(task.who) ? task.who : (task.who ? [task.who] : []);
+    if (whoList.length) {
       var who = document.createElement('span');
       who.className = 'task-who';
-      who.textContent = task.who;
+      who.textContent = whoList.join(', ');
       meta.appendChild(who);
     }
 
     if (task.due) {
       var due = document.createElement('span');
       due.className = 'task-due';
-      if (!isDone && task.due < fmt(new Date())) due.classList.add('overdue');
+      if (urgency === 'overdue') due.classList.add('overdue');
       due.textContent = formatDateShort(task.due);
       meta.appendChild(due);
     }
 
-    var statusText = task.status || 'Offen';
-    var badge = document.createElement('span');
-    badge.className = 'task-status-badge ' + statusText.toLowerCase().replace(/ /g, '-');
-    badge.textContent = statusText;
-    meta.appendChild(badge);
+    // urgency badge
+    if (urgency === 'overdue') {
+      var ub = document.createElement('span');
+      ub.className = 'task-status-badge overdue';
+      ub.textContent = 'Überfällig';
+      meta.appendChild(ub);
+    } else if (urgency === 'due-soon') {
+      var ub = document.createElement('span');
+      ub.className = 'task-status-badge due-soon';
+      ub.textContent = 'Bald fällig';
+      meta.appendChild(ub);
+    } else {
+      var statusText = task.status || 'Offen';
+      var badge = document.createElement('span');
+      badge.className = 'task-status-badge ' + statusText.toLowerCase().replace(/ /g, '-');
+      badge.textContent = statusText;
+      meta.appendChild(badge);
+    }
 
     row.appendChild(cb);
     row.appendChild(title);
@@ -786,16 +837,23 @@
     taskForm.reset();
     populateEventDropdown('');
 
+    // reset who checkboxes
+    document.querySelectorAll('#task-who-checks input').forEach(function (cb) { cb.checked = false; });
+
     if (id) {
       var t = data.tasks.find(function (tk) { return tk.id === id; });
       if (!t) return;
       document.getElementById('task-modal-title').textContent = 'Aufgabe bearbeiten';
       taskForm.title.value = t.title || '';
       taskForm.category.value = t.category || 'cpdp';
-      taskForm.who.value = t.who || '';
       taskForm.due.value = t.due || '';
       taskForm.status.value = t.status || 'Offen';
       populateEventDropdown(t.linkedEventId || '');
+      // set who checkboxes
+      var whoArr = Array.isArray(t.who) ? t.who : (t.who ? [t.who] : []);
+      document.querySelectorAll('#task-who-checks input').forEach(function (cb) {
+        cb.checked = whoArr.indexOf(cb.value) !== -1;
+      });
       taskBtnDelete.classList.remove('hidden');
     } else {
       document.getElementById('task-modal-title').textContent = 'Neue Aufgabe';
@@ -829,9 +887,19 @@
 
   taskForm.addEventListener('submit', function (e) {
     e.preventDefault();
-    var fd = new FormData(taskForm);
-    var obj = {};
-    fd.forEach(function (v, k) { obj[k] = v; });
+    var obj = {
+      title: taskForm.title.value,
+      category: taskForm.category.value,
+      status: taskForm.status.value,
+      due: taskForm.due.value,
+      linkedEventId: taskForm.linkedEventId.value
+    };
+    // collect who as array
+    var whoArr = [];
+    document.querySelectorAll('#task-who-checks input:checked').forEach(function (cb) {
+      whoArr.push(cb.value);
+    });
+    obj.who = whoArr;
 
     if (editingTaskId) {
       var t = data.tasks.find(function (tk) { return tk.id === editingTaskId; });
