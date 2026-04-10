@@ -154,13 +154,9 @@ body.light .nav-logo { filter: invert(1); }
 
 .hero-logo { margin: 0 0 20px; }
 .hero-logo-img {
-  height: clamp(60px, 10vw, 120px);
+  height: clamp(80px, 14vw, 160px);
   width: auto;
   display: block;
-  filter: brightness(0) invert(1);
-}
-body.light .hero-logo-img {
-  filter: brightness(0);
 }
 
 .hamburger {
