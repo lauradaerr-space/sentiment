@@ -250,7 +250,8 @@ function renderSchedule() {
     workshop:  'Workshop',
     tour:      lang === 'de' ? 'Führung' : 'Tour',
     screening: 'Screening',
-    lecture:   'Lecture'
+    lecture:   'Lecture',
+    other:     lang === 'de' ? 'Sonstiges' : 'Other'
   };
 
   list.innerHTML = filtered.map(e => {
