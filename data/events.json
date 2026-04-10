@@ -60,12 +60,12 @@
   ],
   "tasks": [
     {
-      "title": "test",
-      "category": "cpdp",
-      "who": "",
-      "due": "2026-04-23",
-      "status": "In Bearbeitung",
-      "linkedEventId": "",
+      "title": "Catering",
+      "category": "koeln",
+      "who": "Laura + Joel",
+      "due": "2026-04-24",
+      "status": "Offen",
+      "linkedEventId": "evt-1775824421996",
       "id": "task-1775807359855"
     }
   ]
