@@ -270,7 +270,7 @@ function renderSchedule() {
         <span class="ev-format ${e.format}">${fmtLabels[e.format] || e.format}</span>
       </div>
       <div class="ev-title">${title}</div>
-      ${desc ? `<p class="ev-desc">${desc}</p>` : ''}
+      ${desc ? `<p class="ev-desc">${desc}</p><button class="ev-expand">${lang === 'de' ? 'Mehr lesen' : 'Read more'}</button>` : ''}
       <div class="ev-meta">
         ${e.location ? `<span>${e.location}</span>` : ''}
         ${e.language ? `<span>${e.language}</span>` : ''}
@@ -314,6 +314,15 @@ function renderSchedule() {
         const f = document.getElementById('inp-fn');
         if (f) f.focus();
       }, 500);
+    });
+  });
+
+  document.querySelectorAll('.ev-expand').forEach(btn => {
+    const desc = btn.previousElementSibling;
+    if (!desc) return;
+    btn.addEventListener('click', () => {
+      const expanded = desc.classList.toggle('expanded');
+      btn.textContent = expanded ? (lang === 'de' ? 'Weniger' : 'Less') : (lang === 'de' ? 'Mehr lesen' : 'Read more');
     });
   });
 }
