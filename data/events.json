@@ -75,6 +75,25 @@
       "descDE": "",
       "id": "evt-1775848688849",
       "published": true
+    },
+    {
+      "title": "CPDP - research - panel",
+      "titleDE": "CPDP - research - panel",
+      "dateFrom": "2026-05-20",
+      "dateTo": "2026-05-20",
+      "time": "11:50",
+      "timeEnd": "13:05",
+      "format": "talk",
+      "category": "cpdp",
+      "location": "Maison de la Poste, CPDP",
+      "language": "EN",
+      "capacity": "",
+      "who": "",
+      "status": "Bestätigt",
+      "descEN": "",
+      "descDE": "",
+      "id": "evt-1775849046566",
+      "published": false
     }
   ],
   "tasks": [
