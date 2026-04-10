@@ -20,5 +20,15 @@
       "timeEnd": ""
     }
   ],
-  "tasks": []
+  "tasks": [
+    {
+      "title": "test",
+      "category": "cpdp",
+      "who": "",
+      "due": "2026-04-23",
+      "status": "Offen",
+      "linkedEventId": "",
+      "id": "task-1775807359855"
+    }
+  ]
 }
