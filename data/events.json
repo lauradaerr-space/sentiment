@@ -1,4 +1,23 @@
 {
-  "events": [],
+  "events": [
+    {
+      "title": "hallo",
+      "titleDE": "hallo",
+      "dateFrom": "2027-01-06",
+      "dateTo": "",
+      "time": "",
+      "format": "talk",
+      "category": "cpdp",
+      "location": "",
+      "language": "DE",
+      "capacity": "",
+      "who": "",
+      "status": "Offen",
+      "descEN": "",
+      "descDE": "",
+      "id": "evt-1775806714405",
+      "published": false
+    }
+  ],
   "tasks": []
 }
