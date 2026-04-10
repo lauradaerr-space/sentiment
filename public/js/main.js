@@ -72,45 +72,63 @@ let lang          = 'de';
 /* ══ TEAM DATA ══ */
 const TEAM = [
   {
-    id: 1, name: 'Dr. Anna Meier', role: 'Künstlerische Leitung',
+    id: 1, name: 'Dr. Anna Meier',
+    role_de: 'Künstlerische Leitung', role_en: 'Artistic Director',
     type: 'artist', initials: 'AM',
-    bio_short: 'Medienkünstlerin mit Fokus auf interaktive Installationen und KI-Ästhetik.',
-    bio_long: 'Dr. Anna Meier ist Medienkünstlerin und Professorin für Digitale Kunst. Ihre Arbeiten untersuchen die Schnittstelle zwischen menschlicher Emotionalität und algorithmischen Systemen. Im Projekt SENTIMENT entwickelt sie die interaktiven Installationen für die Ausstellung im KunstWerk Köln.',
+    bio_short_de: 'Medienkünstlerin mit Fokus auf interaktive Installationen und KI-Ästhetik.',
+    bio_short_en: 'Media artist focusing on interactive installations and AI aesthetics.',
+    bio_long_de: 'Dr. Anna Meier ist Medienkünstlerin und Professorin für Digitale Kunst. Ihre Arbeiten untersuchen die Schnittstelle zwischen menschlicher Emotionalität und algorithmischen Systemen. Im Projekt SENTIMENT entwickelt sie die interaktiven Installationen für die Ausstellung im KunstWerk Köln.',
+    bio_long_en: 'Dr. Anna Meier is a media artist and professor of Digital Art. Her work explores the intersection of human emotionality and algorithmic systems. In the SENTIMENT project, she develops the interactive installations for the exhibition at KunstWerk Cologne.',
     image: null
   },
   {
-    id: 2, name: 'Prof. Lukas Weber', role: 'Privacy Research Lead',
+    id: 2, name: 'Prof. Lukas Weber',
+    role_de: 'Privacy Research Lead', role_en: 'Privacy Research Lead',
     type: 'researcher', initials: 'LW',
-    bio_short: 'Informatiker und Datenschutzforscher an der TU Köln.',
-    bio_long: 'Prof. Lukas Weber leitet die Forschungsgruppe für Privacy Engineering an der TU Köln. Seine Arbeit bei SENTIMENT konzentriert sich auf die technischen und ethischen Aspekte des Datenschutzes bei intimen Mensch-KI-Interaktionen, insbesondere auf sichere Dialogsysteme.',
+    bio_short_de: 'Informatiker und Datenschutzforscher an der TU Köln.',
+    bio_short_en: 'Computer scientist and privacy researcher at TU Cologne.',
+    bio_long_de: 'Prof. Lukas Weber leitet die Forschungsgruppe für Privacy Engineering an der TU Köln. Seine Arbeit bei SENTIMENT konzentriert sich auf die technischen und ethischen Aspekte des Datenschutzes bei intimen Mensch-KI-Interaktionen, insbesondere auf sichere Dialogsysteme.',
+    bio_long_en: 'Prof. Lukas Weber heads the Privacy Engineering research group at TU Cologne. His work at SENTIMENT focuses on the technical and ethical aspects of data protection in intimate human-AI interactions, particularly secure dialogue systems.',
     image: null
   },
   {
-    id: 3, name: 'Yuki Tanaka', role: 'Sound & Installation',
+    id: 3, name: 'Yuki Tanaka',
+    role_de: 'Sound & Installation', role_en: 'Sound & Installation',
     type: 'artist', initials: 'YT',
-    bio_short: 'Klangkünstlerin, die immersive Räume zwischen Technologie und Intimität schafft.',
-    bio_long: 'Yuki Tanaka arbeitet an der Grenze von Sound Art und Technologie. Für SENTIMENT gestaltet sie eine immersive Klanginstallation, die auf die emotionale Qualität von Chatbot-Dialogen reagiert und diese in räumliche Klangerlebnisse übersetzt.',
+    bio_short_de: 'Klangkünstlerin, die immersive Räume zwischen Technologie und Intimität schafft.',
+    bio_short_en: 'Sound artist creating immersive spaces between technology and intimacy.',
+    bio_long_de: 'Yuki Tanaka arbeitet an der Grenze von Sound Art und Technologie. Für SENTIMENT gestaltet sie eine immersive Klanginstallation, die auf die emotionale Qualität von Chatbot-Dialogen reagiert und diese in räumliche Klangerlebnisse übersetzt.',
+    bio_long_en: 'Yuki Tanaka works at the boundary of sound art and technology. For SENTIMENT, she creates an immersive sound installation that responds to the emotional quality of chatbot dialogues and translates them into spatial sound experiences.',
     image: null
   },
   {
-    id: 4, name: 'Dr. Sarah Hoffmann', role: 'Psychologie & Ethik',
+    id: 4, name: 'Dr. Sarah Hoffmann',
+    role_de: 'Psychologie & Ethik', role_en: 'Psychology & Ethics',
     type: 'researcher', initials: 'SH',
-    bio_short: 'Forscherin für digitale Psychologie und ethische KI-Gestaltung.',
-    bio_long: 'Dr. Sarah Hoffmann erforscht die psychologischen Auswirkungen intimer Mensch-KI-Beziehungen. Im Rahmen von SENTIMENT untersucht sie, wie Vertrauen und emotionale Bindung in Chatbot-Interaktionen entstehen und welche ethischen Leitlinien für deren Gestaltung notwendig sind.',
+    bio_short_de: 'Forscherin für digitale Psychologie und ethische KI-Gestaltung.',
+    bio_short_en: 'Researcher in digital psychology and ethical AI design.',
+    bio_long_de: 'Dr. Sarah Hoffmann erforscht die psychologischen Auswirkungen intimer Mensch-KI-Beziehungen. Im Rahmen von SENTIMENT untersucht sie, wie Vertrauen und emotionale Bindung in Chatbot-Interaktionen entstehen und welche ethischen Leitlinien für deren Gestaltung notwendig sind.',
+    bio_long_en: 'Dr. Sarah Hoffmann studies the psychological effects of intimate human-AI relationships. Within SENTIMENT, she examines how trust and emotional attachment form in chatbot interactions and what ethical guidelines are needed for their design.',
     image: null
   },
   {
-    id: 5, name: 'Marco da Silva', role: 'Interaktive Medien',
+    id: 5, name: 'Marco da Silva',
+    role_de: 'Interaktive Medien', role_en: 'Interactive Media',
     type: 'artist', initials: 'MS',
-    bio_short: 'Interaction Designer und Creative Technologist aus Brüssel.',
-    bio_long: 'Marco da Silva entwickelt interaktive Medieninstallationen, die physische und digitale Räume verbinden. Bei SENTIMENT ist er verantwortlich für die technische Umsetzung der Pop-up-Ausstellung bei der CPDP-Konferenz in Brüssel und die digitale Plattform des Projekts.',
+    bio_short_de: 'Interaction Designer und Creative Technologist aus Brüssel.',
+    bio_short_en: 'Interaction designer and creative technologist from Brussels.',
+    bio_long_de: 'Marco da Silva entwickelt interaktive Medieninstallationen, die physische und digitale Räume verbinden. Bei SENTIMENT ist er verantwortlich für die technische Umsetzung der Pop-up-Ausstellung bei der CPDP-Konferenz in Brüssel und die digitale Plattform des Projekts.',
+    bio_long_en: 'Marco da Silva develops interactive media installations that connect physical and digital spaces. At SENTIMENT, he is responsible for the technical implementation of the pop-up exhibition at the CPDP conference in Brussels and the project\'s digital platform.',
     image: null
   },
   {
-    id: 6, name: 'Dr. Elena Petrov', role: 'Kommunikationswissenschaft',
+    id: 6, name: 'Dr. Elena Petrov',
+    role_de: 'Kommunikationswissenschaft', role_en: 'Communication Science',
     type: 'researcher', initials: 'EP',
-    bio_short: 'Medienforscherin mit Schwerpunkt auf KI-vermittelte Kommunikation.',
-    bio_long: 'Dr. Elena Petrov analysiert die kommunikativen Dynamiken in Mensch-Chatbot-Interaktionen. Ihre Forschung bei SENTIMENT untersucht, wie Intimität und emotionale Nähe in digitalen Dialogsystemen sprachlich konstruiert werden und welche gesellschaftlichen Implikationen sich daraus ergeben.',
+    bio_short_de: 'Medienforscherin mit Schwerpunkt auf KI-vermittelte Kommunikation.',
+    bio_short_en: 'Media researcher specializing in AI-mediated communication.',
+    bio_long_de: 'Dr. Elena Petrov analysiert die kommunikativen Dynamiken in Mensch-Chatbot-Interaktionen. Ihre Forschung bei SENTIMENT untersucht, wie Intimität und emotionale Nähe in digitalen Dialogsystemen sprachlich konstruiert werden und welche gesellschaftlichen Implikationen sich daraus ergeben.',
+    bio_long_en: 'Dr. Elena Petrov analyzes the communicative dynamics in human-chatbot interactions. Her research at SENTIMENT examines how intimacy and emotional closeness are linguistically constructed in digital dialogue systems and the resulting societal implications.',
     image: null
   }
 ];
@@ -123,8 +141,8 @@ function renderTeam() {
     <div class="person-card reveal" data-person="${p.id}">
       <div class="person-avatar">${p.image ? `<img src="${p.image}" alt="${p.name}">` : p.initials}</div>
       <div class="person-name">${p.name}</div>
-      <div class="person-role">${p.role}</div>
-      <div class="person-bio-short">${p.bio_short}</div>
+      <div class="person-role">${lang === 'de' ? p.role_de : p.role_en}</div>
+      <div class="person-bio-short">${lang === 'de' ? p.bio_short_de : p.bio_short_en}</div>
     </div>
   `).join('');
 
@@ -145,8 +163,8 @@ function openPersonModal(p) {
   body.innerHTML = `
     <div class="pm-avatar">${p.image ? `<img src="${p.image}" alt="${p.name}">` : p.initials}</div>
     <div class="pm-name">${p.name}</div>
-    <div class="pm-role">${p.role}</div>
-    <div class="pm-bio">${p.bio_long}</div>
+    <div class="pm-role">${lang === 'de' ? p.role_de : p.role_en}</div>
+    <div class="pm-bio">${lang === 'de' ? p.bio_long_de : p.bio_long_en}</div>
   `;
   modal.classList.add('open');
 }
@@ -317,6 +335,7 @@ document.querySelectorAll('.lang-b').forEach(btn => {
     );
     renderSchedule();
     renderSelect();
+    renderTeam();
     try { localStorage.setItem('sn-lang', lang); } catch (e) {}
   });
 });
