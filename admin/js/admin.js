@@ -114,16 +114,16 @@
     tbody.innerHTML = sorted.map(function (r) {
       var d = r.timestamp ? new Date(r.timestamp) : null;
       var dateStr = d ? (String(d.getDate()).padStart(2,'0') + '.' + String(d.getMonth()+1).padStart(2,'0') + '.' + d.getFullYear() + ' ' + String(d.getHours()).padStart(2,'0') + ':' + String(d.getMinutes()).padStart(2,'0')) : '';
-      return '<tr><td>' + dateStr + '</td><td>' + (r.vorname || '') + ' ' + (r.nachname || '') + '</td><td>' + (r.email || '') + '</td><td>' + (r.event || '') + '</td><td>' + (r.bereich || '') + '</td><td title="' + (r.nachricht || '').replace(/"/g, '&quot;') + '">' + (r.nachricht || '') + '</td></tr>';
+      return '<tr><td>' + dateStr + '</td><td>' + (r.vorname || '') + ' ' + (r.nachname || '') + '</td><td>' + (r.email || '') + '</td><td>' + (r.event || '') + '</td><td>' + (r.personen || '1') + '</td><td>' + (r.bereich || '') + '</td><td title="' + (r.nachricht || '').replace(/"/g, '&quot;') + '">' + (r.nachricht || '') + '</td></tr>';
     }).join('');
   }
 
   // CSV export
   document.getElementById('btn-export-csv').addEventListener('click', function () {
-    var headers = ['Datum', 'Vorname', 'Nachname', 'E-Mail', 'Veranstaltung', 'Bereich', 'Nachricht'];
+    var headers = ['Datum', 'Vorname', 'Nachname', 'E-Mail', 'Veranstaltung', 'Personen', 'Bereich', 'Nachricht'];
     var rows = registrations.map(function (r) {
       var d = r.timestamp ? new Date(r.timestamp).toISOString() : '';
-      return [d, r.vorname, r.nachname, r.email, r.event, r.bereich, r.nachricht].map(function (v) {
+      return [d, r.vorname, r.nachname, r.email, r.event, r.personen || '1', r.bereich, r.nachricht].map(function (v) {
         return '"' + (v || '').replace(/"/g, '""') + '"';
       }).join(',');
     });

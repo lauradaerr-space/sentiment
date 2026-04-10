@@ -412,6 +412,7 @@ if (form) {
       email:     form.email.value,
       event:     form.event.value,
       bereich:   form.bereich.value,
+      personen:  form.personen.value,
       nachricht: form.nachricht.value,
       _gotcha:   form._gotcha.value
     };
