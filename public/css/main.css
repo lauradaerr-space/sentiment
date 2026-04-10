@@ -720,17 +720,96 @@ footer { padding: 18px 0 48px; }
 .reveal.visible { opacity: 1; transform: none; }
 
 /* ── RESPONSIVE ── */
-@media (max-width: 1020px) {
+
+/* hide custom cursor on touch / coarse pointer */
+@media (hover: none) {
+  .cursor-dot, .cursor-ring { display: none; }
+  * { cursor: auto !important; }
+}
+
+/* ── tablet / small desktop ── */
+@media (max-width: 1024px) {
   .hero-grid, .about-grid, .register-wrap { grid-template-columns: 1fr; }
   .hero-copy, .hero-stage { min-height: auto; }
+  .hero-stage { min-height: 340px; }
+  .team-grid { grid-template-columns: repeat(3, 1fr); }
 }
-@media (max-width: 640px) {
-  .theme-sw .sw-lbl { display: none; }
+
+/* ── mobile / tablet ── */
+@media (max-width: 768px) {
+  .container { width: calc(100% - 32px); }
+  .hero-grid { gap: 12px; }
+  .hero-logo-img { height: clamp(40px, 8vw, 80px); }
+  .hero-date-badge { gap: 8px; }
+  .date-item { font-size: 9px; letter-spacing: .1em; }
+  .hero-subtitle { font-size: 9px; letter-spacing: .12em; }
+  .lede { font-size: 13px; }
+  .opening-note { font-size: 9px; }
+  .hero-actions { flex-direction: column; }
+  .hero-actions .btn { width: 100%; justify-content: center; }
   .hero-stats { grid-template-columns: 1fr 1fr; }
-  .form-row { grid-template-columns: 1fr; }
+  .stat-item:nth-child(odd):last-child { grid-column: span 2; }
+  .hero-stage { min-height: 260px; }
+
+  /* nav */
+  .nav-logo { height: 24px; }
+  .nav-menu a { min-height: 48px; display: flex; align-items: center; padding: 0 20px; font-size: 13px; }
+  .theme-sw .sw-lbl { display: none; }
+
+  /* program */
+  .filter-row { overflow-x: auto; flex-wrap: nowrap; padding-bottom: 8px; -webkit-overflow-scrolling: touch; }
+  .chip { flex-shrink: 0; }
   .events-grid { grid-template-columns: 1fr; }
-  .team-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); }
+  .ev-card { padding: 16px; }
+
+  /* team */
+  .team-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .person-card { padding: 20px 16px; }
+  .person-modal { max-width: 100%; border-radius: 0; margin: 0; max-height: 100vh; }
+
+  /* register */
+  .register-wrap { gap: 28px; }
+  .form-row { grid-template-columns: 1fr; }
+
+  /* about */
+  .about-grid { grid-template-columns: 1fr; }
+
+  /* footer */
+  .footer-box { flex-direction: column; gap: 8px; text-align: center; }
+
+  /* section bar */
+  .sec-bar-in { height: auto; padding: 10px 0; flex-wrap: wrap; gap: 4px; }
+  .sec-m { display: none; }
 }
+
+/* ── mobile small ── */
 @media (max-width: 480px) {
   body, body.light { background-attachment: scroll; }
+  .container { width: calc(100% - 24px); }
+  .hero { padding: 16px 0 20px; }
+  .hero-copy { padding: 20px; }
+  .hero-logo-img { height: clamp(36px, 10vw, 60px); }
+  .eyebrow { font-size: 8px; padding: 5px 10px; }
+  .hero-stats { grid-template-columns: 1fr 1fr; }
+  .pill-track span { font-size: 8px; padding: 4px 9px; }
+  .hero-stage { min-height: 200px; padding: 10px; }
+  .stage-meta { font-size: 8px; }
+
+  /* team */
+  .team-grid { grid-template-columns: 1fr; }
+  .person-avatar { width: 64px; height: 64px; font-size: 18px; }
+
+  /* modal full screen */
+  .person-modal-overlay { padding: 0; }
+  .person-modal { border-radius: 0; padding: 24px 20px; }
+
+  /* nav */
+  .nav-inner { height: 52px; }
+  .nav-logo { height: 20px; }
+
+  /* events */
+  .timetable-wrap { padding: 20px 0 32px; }
+
+  /* about */
+  .about-main, .cpdp-card { padding: 18px; }
 }
