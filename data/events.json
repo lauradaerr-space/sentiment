@@ -110,6 +110,17 @@
         "Laura Därr"
       ],
       "id": "task-1775848141987"
+    },
+    {
+      "title": "Culture Club - Panel Planung",
+      "category": "cpdp",
+      "status": "Erledigt",
+      "due": "2026-04-08",
+      "linkedEventId": "",
+      "who": [
+        "Laura Därr"
+      ],
+      "id": "task-1775848444119"
     }
   ]
 }
