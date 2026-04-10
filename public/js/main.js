@@ -15,7 +15,8 @@ async function loadEvents() {
     const res  = await fetch('/api/events');
     const data = await res.json();
     // Nur veröffentlichte Events anzeigen
-    allEvents = Array.isArray(data) ? data.filter(e => e.published) : [];
+    const list = Array.isArray(data) ? data : (data.events || []);
+    allEvents = list.filter(e => e.published);
   } catch (e) {
     allEvents = [];
   }
@@ -62,7 +63,7 @@ function renderSchedule() {
       </div>
       <div class="ev-footer">
         <div class="ev-date-block">
-          <div class="ev-date">${e.date || ''}</div>
+          <div class="ev-date">${e.dateFrom || e.date || ''}</div>
           <div class="ev-time">${e.time || ''}</div>
         </div>
         <button class="reg-btn inline-register" data-event="${e.title}" ${full ? 'disabled' : ''}>
