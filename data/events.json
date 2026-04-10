@@ -94,6 +94,25 @@
       "descDE": "",
       "id": "evt-1775849046566",
       "published": false
+    },
+    {
+      "title": "CPDP - Exhibiton",
+      "titleDE": "CPDP - Exhibiton",
+      "dateFrom": "2026-05-19",
+      "dateTo": "2026-05-22",
+      "time": "",
+      "timeEnd": "",
+      "format": "other",
+      "category": "cpdp",
+      "location": "Maison de la Poste, CPDP",
+      "language": "EN",
+      "capacity": "",
+      "who": "",
+      "status": "Bestätigt",
+      "descEN": "",
+      "descDE": "",
+      "id": "evt-1775849100666",
+      "published": false
     }
   ],
   "tasks": [
