@@ -122,6 +122,17 @@ body.light nav { background: rgba(240,235,226,.85); }
 .nav-logo { height: 32px; width: auto; transition: filter .32s var(--ease); }
 body.light .nav-logo { filter: invert(1); }
 
+.hero-logo { margin: 0 0 20px; }
+.hero-logo-img {
+  height: clamp(60px, 10vw, 120px);
+  width: auto;
+  display: block;
+  filter: brightness(0) invert(1);
+}
+body.light .hero-logo-img {
+  filter: brightness(0);
+}
+
 .hamburger {
   display: flex; flex-direction: column; gap: 5px;
   width: 30px; padding: 5px 3px; cursor: pointer;
