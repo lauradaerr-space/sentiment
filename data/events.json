@@ -62,7 +62,9 @@
     {
       "title": "Catering",
       "category": "koeln",
-      "who": "Jessi",
+      "who": [
+        "Jessica Szczuka"
+      ],
       "due": "2026-04-24",
       "status": "In Bearbeitung",
       "linkedEventId": "evt-1775824421996",
