@@ -667,18 +667,111 @@ button, input, select, textarea { font: inherit; }
 .reg-del-btn:hover { color: var(--red); background: rgba(204,43,29,.1); border-color: rgba(204,43,29,.4); }
 
 /* ── RESPONSIVE ── */
+
+/* touch devices — bigger tap targets */
+@media (hover: none), (pointer: coarse) {
+  .cal-nav, .tab, .chip, .btn-add, .btn-logout,
+  .task-checkbox, .reg-del-btn, .reg-group-csv,
+  .modal-close, .btn-save, .btn-cancel, .btn-delete, .btn-publish {
+    min-height: 44px; min-width: 44px;
+    display: inline-flex; align-items: center; justify-content: center;
+  }
+}
+
+/* ── tablet ── */
+@media (max-width: 1024px) {
+  .overview-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); }
+}
+
+/* ── mobile / tablet ── */
 @media (max-width: 768px) {
-  .topbar-inner { padding: 0 16px; }
-  .tab-content { padding: 16px; }
-  .tab-bar { padding: 12px 16px 0; }
-  .cal-day { min-height: 80px; padding: 4px; }
+  /* topbar */
+  .topbar-inner { padding: 0 12px; height: 48px; }
+  .topbar-brand { font-size: 12px; }
+
+  /* tabs — horizontal scroll */
+  .tab-bar {
+    padding: 8px 12px 0;
+    overflow-x: auto; -webkit-overflow-scrolling: touch;
+    white-space: nowrap; flex-wrap: nowrap;
+  }
+  .tab { padding: 10px 14px; flex-shrink: 0; min-height: 44px; }
+
+  /* tab content */
+  .tab-content { padding: 12px; }
+
+  /* calendar */
+  .cal-toolbar { flex-wrap: wrap; gap: 8px; }
+  .cal-month { font-size: 18px; min-width: auto; flex: 1; }
+  .cal-nav { min-height: 44px; padding: 8px 12px; }
+  .cal-day { min-height: 56px; padding: 4px; }
   .cal-day-num { font-size: 10px; }
   .cal-event { font-size: 8px; padding: 2px 4px; }
-  .modal-form .form-row { grid-template-columns: 1fr; }
-  .modal { margin: 12px; }
-  .overview-grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); }
-}
-@media (max-width: 480px) {
+  .cal-task { font-size: 8px; padding: 2px 4px; }
   .cal-header { font-size: 8px; padding: 6px 2px; }
-  .cal-day { min-height: 60px; }
+
+  /* overview */
+  .overview-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  .ov-month { padding: 10px; }
+
+  /* modals — fullscreen */
+  .modal-overlay { padding: 0; }
+  .modal, .modal-sm {
+    max-width: 100%; max-height: 100vh;
+    border-radius: 0; margin: 0;
+  }
+  .modal-form { padding: 16px; }
+  .modal-form .form-row { grid-template-columns: 1fr; }
+  .modal-header { padding: 16px 16px 0; }
+  .modal-actions {
+    position: sticky; bottom: 0;
+    background: var(--bg-soft); padding: 12px 16px;
+    border-top: 1px solid var(--border);
+    margin: 0 -16px -16px;
+  }
+
+  /* tasks */
+  .tasks-toolbar { flex-wrap: wrap; gap: 8px; }
+  .tasks-filters { gap: 8px; }
+  .tasks-filter { overflow-x: auto; -webkit-overflow-scrolling: touch; flex-wrap: nowrap; padding-bottom: 4px; }
+  .tasks-filter .chip { flex-shrink: 0; }
+  .tasks-filter-person { width: 100%; }
+  .tasks-filter-person select { width: 100%; min-height: 44px; }
+  .task-item { padding: 12px 10px; gap: 10px; }
+  .task-checkbox { width: 22px; height: 22px; }
+  .task-meta { flex-wrap: wrap; gap: 6px; }
+  .who-checkboxes { gap: 8px 16px; }
+  .who-check { font-size: 13px; }
+  .who-check input[type="checkbox"] { width: 18px; height: 18px; }
+
+  /* registrations */
+  .reg-table-wrap, .reg-group-body { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .reg-table { min-width: 600px; }
+  .reg-group-header { flex-wrap: wrap; gap: 8px; padding: 10px 12px; }
+  .reg-group-left { flex-wrap: wrap; gap: 6px; }
+  .reg-group-name { font-size: 13px; }
+  .reg-group-count { font-size: 9px; }
+
+  /* login */
+  .login-box { padding: 32px 24px; width: calc(100% - 32px); max-width: 320px; }
+  .login-box input, .login-box button { width: 100%; }
+}
+
+/* ── mobile small ── */
+@media (max-width: 480px) {
+  .topbar-inner { height: 44px; }
+  .topbar-brand { font-size: 11px; letter-spacing: .03em; }
+  .btn-logout { font-size: 8px; padding: 6px 10px; }
+  .sync-indicator { width: 6px; height: 6px; }
+
+  .cal-day { min-height: 44px; }
+  .cal-event, .cal-task { font-size: 7px; }
+  .cal-event .pub-badge { display: none; }
+
+  .overview-grid { grid-template-columns: 1fr 1fr; gap: 8px; }
+  .ov-month { padding: 8px; }
+  .ov-month-label { font-size: 9px; }
+
+  .tasks-title { font-size: 18px; }
+  .overview-title { font-size: 18px; }
 }
