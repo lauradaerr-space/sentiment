@@ -627,6 +627,36 @@ button, input, select, textarea { font: inherit; }
   overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
 }
 .reg-table tr:hover td { color: var(--text); background: var(--panel); }
+
+.reg-group { margin-bottom: 20px; border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+.reg-group-header {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 12px 16px; cursor: pointer;
+  background: var(--panel); transition: background .14s;
+}
+.reg-group-header:hover { background: var(--panel-mid); }
+.reg-group-left { display: flex; align-items: center; gap: 10px; }
+.reg-group-name { font-size: 14px; font-weight: 600; }
+.reg-group-count {
+  font-family: var(--mono); font-size: 10px; letter-spacing: .06em;
+  color: var(--muted); padding: 2px 8px; border-radius: 999px;
+  background: var(--panel-strong);
+}
+.reg-group-right { display: flex; align-items: center; gap: 8px; }
+.reg-group-csv {
+  padding: 4px 10px; border-radius: 6px;
+  border: 1px solid var(--border); background: none;
+  color: var(--muted); font-family: var(--mono); font-size: 9px;
+  letter-spacing: .08em; cursor: pointer; transition: color .14s;
+}
+.reg-group-csv:hover { color: var(--text); }
+.reg-group-toggle {
+  font-size: 14px; color: var(--muted2); transition: transform .2s;
+  border: none; background: none; cursor: pointer;
+}
+.reg-group.open .reg-group-toggle { transform: rotate(180deg); }
+.reg-group-body { display: none; }
+.reg-group.open .reg-group-body { display: block; }
 .reg-del-btn {
   padding: 3px 8px; border-radius: 6px;
   border: 1px solid rgba(204,43,29,.25); background: none;

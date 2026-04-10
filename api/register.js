@@ -97,8 +97,28 @@ module.exports = async (req, res) => {
 
   if (req.method === 'OPTIONS') return res.status(200).end();
 
-  // GET — admin only
+  // GET — public count or admin full list
   if (req.method === 'GET') {
+    const url = new URL(req.url, 'http://localhost');
+    const countOnly = url.searchParams.get('count') === 'true';
+    const eventFilter = url.searchParams.get('event');
+
+    // public count endpoint — no auth needed
+    if (countOnly && eventFilter) {
+      try {
+        const r = await githubRequest('GET', PATH);
+        const registrations = JSON.parse(Buffer.from(r.body.content, 'base64').toString());
+        const filtered = registrations.filter(reg =>
+          reg.event && reg.event.toLowerCase() === eventFilter.toLowerCase()
+        );
+        const totalPersons = filtered.reduce((s, r) => s + parseInt(r.personen || '1', 10), 0);
+        return res.status(200).json({ count: filtered.length, persons: totalPersons });
+      } catch (e) {
+        return res.status(200).json({ count: 0, persons: 0 });
+      }
+    }
+
+    // admin full list
     if (req.headers['x-admin-token'] !== 'sentiment2026') {
       return res.status(401).json({ error: 'Unauthorized' });
     }

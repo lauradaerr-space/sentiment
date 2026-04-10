@@ -281,6 +281,7 @@ function renderSchedule() {
           <div class="ev-date">${e.dateTo && e.dateTo !== e.dateFrom ? fmtDate(e.dateFrom) + ' — ' + fmtDate(e.dateTo) : fmtDate(e.dateFrom || e.date || '')}</div>
           <div class="ev-time">${e.time || ''}${e.timeEnd ? ' – ' + e.timeEnd : ''}</div>
         </div>
+        <span class="reg-count-badge" data-event="${e.title}"></span>
         <button class="reg-btn inline-register" data-event="${e.title}" ${full ? 'disabled' : ''}>
           ${full
             ? (lang === 'de' ? 'Ausgebucht' : 'Full')
@@ -290,6 +291,19 @@ function renderSchedule() {
       </div>
     </article>`;
   }).join('');
+
+  // load registration counts per event
+  filtered.forEach(e => {
+    fetch('/api/register?count=true&event=' + encodeURIComponent(e.title))
+      .then(r => r.json())
+      .then(d => {
+        if (d.count > 0) {
+          const badge = document.querySelector('.ev-card .reg-count-badge[data-event="' + e.title + '"]');
+          if (badge) badge.textContent = d.count + (lang === 'de' ? ' Anmeldung' + (d.count !== 1 ? 'en' : '') : ' registration' + (d.count !== 1 ? 's' : ''));
+        }
+      })
+      .catch(() => {});
+  });
 
   document.querySelectorAll('.inline-register').forEach(btn => {
     btn.addEventListener('click', () => {
