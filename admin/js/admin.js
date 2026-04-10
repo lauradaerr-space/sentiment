@@ -187,14 +187,17 @@
         grid.appendChild(empty);
       }
 
+      var taskCount = 0;
       for (var d = 1; d <= daysInMonth; d++) {
         var dateStr = fmt(new Date(spec.year, spec.month, d));
         var dayEvents = data.events.filter(function (ev) {
           return dateStr >= ev.dateFrom && dateStr <= (ev.dateTo || ev.dateFrom);
         });
+        var dayTasks = data.tasks.filter(function (t) { return t.due === dateStr; });
+        var hasItems = dayEvents.length || dayTasks.length;
 
         var cell = document.createElement('div');
-        cell.className = 'ov-mini-day' + (dayEvents.length ? ' has-event' : '');
+        cell.className = 'ov-mini-day' + (hasItems ? ' has-event' : '');
         cell.textContent = d;
 
         if (dayEvents.length) {
@@ -202,6 +205,12 @@
           var dot = document.createElement('span');
           dot.className = 'ov-dot';
           dot.style.background = catColor(dayEvents[0].category);
+          cell.appendChild(dot);
+        } else if (dayTasks.length) {
+          taskCount += dayTasks.length;
+          var dot = document.createElement('span');
+          dot.className = 'ov-dot';
+          dot.style.background = 'var(--muted2)';
           cell.appendChild(dot);
         }
         grid.appendChild(cell);
@@ -211,7 +220,10 @@
 
       var count = document.createElement('div');
       count.className = 'ov-month-count';
-      count.textContent = eventCount + ' Event' + (eventCount !== 1 ? 's' : '');
+      var parts = [];
+      if (eventCount) parts.push(eventCount + ' Event' + (eventCount !== 1 ? 's' : ''));
+      if (taskCount) parts.push(taskCount + ' Aufgabe' + (taskCount !== 1 ? 'n' : ''));
+      count.textContent = parts.length ? parts.join(' · ') : 'Keine Einträge';
       card.appendChild(count);
 
       card.addEventListener('click', function () {
@@ -304,6 +316,22 @@
       chip.addEventListener('click', function (e) {
         e.stopPropagation();
         openEventModal(ev.id);
+      });
+      cell.appendChild(chip);
+    });
+
+    // Tasks on this day
+    var dayTasks = data.tasks.filter(function (t) { return t.due === dateStr; });
+    dayTasks.forEach(function (task) {
+      var chip = document.createElement('div');
+      chip.className = 'cal-task cat-' + (task.category || 'other');
+      if (task.status === 'Erledigt') chip.classList.add('done');
+
+      chip.textContent = task.title || 'Aufgabe';
+
+      chip.addEventListener('click', function (e) {
+        e.stopPropagation();
+        openTaskModal(task.id);
       });
       cell.appendChild(chip);
     });
