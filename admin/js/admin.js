@@ -21,6 +21,7 @@
     document.getElementById('login-screen').style.display = 'none';
     document.getElementById('app').style.display = 'block';
     loadData();
+    loadRegistrations();
   }
 
   document.getElementById('pw-btn').addEventListener('click', tryLogin);
@@ -76,6 +77,63 @@
       .then(function (r) { setSyncStatus(r.ok ? 'ok' : 'error'); })
       .catch(function () { setSyncStatus('error'); });
   }
+
+  var registrations = [];
+
+  function loadRegistrations() {
+    fetch('/api/register', { headers: { 'X-Admin-Token': 'sentiment2026' } })
+      .then(function (r) { return r.json(); })
+      .then(function (d) {
+        registrations = Array.isArray(d) ? d : [];
+        renderRegistrations();
+      })
+      .catch(function () { registrations = []; });
+  }
+
+  function renderRegistrations() {
+    var tbody = document.getElementById('reg-tbody');
+    var countEl = document.getElementById('reg-count');
+    var evCounts = document.getElementById('reg-event-counts');
+    if (!tbody) return;
+
+    countEl.textContent = registrations.length + ' Anmeldung' + (registrations.length !== 1 ? 'en' : '');
+
+    // count per event
+    var counts = {};
+    registrations.forEach(function (r) {
+      counts[r.event] = (counts[r.event] || 0) + 1;
+    });
+    evCounts.innerHTML = Object.keys(counts).map(function (ev) {
+      return '<span class="reg-event-chip"><strong>' + counts[ev] + '</strong> ' + ev + '</span>';
+    }).join('');
+
+    // table
+    var sorted = registrations.slice().sort(function (a, b) {
+      return (b.timestamp || '').localeCompare(a.timestamp || '');
+    });
+    tbody.innerHTML = sorted.map(function (r) {
+      var d = r.timestamp ? new Date(r.timestamp) : null;
+      var dateStr = d ? (String(d.getDate()).padStart(2,'0') + '.' + String(d.getMonth()+1).padStart(2,'0') + '.' + d.getFullYear() + ' ' + String(d.getHours()).padStart(2,'0') + ':' + String(d.getMinutes()).padStart(2,'0')) : '';
+      return '<tr><td>' + dateStr + '</td><td>' + (r.vorname || '') + ' ' + (r.nachname || '') + '</td><td>' + (r.email || '') + '</td><td>' + (r.event || '') + '</td><td>' + (r.bereich || '') + '</td><td title="' + (r.nachricht || '').replace(/"/g, '&quot;') + '">' + (r.nachricht || '') + '</td></tr>';
+    }).join('');
+  }
+
+  // CSV export
+  document.getElementById('btn-export-csv').addEventListener('click', function () {
+    var headers = ['Datum', 'Vorname', 'Nachname', 'E-Mail', 'Veranstaltung', 'Bereich', 'Nachricht'];
+    var rows = registrations.map(function (r) {
+      var d = r.timestamp ? new Date(r.timestamp).toISOString() : '';
+      return [d, r.vorname, r.nachname, r.email, r.event, r.bereich, r.nachricht].map(function (v) {
+        return '"' + (v || '').replace(/"/g, '""') + '"';
+      }).join(',');
+    });
+    var csv = '\uFEFF' + headers.join(',') + '\n' + rows.join('\n');
+    var blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+    var a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'registrations.csv';
+    a.click();
+  });
 
   function renderAll() {
     renderOverview();

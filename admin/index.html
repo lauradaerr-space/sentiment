@@ -40,6 +40,7 @@
     <button class="tab" data-tab="uebersicht">Übersicht</button>
     <button class="tab active" data-tab="kalender">Kalender</button>
     <button class="tab" data-tab="aufgaben">Aufgaben</button>
+    <button class="tab" data-tab="anmeldungen">Anmeldungen</button>
   </div>
 
   <!-- ÜBERSICHT TAB -->
@@ -83,6 +84,33 @@
       <button class="chip" data-cat="other">Other</button>
     </div>
     <div class="tasks-categories" id="tasks-list"></div>
+  </div>
+
+  <!-- ANMELDUNGEN TAB -->
+  <div class="tab-content" id="tab-anmeldungen">
+    <div class="tasks-toolbar">
+      <div class="tasks-title">Anmeldungen</div>
+      <div class="reg-toolbar-right">
+        <div class="reg-count" id="reg-count"></div>
+        <button class="btn-add" id="btn-export-csv">CSV Export</button>
+      </div>
+    </div>
+    <div class="reg-event-counts" id="reg-event-counts"></div>
+    <div class="reg-table-wrap">
+      <table class="reg-table" id="reg-table">
+        <thead>
+          <tr>
+            <th>Datum</th>
+            <th>Name</th>
+            <th>E-Mail</th>
+            <th>Veranstaltung</th>
+            <th>Bereich</th>
+            <th>Nachricht</th>
+          </tr>
+        </thead>
+        <tbody id="reg-tbody"></tbody>
+      </table>
+    </div>
   </div>
 
 </div>

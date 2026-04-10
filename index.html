@@ -199,9 +199,7 @@
         </div>
 
         <div class="reveal">
-          <form class="register-form" id="reg-form"
-                action="https://formspree.io/f/YOUR_FORM_ID"
-                method="POST">
+          <form class="register-form" id="reg-form">
             <div class="form-row">
               <div class="field">
                 <label data-de>Vorname *</label>
@@ -219,6 +217,28 @@
               <input type="email" name="email" required autocomplete="email">
             </div>
             <div class="field">
+              <label data-de>Ich komme aus dem Bereich *</label>
+              <label data-en>I am coming from *</label>
+              <select name="bereich" required id="inp-bereich">
+                <option value="" data-de>Bitte wählen …</option>
+                <option value="" data-en>Please select …</option>
+                <option value="academia" data-de>Wissenschaft / Academia</option>
+                <option value="academia" data-en>Academia / Research</option>
+                <option value="industry" data-de>Industrie / Unternehmen</option>
+                <option value="industry" data-en>Industry / Business</option>
+                <option value="student" data-de>Student:in</option>
+                <option value="student" data-en>Student</option>
+                <option value="press" data-de>Presse / Medien</option>
+                <option value="press" data-en>Press / Media</option>
+                <option value="art" data-de>Kunst / Kultur</option>
+                <option value="art" data-en>Art / Culture</option>
+                <option value="ngo" data-de>NGO / Zivilgesellschaft</option>
+                <option value="ngo" data-en>NGO / Civil Society</option>
+                <option value="other" data-de>Sonstiges</option>
+                <option value="other" data-en>Other</option>
+              </select>
+            </div>
+            <div class="field">
               <label data-de>Veranstaltung *</label>
               <label data-en>Event *</label>
               <select name="event" id="registerSelect" required></select>
@@ -228,8 +248,7 @@
               <label data-en>Message / Accessibility (optional)</label>
               <textarea name="nachricht"></textarea>
             </div>
-            <input type="text"   name="_gotcha"  style="display:none" tabindex="-1" autocomplete="off">
-            <input type="hidden" name="_subject" value="Anmeldung — SENTIMENT Köln">
+            <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
             <button type="submit" class="submit-btn" id="sub-btn">
               <span data-de>Jetzt anmelden →</span>
               <span data-en>Register now →</span>

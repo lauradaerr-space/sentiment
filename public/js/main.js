@@ -403,21 +403,24 @@ const okBox  = document.getElementById('ok-box');
 if (form) {
   form.addEventListener('submit', async e => {
     e.preventDefault();
-    subBtn.disabled    = true;
-    subBtn.innerHTML   = `<span>${lang === 'de' ? 'Wird gesendet …' : 'Sending …'}</span>`;
+    subBtn.disabled  = true;
+    subBtn.innerHTML = `<span>${lang === 'de' ? 'Wird gesendet …' : 'Sending …'}</span>`;
 
-    if (form.action.includes('YOUR_FORM_ID')) {
-      await new Promise(r => setTimeout(r, 900));
-      form.style.display = 'none';
-      okBox.style.display = 'block';
-      return;
-    }
+    const body = {
+      vorname:   form.vorname.value,
+      nachname:  form.nachname.value,
+      email:     form.email.value,
+      event:     form.event.value,
+      bereich:   form.bereich.value,
+      nachricht: form.nachricht.value,
+      _gotcha:   form._gotcha.value
+    };
 
     try {
-      const res = await fetch(form.action, {
-        method:  'POST',
-        body:    new FormData(form),
-        headers: { 'Accept': 'application/json' }
+      const res = await fetch('/api/register', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(body)
       });
       if (res.ok) {
         form.style.display = 'none';

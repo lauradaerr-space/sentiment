@@ -562,6 +562,45 @@ button, input, select, textarea { font: inherit; }
   letter-spacing: .1em; color: var(--muted2);
 }
 
+/* ── REGISTRATIONS ── */
+.reg-toolbar-right { display: flex; align-items: center; gap: 12px; }
+.reg-count {
+  font-family: var(--mono); font-size: 11px;
+  letter-spacing: .06em; color: var(--muted);
+}
+.reg-event-counts {
+  display: flex; flex-wrap: wrap; gap: 8px;
+  margin-bottom: 16px;
+}
+.reg-event-chip {
+  padding: 4px 12px; border-radius: 999px;
+  border: 1px solid var(--border); background: var(--panel);
+  font-family: var(--mono); font-size: 9px;
+  letter-spacing: .06em; color: var(--muted);
+}
+.reg-event-chip strong { color: var(--text); font-weight: 700; }
+
+.reg-table-wrap { overflow-x: auto; }
+.reg-table {
+  width: 100%; border-collapse: collapse;
+  font-size: 12px;
+}
+.reg-table th {
+  text-align: left; padding: 8px 10px;
+  font-family: var(--mono); font-size: 9px;
+  letter-spacing: .14em; text-transform: uppercase;
+  color: var(--muted2); border-bottom: 1px solid var(--border);
+  white-space: nowrap;
+}
+.reg-table td {
+  padding: 8px 10px;
+  border-bottom: 1px solid var(--border);
+  color: var(--muted);
+  max-width: 200px;
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+.reg-table tr:hover td { color: var(--text); background: var(--panel); }
+
 /* ── RESPONSIVE ── */
 @media (max-width: 768px) {
   .topbar-inner { padding: 0 16px; }
