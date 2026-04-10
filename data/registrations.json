@@ -19,16 +19,5 @@
     "personen": "5",
     "nachricht": "Test",
     "timestamp": "2026-04-10T10:07:03.312Z"
-  },
-  {
-    "id": "reg-1775816513889",
-    "vorname": "Laura",
-    "nachname": "Därr",
-    "email": "laura.daerr@googlemail.com",
-    "event": "Opening",
-    "bereich": "art",
-    "personen": "1",
-    "nachricht": "",
-    "timestamp": "2026-04-10T10:21:53.889Z"
   }
 ]
