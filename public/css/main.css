@@ -84,12 +84,8 @@ body.light {
   background-image: linear-gradient(rgba(240,235,226,0.75), rgba(240,235,226,0.75)), url('/public/img/12-pic.png');
 }
 
-/* ── CANVAS BG ── */
-#bg-canvas {
-  position: fixed; inset: 0;
-  width: 100%; height: 100%;
-  z-index: 0; pointer-events: none;
-}
+/* bg-canvas hidden — background image on body */
+#bg-canvas { display: none; }
 
 a { color: inherit; text-decoration: none; }
 img { max-width: 100%; display: block; }
