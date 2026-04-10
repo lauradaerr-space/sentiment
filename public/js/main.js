@@ -298,8 +298,8 @@ function renderSchedule() {
       .then(r => r.json())
       .then(d => {
         if (d.count > 0) {
-          const badge = document.querySelector('.ev-card .reg-count-badge[data-event="' + e.title + '"]');
-          if (badge) badge.textContent = d.count + (lang === 'de' ? ' Anmeldung' + (d.count !== 1 ? 'en' : '') : ' registration' + (d.count !== 1 ? 's' : ''));
+          const badge = document.querySelector('.reg-count-badge[data-event="' + e.title + '"]');
+          if (badge && d.count > 0) badge.textContent = d.count + (lang === 'de' ? ' Anmeldung' + (d.count !== 1 ? 'en' : '') : ' registration' + (d.count !== 1 ? 's' : ''));
         }
       })
       .catch(() => {});
@@ -331,10 +331,21 @@ function renderSelect() {
   const sel = document.getElementById('registerSelect');
   if (!sel) return;
   const ph = lang === 'de' ? 'Veranstaltung wählen …' : 'Choose event …';
-  sel.innerHTML = `<option value="">${ph}</option>` +
-    allEvents.map(e =>
-      `<option value="${e.title}">${lang === 'de' ? (e.titleDE || e.title) : e.title}</option>`
-    ).join('');
+
+  // sort chronologically by dateFrom
+  const sorted = allEvents.slice().sort((a, b) => (a.dateFrom || '').localeCompare(b.dateFrom || ''));
+
+  const opts = sorted.map(e => {
+    const label = lang === 'de' ? (e.titleDE || e.title) : e.title;
+    const date = e.dateFrom ? ' — ' + fmtDate(e.dateFrom) : '';
+    return `<option value="${e.title}">${label}${date}</option>`;
+  }).join('');
+
+  const newsletter = lang === 'de'
+    ? '<option value="Newsletter">Newsletter — informiert bleiben</option>'
+    : '<option value="Newsletter">Newsletter — stay informed</option>';
+
+  sel.innerHTML = `<option value="">${ph}</option>${opts}${newsletter}`;
 }
 
 /* ══ FORMAT FILTER ══ */
@@ -454,6 +465,12 @@ if (form) {
         body: JSON.stringify(body)
       });
       if (res.ok) {
+        const vn = body.vorname;
+        const ev = form.event.options[form.event.selectedIndex].textContent;
+        document.getElementById('ok-title').textContent = lang === 'de' ? 'Angemeldet' : 'Registered';
+        document.getElementById('ok-msg').textContent = lang === 'de'
+          ? `Danke, ${vn}! Deine Anmeldung für ${ev} wurde erfasst.`
+          : `Thank you, ${vn}! Your registration for ${ev} has been received.`;
         form.style.display = 'none';
         okBox.style.display = 'block';
       } else throw new Error();

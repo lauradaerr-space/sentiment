@@ -489,7 +489,8 @@ body.light .ev-format.lecture   { color:#6b21a8; border-color:rgba(107,33,168,.2
 .reg-btn:disabled { opacity: .3; cursor: not-allowed; transform: none !important; }
 .reg-count-badge {
   font-family: var(--mono); font-size: 9px; letter-spacing: .06em;
-  color: var(--muted2);
+  color: var(--muted2); padding: 3px 8px; border-radius: 999px;
+  border: 1px solid var(--border); background: var(--panel);
 }
 .reg-count-badge:empty { display: none; }
 .no-results {
