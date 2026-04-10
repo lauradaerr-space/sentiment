@@ -508,10 +508,12 @@ if (cursorDot && cursorRing && window.matchMedia('(pointer:fine)').matches) {
 }
 
 /* ══ p5.js STAGE ANIMATION ══ */
-new p5(p => {
+const _p5inst = new p5(p => {
   let el, W, H, motif = null;
   const pts = [];
   const anchors = [];
+  const isMobile = window.innerWidth < 768;
+  const PARTICLE_COUNT = isMobile ? 30 : 75;
 
   p.preload = () => {
     p.loadImage('/public/img/stage-motif.png',
@@ -526,7 +528,7 @@ new p5(p => {
     H  = el.offsetHeight;
     p.createCanvas(W, H).parent('p5-stage');
 
-    for (let i = 0; i < 75; i++) {
+    for (let i = 0; i < PARTICLE_COUNT; i++) {
       pts.push({
         x: p.random(W), y: p.random(H),
         vx: p.random(-.4, .4), vy: p.random(-.4, .4),
@@ -554,97 +556,110 @@ new p5(p => {
   };
 
   p.draw = () => {
-    const lt = document.body.classList.contains('light');
-    p.clear();
+    try {
+      p.clear();
 
-    // motif base layer
-    if (motif) {
-      p.push();
-      p.tint(255, 255 * 0.45);
-      const scale = Math.max(W / motif.width, H / motif.height);
-      const mw = motif.width * scale, mh = motif.height * scale;
-      p.image(motif, (W - mw)/2, (H - mh)/2, mw, mh);
-      p.pop();
-    }
-
-    // dot grid
-    p.noStroke();
-    p.fill(255, lt ? 8 : 15);
-    for (let x = 0; x < W; x += 44) {
-      for (let y = 0; y < H; y += 44) {
-        p.circle(x, y, 1.6);
+      // motif base layer
+      if (motif) {
+        p.push();
+        p.tint(255, 255 * 0.45);
+        const scale = Math.max(W / motif.width, H / motif.height);
+        const mw = motif.width * scale, mh = motif.height * scale;
+        p.image(motif, (W - mw)/2, (H - mh)/2, mw, mh);
+        p.pop();
       }
-    }
 
-    // breathing center pulse
-    const breath = 0.5 + 0.5 * Math.sin(p.frameCount * 0.015);
-    const pulseR = 40 + breath * 40;
-    const pulseA = (0.03 + breath * 0.03) * 255;
-    p.noStroke();
-    p.fill(135, 102, 255, pulseA);
-    p.circle(W/2, H/2, pulseR * 2);
+      // dot grid
+      p.noStroke();
+      const lt = document.body.classList.contains('light');
+      p.fill(255, lt ? 8 : 15);
+      for (let x = 0; x < W; x += 44) {
+        for (let y = 0; y < H; y += 44) {
+          p.circle(x, y, 1.6);
+        }
+      }
 
-    const pmx = p.mouseX;
-    const pmy = p.mouseY;
-    const inc = pmx > 0 && pmx < W && pmy > 0 && pmy < H;
+      // breathing center pulse
+      const breath = 0.5 + 0.5 * Math.sin(p.frameCount * 0.015);
+      const pulseR = 40 + breath * 40;
+      const pulseA = (0.03 + breath * 0.03) * 255;
+      p.noStroke();
+      p.fill(135, 102, 255, pulseA);
+      p.circle(W/2, H/2, pulseR * 2);
 
-    // connection lines
-    for (let i = 0; i < pts.length; i++) {
-      for (let j = i + 1; j < pts.length; j++) {
-        const dx = pts[i].x - pts[j].x;
-        const dy = pts[i].y - pts[j].y;
-        const d  = Math.sqrt(dx*dx + dy*dy);
-        if (d < 88) {
-          let baseA = (1 - d/88) * 20;
-          if (inc) {
-            const midX = (pts[i].x + pts[j].x) / 2;
-            const midY = (pts[i].y + pts[j].y) / 2;
-            const dm = Math.sqrt((midX-pmx)**2 + (midY-pmy)**2);
-            if (dm < 100) baseA *= 3;
+      // pointer position — touch or mouse
+      let pmx, pmy, inc;
+      if (p.touches && p.touches.length > 0) {
+        pmx = p.touches[0].x; pmy = p.touches[0].y;
+        inc = pmx > 0 && pmx < W && pmy > 0 && pmy < H;
+      } else {
+        pmx = p.mouseX; pmy = p.mouseY;
+        inc = pmx > 0 && pmx < W && pmy > 0 && pmy < H;
+      }
+
+      // connection lines
+      for (let i = 0; i < pts.length; i++) {
+        for (let j = i + 1; j < pts.length; j++) {
+          const dx = pts[i].x - pts[j].x;
+          const dy = pts[i].y - pts[j].y;
+          const d  = Math.sqrt(dx*dx + dy*dy);
+          if (d < 88) {
+            let baseA = (1 - d/88) * 20;
+            if (inc) {
+              const midX = (pts[i].x + pts[j].x) / 2;
+              const midY = (pts[i].y + pts[j].y) / 2;
+              const dm = Math.sqrt((midX-pmx)**2 + (midY-pmy)**2);
+              if (dm < 100) baseA *= 3;
+            }
+            p.stroke(255, baseA);
+            p.strokeWeight(.5);
+            p.line(pts[i].x, pts[i].y, pts[j].x, pts[j].y);
           }
-          p.stroke(255, baseA);
-          p.strokeWeight(.5);
-          p.line(pts[i].x, pts[i].y, pts[j].x, pts[j].y);
         }
       }
-    }
 
-    // particles
-    pts.forEach(pt => {
-      if (inc) {
-        const dx = pmx - pt.x;
-        const dy = pmy - pt.y;
-        const d  = Math.sqrt(dx*dx + dy*dy);
-        if (d < 90 && d > 1) {
-          pt.vx -= dx / d * .04;
-          pt.vy -= dy / d * .04;
-        } else if (d >= 90 && d < 200 && d > 1) {
-          pt.vx += dx / d * .02;
-          pt.vy += dy / d * .02;
+      // particles
+      pts.forEach(pt => {
+        if (inc) {
+          const dx = pmx - pt.x;
+          const dy = pmy - pt.y;
+          const d  = Math.sqrt(dx*dx + dy*dy);
+          if (d < 90 && d > 1) {
+            pt.vx -= dx / d * .04;
+            pt.vy -= dy / d * .04;
+          } else if (d >= 90 && d < 200 && d > 1) {
+            pt.vx += dx / d * .02;
+            pt.vy += dy / d * .02;
+          }
         }
-      }
-      pt.vx *= .965; pt.vy *= .965;
-      pt.x += pt.vx; pt.y += pt.vy;
-      if (pt.x < 0) pt.x = W; if (pt.x > W) pt.x = 0;
-      if (pt.y < 0) pt.y = H; if (pt.y > H) pt.y = 0;
+        pt.vx *= .965; pt.vy *= .965;
+        pt.x += pt.vx; pt.y += pt.vy;
+        if (pt.x < 0) pt.x = W; if (pt.x > W) pt.x = 0;
+        if (pt.y < 0) pt.y = H; if (pt.y > H) pt.y = 0;
 
-      const pl = .5 + .5 * Math.sin(p.frameCount * .022 + pt.ph);
-      p.noStroke();
-      p.fill(pt.col[0], pt.col[1], pt.col[2], (pt.a * (.55 + .45 * pl)) * 255);
-      p.circle(pt.x, pt.y, pt.r * 2);
-    });
+        const pl = .5 + .5 * Math.sin(p.frameCount * .022 + pt.ph);
+        p.noStroke();
+        p.fill(pt.col[0], pt.col[1], pt.col[2], (pt.a * (.55 + .45 * pl)) * 255);
+        p.circle(pt.x, pt.y, pt.r * 2);
+      });
 
-    // anchor particles
-    anchors.forEach(a => {
-      a.x += a.vx; a.y += a.vy;
-      if (a.x < 0 || a.x > W) a.vx *= -1;
-      if (a.y < 0 || a.y > H) a.vy *= -1;
-      const ap = .5 + .5 * Math.sin(p.frameCount * .01 + a.ph);
-      p.noStroke();
-      p.fill(a.col[0], a.col[1], a.col[2], 0.06 * 255 * (.7 + .3 * ap));
-      p.circle(a.x, a.y, a.r * 2);
-    });
+      // anchor particles
+      anchors.forEach(a => {
+        a.x += a.vx; a.y += a.vy;
+        if (a.x < 0 || a.x > W) a.vx *= -1;
+        if (a.y < 0 || a.y > H) a.vy *= -1;
+        const ap = .5 + .5 * Math.sin(p.frameCount * .01 + a.ph);
+        p.noStroke();
+        p.fill(a.col[0], a.col[1], a.col[2], 0.06 * 255 * (.7 + .3 * ap));
+        p.circle(a.x, a.y, a.r * 2);
+      });
+    } catch (e) { /* prevent crash */ }
   };
+
+  // pause when tab not visible
+  document.addEventListener('visibilitychange', () => {
+    document.hidden ? p.noLoop() : p.loop();
+  });
 }, 'p5-stage');
 
 /* ══ INIT ══ */
@@ -653,3 +668,15 @@ if (stageVideo) stageVideo.playbackRate = 0.75;
 
 renderTeam();
 loadEvents();
+
+/* ══ FLOAT NAV (mobile) ══ */
+const floatNavBtn  = document.getElementById('floatNavBtn');
+const floatNavMenu = document.getElementById('floatNavMenu');
+function closeFloatNav() { if (floatNavMenu) floatNavMenu.classList.remove('open'); }
+if (floatNavBtn) {
+  floatNavBtn.addEventListener('click', e => {
+    e.stopPropagation();
+    floatNavMenu.classList.toggle('open');
+  });
+  document.addEventListener('click', () => closeFloatNav());
+}
