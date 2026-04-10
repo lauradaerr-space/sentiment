@@ -87,6 +87,32 @@ a { color: inherit; text-decoration: none; }
 img { max-width: 100%; display: block; }
 button, input, select, textarea { font: inherit; }
 
+/* ── CUSTOM CURSOR ── */
+@media (pointer: fine) {
+  * { cursor: none !important; }
+}
+.cursor-dot {
+  position: fixed; width: 5px; height: 5px;
+  background: var(--orange); border-radius: 50%;
+  pointer-events: none; z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: width .12s, height .12s, opacity .12s;
+  mix-blend-mode: normal;
+}
+.cursor-ring {
+  position: fixed; width: 28px; height: 28px;
+  border: 1px solid rgba(229,92,44,0.35);
+  border-radius: 50%; pointer-events: none; z-index: 9998;
+  transform: translate(-50%, -50%);
+}
+.cursor-dot.link { width: 8px; height: 8px; background: var(--lilac); }
+.cursor-ring.link { border-color: rgba(135,102,255,0.45); width: 40px; height: 40px; }
+
+/* hide custom cursor on touch devices */
+@media (pointer: coarse) {
+  .cursor-dot, .cursor-ring { display: none; }
+}
+
 /* ── AMBIENT ── */
 .ambient { position: fixed; inset: 0; pointer-events: none; z-index: 1; }
 .ambient::before, .ambient::after {
@@ -211,6 +237,15 @@ body.light .sw-thumb { transform: translateX(17px); background: var(--muted); }
   padding: clamp(24px,4vw,48px);
   display: flex; flex-direction: column; justify-content: space-between;
   min-height: 560px;
+}
+.hero-date-badge {
+  display: flex; align-items: center; gap: 16px;
+  margin-bottom: 16px; flex-wrap: wrap;
+}
+.date-item {
+  font-family: var(--mono); font-size: 11px;
+  letter-spacing: .14em; text-transform: uppercase;
+  color: var(--orange);
 }
 .eyebrow {
   display: inline-block; padding: 6px 13px; border-radius: 999px;

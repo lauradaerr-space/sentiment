@@ -435,33 +435,75 @@ if (form) {
   });
 }
 
+/* ══ CUSTOM CURSOR ══ */
+const cursorDot  = document.getElementById('cursorDot');
+const cursorRing = document.getElementById('cursorRing');
+if (cursorDot && cursorRing && window.matchMedia('(pointer:fine)').matches) {
+  let rx = window.innerWidth/2, ry = window.innerHeight/2;
+  let cmx = rx, cmy = ry;
+
+  document.addEventListener('mousemove', e => {
+    cmx = e.clientX; cmy = e.clientY;
+    cursorDot.style.left = cmx+'px'; cursorDot.style.top = cmy+'px';
+  });
+
+  (function animRing() {
+    rx += (cmx - rx) * 0.10;
+    ry += (cmy - ry) * 0.10;
+    cursorRing.style.left = Math.round(rx)+'px';
+    cursorRing.style.top  = Math.round(ry)+'px';
+    requestAnimationFrame(animRing);
+  })();
+
+  document.querySelectorAll('a, button, .ev-card, .person-card, .chip, .reg-btn').forEach(el => {
+    el.addEventListener('mouseenter', () => { cursorDot.classList.add('link'); cursorRing.classList.add('link'); });
+    el.addEventListener('mouseleave', () => { cursorDot.classList.remove('link'); cursorRing.classList.remove('link'); });
+  });
+}
+
 /* ══ p5.js STAGE ANIMATION ══ */
 new p5(p => {
-  let el, W, H;
+  let el, W, H, motif = null;
   const pts = [];
+  const anchors = [];
+
+  p.preload = () => {
+    p.loadImage('/public/img/stage-motif.png',
+      img => { motif = img; },
+      () => { motif = null; }
+    );
+  };
 
   p.setup = () => {
     el = document.getElementById('p5-stage');
     W  = el.offsetWidth;
     H  = el.offsetHeight;
     p.createCanvas(W, H).parent('p5-stage');
-    for (let i = 0; i < 55; i++) {
+
+    for (let i = 0; i < 75; i++) {
       pts.push({
-        x:   p.random(W),
-        y:   p.random(H),
-        vx:  p.random(-.4, .4),
-        vy:  p.random(-.4, .4),
-        r:   p.random(1.2, 3),
+        x: p.random(W), y: p.random(H),
+        vx: p.random(-.4, .4), vy: p.random(-.4, .4),
+        r: p.random(1.2, 3),
         col: [[229,92,44],[135,102,255],[102,255,226]][p.floor(p.random(3))],
-        a:   p.random(.18, .5),
-        ph:  p.random(p.TWO_PI)
+        a: p.random(.18, .5),
+        ph: p.random(p.TWO_PI)
+      });
+    }
+
+    for (let i = 0; i < 3; i++) {
+      anchors.push({
+        x: p.random(W), y: p.random(H),
+        vx: p.random(-.08, .08), vy: p.random(-.08, .08),
+        r: p.random(8, 14),
+        col: [[229,92,44],[135,102,255],[102,255,226]][i],
+        ph: p.random(p.TWO_PI)
       });
     }
   };
 
   p.windowResized = () => {
-    W = el.offsetWidth;
-    H = el.offsetHeight;
+    W = el.offsetWidth; H = el.offsetHeight;
     p.resizeCanvas(W, H);
   };
 
@@ -469,44 +511,76 @@ new p5(p => {
     const lt = document.body.classList.contains('light');
     p.background(lt ? 240 : 10, lt ? 10 : 12);
 
-    p.stroke(255, lt ? 5 : 16);
-    p.strokeWeight(.5);
-    for (let x = 0; x < W; x += 42) p.line(x, 0, x, H);
-    for (let y = 0; y < H; y += 42) p.line(0, y, W, y);
+    // motif base layer
+    if (motif) {
+      p.push();
+      p.tint(255, 255 * 0.45);
+      const scale = Math.max(W / motif.width, H / motif.height);
+      const mw = motif.width * scale, mh = motif.height * scale;
+      p.image(motif, (W - mw)/2, (H - mh)/2, mw, mh);
+      p.pop();
+    }
 
+    // dot grid
+    p.noStroke();
+    p.fill(255, lt ? 8 : 15);
+    for (let x = 0; x < W; x += 44) {
+      for (let y = 0; y < H; y += 44) {
+        p.circle(x, y, 1.6);
+      }
+    }
+
+    // breathing center pulse
+    const breath = 0.5 + 0.5 * Math.sin(p.frameCount * 0.015);
+    const pulseR = 40 + breath * 40;
+    const pulseA = (0.03 + breath * 0.03) * 255;
+    p.noStroke();
+    p.fill(135, 102, 255, pulseA);
+    p.circle(W/2, H/2, pulseR * 2);
+
+    const pmx = p.mouseX;
+    const pmy = p.mouseY;
+    const inc = pmx > 0 && pmx < W && pmy > 0 && pmy < H;
+
+    // connection lines
     for (let i = 0; i < pts.length; i++) {
       for (let j = i + 1; j < pts.length; j++) {
         const dx = pts[i].x - pts[j].x;
         const dy = pts[i].y - pts[j].y;
         const d  = Math.sqrt(dx*dx + dy*dy);
         if (d < 88) {
-          p.stroke(255, (1 - d/88) * 20);
+          let baseA = (1 - d/88) * 20;
+          if (inc) {
+            const midX = (pts[i].x + pts[j].x) / 2;
+            const midY = (pts[i].y + pts[j].y) / 2;
+            const dm = Math.sqrt((midX-pmx)**2 + (midY-pmy)**2);
+            if (dm < 100) baseA *= 3;
+          }
+          p.stroke(255, baseA);
           p.strokeWeight(.5);
           p.line(pts[i].x, pts[i].y, pts[j].x, pts[j].y);
         }
       }
     }
 
-    const mx  = p.mouseX;
-    const my  = p.mouseY;
-    const inc = mx > 0 && mx < W && my > 0 && my < H;
-
+    // particles
     pts.forEach(pt => {
       if (inc) {
-        const dx = mx - pt.x;
-        const dy = my - pt.y;
+        const dx = pmx - pt.x;
+        const dy = pmy - pt.y;
         const d  = Math.sqrt(dx*dx + dy*dy);
-        if (d < 130 && d > 1) {
-          pt.vx += dx / d * .06;
-          pt.vy += dy / d * .06;
+        if (d < 90 && d > 1) {
+          pt.vx -= dx / d * .04;
+          pt.vy -= dy / d * .04;
+        } else if (d >= 90 && d < 200 && d > 1) {
+          pt.vx += dx / d * .02;
+          pt.vy += dy / d * .02;
         }
       }
       pt.vx *= .965; pt.vy *= .965;
-      pt.x  += pt.vx; pt.y  += pt.vy;
-      if (pt.x < 0)  pt.x = W;
-      if (pt.x > W)  pt.x = 0;
-      if (pt.y < 0)  pt.y = H;
-      if (pt.y > H)  pt.y = 0;
+      pt.x += pt.vx; pt.y += pt.vy;
+      if (pt.x < 0) pt.x = W; if (pt.x > W) pt.x = 0;
+      if (pt.y < 0) pt.y = H; if (pt.y > H) pt.y = 0;
 
       const pl = .5 + .5 * Math.sin(p.frameCount * .022 + pt.ph);
       p.noStroke();
@@ -514,10 +588,16 @@ new p5(p => {
       p.circle(pt.x, pt.y, pt.r * 2);
     });
 
-    if (inc) {
-      p.noStroke(); p.fill(204, 43, 29, 210); p.circle(mx, my, 6);
-      p.stroke(204, 43, 29, 40); p.strokeWeight(1); p.noFill(); p.circle(mx, my, 80);
-    }
+    // anchor particles
+    anchors.forEach(a => {
+      a.x += a.vx; a.y += a.vy;
+      if (a.x < 0 || a.x > W) a.vx *= -1;
+      if (a.y < 0 || a.y > H) a.vy *= -1;
+      const ap = .5 + .5 * Math.sin(p.frameCount * .01 + a.ph);
+      p.noStroke();
+      p.fill(a.col[0], a.col[1], a.col[2], 0.06 * 255 * (.7 + .3 * ap));
+      p.circle(a.x, a.y, a.r * 2);
+    });
   };
 }, 'p5-stage');
 
