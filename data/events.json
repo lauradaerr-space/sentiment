@@ -1,5 +1,25 @@
 {
-  "events": [],
+  "events": [
+    {
+      "title": "Vernissage",
+      "titleDE": "Vernissage",
+      "dateFrom": "2026-12-11",
+      "dateTo": "2026-12-11",
+      "time": "18:00",
+      "timeEnd": "",
+      "format": "other",
+      "category": "koeln",
+      "location": "Kunstwerk Köln",
+      "language": "DE/EN",
+      "capacity": 400,
+      "who": "Laura + Joel",
+      "status": "Bestätigt",
+      "descEN": "",
+      "descDE": "",
+      "id": "evt-1775824421996",
+      "published": false
+    }
+  ],
   "tasks": [
     {
       "title": "test",
