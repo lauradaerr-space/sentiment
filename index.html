@@ -4,45 +4,23 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>SENTIMENT — Creating Safe & Supportive Spaces for Intimate Communication</title>
-
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;1,9..144,300;1,9..144,400&family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-
-  <!-- Styles -->
   <link rel="stylesheet" href="/public/css/main.css">
 </head>
 <body class="lang-de">
+
+<!-- ANIMATED BG -->
+<canvas id="bg-canvas"></canvas>
 
 <div class="ambient"></div>
 
 <div class="site">
 
-  <!-- TICKER -->
-  <div class="ticker-bar" aria-hidden="true">
-    <div class="ticker-track">
-      <span>SENTIMENT · Creating Safe &amp; Supportive Spaces</span>
-      <span data-de>IT-Sicherheit schützt Privatsphäre</span>
-      <span data-en>IT Security Protects Privacy</span>
-      <span>KunstWerk Köln · 11. Dez 2026 – 22. Jan 2027</span>
-      <span data-de>Stärkt Demokratie</span>
-      <span data-en>Supports Democracy</span>
-      <span>Intimacy · Care · Privacy · CPDP 2026</span>
-      <span>SENTIMENT · Creating Safe &amp; Supportive Spaces</span>
-      <span data-de>IT-Sicherheit schützt Privatsphäre</span>
-      <span data-en>IT Security Protects Privacy</span>
-      <span>KunstWerk Köln · 11. Dez 2026 – 22. Jan 2027</span>
-      <span data-de>Stärkt Demokratie</span>
-      <span data-en>Supports Democracy</span>
-      <span>Intimacy · Care · Privacy · CPDP 2026</span>
-    </div>
-  </div>
-
   <!-- NAV -->
   <nav>
     <div class="container nav-inner">
-      <div class="brand">SENTIMENT</div>
+      <a href="#hero" class="brand">
+        <img src="/public/img/logo.svg" alt="Sentiment" class="nav-logo">
+      </a>
       <button class="hamburger" id="hamburger" aria-label="Menü" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
@@ -65,6 +43,8 @@
     <div class="nav-menu" id="nav-menu">
       <a href="#program"  data-de onclick="closeMenu()">Programm</a>
       <a href="#program"  data-en onclick="closeMenu()">Program</a>
+      <a href="#team"     data-de onclick="closeMenu()">Team</a>
+      <a href="#team"     data-en onclick="closeMenu()">Team</a>
       <a href="#register" data-de onclick="closeMenu()">Anmelden</a>
       <a href="#register" data-en onclick="closeMenu()">Register</a>
       <a href="#about"    data-de onclick="closeMenu()">Über das Projekt</a>
@@ -80,7 +60,7 @@
         <div>
           <span class="eyebrow" data-de>Ausstellung · KunstWerk Köln · 2026–2027</span>
           <span class="eyebrow" data-en>Exhibition · KunstWerk Cologne · 2026–2027</span>
-          <h1>Senti&shy;ment</h1>
+          <h1 class="hero-h1">Senti&shy;ment</h1>
           <p class="hero-subtitle">
             Creating Safe &amp; Supportive Spaces for Intimate Communication
             with Human-Chatbot Interactions
@@ -156,7 +136,7 @@
     </div>
   </div>
 
-  <!-- TIMETABLE — geladen aus /api/events -->
+  <!-- TIMETABLE -->
   <section>
     <div class="container timetable-wrap">
       <div class="filter-row" id="formatFilters">
@@ -175,10 +155,27 @@
     </div>
   </section>
 
+  <!-- TEAM BAR -->
+  <div class="sec-bar" id="team">
+    <div class="container sec-bar-in">
+      <span class="sec-n">02</span>
+      <span class="sec-t" data-de>Künstler:innen &amp; Forscher:innen</span>
+      <span class="sec-t" data-en>Meet the Artists &amp; Researchers</span>
+      <span class="sec-m">Sentiment Team</span>
+    </div>
+  </div>
+
+  <!-- TEAM -->
+  <section>
+    <div class="container team-wrap">
+      <div class="team-grid" id="teamGrid"></div>
+    </div>
+  </section>
+
   <!-- REGISTER BAR -->
   <div class="sec-bar" id="register">
     <div class="container sec-bar-in">
-      <span class="sec-n">02</span>
+      <span class="sec-n">03</span>
       <span class="sec-t" data-de>Anmeldung</span>
       <span class="sec-t" data-en>Register</span>
       <span class="sec-m" data-de>Newsletter &amp; Veranstaltungen</span>
@@ -216,12 +213,6 @@
         </div>
 
         <div class="reveal">
-          <!--
-            FORMSPREE einrichten:
-            1. formspree.io → Account anlegen
-            2. Neue Form erstellen → Form-ID kopieren
-            3. action-URL unten ersetzen: https://formspree.io/f/DEINE_ID
-          -->
           <form class="register-form" id="reg-form"
                 action="https://formspree.io/f/YOUR_FORM_ID"
                 method="POST">
@@ -251,7 +242,6 @@
               <label data-en>Message / Accessibility (optional)</label>
               <textarea name="nachricht"></textarea>
             </div>
-            <!-- Honeypot-Feld gegen Spam -->
             <input type="text"   name="_gotcha"  style="display:none" tabindex="-1" autocomplete="off">
             <input type="hidden" name="_subject" value="Anmeldung — SENTIMENT Köln">
             <button type="submit" class="submit-btn" id="sub-btn">
@@ -266,8 +256,8 @@
             </p>
           </form>
           <div class="ok-box" id="ok-box">
-            <h3 data-de>Angemeldet ✓</h3>
-            <h3 data-en>Registered ✓</h3>
+            <h3 data-de>Angemeldet</h3>
+            <h3 data-en>Registered</h3>
             <p data-de>Danke! Du erhältst eine Bestätigung per E-Mail.</p>
             <p data-en>Thank you! You will receive a confirmation by email.</p>
           </div>
@@ -280,7 +270,7 @@
   <!-- ABOUT BAR -->
   <div class="sec-bar" id="about">
     <div class="container sec-bar-in">
-      <span class="sec-n">03</span>
+      <span class="sec-n">04</span>
       <span class="sec-t" data-de>Über das Projekt</span>
       <span class="sec-t" data-en>About</span>
       <span class="sec-m">SENTIMENT · 2026</span>
@@ -368,6 +358,14 @@
     </div>
   </footer>
 
+</div>
+
+<!-- PERSON MODAL -->
+<div class="person-modal-overlay" id="person-modal">
+  <div class="person-modal">
+    <button class="person-modal-close" id="person-modal-close">&times;</button>
+    <div class="person-modal-body" id="person-modal-body"></div>
+  </div>
 </div>
 
 <!-- p5.js -->

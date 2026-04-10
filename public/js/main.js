@@ -8,6 +8,156 @@ let allEvents     = [];
 let currentFormat = 'all';
 let lang          = 'de';
 
+/* ══ ANIMATED CANVAS BACKGROUND ══ */
+(function () {
+  const canvas = document.getElementById('bg-canvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  let W, H;
+
+  const blobs = [];
+  for (let i = 0; i < 5; i++) {
+    blobs.push({
+      x: Math.random(), y: Math.random(),
+      vx: (Math.random() - 0.5) * 0.0003,
+      vy: (Math.random() - 0.5) * 0.0003,
+      r: 0.15 + Math.random() * 0.15,
+      color: i % 2 === 0 ? [229, 92, 44] : [135, 102, 255],
+      phase: Math.random() * Math.PI * 2
+    });
+  }
+
+  function resize() {
+    W = canvas.width = window.innerWidth;
+    H = canvas.height = window.innerHeight;
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  function draw() {
+    const lt = document.body.classList.contains('light');
+    ctx.clearRect(0, 0, W, H);
+    ctx.fillStyle = lt ? '#f0ebe2' : '#0a0a08';
+    ctx.fillRect(0, 0, W, H);
+
+    const t = Date.now() * 0.0004;
+    blobs.forEach(b => {
+      b.x += b.vx + Math.sin(t + b.phase) * 0.00008;
+      b.y += b.vy + Math.cos(t * 0.7 + b.phase) * 0.00006;
+      if (b.x < -0.2) b.x = 1.2;
+      if (b.x > 1.2) b.x = -0.2;
+      if (b.y < -0.2) b.y = 1.2;
+      if (b.y > 1.2) b.y = -0.2;
+
+      const pulse = 1 + 0.15 * Math.sin(t * 1.2 + b.phase);
+      const radius = b.r * Math.min(W, H) * pulse;
+      const cx = b.x * W;
+      const cy = b.y * H;
+      const opacity = lt ? 0.05 : 0.08;
+
+      const grad = ctx.createRadialGradient(cx, cy, 0, cx, cy, radius);
+      grad.addColorStop(0, `rgba(${b.color[0]},${b.color[1]},${b.color[2]},${opacity})`);
+      grad.addColorStop(1, `rgba(${b.color[0]},${b.color[1]},${b.color[2]},0)`);
+      ctx.fillStyle = grad;
+      ctx.beginPath();
+      ctx.arc(cx, cy, radius, 0, Math.PI * 2);
+      ctx.fill();
+    });
+
+    requestAnimationFrame(draw);
+  }
+  draw();
+})();
+
+/* ══ TEAM DATA ══ */
+const TEAM = [
+  {
+    id: 1, name: 'Dr. Anna Meier', role: 'Künstlerische Leitung',
+    type: 'artist', initials: 'AM',
+    bio_short: 'Medienkünstlerin mit Fokus auf interaktive Installationen und KI-Ästhetik.',
+    bio_long: 'Dr. Anna Meier ist Medienkünstlerin und Professorin für Digitale Kunst. Ihre Arbeiten untersuchen die Schnittstelle zwischen menschlicher Emotionalität und algorithmischen Systemen. Im Projekt SENTIMENT entwickelt sie die interaktiven Installationen für die Ausstellung im KunstWerk Köln.',
+    image: null
+  },
+  {
+    id: 2, name: 'Prof. Lukas Weber', role: 'Privacy Research Lead',
+    type: 'researcher', initials: 'LW',
+    bio_short: 'Informatiker und Datenschutzforscher an der TU Köln.',
+    bio_long: 'Prof. Lukas Weber leitet die Forschungsgruppe für Privacy Engineering an der TU Köln. Seine Arbeit bei SENTIMENT konzentriert sich auf die technischen und ethischen Aspekte des Datenschutzes bei intimen Mensch-KI-Interaktionen, insbesondere auf sichere Dialogsysteme.',
+    image: null
+  },
+  {
+    id: 3, name: 'Yuki Tanaka', role: 'Sound & Installation',
+    type: 'artist', initials: 'YT',
+    bio_short: 'Klangkünstlerin, die immersive Räume zwischen Technologie und Intimität schafft.',
+    bio_long: 'Yuki Tanaka arbeitet an der Grenze von Sound Art und Technologie. Für SENTIMENT gestaltet sie eine immersive Klanginstallation, die auf die emotionale Qualität von Chatbot-Dialogen reagiert und diese in räumliche Klangerlebnisse übersetzt.',
+    image: null
+  },
+  {
+    id: 4, name: 'Dr. Sarah Hoffmann', role: 'Psychologie & Ethik',
+    type: 'researcher', initials: 'SH',
+    bio_short: 'Forscherin für digitale Psychologie und ethische KI-Gestaltung.',
+    bio_long: 'Dr. Sarah Hoffmann erforscht die psychologischen Auswirkungen intimer Mensch-KI-Beziehungen. Im Rahmen von SENTIMENT untersucht sie, wie Vertrauen und emotionale Bindung in Chatbot-Interaktionen entstehen und welche ethischen Leitlinien für deren Gestaltung notwendig sind.',
+    image: null
+  },
+  {
+    id: 5, name: 'Marco da Silva', role: 'Interaktive Medien',
+    type: 'artist', initials: 'MS',
+    bio_short: 'Interaction Designer und Creative Technologist aus Brüssel.',
+    bio_long: 'Marco da Silva entwickelt interaktive Medieninstallationen, die physische und digitale Räume verbinden. Bei SENTIMENT ist er verantwortlich für die technische Umsetzung der Pop-up-Ausstellung bei der CPDP-Konferenz in Brüssel und die digitale Plattform des Projekts.',
+    image: null
+  },
+  {
+    id: 6, name: 'Dr. Elena Petrov', role: 'Kommunikationswissenschaft',
+    type: 'researcher', initials: 'EP',
+    bio_short: 'Medienforscherin mit Schwerpunkt auf KI-vermittelte Kommunikation.',
+    bio_long: 'Dr. Elena Petrov analysiert die kommunikativen Dynamiken in Mensch-Chatbot-Interaktionen. Ihre Forschung bei SENTIMENT untersucht, wie Intimität und emotionale Nähe in digitalen Dialogsystemen sprachlich konstruiert werden und welche gesellschaftlichen Implikationen sich daraus ergeben.',
+    image: null
+  }
+];
+
+/* ══ TEAM RENDERING ══ */
+function renderTeam() {
+  const grid = document.getElementById('teamGrid');
+  if (!grid) return;
+  grid.innerHTML = TEAM.map(p => `
+    <div class="person-card reveal" data-person="${p.id}">
+      <div class="person-avatar">${p.image ? `<img src="${p.image}" alt="${p.name}">` : p.initials}</div>
+      <div class="person-name">${p.name}</div>
+      <div class="person-role">${p.role}</div>
+      <div class="person-bio-short">${p.bio_short}</div>
+    </div>
+  `).join('');
+
+  grid.querySelectorAll('.person-card').forEach(card => {
+    card.addEventListener('click', () => {
+      const person = TEAM.find(p => p.id === parseInt(card.dataset.person));
+      if (person) openPersonModal(person);
+    });
+  });
+
+  // re-observe reveals
+  grid.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+}
+
+function openPersonModal(p) {
+  const modal = document.getElementById('person-modal');
+  const body = document.getElementById('person-modal-body');
+  body.innerHTML = `
+    <div class="pm-avatar">${p.image ? `<img src="${p.image}" alt="${p.name}">` : p.initials}</div>
+    <div class="pm-name">${p.name}</div>
+    <div class="pm-role">${p.role}</div>
+    <div class="pm-bio">${p.bio_long}</div>
+  `;
+  modal.classList.add('open');
+}
+
+document.getElementById('person-modal-close').addEventListener('click', () => {
+  document.getElementById('person-modal').classList.remove('open');
+});
+document.getElementById('person-modal').addEventListener('click', e => {
+  if (e.target === e.currentTarget) e.currentTarget.classList.remove('open');
+});
+
 /* ══ EVENTS: laden & rendern ══ */
 
 async function loadEvents() {
@@ -65,7 +215,7 @@ function renderSchedule() {
       <div class="ev-footer">
         <div class="ev-date-block">
           <div class="ev-date">${e.dateFrom || e.date || ''}</div>
-          <div class="ev-time">${e.time || ''}</div>
+          <div class="ev-time">${e.time || ''}${e.timeEnd ? ' – ' + e.timeEnd : ''}</div>
         </div>
         <button class="reg-btn inline-register" data-event="${e.title}" ${full ? 'disabled' : ''}>
           ${full
@@ -77,7 +227,6 @@ function renderSchedule() {
     </article>`;
   }).join('');
 
-  // Inline-Anmelden → scrollt zum Formular
   document.querySelectorAll('.inline-register').forEach(btn => {
     btn.addEventListener('click', () => {
       const sel = document.getElementById('registerSelect');
@@ -199,7 +348,6 @@ if (form) {
     subBtn.disabled    = true;
     subBtn.innerHTML   = `<span>${lang === 'de' ? 'Wird gesendet …' : 'Sending …'}</span>`;
 
-    // Demo-Modus wenn Formspree noch nicht eingerichtet
     if (form.action.includes('YOUR_FORM_ID')) {
       await new Promise(r => setTimeout(r, 900));
       form.style.display = 'none';
@@ -258,13 +406,11 @@ new p5(p => {
     const lt = document.body.classList.contains('light');
     p.background(lt ? 240 : 10, lt ? 10 : 12);
 
-    // Grid
     p.stroke(255, lt ? 5 : 16);
     p.strokeWeight(.5);
     for (let x = 0; x < W; x += 42) p.line(x, 0, x, H);
     for (let y = 0; y < H; y += 42) p.line(0, y, W, y);
 
-    // Verbindungslinien
     for (let i = 0; i < pts.length; i++) {
       for (let j = i + 1; j < pts.length; j++) {
         const dx = pts[i].x - pts[j].x;
@@ -305,7 +451,6 @@ new p5(p => {
       p.circle(pt.x, pt.y, pt.r * 2);
     });
 
-    // Maus-Cursor
     if (inc) {
       p.noStroke(); p.fill(204, 43, 29, 210); p.circle(mx, my, 6);
       p.stroke(204, 43, 29, 40); p.strokeWeight(1); p.noFill(); p.circle(mx, my, 80);
@@ -314,4 +459,5 @@ new p5(p => {
 }, 'p5-stage');
 
 /* ══ INIT ══ */
+renderTeam();
 loadEvents();
