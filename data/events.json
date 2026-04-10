@@ -56,25 +56,6 @@
       "descDE": "",
       "id": "evt-1775824595282",
       "published": true
-    },
-    {
-      "title": "Opening Exhibition CPDP",
-      "titleDE": "Eröffnung Ausstellung CPDP",
-      "dateFrom": "2026-05-19",
-      "dateTo": "2026-05-19",
-      "time": "20:15",
-      "timeEnd": "",
-      "format": "screening",
-      "category": "cpdp",
-      "location": "Maison de la Poste, CPDP",
-      "language": "DE/EN",
-      "capacity": "",
-      "who": "Laura",
-      "status": "Offen",
-      "descEN": "Tolle Ausstellung mit geeske",
-      "descDE": "",
-      "id": "evt-1775845100463",
-      "published": true
     }
   ],
   "tasks": [
