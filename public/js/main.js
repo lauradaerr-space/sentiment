@@ -509,7 +509,7 @@ new p5(p => {
 
   p.draw = () => {
     const lt = document.body.classList.contains('light');
-    p.background(lt ? 240 : 10, lt ? 10 : 12);
+    p.clear();
 
     // motif base layer
     if (motif) {

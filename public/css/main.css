@@ -343,7 +343,12 @@ body.light .stat-item { background: rgba(255,255,255,.7); }
     radial-gradient(circle at 78% 18%, rgba(135,102,255,.10), transparent 26%),
     rgba(255,255,255,.02);
 }
-#p5-stage { position: absolute; inset: 0; }
+.stage-video {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover; opacity: 0.7; z-index: 0;
+}
+#p5-stage { position: absolute; inset: 0; z-index: 1; }
 #p5-stage canvas { width: 100% !important; height: 100% !important; display: block; }
 
 .pill-ticker {
