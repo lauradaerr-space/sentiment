@@ -272,7 +272,7 @@ function renderSchedule() {
       </div>
       <div class="ev-footer">
         <div class="ev-date-block">
-          <div class="ev-date">${e.dateFrom || e.date || ''}</div>
+          <div class="ev-date">${e.dateTo && e.dateTo !== e.dateFrom ? (e.dateFrom || '') + ' — ' + e.dateTo : (e.dateFrom || e.date || '')}</div>
           <div class="ev-time">${e.time || ''}${e.timeEnd ? ' – ' + e.timeEnd : ''}</div>
         </div>
         <button class="reg-btn inline-register" data-event="${e.title}" ${full ? 'disabled' : ''}>
