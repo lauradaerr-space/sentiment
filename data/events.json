@@ -1129,10 +1129,11 @@
       "category": "cpdp",
       "who": [],
       "dueDate": "Mai",
-      "status": "Offen",
+      "status": "In Bearbeitung",
       "priority": "Normal",
       "notes": "",
-      "due": "Mai"
+      "due": "",
+      "linkedEventId": "evt-1775849166451"
     },
     {
       "id": "imported_t78",
