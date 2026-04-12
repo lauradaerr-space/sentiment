@@ -47,11 +47,12 @@ module.exports = async (req, res) => {
       const raw = JSON.parse(Buffer.from(r.body.content, 'base64').toString());
       // Support both old format (plain array) and new format ({events, tasks})
       if (Array.isArray(raw)) {
-        return res.status(200).json({ events: raw, tasks: [] });
+        return res.status(200).json({ events: raw, tasks: [], seeded: false });
       }
       return res.status(200).json({
         events: raw.events || [],
-        tasks: raw.tasks || []
+        tasks: raw.tasks || [],
+        seeded: raw.seeded || false
       });
     } catch (e) {
       return res.status(500).json({ error: 'Failed to load data' });
@@ -82,7 +83,8 @@ module.exports = async (req, res) => {
       }
       const sha = current.body.sha;
 
-      const payload = { events: events, tasks: tasks };
+      const seeded = body.seeded || false;
+      const payload = { events: events, tasks: tasks, seeded: seeded };
       const content = Buffer.from(JSON.stringify(payload, null, 2)).toString('base64');
       const result = await githubRequest('PUT', PATH, {
         message: 'update: admin save ' + new Date().toISOString(),

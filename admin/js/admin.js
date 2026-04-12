@@ -63,6 +63,8 @@
     }
   }
 
+  var dataSeeded = false;
+
   function loadData() {
     console.log('loadData() called');
     fetch(API + '?t=' + Date.now())
@@ -76,36 +78,23 @@
           events: (d && d.events) || [],
           tasks: (d && d.tasks) || []
         };
-        console.log('loadData() got events:', data.events.length, 'tasks:', data.tasks.length);
+        dataSeeded = !!(d && d.seeded);
+        console.log('loadData() got events:', data.events.length, 'tasks:', data.tasks.length, 'seeded:', dataSeeded);
 
-        // merge imported tasks
-        var needsSeed = false;
-        if (typeof IMPORTED_TASKS !== 'undefined') {
-          if (!data.tasks || data.tasks.length === 0) {
-            data.tasks = IMPORTED_TASKS.map(function (t) {
-              return Object.assign({}, t, { id: 'imported_' + t.id, due: t.dueDate || '' });
-            });
-            needsSeed = true;
-          } else {
-            var existingTitles = {};
-            data.tasks.forEach(function (t) { existingTitles[t.title.trim().toLowerCase()] = true; });
-            var newTasks = IMPORTED_TASKS
-              .filter(function (t) { return !existingTitles[t.title.trim().toLowerCase()]; })
-              .map(function (t) {
-                return Object.assign({}, t, { id: 'imported_' + t.id, due: t.dueDate || '' });
-              });
-            if (newTasks.length > 0) {
-              data.tasks = data.tasks.concat(newTasks);
-              needsSeed = true;
-            }
-          }
+        // Only seed ONCE — if seeded flag is not set
+        if (!dataSeeded && typeof IMPORTED_TASKS !== 'undefined') {
+          console.log('First load — seeding', IMPORTED_TASKS.length, 'tasks from Excel');
+          data.tasks = IMPORTED_TASKS.map(function (t) {
+            return Object.assign({}, t, { id: 'imported_' + t.id, due: t.dueDate || '' });
+          });
+          dataSeeded = true;
+          renderAll();
+          saveData();
+          return;
         }
+
         renderAll();
         setSyncStatus('ok');
-        if (needsSeed) {
-          console.log('Seeding', data.tasks.length, 'tasks to GitHub');
-          saveData();
-        }
       })
       .catch(function (err) {
         console.error('loadData() FAILED:', err);
@@ -115,8 +104,12 @@
 
   function saveData() {
     setSyncStatus('saving');
-    var payload = { events: data.events || [], tasks: data.tasks || [] };
-    console.log('saveData() called — events:', payload.events.length, 'tasks:', payload.tasks.length);
+    var payload = {
+      events: data.events || [],
+      tasks: data.tasks || [],
+      seeded: dataSeeded
+    };
+    console.log('saveData() called — events:', payload.events.length, 'tasks:', payload.tasks.length, 'seeded:', payload.seeded);
 
     fetch(API, {
       method: 'POST',
