@@ -267,17 +267,17 @@
     },
     {
       "id": "imported_t14",
-      "title": "Brandschutz-Briefing mit Leon / Kunstwerk-Team (blaue Anlage)",
+      "title": "Brandschutz-Briefing mit Leon / Kunstwerk-Team",
       "category": "koeln",
       "who": [
-        "Joel Baumann",
         "Laura Därr"
       ],
       "dueDate": "vor Aufbau",
-      "status": "Offen",
+      "status": "Erledigt",
       "priority": "Dringend",
       "notes": "Pflicht! Evakuierungsplan, Zustaendigkeiten",
-      "due": "vor Aufbau"
+      "due": "2026-03-09",
+      "linkedEventId": "evt-1775824595282"
     },
     {
       "id": "imported_t15",
