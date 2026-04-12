@@ -1538,12 +1538,15 @@
       "id": "imported_t103",
       "title": "2. Korrekturrunde Layout — alle Beteiligten",
       "category": "pub",
-      "who": [],
+      "who": [
+        "Laura Därr"
+      ],
       "dueDate": "November",
       "status": "Offen",
       "priority": "Normal",
       "notes": "",
-      "due": "November"
+      "due": "2026-09-21",
+      "linkedEventId": "evt-1775824421996"
     },
     {
       "id": "imported_t104",
