@@ -1308,14 +1308,23 @@
     },
     {
       "id": "imported_t82",
-      "title": "Kurzbeschreibung ca. 2.000 Zeichen schreiben",
+      "title": "Kurzbeschreibung ca. 2.000 Zeichen schreiben (pro Fachbereich)",
       "category": "pub",
-      "who": [],
+      "who": [
+        "Jessica Szczuka",
+        "Lisa Mühl",
+        "Joel Baumann",
+        "Veelasha Moonsamy",
+        "Ramya Kandula",
+        "Maxi Nebel",
+        "Christian Geminn"
+      ],
       "dueDate": "April",
       "status": "Offen",
       "priority": "Dringend",
       "notes": "",
-      "due": "April"
+      "due": "2026-07-06",
+      "linkedEventId": "evt-1775824595282"
     },
     {
       "id": "imported_t83",
