@@ -351,10 +351,7 @@ body.light .stat-item { background: rgba(255,255,255,.7); }
 .stage-visual {
   position: relative; border-radius: 18px;
   border: 1px solid var(--border); overflow: hidden;
-  background:
-    radial-gradient(circle at 20% 25%, rgba(229,92,44,.10), transparent 26%),
-    radial-gradient(circle at 78% 18%, rgba(135,102,255,.10), transparent 26%),
-    rgba(255,255,255,.02);
+  background: #000;
 }
 .stage-video {
   position: absolute; inset: 0;
