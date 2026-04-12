@@ -1619,6 +1619,17 @@
         "Laura Därr"
       ],
       "id": "task-1775993101757"
+    },
+    {
+      "title": "Material einsammeln Geeske/Judith",
+      "category": "cpdp",
+      "status": "In Bearbeitung",
+      "due": "2026-04-27",
+      "linkedEventId": "evt-1775848688849",
+      "who": [
+        "Laura Därr"
+      ],
+      "id": "task-1775993124939"
     }
   ],
   "seeded": true
