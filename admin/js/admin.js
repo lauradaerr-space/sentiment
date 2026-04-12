@@ -62,6 +62,24 @@
         } else {
           data = { events: d.events || [], tasks: d.tasks || [] };
         }
+        // merge imported tasks
+        if (typeof IMPORTED_TASKS !== 'undefined') {
+          var tasks = data.tasks;
+          if (!tasks || tasks.length === 0) {
+            data.tasks = IMPORTED_TASKS.map(function (t) {
+              return Object.assign({}, t, { id: 'imported_' + t.id, due: t.dueDate || '' });
+            });
+          } else {
+            var existingTitles = {};
+            tasks.forEach(function (t) { existingTitles[t.title.trim().toLowerCase()] = true; });
+            var newTasks = IMPORTED_TASKS
+              .filter(function (t) { return !existingTitles[t.title.trim().toLowerCase()]; })
+              .map(function (t) {
+                return Object.assign({}, t, { id: 'imported_' + t.id, due: t.dueDate || '' });
+              });
+            data.tasks = tasks.concat(newTasks);
+          }
+        }
         renderAll();
         setSyncStatus('ok');
       })
