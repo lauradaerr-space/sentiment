@@ -232,13 +232,14 @@
       "title": "Raumplan Brussel in Miro teilen",
       "category": "koeln",
       "who": [
-        "Leonie"
+        "Laura Därr"
       ],
       "dueDate": "April",
       "status": "Offen",
       "priority": "Normal",
       "notes": "",
-      "due": "April"
+      "due": "",
+      "linkedEventId": "evt-1775824595282"
     },
     {
       "id": "imported_t5",
