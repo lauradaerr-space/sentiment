@@ -347,14 +347,14 @@
       "title": "Schluessueluebergabe und Zugang klaeren (Keller ab 11., Halle ab 17./18. Mai)",
       "category": "koeln",
       "who": [
-        "Joel Baumann",
         "Laura Därr"
       ],
       "dueDate": "April",
-      "status": "Offen",
+      "status": "In Bearbeitung",
       "priority": "Dringend",
       "notes": "Mit Jens / Leon abstimmen",
-      "due": "April"
+      "due": "2026-04-27",
+      "linkedEventId": "evt-1775824595282"
     },
     {
       "id": "imported_t14",
