@@ -250,6 +250,9 @@
       document.getElementById('tab-' + btn.dataset.tab).classList.add('active');
       // close burger menu on tab select
       if (tabBarEl) tabBarEl.classList.remove('mobile-open');
+      // re-render active tab to pick up latest data
+      if (btn.dataset.tab === 'aufgaben') renderTasks();
+      if (btn.dataset.tab === 'uebersicht') renderOverview();
     });
   });
 
