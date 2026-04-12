@@ -1676,6 +1676,17 @@
         "Laura Därr"
       ],
       "id": "task-1775993270765"
+    },
+    {
+      "title": "Transporter mieten",
+      "category": "cpdp",
+      "status": "In Bearbeitung",
+      "due": "2026-04-27",
+      "linkedEventId": "evt-1775849100666",
+      "who": [
+        "Laura Därr"
+      ],
+      "id": "task-1775993298880"
     }
   ],
   "seeded": true
