@@ -279,12 +279,16 @@
       "id": "imported_t15",
       "title": "Anfrage Werkstaetten KHK: Ausstellungsmodule / Plinthe",
       "category": "koeln",
-      "who": [],
+      "who": [
+        "Joel Baumann",
+        "Laura Därr"
+      ],
       "dueDate": "April",
-      "status": "Offen",
+      "status": "In Bearbeitung",
       "priority": "Dringend",
       "notes": "",
-      "due": "April"
+      "due": "2026-05-25",
+      "linkedEventId": "evt-1775824595282"
     },
     {
       "id": "imported_t16",
