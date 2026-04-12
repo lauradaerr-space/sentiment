@@ -1007,12 +1007,15 @@
       "id": "imported_t72",
       "title": "Aufbau koordinieren: 17./18. Mai",
       "category": "cpdp",
-      "who": [],
+      "who": [
+        "Laura Därr"
+      ],
       "dueDate": "Mai",
-      "status": "Offen",
+      "status": "In Bearbeitung",
       "priority": "Normal",
       "notes": "",
-      "due": "Mai"
+      "due": "2026-04-20",
+      "linkedEventId": "evt-1775849100666"
     },
     {
       "id": "imported_t73",
