@@ -1360,12 +1360,22 @@
       "id": "imported_t92",
       "title": "Impressum, Foerderhinweise, Danksagungen zusammenstellen",
       "category": "pub",
-      "who": [],
+      "who": [
+        "Jessica Szczuka",
+        "Lisa Mühl",
+        "Joel Baumann",
+        "Laura Därr",
+        "Veelasha Moonsamy",
+        "Ramya Kandula",
+        "Maxi Nebel",
+        "Christian Geminn"
+      ],
       "dueDate": "Oktober",
       "status": "Offen",
       "priority": "Normal",
       "notes": "",
-      "due": "Oktober"
+      "due": "2026-08-03",
+      "linkedEventId": "evt-1775824421996"
     },
     {
       "id": "imported_t93",
