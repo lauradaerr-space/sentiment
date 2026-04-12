@@ -488,17 +488,6 @@
       "linkedEventId": "evt-1775824595282"
     },
     {
-      "id": "imported_t23",
-      "title": "Kurationspositionen anfragen (externe Kuratorin?)",
-      "category": "koeln",
-      "who": [],
-      "dueDate": "April",
-      "status": "Offen",
-      "priority": "Normal",
-      "notes": "",
-      "due": "April"
-    },
-    {
       "id": "imported_t24",
       "title": "Tech Rider Koeln erstellen (vollstaendige Technik-Liste)",
       "category": "koeln",
