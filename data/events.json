@@ -693,12 +693,15 @@
       "id": "imported_t37",
       "title": "Finissage — Datum festlegen",
       "category": "koeln",
-      "who": [],
+      "who": [
+        "Laura Därr"
+      ],
       "dueDate": "April",
-      "status": "Offen",
+      "status": "Erledigt",
       "priority": "Dringend",
       "notes": "Datum noch offen",
-      "due": "April"
+      "due": "2026-03-30",
+      "linkedEventId": "evt-1775824479895"
     },
     {
       "id": "imported_t38",
