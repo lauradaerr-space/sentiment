@@ -830,20 +830,6 @@
       "due": ""
     },
     {
-      "id": "imported_t56",
-      "title": "Zoomtermin Culture Club (Geeske, Judith, Laura + Studi)",
-      "category": "cpdp",
-      "who": [
-        "Laura Därr"
-      ],
-      "dueDate": "sofort — April",
-      "status": "Erledigt",
-      "priority": "Dringend",
-      "notes": "",
-      "due": "2026-04-09",
-      "linkedEventId": "evt-1775848688849"
-    },
-    {
       "id": "imported_t57",
       "title": "Inhaltliche Planung Slot ausarbeiten",
       "category": "cpdp",
@@ -1665,19 +1651,6 @@
     {
       "id": "imported_t50",
       "title": "CPDP-Anmeldung Lehrende (Joel, Laura, Elko)",
-      "category": "cpdp",
-      "who": [
-        "Laura Därr"
-      ],
-      "dueDate": "sofort — April",
-      "status": "Offen",
-      "priority": "Dringend",
-      "notes": "",
-      "due": "sofort — April"
-    },
-    {
-      "id": "imported_t56",
-      "title": "Zoomtermin finden (Geeske, Joel, Judith, Laura + Studi)",
       "category": "cpdp",
       "who": [
         "Laura Därr"
