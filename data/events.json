@@ -1610,12 +1610,15 @@
       "id": "imported_t107",
       "title": "Andruckpruefung durchfuehren",
       "category": "pub",
-      "who": [],
+      "who": [
+        "Laura Därr"
+      ],
       "dueDate": "Mitte Nov.",
       "status": "Offen",
       "priority": "Normal",
       "notes": "",
-      "due": "Mitte Nov."
+      "due": "2026-10-26",
+      "linkedEventId": ""
     },
     {
       "id": "imported_t108",
