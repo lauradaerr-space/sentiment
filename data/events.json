@@ -1433,14 +1433,24 @@
     },
     {
       "id": "imported_t96",
-      "title": "Uebersetzungen pruefen / anfertigen (falls zweisprachig)",
+      "title": "Uebersetzungen pruefen / anfertigen ",
       "category": "pub",
-      "who": [],
+      "who": [
+        "Jessica Szczuka",
+        "Lisa Mühl",
+        "Joel Baumann",
+        "Laura Därr",
+        "Veelasha Moonsamy",
+        "Ramya Kandula",
+        "Maxi Nebel",
+        "Christian Geminn"
+      ],
       "dueDate": "Oktober",
       "status": "Offen",
       "priority": "Normal",
       "notes": "",
-      "due": "Oktober"
+      "due": "2026-10-12",
+      "linkedEventId": "evt-1775824421996"
     },
     {
       "id": "imported_t97",
