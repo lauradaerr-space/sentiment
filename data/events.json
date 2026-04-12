@@ -1338,17 +1338,6 @@
       "due": "April"
     },
     {
-      "id": "imported_t85",
-      "title": "ISBN beantragen (falls gewuenscht)",
-      "category": "pub",
-      "who": [],
-      "dueDate": "Mai",
-      "status": "Offen",
-      "priority": "Normal",
-      "notes": "",
-      "due": "Mai"
-    },
-    {
       "id": "imported_t86",
       "title": "Google Drive Ordner anlegen (Texte / Bilder / Grafiken / Rohfassungen / Reinzeichnung / Druckdaten)",
       "category": "pub",
