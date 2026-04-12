@@ -193,17 +193,6 @@
       "linkedEventId": "evt-1775824595282"
     },
     {
-      "id": "imported_t7",
-      "title": "3D-Modell Wintergarten CPDP erstellen",
-      "category": "koeln",
-      "who": [],
-      "dueDate": "Mai",
-      "status": "Offen",
-      "priority": "Normal",
-      "notes": "",
-      "due": "Mai"
-    },
-    {
       "id": "imported_t8",
       "title": "Haenge-/Installationsplan Halle erarbeiten (Positionen aller Werke)",
       "category": "koeln",
