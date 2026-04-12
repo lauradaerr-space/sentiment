@@ -1453,12 +1453,15 @@
       "id": "imported_t114",
       "title": "Pressetermine festlegen und Pressemappe zusammenstellen",
       "category": "pr",
-      "who": [],
+      "who": [
+        "Laura Därr"
+      ],
       "dueDate": "April",
       "status": "Offen",
       "priority": "Normal",
       "notes": "",
-      "due": "April"
+      "due": "2026-06-15",
+      "linkedEventId": "evt-1775824421996"
     },
     {
       "id": "imported_t115",
