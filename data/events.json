@@ -1000,12 +1000,15 @@
       "id": "imported_t69",
       "title": "Kurationstext / Konzept fuer Einreichung schreiben",
       "category": "cpdp",
-      "who": [],
+      "who": [
+        "Laura Därr"
+      ],
       "dueDate": "April",
-      "status": "Offen",
+      "status": "In Bearbeitung",
       "priority": "Normal",
       "notes": "Nur wenn Ueberwachungskamera Teil der Kuration",
-      "due": "April"
+      "due": "2026-04-13",
+      "linkedEventId": ""
     },
     {
       "id": "imported_t70",
