@@ -1330,12 +1330,15 @@
       "id": "imported_t84",
       "title": "Druckerei anfragen und Angebote einholen",
       "category": "pub",
-      "who": [],
+      "who": [
+        "Laura Därr"
+      ],
       "dueDate": "April",
-      "status": "Offen",
+      "status": "In Bearbeitung",
       "priority": "Dringend",
       "notes": "",
-      "due": "April"
+      "due": "2026-06-08",
+      "linkedEventId": "evt-1775824595282"
     },
     {
       "id": "imported_t86",
