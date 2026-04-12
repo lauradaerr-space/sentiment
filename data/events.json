@@ -1484,10 +1484,11 @@
       "category": "pr",
       "who": [],
       "dueDate": "sofort — April",
-      "status": "Offen",
+      "status": "In Bearbeitung",
       "priority": "Normal",
       "notes": "",
-      "due": "sofort — April"
+      "due": "2025-12-08",
+      "linkedEventId": "evt-1775824595282"
     },
     {
       "id": "imported_t117",
