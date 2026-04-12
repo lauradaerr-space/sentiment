@@ -2087,17 +2087,6 @@
       "due": "Post"
     },
     {
-      "id": "imported_t122",
-      "title": "vor Finissage",
-      "category": "pr",
-      "who": [],
-      "dueDate": "Post",
-      "status": "Offen",
-      "priority": "Normal",
-      "notes": "",
-      "due": "Post"
-    },
-    {
       "id": "imported_t65",
       "title": "Raumplan Jan van Damme (Wintergarten) anfragen",
       "category": "cpdp",
