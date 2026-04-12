@@ -768,14 +768,17 @@
     },
     {
       "id": "imported_t41",
-      "title": "3. Event — Konzept, Einladung, Planung",
+      "title": "3. Event — Einladung",
       "category": "koeln",
-      "who": [],
+      "who": [
+        "Laura Därr"
+      ],
       "dueDate": "Mai",
       "status": "Offen",
       "priority": "Normal",
       "notes": "",
-      "due": "Mai"
+      "due": "2026-07-13",
+      "linkedEventId": "evt-1775824595282"
     },
     {
       "id": "imported_t42",
