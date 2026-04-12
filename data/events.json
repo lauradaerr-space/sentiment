@@ -549,12 +549,15 @@
       "id": "imported_t28",
       "title": "Lautsprecher / Audio-Equipment — Bedarf klaeren",
       "category": "koeln",
-      "who": [],
+      "who": [
+        "Laura Därr"
+      ],
       "dueDate": "Mai",
-      "status": "Offen",
+      "status": "In Bearbeitung",
       "priority": "Normal",
       "notes": "",
-      "due": "Mai"
+      "due": "2026-06-01",
+      "linkedEventId": "evt-1775824595282"
     },
     {
       "id": "imported_t29",
