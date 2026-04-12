@@ -489,14 +489,24 @@
     },
     {
       "id": "imported_t33",
-      "title": "Vernissage: Einladungsliste erstellen",
+      "title": "Vernissage: Einladungslisten erstellen",
       "category": "koeln",
-      "who": [],
+      "who": [
+        "Jessica Szczuka",
+        "Lisa Mühl",
+        "Joel Baumann",
+        "Laura Därr",
+        "Veelasha Moonsamy",
+        "Ramya Kandula",
+        "Maxi Nebel",
+        "Christian Geminn"
+      ],
       "dueDate": "Oktober",
       "status": "Offen",
       "priority": "Normal",
       "notes": "",
-      "due": "Oktober"
+      "due": "2026-04-16",
+      "linkedEventId": "evt-1775824421996"
     },
     {
       "id": "imported_t34",
