@@ -784,12 +784,16 @@
       "id": "imported_t43",
       "title": "Unterbringung Kuenstler:innen Koeln",
       "category": "koeln",
-      "who": [],
+      "who": [
+        "Joel Baumann",
+        "Laura Därr"
+      ],
       "dueDate": "Oktober",
       "status": "Offen",
       "priority": "Normal",
       "notes": "",
-      "due": "Oktober"
+      "due": "2026-05-18",
+      "linkedEventId": "evt-1775824421996"
     },
     {
       "id": "imported_t44",
