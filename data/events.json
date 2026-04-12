@@ -218,13 +218,14 @@
       "title": "Raumplan digitalisieren und in Miro uebertragen",
       "category": "koeln",
       "who": [
-        "Leonie"
+        "Laura Därr"
       ],
       "dueDate": "April",
       "status": "Offen",
       "priority": "Dringend",
       "notes": "",
-      "due": "April"
+      "due": "2026-04-27",
+      "linkedEventId": "evt-1775824595282"
     },
     {
       "id": "imported_t3",
