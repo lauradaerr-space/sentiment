@@ -1364,14 +1364,17 @@
     },
     {
       "id": "imported_t88",
-      "title": "Beitraege Peers einsammeln (Geeske, Judith, Joel, Elko u.a.)",
+      "title": "Beitraege Peers einsammeln ",
       "category": "pub",
-      "who": [],
+      "who": [
+        "Laura Därr"
+      ],
       "dueDate": "September",
       "status": "Offen",
       "priority": "Normal",
       "notes": "",
-      "due": "September"
+      "due": "2026-07-13",
+      "linkedEventId": "evt-1775824595282"
     },
     {
       "id": "imported_t89",
