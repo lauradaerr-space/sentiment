@@ -1092,12 +1092,16 @@
       "id": "imported_t78",
       "title": "Radiobeitrag finalisieren und veroeffentlichen",
       "category": "cpdp",
-      "who": [],
+      "who": [
+        "Joel Baumann",
+        "Laura Därr"
+      ],
       "dueDate": "vor CPDP",
       "status": "Offen",
       "priority": "Normal",
       "notes": "",
-      "due": "vor CPDP"
+      "due": "2026-05-25",
+      "linkedEventId": "evt-1775849166451"
     },
     {
       "id": "imported_t79",
