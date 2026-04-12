@@ -380,18 +380,24 @@
 
       card.appendChild(grid);
 
-      // count overdue per month
-      var overdueCount = data.tasks.filter(function (t) {
-        if (t.status === 'Erledigt' || !t.due) return false;
+      // count open/done/overdue per month
+      var monthTasks = data.tasks.filter(function (t) {
+        if (!t.due) return false;
         var dp = t.due.split('-');
-        return parseInt(dp[0]) === spec.year && parseInt(dp[1]) - 1 === spec.month && t.due < fmt(new Date());
+        return dp.length === 3 && parseInt(dp[0]) === spec.year && parseInt(dp[1]) - 1 === spec.month;
+      });
+      var openCount = monthTasks.filter(function (t) { return t.status !== 'Erledigt'; }).length;
+      var doneCount = monthTasks.filter(function (t) { return t.status === 'Erledigt'; }).length;
+      var overdueCount = monthTasks.filter(function (t) {
+        return t.status !== 'Erledigt' && t.due < fmt(new Date());
       }).length;
 
       var count = document.createElement('div');
       count.className = 'ov-month-count';
       var parts = [];
       if (eventCount) parts.push(eventCount + ' Event' + (eventCount !== 1 ? 's' : ''));
-      if (taskCount) parts.push(taskCount + ' Aufgabe' + (taskCount !== 1 ? 'n' : ''));
+      if (openCount) parts.push('<span style="color:var(--cat-other)">' + openCount + ' offen</span>');
+      if (doneCount) parts.push('<span style="color:var(--muted2)">' + doneCount + ' erledigt</span>');
       if (overdueCount) parts.push('<span style="color:var(--red)">' + overdueCount + ' überfällig</span>');
       count.innerHTML = parts.length ? parts.join(' · ') : 'Keine Einträge';
       card.appendChild(count);
@@ -746,6 +752,31 @@
     return (who || '') === taskFilterPerson;
   }
 
+  function renderTaskGroup(tasks, container) {
+    var linked = {};
+    var unlinked = [];
+    tasks.forEach(function (t) {
+      if (t.linkedEventId) {
+        if (!linked[t.linkedEventId]) linked[t.linkedEventId] = [];
+        linked[t.linkedEventId].push(t);
+      } else {
+        unlinked.push(t);
+      }
+    });
+    Object.keys(linked).forEach(function (evId) {
+      var ev = data.events.find(function (e) { return e.id === evId; });
+      var group = document.createElement('div');
+      group.className = 'task-event-group';
+      var groupLabel = document.createElement('div');
+      groupLabel.className = 'task-event-label';
+      groupLabel.textContent = getEventTitle(ev);
+      group.appendChild(groupLabel);
+      linked[evId].forEach(function (task) { group.appendChild(createTaskItem(task)); });
+      container.appendChild(group);
+    });
+    unlinked.forEach(function (task) { container.appendChild(createTaskItem(task)); });
+  }
+
   function renderTasks() {
     var container = document.getElementById('tasks-list');
     container.innerHTML = '';
@@ -805,46 +836,36 @@
       header.appendChild(document.createTextNode(cat.label + ' (' + catTasks.length + ')'));
       section.appendChild(header);
 
+      var openTasks = catTasks.filter(function (t) { return t.status !== 'Erledigt'; });
+      var doneTasks = catTasks.filter(function (t) { return t.status === 'Erledigt'; });
+
       if (catTasks.length === 0) {
         var empty = document.createElement('div');
         empty.className = 'no-tasks';
         empty.textContent = 'Keine Aufgaben';
         section.appendChild(empty);
       } else {
-        // Group tasks: linked to events vs unlinked
-        var linked = {};
-        var unlinked = [];
+        // Render open tasks (grouped by event link)
+        renderTaskGroup(openTasks, section);
 
-        catTasks.forEach(function (t) {
-          if (t.linkedEventId) {
-            if (!linked[t.linkedEventId]) linked[t.linkedEventId] = [];
-            linked[t.linkedEventId].push(t);
-          } else {
-            unlinked.push(t);
-          }
-        });
+        // Completed divider + collapsible section
+        if (doneTasks.length > 0) {
+          var divider = document.createElement('div');
+          divider.className = 'completed-divider';
+          divider.textContent = doneTasks.length + ' erledigte Aufgabe' + (doneTasks.length !== 1 ? 'n' : '');
+          section.appendChild(divider);
 
-        // Render linked groups
-        Object.keys(linked).forEach(function (evId) {
-          var ev = data.events.find(function (e) { return e.id === evId; });
-          var group = document.createElement('div');
-          group.className = 'task-event-group';
+          var doneSection = document.createElement('div');
+          doneSection.className = 'completed-section';
+          renderTaskGroup(doneTasks, doneSection);
+          section.appendChild(doneSection);
 
-          var groupLabel = document.createElement('div');
-          groupLabel.className = 'task-event-label';
-          groupLabel.textContent = getEventTitle(ev);
-          group.appendChild(groupLabel);
-
-          linked[evId].forEach(function (task) {
-            group.appendChild(createTaskItem(task));
+          divider.addEventListener('click', function () {
+            var isOpen = doneSection.classList.toggle('open');
+            divider.textContent = doneTasks.length + ' erledigte Aufgabe' + (doneTasks.length !== 1 ? 'n' : '') + (isOpen ? ' ▴' : ' ▾');
           });
-          section.appendChild(group);
-        });
-
-        // Render unlinked tasks
-        unlinked.forEach(function (task) {
-          section.appendChild(createTaskItem(task));
-        });
+          divider.textContent += ' ▾';
+        }
       }
 
       container.appendChild(section);

@@ -615,6 +615,23 @@ button, input, select, textarea { font: inherit; }
   vertical-align: middle;
 }
 
+/* completed tasks divider */
+.completed-divider {
+  display: flex; align-items: center; gap: 10px;
+  padding: 10px 0; cursor: pointer;
+  color: var(--muted2); font-family: var(--mono);
+  font-size: 10px; letter-spacing: .1em;
+  text-transform: uppercase; user-select: none;
+  margin-top: 8px;
+}
+.completed-divider::before,
+.completed-divider::after {
+  content: ''; flex: 1; height: 1px; background: var(--border);
+}
+.completed-divider:hover { color: var(--muted); }
+.completed-section { display: none; }
+.completed-section.open { display: block; }
+
 .no-tasks {
   padding: 40px; text-align: center;
   font-family: var(--mono); font-size: 11px;
