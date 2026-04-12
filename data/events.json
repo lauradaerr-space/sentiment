@@ -520,12 +520,16 @@
       "id": "imported_t26",
       "title": "Technik ausleihen: Buchung bestaetigen",
       "category": "koeln",
-      "who": [],
+      "who": [
+        "Joel Baumann",
+        "Laura Därr"
+      ],
       "dueDate": "Mai",
       "status": "Offen",
       "priority": "Normal",
       "notes": "",
-      "due": "Mai"
+      "due": "2026-12-01",
+      "linkedEventId": "evt-1775824595282"
     },
     {
       "id": "imported_t27",
