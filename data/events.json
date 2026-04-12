@@ -975,12 +975,15 @@
       "id": "imported_t67",
       "title": "3D-Modell Wintergarten erstellen",
       "category": "cpdp",
-      "who": [],
+      "who": [
+        "Laura Därr"
+      ],
       "dueDate": "April/Mai",
-      "status": "Offen",
+      "status": "Erledigt",
       "priority": "Normal",
       "notes": "",
-      "due": "April/Mai"
+      "due": "2026-04-06",
+      "linkedEventId": "evt-1775849100666"
     },
     {
       "id": "imported_t68",
