@@ -1608,6 +1608,17 @@
       "notes": "",
       "due": "2026-12-01",
       "linkedEventId": "evt-1775824595282"
+    },
+    {
+      "title": "Material an Ferre",
+      "category": "cpdp",
+      "status": "In Bearbeitung",
+      "due": "",
+      "linkedEventId": "evt-1775848688849",
+      "who": [
+        "Laura Därr"
+      ],
+      "id": "task-1775993101757"
     }
   ],
   "seeded": true
