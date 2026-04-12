@@ -287,12 +287,16 @@
       "id": "imported_t9",
       "title": "Haenge-/Installationsplan Keller erarbeiten",
       "category": "koeln",
-      "who": [],
+      "who": [
+        "Joel Baumann",
+        "Laura Därr"
+      ],
       "dueDate": "Mai",
       "status": "Offen",
       "priority": "Dringend",
       "notes": "",
-      "due": "Mai"
+      "due": "2026-07-13",
+      "linkedEventId": "evt-1775824421996"
     },
     {
       "id": "imported_t10",
