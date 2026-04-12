@@ -977,12 +977,16 @@
       "id": "imported_t70",
       "title": "Haenge-/Installationsplan Wintergarten",
       "category": "cpdp",
-      "who": [],
+      "who": [
+        "Joel Baumann",
+        "Laura Därr"
+      ],
       "dueDate": "April",
-      "status": "Offen",
+      "status": "In Bearbeitung",
       "priority": "Normal",
       "notes": "",
-      "due": "April"
+      "due": "2026-04-20",
+      "linkedEventId": "evt-1775849100666"
     },
     {
       "id": "imported_t71",
