@@ -798,12 +798,16 @@
       "id": "imported_t57",
       "title": "Inhaltliche Planung Slot ausarbeiten",
       "category": "cpdp",
-      "who": [],
+      "who": [
+        "Joel Baumann",
+        "Laura Därr"
+      ],
       "dueDate": "April",
-      "status": "Offen",
+      "status": "In Bearbeitung",
       "priority": "Normal",
       "notes": "",
-      "due": "April"
+      "due": "2026-04-20",
+      "linkedEventId": "evt-1775848688849"
     },
     {
       "id": "imported_t58",
