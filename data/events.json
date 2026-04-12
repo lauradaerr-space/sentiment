@@ -781,17 +781,6 @@
       "linkedEventId": "evt-1775824595282"
     },
     {
-      "id": "imported_t42",
-      "title": "Keller-Programm planen: Talks, Panels, Sit-ins",
-      "category": "koeln",
-      "who": [],
-      "dueDate": "Mai",
-      "status": "Offen",
-      "priority": "Normal",
-      "notes": "Keller ab 11. Mai nutzbar",
-      "due": "Mai"
-    },
-    {
       "id": "imported_t43",
       "title": "Unterbringung Kuenstler:innen Koeln",
       "category": "koeln",
