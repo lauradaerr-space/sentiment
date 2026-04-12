@@ -1598,12 +1598,15 @@
       "id": "imported_t110",
       "title": "Publikation auf Website veroeffentlichen und verlinken",
       "category": "pub",
-      "who": [],
+      "who": [
+        "Laura Därr"
+      ],
       "dueDate": "11. Dez.",
       "status": "Offen",
       "priority": "Normal",
       "notes": "",
-      "due": "11. Dez."
+      "due": "2026-12-01",
+      "linkedEventId": "evt-1775824595282"
     },
     {
       "id": "imported_t111",
