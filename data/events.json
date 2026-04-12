@@ -571,12 +571,16 @@
       "id": "imported_t30",
       "title": "Transporter mieten Koeln (Aufbautage November / Dezember)",
       "category": "koeln",
-      "who": [],
+      "who": [
+        "Joel Baumann",
+        "Laura Därr"
+      ],
       "dueDate": "Oktober",
       "status": "Offen",
       "priority": "Normal",
       "notes": "",
-      "due": "Oktober"
+      "due": "2026-06-01",
+      "linkedEventId": "evt-1775824595282"
     },
     {
       "id": "imported_t31",
