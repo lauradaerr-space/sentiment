@@ -705,10 +705,11 @@
         "Laura Därr"
       ],
       "dueDate": "sofort — April",
-      "status": "Offen",
+      "status": "In Bearbeitung",
       "priority": "Dringend",
       "notes": "",
-      "due": "sofort — April"
+      "due": "2026-04-13",
+      "linkedEventId": "evt-1775849100666"
     },
     {
       "id": "imported_t51",
