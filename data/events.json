@@ -1599,12 +1599,15 @@
       "id": "imported_t106",
       "title": "Druckdaten an Druckerei uebermitteln und Freigabe erteilen",
       "category": "pub",
-      "who": [],
+      "who": [
+        "Laura Därr"
+      ],
       "dueDate": "Anfang Nov.",
       "status": "Offen",
       "priority": "Dringend",
       "notes": "",
-      "due": "Anfang Nov."
+      "due": "2026-09-07",
+      "linkedEventId": ""
     },
     {
       "id": "imported_t107",
