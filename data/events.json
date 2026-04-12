@@ -1207,12 +1207,15 @@
       "id": "imported_t80",
       "title": "Inhaltsstruktur / Kapitelgliederung entwickeln",
       "category": "pub",
-      "who": [],
+      "who": [
+        "Laura Därr"
+      ],
       "dueDate": "April",
       "status": "Offen",
       "priority": "Dringend",
       "notes": "",
-      "due": "April"
+      "due": "2026-07-13",
+      "linkedEventId": "evt-1775824421996"
     },
     {
       "id": "imported_t81",
