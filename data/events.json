@@ -240,12 +240,15 @@
       "id": "imported_t12",
       "title": "Aufbauplanung Koeln: Zeitplan fuer Aufbautage erstellen",
       "category": "koeln",
-      "who": [],
+      "who": [
+        "Laura Därr"
+      ],
       "dueDate": "Oktober",
       "status": "Offen",
       "priority": "Normal",
       "notes": "Reihenfolge und Zeitbedarf pro Werk planen",
-      "due": "Oktober"
+      "due": "2026-07-20",
+      "linkedEventId": "evt-1775824595282"
     },
     {
       "id": "imported_t13",
