@@ -1654,6 +1654,17 @@
         "Laura Därr"
       ],
       "id": "task-1775993213042"
+    },
+    {
+      "title": "WebUI Fragen/Kommentar für Panel",
+      "category": "cpdp",
+      "status": "In Bearbeitung",
+      "due": "",
+      "linkedEventId": "evt-1775848688849",
+      "who": [
+        "Laura Därr"
+      ],
+      "id": "task-1775993238999"
     }
   ],
   "seeded": true
