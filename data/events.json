@@ -1510,12 +1510,22 @@
       "id": "imported_t118",
       "title": "Entscheidung: eigene Website-Seite oder Unterseite Projektseite?",
       "category": "pr",
-      "who": [],
+      "who": [
+        "Jessica Szczuka",
+        "Lisa Mühl",
+        "Joel Baumann",
+        "Laura Därr",
+        "Veelasha Moonsamy",
+        "Ramya Kandula",
+        "Maxi Nebel",
+        "Christian Geminn"
+      ],
       "dueDate": "sofort — April",
-      "status": "Offen",
+      "status": "Erledigt",
       "priority": "Normal",
       "notes": "",
-      "due": "sofort — April"
+      "due": "2026-02-02",
+      "linkedEventId": "evt-1775824595282"
     },
     {
       "id": "imported_t119",
