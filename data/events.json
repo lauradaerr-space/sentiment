@@ -165,19 +165,6 @@
       "linkedEventId": "evt-1775824595282"
     },
     {
-      "id": "imported_t4",
-      "title": "Raumplan Brussel in Miro teilen",
-      "category": "koeln",
-      "who": [
-        "Leonie"
-      ],
-      "dueDate": "April",
-      "status": "Offen",
-      "priority": "Normal",
-      "notes": "",
-      "due": "April"
-    },
-    {
       "id": "imported_t5",
       "title": "3D-Modell Halle erstellen (Koeln)",
       "category": "koeln",
