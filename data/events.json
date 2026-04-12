@@ -1342,14 +1342,15 @@
       "title": "Kuratorischen Text schreiben",
       "category": "pub",
       "who": [
-        "Laura Därr",
-        "Joel Baumann"
+        "Joel Baumann",
+        "Laura Därr"
       ],
       "dueDate": "September",
       "status": "Offen",
       "priority": "Normal",
       "notes": "",
-      "due": "September"
+      "due": "2026-08-03",
+      "linkedEventId": "evt-1775824595282"
     },
     {
       "id": "imported_t92",
