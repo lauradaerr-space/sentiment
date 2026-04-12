@@ -1395,14 +1395,18 @@
     },
     {
       "id": "imported_t90",
-      "title": "Ausstellungsfotos (professionell) beauftragen",
+      "title": "Ausstellungsfotos beauftragen ",
       "category": "pub",
-      "who": [],
+      "who": [
+        "Joel Baumann",
+        "Laura Därr"
+      ],
       "dueDate": "Mai + Dez.",
       "status": "Offen",
       "priority": "Normal",
       "notes": "",
-      "due": "Mai + Dez."
+      "due": "2026-06-29",
+      "linkedEventId": "evt-1775824421996"
     },
     {
       "id": "imported_t91",
