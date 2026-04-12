@@ -13,6 +13,9 @@
   var taskFilterCat = 'all';
   var taskFilterPerson = 'all';
   var taskFilterEvent = 'all';
+  var lastTaskChange = null;
+  var undoTimer = null;
+  var completedSectionOpen = false;
 
   /* ────── AUTH ────── */
   function checkAuth() {
@@ -850,21 +853,22 @@
 
         // Completed divider + collapsible section
         if (doneTasks.length > 0) {
+          var doneLabel = doneTasks.length + ' erledigte Aufgabe' + (doneTasks.length !== 1 ? 'n' : '');
           var divider = document.createElement('div');
           divider.className = 'completed-divider';
-          divider.textContent = doneTasks.length + ' erledigte Aufgabe' + (doneTasks.length !== 1 ? 'n' : '');
+          divider.textContent = doneLabel + (completedSectionOpen ? ' ▴' : ' ▾');
           section.appendChild(divider);
 
           var doneSection = document.createElement('div');
-          doneSection.className = 'completed-section';
+          doneSection.className = 'completed-section' + (completedSectionOpen ? ' open' : '');
           renderTaskGroup(doneTasks, doneSection);
           section.appendChild(doneSection);
 
           divider.addEventListener('click', function () {
-            var isOpen = doneSection.classList.toggle('open');
-            divider.textContent = doneTasks.length + ' erledigte Aufgabe' + (doneTasks.length !== 1 ? 'n' : '') + (isOpen ? ' ▴' : ' ▾');
+            completedSectionOpen = !completedSectionOpen;
+            doneSection.classList.toggle('open', completedSectionOpen);
+            divider.textContent = doneLabel + (completedSectionOpen ? ' ▴' : ' ▾');
           });
-          divider.textContent += ' ▾';
         }
       }
 
@@ -952,11 +956,39 @@
   function toggleTaskStatus(id) {
     var task = data.tasks.find(function (t) { return t.id === id; });
     if (!task) return;
+    var prevStatus = task.status;
     var order = ['Offen', 'In Bearbeitung', 'Erledigt'];
     task.status = order[(order.indexOf(task.status) + 1) % order.length];
+
+    // store for undo
+    lastTaskChange = { taskId: task.id, previousStatus: prevStatus };
+    var undoBtn = document.getElementById('undoBtn');
+    if (undoBtn) {
+      undoBtn.style.display = 'inline-flex';
+      clearTimeout(undoTimer);
+      undoTimer = setTimeout(function () {
+        undoBtn.style.display = 'none';
+        lastTaskChange = null;
+      }, 8000);
+    }
+
     saveData();
     renderTasks();
   }
+
+  // undo handler
+  document.getElementById('undoBtn').addEventListener('click', function () {
+    if (!lastTaskChange) return;
+    var task = data.tasks.find(function (t) { return t.id === lastTaskChange.taskId; });
+    if (task) {
+      task.status = lastTaskChange.previousStatus;
+      lastTaskChange = null;
+      clearTimeout(undoTimer);
+      document.getElementById('undoBtn').style.display = 'none';
+      saveData();
+      renderTasks();
+    }
+  });
 
   /* ────── TASK MODAL ────── */
   var taskModal = document.getElementById('task-modal');

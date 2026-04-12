@@ -477,6 +477,14 @@ button, input, select, textarea { font: inherit; }
   display: flex; align-items: center; justify-content: space-between;
   margin-bottom: 12px;
 }
+.tasks-toolbar-right { display: flex; align-items: center; gap: 8px; }
+.undo-btn {
+  font-size: 11px; padding: 4px 12px; border-radius: 20px;
+  border: 1px solid var(--border); background: var(--panel);
+  color: var(--muted); cursor: pointer; font-family: var(--mono);
+  transition: all .14s;
+}
+.undo-btn:hover { background: var(--panel-strong); color: var(--text); }
 .tasks-title {
   font-family: var(--serif); font-size: 22px;
   font-weight: 300; font-style: italic;
