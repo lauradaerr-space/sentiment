@@ -813,12 +813,17 @@
       "id": "imported_t58",
       "title": "Praesentation und Materialien vorbereiten",
       "category": "cpdp",
-      "who": [],
+      "who": [
+        "Jessica Szczuka",
+        "Lisa Mühl",
+        "Christian Geminn"
+      ],
       "dueDate": "Mai",
       "status": "Offen",
       "priority": "Normal",
       "notes": "",
-      "due": "Mai"
+      "due": "2026-04-14",
+      "linkedEventId": "evt-1775849046566"
     },
     {
       "id": "imported_t59",
