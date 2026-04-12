@@ -951,12 +951,17 @@
       "id": "imported_t64",
       "title": "Praesentation finalisieren",
       "category": "cpdp",
-      "who": [],
+      "who": [
+        "Jessica Szczuka",
+        "Lisa Mühl",
+        "Laura Därr"
+      ],
       "dueDate": "Anfang Mai",
       "status": "Offen",
       "priority": "Normal",
       "notes": "",
-      "due": "Anfang Mai"
+      "due": "2026-04-20",
+      "linkedEventId": "evt-1775849046566"
     },
     {
       "id": "imported_t66",
