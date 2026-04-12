@@ -748,20 +748,6 @@
       "linkedEventId": "evt-1775849100666"
     },
     {
-      "id": "imported_t50",
-      "title": "CPDP-Anmeldung Lehrende/Künstler:innen/Studenten/Micromata",
-      "category": "cpdp",
-      "who": [
-        "Laura Därr"
-      ],
-      "dueDate": "sofort — April",
-      "status": "In Bearbeitung",
-      "priority": "Dringend",
-      "notes": "",
-      "due": "2026-04-13",
-      "linkedEventId": "evt-1775849100666"
-    },
-    {
       "id": "imported_t51",
       "title": "Kosten Panel CPDP bezahlen",
       "category": "cpdp",
@@ -1647,19 +1633,6 @@
       "priority": "Normal",
       "notes": "",
       "due": "Mai"
-    },
-    {
-      "id": "imported_t50",
-      "title": "CPDP-Anmeldung Lehrende (Joel, Laura, Elko)",
-      "category": "cpdp",
-      "who": [
-        "Laura Därr"
-      ],
-      "dueDate": "sofort — April",
-      "status": "Offen",
-      "priority": "Dringend",
-      "notes": "",
-      "due": "sofort — April"
     }
   ]
 }
