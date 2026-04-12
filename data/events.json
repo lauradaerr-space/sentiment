@@ -691,10 +691,11 @@
         "Laura Därr"
       ],
       "dueDate": "sofort — April",
-      "status": "Offen",
+      "status": "Erledigt",
       "priority": "Dringend",
       "notes": "Wie bekommen Studis ihren Pass?",
-      "due": "sofort — April"
+      "due": "2026-02-24",
+      "linkedEventId": "evt-1775849100666"
     },
     {
       "id": "imported_t50",
