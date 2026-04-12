@@ -168,12 +168,15 @@
       "id": "imported_t5",
       "title": "3D-Modell Halle erstellen (Koeln)",
       "category": "koeln",
-      "who": [],
+      "who": [
+        "Laura Därr"
+      ],
       "dueDate": "Mai",
-      "status": "Offen",
+      "status": "In Bearbeitung",
       "priority": "Normal",
       "notes": "Tool klaeren: SketchUp / Blender / Matterport — wer macht das?",
-      "due": "Mai"
+      "due": "2026-06-01",
+      "linkedEventId": "evt-1775824595282"
     },
     {
       "id": "imported_t6",
