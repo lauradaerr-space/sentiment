@@ -964,14 +964,17 @@
     },
     {
       "id": "imported_t69",
-      "title": "Kurationstext / Konzept fuer Einreichung schreiben",
+      "title": "Kurationstext / Konzept Köln",
       "category": "cpdp",
-      "who": [],
+      "who": [
+        "Laura Därr"
+      ],
       "dueDate": "April",
-      "status": "Offen",
+      "status": "Erledigt",
       "priority": "Normal",
       "notes": "Nur wenn Ueberwachungskamera Teil der Kuration",
-      "due": "April"
+      "due": "2026-03-30",
+      "linkedEventId": "evt-1775824595282"
     },
     {
       "id": "imported_t70",
