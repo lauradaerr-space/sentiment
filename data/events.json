@@ -295,13 +295,15 @@
       "title": "Kurationskonzept ausarbeiten (Centerpiece als Ausgangspunkt)",
       "category": "koeln",
       "who": [
+        "Joel Baumann",
         "Laura Därr"
       ],
       "dueDate": "April",
-      "status": "Offen",
+      "status": "In Bearbeitung",
       "priority": "Dringend",
       "notes": "Konzept Centerpiece als Ausgangspunkt — Seminar-Ergebnis vorhanden",
-      "due": "April"
+      "due": "",
+      "linkedEventId": "evt-1775824595282"
     },
     {
       "id": "imported_t17",
