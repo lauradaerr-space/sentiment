@@ -52,42 +52,56 @@
   function setSyncStatus(s) {
     var dot = document.getElementById('sync-dot');
     dot.className = 'sync-indicator' + (s === 'error' ? ' error' : s === 'saving' ? ' saving' : '');
-    dot.title = s === 'error' ? 'Fehler beim Speichern' : s === 'saving' ? 'Speichert...' : 'Gespeichert';
+    if (s === 'ok') {
+      var now = new Date();
+      var ts = String(now.getHours()).padStart(2, '0') + ':' + String(now.getMinutes()).padStart(2, '0');
+      dot.title = 'Gespeichert ' + ts;
+    } else if (s === 'saving') {
+      dot.title = 'Speichert...';
+    } else {
+      dot.title = 'Fehler beim Speichern';
+    }
   }
 
   function loadData() {
     fetch(API)
       .then(function (r) { return r.json(); })
       .then(function (d) {
-        if (Array.isArray(d)) {
-          data = (d.length && d[0].title !== undefined && !d[0].due)
-            ? { events: d, tasks: [] }
-            : { events: [], tasks: [] };
-        } else {
-          data = { events: d.events || [], tasks: d.tasks || [] };
-        }
+        data = {
+          events: (d && d.events) || [],
+          tasks: (d && d.tasks) || []
+        };
         // merge imported tasks
+        var needsSeed = false;
         if (typeof IMPORTED_TASKS !== 'undefined') {
-          var tasks = data.tasks;
-          if (!tasks || tasks.length === 0) {
+          if (!data.tasks || data.tasks.length === 0) {
             data.tasks = IMPORTED_TASKS.map(function (t) {
               return Object.assign({}, t, { id: 'imported_' + t.id, due: t.dueDate || '' });
             });
+            needsSeed = true;
           } else {
             var existingTitles = {};
-            tasks.forEach(function (t) { existingTitles[t.title.trim().toLowerCase()] = true; });
+            data.tasks.forEach(function (t) { existingTitles[t.title.trim().toLowerCase()] = true; });
             var newTasks = IMPORTED_TASKS
               .filter(function (t) { return !existingTitles[t.title.trim().toLowerCase()]; })
               .map(function (t) {
                 return Object.assign({}, t, { id: 'imported_' + t.id, due: t.dueDate || '' });
               });
-            data.tasks = tasks.concat(newTasks);
+            if (newTasks.length > 0) {
+              data.tasks = data.tasks.concat(newTasks);
+              needsSeed = true;
+            }
           }
         }
         renderAll();
         setSyncStatus('ok');
+        // persist seeded tasks to GitHub
+        if (needsSeed) saveData();
       })
-      .catch(function () { setSyncStatus('error'); });
+      .catch(function (err) {
+        console.error('loadData error:', err);
+        setSyncStatus('error');
+      });
   }
 
   function saveData() {
@@ -95,10 +109,20 @@
     fetch(API, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ events: data })
+      body: JSON.stringify({ events: data.events, tasks: data.tasks })
     })
-      .then(function (r) { setSyncStatus(r.ok ? 'ok' : 'error'); })
-      .catch(function () { setSyncStatus('error'); });
+      .then(function (r) {
+        if (r.ok) {
+          setSyncStatus('ok');
+        } else {
+          r.json().then(function (d) { console.error('saveData API error:', d); });
+          setSyncStatus('error');
+        }
+      })
+      .catch(function (err) {
+        console.error('saveData error:', err);
+        setSyncStatus('error');
+      });
   }
 
   var registrations = [];

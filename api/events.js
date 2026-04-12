@@ -22,7 +22,10 @@ function githubRequest(method, path, body) {
     }, res => {
       let raw = '';
       res.on('data', c => raw += c);
-      res.on('end', () => resolve({ status: res.statusCode, body: JSON.parse(raw) }));
+      res.on('end', () => {
+        try { resolve({ status: res.statusCode, body: JSON.parse(raw) }); }
+        catch (e) { reject(e); }
+      });
     });
     req.on('error', reject);
     if (data) req.write(data);
@@ -37,29 +40,54 @@ module.exports = async (req, res) => {
 
   if (req.method === 'OPTIONS') return res.status(200).end();
 
-  // GET — alle Events lesen
+  // GET — read events + tasks
   if (req.method === 'GET') {
-    const r = await githubRequest('GET', PATH);
-    const events = JSON.parse(Buffer.from(r.body.content, 'base64').toString());
-    return res.status(200).json(events);
+    try {
+      const r = await githubRequest('GET', PATH);
+      const raw = JSON.parse(Buffer.from(r.body.content, 'base64').toString());
+      // Support both old format (plain array) and new format ({events, tasks})
+      if (Array.isArray(raw)) {
+        return res.status(200).json({ events: raw, tasks: [] });
+      }
+      return res.status(200).json({
+        events: raw.events || [],
+        tasks: raw.tasks || []
+      });
+    } catch (e) {
+      return res.status(500).json({ error: 'Failed to load data' });
+    }
   }
 
-  // POST — Events speichern
+  // POST — save events + tasks
   if (req.method === 'POST') {
-    const { events } = req.body;
+    try {
+      const body = req.body || {};
+      // Accept both { events: {events,tasks} } (legacy) and { events, tasks } (new)
+      let events, tasks;
+      if (body.events && body.events.events) {
+        // legacy format: { events: { events: [...], tasks: [...] } }
+        events = body.events.events || [];
+        tasks = body.events.tasks || [];
+      } else {
+        events = body.events || [];
+        tasks = body.tasks || [];
+      }
 
-    // aktuelle SHA holen
-    const current = await githubRequest('GET', PATH);
-    const sha = current.body.sha;
+      const current = await githubRequest('GET', PATH);
+      const sha = current.body.sha;
 
-    const content = Buffer.from(JSON.stringify(events, null, 2)).toString('base64');
-    await githubRequest('PUT', PATH, {
-      message: 'update: events via admin',
-      content,
-      sha
-    });
+      const payload = { events: events, tasks: tasks };
+      const content = Buffer.from(JSON.stringify(payload, null, 2)).toString('base64');
+      await githubRequest('PUT', PATH, {
+        message: 'update: events and tasks via admin',
+        content,
+        sha
+      });
 
-    return res.status(200).json({ ok: true });
+      return res.status(200).json({ ok: true });
+    } catch (e) {
+      return res.status(500).json({ error: 'Failed to save data', detail: String(e) });
+    }
   }
 
   res.status(405).json({ error: 'Method not allowed' });
