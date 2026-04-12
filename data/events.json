@@ -1221,12 +1221,22 @@
       "id": "imported_t81",
       "title": "Forschungsgebiete und Kernthesen definieren (was kommt rein?)",
       "category": "pub",
-      "who": [],
+      "who": [
+        "Jessica Szczuka",
+        "Lisa Mühl",
+        "Joel Baumann",
+        "Laura Därr",
+        "Veelasha Moonsamy",
+        "Ramya Kandula",
+        "Maxi Nebel",
+        "Christian Geminn"
+      ],
       "dueDate": "April",
       "status": "Offen",
       "priority": "Dringend",
       "notes": "",
-      "due": "April"
+      "due": "2026-07-06",
+      "linkedEventId": "evt-1775824421996"
     },
     {
       "id": "imported_t82",
