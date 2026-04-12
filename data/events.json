@@ -1386,12 +1386,15 @@
       "id": "imported_t89",
       "title": "Bildmaterial sammeln: Artworks, Installationsfotos, Portraets",
       "category": "pub",
-      "who": [],
+      "who": [
+        "Laura Därr"
+      ],
       "dueDate": "laufend",
-      "status": "Offen",
+      "status": "In Bearbeitung",
       "priority": "Normal",
       "notes": "",
-      "due": "laufend"
+      "due": "2026-04-27",
+      "linkedEventId": "evt-1775824595282"
     },
     {
       "id": "imported_t90",
