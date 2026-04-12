@@ -208,17 +208,6 @@
       "linkedEventId": "evt-1775824595282"
     },
     {
-      "id": "imported_t9",
-      "title": "Haenge-/Installationsplan Keller erarbeiten",
-      "category": "koeln",
-      "who": [],
-      "dueDate": "Mai",
-      "status": "Offen",
-      "priority": "Dringend",
-      "notes": "",
-      "due": "Mai"
-    },
-    {
       "id": "imported_t10",
       "title": "Lichtplan erstellen (welches Werk braucht welches Licht?)",
       "category": "koeln",
