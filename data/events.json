@@ -1642,6 +1642,18 @@
         "Laura Därr"
       ],
       "id": "task-1775993158012"
+    },
+    {
+      "title": "finales Vorbereitungstreffen Geeske/Judith",
+      "category": "cpdp",
+      "status": "Offen",
+      "due": "2026-05-08",
+      "linkedEventId": "evt-1775848688849",
+      "who": [
+        "Joel Baumann",
+        "Laura Därr"
+      ],
+      "id": "task-1775993213042"
     }
   ],
   "seeded": true
