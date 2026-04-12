@@ -2065,20 +2065,6 @@
       "due": "November"
     },
     {
-      "id": "imported_t65",
-      "title": "Raumplan Jan van Damme (Wintergarten) anfragen",
-      "category": "cpdp",
-      "who": [
-        "Joel Baumann",
-        "Laura Därr"
-      ],
-      "dueDate": "sofort — April",
-      "status": "Offen",
-      "priority": "Dringend",
-      "notes": "Masse anfragen",
-      "due": "sofort — April"
-    },
-    {
       "id": "imported_t109",
       "title": "PDF-Version fuer Website und Download aufbereiten",
       "category": "pub",
