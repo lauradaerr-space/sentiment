@@ -1588,12 +1588,15 @@
       "id": "imported_t105",
       "title": "Reinzeichnung: Druckdaten erstellen (PDF/X-3, CMYK, 3mm Anschnitt, 300 dpi)",
       "category": "pub",
-      "who": [],
+      "who": [
+        "Laura Därr"
+      ],
       "dueDate": "Anfang Nov.",
       "status": "Offen",
       "priority": "Dringend",
       "notes": "",
-      "due": "Anfang Nov."
+      "due": "2026-09-01",
+      "linkedEventId": ""
     },
     {
       "id": "imported_t106",
