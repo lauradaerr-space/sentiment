@@ -1803,17 +1803,6 @@
       "priority": "Dringend",
       "notes": "Masse anfragen",
       "due": "sofort — April"
-    },
-    {
-      "id": "imported_t123",
-      "title": "nach Finissage",
-      "category": "pr",
-      "who": [],
-      "dueDate": "Post",
-      "status": "Offen",
-      "priority": "Normal",
-      "notes": "",
-      "due": "Post"
     }
   ]
 }
