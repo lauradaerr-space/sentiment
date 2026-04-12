@@ -1488,12 +1488,16 @@
       "id": "imported_t95",
       "title": "Lektorat: Rechtschreibung, Grammatik (intern oder extern?)",
       "category": "pub",
-      "who": [],
+      "who": [
+        "Joel Baumann",
+        "Laura Därr"
+      ],
       "dueDate": "Oktober",
       "status": "Offen",
       "priority": "Normal",
       "notes": "",
-      "due": "Oktober"
+      "due": "",
+      "linkedEventId": ""
     },
     {
       "id": "imported_t96",
