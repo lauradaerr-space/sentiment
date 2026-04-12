@@ -12,6 +12,7 @@
   var editingTaskId = null;
   var taskFilterCat = 'all';
   var taskFilterPerson = 'all';
+  var taskFilterEvent = 'all';
 
   /* ────── AUTH ────── */
   function checkAuth() {
@@ -710,6 +711,7 @@
   document.querySelectorAll('#tasks-filter .chip').forEach(function (btn) {
     btn.addEventListener('click', function () {
       taskFilterCat = btn.dataset.cat;
+      taskFilterEvent = 'all';
       document.querySelectorAll('#tasks-filter .chip').forEach(function (c) {
         c.classList.toggle('active', c.dataset.cat === taskFilterCat);
       });
@@ -753,8 +755,39 @@
       var catTasks = data.tasks.filter(function (t) {
         return t.category === cat.key && taskMatchesPerson(t);
       });
-      if (taskFilterCat !== 'all' && catTasks.length === 0) {
-        // Still show section even if empty when filtered
+
+      // Event filter bar — show when a specific category is selected
+      var catEvents = data.events.filter(function (e) { return e.category === cat.key; });
+      if (taskFilterCat !== 'all' && catEvents.length > 0) {
+        var filterBar = document.createElement('div');
+        filterBar.className = 'event-filter-bar';
+
+        var allPill = document.createElement('span');
+        allPill.className = 'event-pill' + (taskFilterEvent === 'all' ? ' active' : '');
+        allPill.textContent = 'Alle Aufgaben';
+        allPill.addEventListener('click', function () {
+          taskFilterEvent = 'all';
+          renderTasks();
+        });
+        filterBar.appendChild(allPill);
+
+        catEvents.forEach(function (ev) {
+          var pill = document.createElement('span');
+          pill.className = 'event-pill' + (taskFilterEvent === ev.id ? ' active' : '');
+          pill.textContent = getEventTitle(ev);
+          if (ev.dateFrom) pill.textContent += ' (' + formatDateShort(ev.dateFrom) + ')';
+          pill.addEventListener('click', function () {
+            taskFilterEvent = ev.id;
+            renderTasks();
+          });
+          filterBar.appendChild(pill);
+        });
+        container.appendChild(filterBar);
+      }
+
+      // Apply event filter
+      if (taskFilterEvent !== 'all') {
+        catTasks = catTasks.filter(function (t) { return t.linkedEventId === taskFilterEvent; });
       }
 
       var section = document.createElement('div');
@@ -832,6 +865,16 @@
     var title = document.createElement('div');
     title.className = 'task-title';
     title.textContent = task.title || '';
+    // event badge
+    if (task.linkedEventId) {
+      var linkedEv = data.events.find(function (e) { return e.id === task.linkedEventId; });
+      if (linkedEv) {
+        var evBadge = document.createElement('span');
+        evBadge.className = 'event-badge';
+        evBadge.textContent = getEventTitle(linkedEv);
+        title.appendChild(evBadge);
+      }
+    }
 
     var meta = document.createElement('div');
     meta.className = 'task-meta';
