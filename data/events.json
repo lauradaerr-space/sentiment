@@ -1552,12 +1552,22 @@
       "id": "imported_t104",
       "title": "Finales Okay einholen",
       "category": "pub",
-      "who": [],
+      "who": [
+        "Jessica Szczuka",
+        "Lisa Mühl",
+        "Joel Baumann",
+        "Laura Därr",
+        "Veelasha Moonsamy",
+        "Ramya Kandula",
+        "Maxi Nebel",
+        "Christian Geminn"
+      ],
       "dueDate": "Anfang Nov.",
       "status": "Offen",
       "priority": "Normal",
       "notes": "",
-      "due": "Anfang Nov."
+      "due": "",
+      "linkedEventId": "evt-1775824421996"
     },
     {
       "id": "imported_t105",
