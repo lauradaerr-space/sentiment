@@ -1429,12 +1429,18 @@
       "id": "imported_t92",
       "title": "Impressum, Foerderhinweise, Danksagungen zusammenstellen",
       "category": "pub",
-      "who": [],
+      "who": [
+        "Jessica Szczuka",
+        "Lisa Mühl",
+        "Joel Baumann",
+        "Laura Därr"
+      ],
       "dueDate": "Oktober",
       "status": "Offen",
       "priority": "Normal",
       "notes": "",
-      "due": "Oktober"
+      "due": "2026-06-22",
+      "linkedEventId": "evt-1775824595282"
     },
     {
       "id": "imported_t93",
