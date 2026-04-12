@@ -314,14 +314,18 @@
     },
     {
       "id": "imported_t18",
-      "title": "Finale Liste: Welche Arbeiten werden in Koeln gezeigt?",
+      "title": "Finale Liste: Welche Arbeiten werden in Köln gezeigt?",
       "category": "koeln",
-      "who": [],
+      "who": [
+        "Joel Baumann",
+        "Laura Därr"
+      ],
       "dueDate": "Mai",
       "status": "Offen",
       "priority": "Dringend",
       "notes": "",
-      "due": "Mai"
+      "due": "2026-06-01",
+      "linkedEventId": "evt-1775824595282"
     },
     {
       "id": "imported_t19",
