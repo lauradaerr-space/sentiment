@@ -652,12 +652,15 @@
       "id": "imported_t46",
       "title": "An-/Abreise alle koordinieren (Koeln)",
       "category": "koeln",
-      "who": [],
+      "who": [
+        "Laura Därr"
+      ],
       "dueDate": "Oktober",
-      "status": "Offen",
+      "status": "In Bearbeitung",
       "priority": "Normal",
       "notes": "",
-      "due": "Oktober"
+      "due": "2026-04-27",
+      "linkedEventId": "evt-1775824595282"
     },
     {
       "id": "imported_t47",
