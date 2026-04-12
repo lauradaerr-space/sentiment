@@ -1402,12 +1402,22 @@
       "id": "imported_t94",
       "title": "Alle Texte gegenlesen und vereinheitlichen (Stil, Laenge, Formatvorgaben)",
       "category": "pub",
-      "who": [],
+      "who": [
+        "Jessica Szczuka",
+        "Lisa Mühl",
+        "Joel Baumann",
+        "Laura Därr",
+        "Veelasha Moonsamy",
+        "Ramya Kandula",
+        "Maxi Nebel",
+        "Christian Geminn"
+      ],
       "dueDate": "Oktober",
       "status": "Offen",
       "priority": "Normal",
       "notes": "",
-      "due": "Oktober"
+      "due": "2026-10-19",
+      "linkedEventId": "evt-1775824421996"
     },
     {
       "id": "imported_t95",
