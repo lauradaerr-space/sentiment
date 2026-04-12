@@ -1640,17 +1640,6 @@
       "priority": "Dringend",
       "notes": "Masse, Licht, Strom",
       "due": "April"
-    },
-    {
-      "id": "imported_t7",
-      "title": "3D-Modell Wintergarten CPDP erstellen",
-      "category": "koeln",
-      "who": [],
-      "dueDate": "Mai",
-      "status": "Offen",
-      "priority": "Normal",
-      "notes": "",
-      "due": "Mai"
     }
   ]
 }
