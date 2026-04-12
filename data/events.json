@@ -1456,12 +1456,15 @@
       "id": "imported_t97",
       "title": "1. Korrekturrunde an Autorinnen zuruecksenden",
       "category": "pub",
-      "who": [],
+      "who": [
+        "Laura Därr"
+      ],
       "dueDate": "Oktober",
       "status": "Offen",
       "priority": "Normal",
       "notes": "",
-      "due": "Oktober"
+      "due": "2026-09-07",
+      "linkedEventId": "evt-1775824421996"
     },
     {
       "id": "imported_t98",
