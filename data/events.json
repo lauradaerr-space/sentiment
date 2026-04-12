@@ -797,10 +797,11 @@
         "Laura Därr"
       ],
       "dueDate": "April",
-      "status": "Offen",
+      "status": "Erledigt",
       "priority": "Normal",
       "notes": "Zeitslot 20. Mai 11:50–13:05 bestaetigt",
-      "due": "April"
+      "due": "2026-02-27",
+      "linkedEventId": "evt-1775849046566"
     },
     {
       "id": "imported_t53",
