@@ -1327,17 +1327,6 @@
       "linkedEventId": "evt-1775824595282"
     },
     {
-      "id": "imported_t83",
-      "title": "Autorinnen-Liste und Aufgabenverteilung festlegen",
-      "category": "pub",
-      "who": [],
-      "dueDate": "April",
-      "status": "Offen",
-      "priority": "Dringend",
-      "notes": "",
-      "due": "April"
-    },
-    {
       "id": "imported_t84",
       "title": "Druckerei anfragen und Angebote einholen",
       "category": "pub",
