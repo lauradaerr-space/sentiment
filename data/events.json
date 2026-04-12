@@ -1614,17 +1614,6 @@
       "due": "Post"
     },
     {
-      "id": "imported_t123",
-      "title": "nach Finissage",
-      "category": "pr",
-      "who": [],
-      "dueDate": "Post",
-      "status": "Offen",
-      "priority": "Normal",
-      "notes": "",
-      "due": "Post"
-    },
-    {
       "id": "imported_t3",
       "title": "Raumplan Brussel Wintergarten (Jan van Damme) anfragen",
       "category": "koeln",
