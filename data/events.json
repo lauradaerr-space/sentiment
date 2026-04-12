@@ -431,7 +431,8 @@
       "status": "Offen",
       "priority": "Normal",
       "notes": "",
-      "due": "Mai"
+      "due": "2026-05-18",
+      "linkedEventId": "evt-1775824595282"
     },
     {
       "id": "imported_t29",
