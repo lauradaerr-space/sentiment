@@ -136,69 +136,6 @@
   ],
   "tasks": [
     {
-      "title": "Catering",
-      "category": "koeln",
-      "who": [
-        "Jessica Szczuka",
-        "Lisa Mühl"
-      ],
-      "due": "2026-06-01",
-      "status": "Offen",
-      "linkedEventId": "evt-1775824421996",
-      "id": "task-1775807359855"
-    },
-    {
-      "title": "Interview Fragen Avatar klären",
-      "category": "cpdp",
-      "status": "Offen",
-      "due": "2026-04-15",
-      "linkedEventId": "evt-1775849166451",
-      "who": [
-        "Jessica Szczuka",
-        "Lisa Mühl",
-        "Joel Baumann",
-        "Laura Därr",
-        "Veelasha Moonsamy",
-        "Christian Geminn"
-      ],
-      "id": "task-1775847989818"
-    },
-    {
-      "title": "Präsentation Panel - Inhalt",
-      "category": "cpdp",
-      "status": "Offen",
-      "due": "2026-04-14",
-      "linkedEventId": "evt-1775849046566",
-      "who": [
-        "Jessica Szczuka",
-        "Lisa Mühl",
-        "Christian Geminn"
-      ],
-      "id": "task-1775848101887"
-    },
-    {
-      "title": "Präsentation Panel setzen",
-      "category": "cpdp",
-      "status": "Offen",
-      "due": "2026-04-20",
-      "linkedEventId": "evt-1775849046566",
-      "who": [
-        "Laura Därr"
-      ],
-      "id": "task-1775848141987"
-    },
-    {
-      "title": "Culture Club - Panel Planung",
-      "category": "cpdp",
-      "status": "Erledigt",
-      "due": "2026-04-08",
-      "linkedEventId": "",
-      "who": [
-        "Laura Därr"
-      ],
-      "id": "task-1775848444119"
-    },
-    {
       "id": "imported_t1",
       "title": "Raumplan Halle + Keller Kunstwerk Koeln beschaffen",
       "category": "koeln",
@@ -207,154 +144,152 @@
         "Laura Därr"
       ],
       "dueDate": "April",
-      "status": "Erledigt",
+      "status": "Offen",
       "priority": "Dringend",
       "notes": "Grundriss von Jens anfragen — Masse, Tueren, Steckdosen, Licht",
-      "due": "2025-09-12",
-      "linkedEventId": "evt-1775824595282"
+      "due": "April"
     },
     {
       "id": "imported_t2",
       "title": "Raumplan digitalisieren und in Miro uebertragen",
       "category": "koeln",
       "who": [
+        "Leonie"
+      ],
+      "dueDate": "April",
+      "status": "Offen",
+      "priority": "Dringend",
+      "notes": "",
+      "due": "April"
+    },
+    {
+      "id": "imported_t3",
+      "title": "Raumplan Brussel Wintergarten (Jan van Damme) anfragen",
+      "category": "koeln",
+      "who": [
+        "Joel Baumann",
         "Laura Därr"
       ],
       "dueDate": "April",
-      "status": "In Bearbeitung",
+      "status": "Offen",
       "priority": "Dringend",
-      "notes": "",
-      "due": "2026-04-27",
-      "linkedEventId": "evt-1775824595282"
+      "notes": "Masse, Licht, Strom",
+      "due": "April"
     },
     {
       "id": "imported_t4",
       "title": "Raumplan Brussel in Miro teilen",
       "category": "koeln",
       "who": [
-        "Laura Därr"
+        "Leonie"
       ],
       "dueDate": "April",
       "status": "Offen",
       "priority": "Normal",
       "notes": "",
-      "due": "",
-      "linkedEventId": "evt-1775824595282"
+      "due": "April"
     },
     {
       "id": "imported_t5",
       "title": "3D-Modell Halle erstellen (Koeln)",
       "category": "koeln",
-      "who": [
-        "Laura Därr"
-      ],
+      "who": [],
       "dueDate": "Mai",
-      "status": "In Bearbeitung",
+      "status": "Offen",
       "priority": "Normal",
       "notes": "Tool klaeren: SketchUp / Blender / Matterport — wer macht das?",
-      "due": "2026-05-04",
-      "linkedEventId": "evt-1775824595282"
+      "due": "Mai"
     },
     {
       "id": "imported_t6",
       "title": "3D-Modell Keller erstellen (Koeln)",
       "category": "koeln",
-      "who": [
-        "Laura Därr"
-      ],
+      "who": [],
       "dueDate": "Mai",
-      "status": "In Bearbeitung",
+      "status": "Offen",
       "priority": "Normal",
       "notes": "",
-      "due": "2026-05-04",
-      "linkedEventId": "evt-1775824595282"
+      "due": "Mai"
+    },
+    {
+      "id": "imported_t7",
+      "title": "3D-Modell Wintergarten CPDP erstellen",
+      "category": "koeln",
+      "who": [],
+      "dueDate": "Mai",
+      "status": "Offen",
+      "priority": "Normal",
+      "notes": "",
+      "due": "Mai"
     },
     {
       "id": "imported_t8",
       "title": "Haenge-/Installationsplan Halle erarbeiten (Positionen aller Werke)",
       "category": "koeln",
-      "who": [
-        "Laura Därr"
-      ],
+      "who": [],
       "dueDate": "Mai",
       "status": "Offen",
       "priority": "Dringend",
       "notes": "Als Layer im Raumplan / Miro",
-      "due": "2026-06-01",
-      "linkedEventId": "evt-1775824595282"
+      "due": "Mai"
     },
     {
       "id": "imported_t9",
       "title": "Haenge-/Installationsplan Keller erarbeiten",
       "category": "koeln",
-      "who": [
-        "Joel Baumann",
-        "Laura Därr"
-      ],
+      "who": [],
       "dueDate": "Mai",
       "status": "Offen",
       "priority": "Dringend",
       "notes": "",
-      "due": "2026-07-13",
-      "linkedEventId": "evt-1775824421996"
+      "due": "Mai"
     },
     {
       "id": "imported_t10",
       "title": "Lichtplan erstellen (welches Werk braucht welches Licht?)",
       "category": "koeln",
-      "who": [
-        "Joel Baumann",
-        "Laura Därr"
-      ],
+      "who": [],
       "dueDate": "Mai",
       "status": "Offen",
       "priority": "Normal",
       "notes": "Abstimmen mit Technik und Kunstwerk Koeln",
-      "due": "2026-06-08",
-      "linkedEventId": "evt-1775824595282"
+      "due": "Mai"
     },
     {
       "id": "imported_t11",
       "title": "Stromanschluss-Plan: Welche Werke brauchen Strom / wo?",
       "category": "koeln",
-      "who": [
-        "Joel Baumann",
-        "Laura Därr"
-      ],
+      "who": [],
       "dueDate": "Mai",
       "status": "Offen",
       "priority": "Normal",
       "notes": "",
-      "due": "2026-06-08",
-      "linkedEventId": "evt-1775824595282"
+      "due": "Mai"
     },
     {
       "id": "imported_t12",
       "title": "Aufbauplanung Koeln: Zeitplan fuer Aufbautage erstellen",
       "category": "koeln",
-      "who": [
-        "Laura Därr"
-      ],
+      "who": [],
       "dueDate": "Oktober",
       "status": "Offen",
       "priority": "Normal",
       "notes": "Reihenfolge und Zeitbedarf pro Werk planen",
-      "due": "2026-07-06",
-      "linkedEventId": "evt-1775824595282"
+      "due": "Oktober"
     },
     {
       "id": "imported_t13",
       "title": "Schluessueluebergabe und Zugang klaeren (Keller ab 11., Halle ab 17./18. Mai)",
       "category": "koeln",
       "who": [
+        "Joel Baumann",
         "Laura Därr"
       ],
       "dueDate": "April",
-      "status": "In Bearbeitung",
+      "status": "Offen",
       "priority": "Dringend",
       "notes": "Mit Jens / Leon abstimmen",
-      "due": "2026-04-27",
-      "linkedEventId": "evt-1775824595282"
+      "due": "April"
     },
     {
       "id": "imported_t14",
@@ -368,22 +303,18 @@
       "status": "Offen",
       "priority": "Dringend",
       "notes": "Pflicht! Evakuierungsplan, Zustaendigkeiten",
-      "due": "",
-      "linkedEventId": "evt-1775824595282"
+      "due": "vor Aufbau"
     },
     {
       "id": "imported_t15",
       "title": "Anfrage Werkstaetten KHK: Ausstellungsmodule / Plinthe",
       "category": "koeln",
-      "who": [
-        "Laura Därr"
-      ],
+      "who": [],
       "dueDate": "April",
-      "status": "In Bearbeitung",
+      "status": "Offen",
       "priority": "Dringend",
       "notes": "",
-      "due": "",
-      "linkedEventId": "evt-1775824595282"
+      "due": "April"
     },
     {
       "id": "imported_t16",
@@ -396,8 +327,7 @@
       "status": "Offen",
       "priority": "Dringend",
       "notes": "Konzept Centerpiece als Ausgangspunkt — Seminar-Ergebnis vorhanden",
-      "due": "",
-      "linkedEventId": "evt-1775824595282"
+      "due": "April"
     },
     {
       "id": "imported_t17",
@@ -416,457 +346,342 @@
       "id": "imported_t18",
       "title": "Finale Liste: Welche Arbeiten werden in Koeln gezeigt?",
       "category": "koeln",
-      "who": [
-        "Joel Baumann",
-        "Laura Därr"
-      ],
+      "who": [],
       "dueDate": "Mai",
-      "status": "In Bearbeitung",
+      "status": "Offen",
       "priority": "Dringend",
       "notes": "",
-      "due": "2026-05-18",
-      "linkedEventId": "evt-1775824595282"
+      "due": "Mai"
     },
     {
       "id": "imported_t19",
       "title": "Positionen aller Arbeiten im Raumplan festlegen",
       "category": "koeln",
-      "who": [
-        "Joel Baumann",
-        "Laura Därr"
-      ],
+      "who": [],
       "dueDate": "Mai",
-      "status": "In Bearbeitung",
+      "status": "Offen",
       "priority": "Dringend",
       "notes": "Abstimmung mit Raumplan",
-      "due": "2026-07-06",
-      "linkedEventId": "evt-1775824595282"
+      "due": "Mai"
     },
     {
       "id": "imported_t20",
       "title": "Kuration Keller: Programm planen (Talks, Panels, Sit-ins, Filmdreh)",
       "category": "koeln",
-      "who": [
-        "Joel Baumann",
-        "Laura Därr"
-      ],
+      "who": [],
       "dueDate": "Mai",
       "status": "Offen",
       "priority": "Normal",
       "notes": "Keller ab 11. Mai nutzbar",
-      "due": "2026-05-04",
-      "linkedEventId": "evt-1775824421996"
+      "due": "Mai"
     },
     {
       "id": "imported_t21",
       "title": "Werktexte und Beschriftungen aller Arbeiten erstellen",
       "category": "koeln",
-      "who": [
-        "Joel Baumann",
-        "Laura Därr"
-      ],
+      "who": [],
       "dueDate": "Oktober",
       "status": "Offen",
       "priority": "Normal",
       "notes": "Einheitliches Format festlegen",
-      "due": "2026-09-14",
-      "linkedEventId": "evt-1775824595282"
+      "due": "Oktober"
     },
     {
       "id": "imported_t22",
       "title": "Einleitungstext Ausstellung schreiben (Wandtext / Flyer)",
       "category": "koeln",
-      "who": [
-        "Joel Baumann",
-        "Laura Därr"
-      ],
+      "who": [],
       "dueDate": "Oktober",
       "status": "Offen",
       "priority": "Normal",
       "notes": "",
-      "due": "2026-07-13",
-      "linkedEventId": "evt-1775824595282"
+      "due": "Oktober"
+    },
+    {
+      "id": "imported_t23",
+      "title": "Kurationspositionen anfragen (externe Kuratorin?)",
+      "category": "koeln",
+      "who": [],
+      "dueDate": "April",
+      "status": "Offen",
+      "priority": "Normal",
+      "notes": "",
+      "due": "April"
     },
     {
       "id": "imported_t24",
-      "title": "Tech Rider Köln erstellen ",
+      "title": "Tech Rider Koeln erstellen (vollstaendige Technik-Liste)",
       "category": "koeln",
-      "who": [
-        "Joel Baumann",
-        "Laura Därr"
-      ],
+      "who": [],
       "dueDate": "April",
-      "status": "In Bearbeitung",
+      "status": "Offen",
       "priority": "Dringend",
       "notes": "AV, Licht, Strom, Kabel, Haengesysteme...",
-      "due": "2026-05-04",
-      "linkedEventId": "evt-1775824595282"
+      "due": "April"
     },
     {
       "id": "imported_t25",
       "title": "Technik ausleihen: Angebote einholen",
       "category": "koeln",
-      "who": [
-        "Laura Därr"
-      ],
+      "who": [],
       "dueDate": "April",
-      "status": "In Bearbeitung",
+      "status": "Offen",
       "priority": "Normal",
       "notes": "",
-      "due": "2026-05-18",
-      "linkedEventId": "evt-1775824595282"
+      "due": "April"
     },
     {
       "id": "imported_t26",
       "title": "Technik ausleihen: Buchung bestaetigen",
       "category": "koeln",
-      "who": [
-        "Joel Baumann",
-        "Laura Därr"
-      ],
+      "who": [],
       "dueDate": "Mai",
       "status": "Offen",
       "priority": "Normal",
       "notes": "",
-      "due": "2026-12-01",
-      "linkedEventId": "evt-1775824595282"
+      "due": "Mai"
     },
     {
       "id": "imported_t27",
       "title": "Leinwaende / Projektoren — Bedarf klaeren und bestellen",
       "category": "koeln",
-      "who": [
-        "Laura Därr"
-      ],
+      "who": [],
       "dueDate": "Mai",
-      "status": "In Bearbeitung",
+      "status": "Offen",
       "priority": "Normal",
       "notes": "",
-      "due": "2026-05-25",
-      "linkedEventId": "evt-1775824595282"
+      "due": "Mai"
     },
     {
       "id": "imported_t28",
       "title": "Lautsprecher / Audio-Equipment — Bedarf klaeren",
       "category": "koeln",
-      "who": [
-        "Laura Därr"
-      ],
+      "who": [],
       "dueDate": "Mai",
-      "status": "In Bearbeitung",
+      "status": "Offen",
       "priority": "Normal",
       "notes": "",
-      "due": "2026-06-01",
-      "linkedEventId": "evt-1775824595282"
+      "due": "Mai"
     },
     {
       "id": "imported_t29",
       "title": "Netzwerk / WLAN in Halle klaeren",
       "category": "koeln",
-      "who": [
-        "Laura Därr"
-      ],
+      "who": [],
       "dueDate": "Mai",
-      "status": "Erledigt",
+      "status": "Offen",
       "priority": "Normal",
       "notes": "",
-      "due": "2026-03-30",
-      "linkedEventId": "evt-1775824595282"
+      "due": "Mai"
     },
     {
       "id": "imported_t30",
       "title": "Transporter mieten Koeln (Aufbautage November / Dezember)",
       "category": "koeln",
-      "who": [
-        "Joel Baumann",
-        "Laura Därr"
-      ],
+      "who": [],
       "dueDate": "Oktober",
       "status": "Offen",
       "priority": "Normal",
       "notes": "",
-      "due": "2026-06-01",
-      "linkedEventId": "evt-1775824595282"
+      "due": "Oktober"
     },
     {
       "id": "imported_t31",
       "title": "Transport- und Verpackungsplan fuer alle Werke erstellen",
       "category": "koeln",
-      "who": [
-        "Laura Därr"
-      ],
+      "who": [],
       "dueDate": "Oktober",
       "status": "Offen",
       "priority": "Normal",
       "notes": "Welche Kisten / Verpackung braucht was?",
-      "due": "2026-10-26",
-      "linkedEventId": "evt-1775824595282"
+      "due": "Oktober"
     },
     {
       "id": "imported_t32",
       "title": "Vernissage 11. Dez. — Konzept und Ablauf planen",
       "category": "koeln",
-      "who": [
-        "Jessica Szczuka",
-        "Lisa Mühl",
-        "Joel Baumann",
-        "Laura Därr",
-        "Veelasha Moonsamy",
-        "Ramya Kandula",
-        "Maxi Nebel",
-        "Christian Geminn"
-      ],
+      "who": [],
       "dueDate": "Mai",
       "status": "Offen",
       "priority": "Dringend",
       "notes": "Datum: 11. Dezember 2026",
-      "due": "2026-05-11",
-      "linkedEventId": "evt-1775824421996"
+      "due": "Mai"
     },
     {
       "id": "imported_t33",
       "title": "Vernissage: Einladungsliste erstellen",
       "category": "koeln",
-      "who": [
-        "Jessica Szczuka",
-        "Lisa Mühl",
-        "Joel Baumann",
-        "Laura Därr",
-        "Veelasha Moonsamy",
-        "Ramya Kandula",
-        "Maxi Nebel",
-        "Christian Geminn"
-      ],
+      "who": [],
       "dueDate": "Oktober",
-      "status": "In Bearbeitung",
+      "status": "Offen",
       "priority": "Normal",
       "notes": "",
-      "due": "2026-04-27",
-      "linkedEventId": "evt-1775824421996"
+      "due": "Oktober"
     },
     {
       "id": "imported_t34",
       "title": "Vernissage: Einladung designen und versenden",
       "category": "koeln",
-      "who": [
-        "Laura Därr"
-      ],
+      "who": [],
       "dueDate": "November",
       "status": "Offen",
       "priority": "Normal",
       "notes": "3 Wochen vorher versenden — Versand bis 20. Nov.",
-      "due": "2025-12-01",
-      "linkedEventId": "evt-1775824595282"
+      "due": "November"
     },
     {
       "id": "imported_t35",
       "title": "Vernissage: Catering / Getraenke anfragen (Empfehlung Kunstwerk Koeln)",
       "category": "koeln",
-      "who": [
-        "Jessica Szczuka",
-        "Lisa Mühl",
-        "Joel Baumann",
-        "Laura Därr"
-      ],
+      "who": [],
       "dueDate": "Oktober",
-      "status": "In Bearbeitung",
+      "status": "Offen",
       "priority": "Normal",
       "notes": "",
-      "due": "2026-06-01",
-      "linkedEventId": "evt-1775824421996"
+      "due": "Oktober"
     },
     {
       "id": "imported_t36",
       "title": "Vernissage: Sicherheitsdienst anfragen (Pflicht >50 Personen)",
       "category": "koeln",
-      "who": [
-        "Laura Därr"
-      ],
+      "who": [],
       "dueDate": "Oktober",
-      "status": "In Bearbeitung",
+      "status": "Offen",
       "priority": "Dringend",
       "notes": "Blaue Anlage — Aufsicht Pflicht bei oeffentl. Events",
-      "due": "2026-05-04",
-      "linkedEventId": "evt-1775824595282"
+      "due": "Oktober"
     },
     {
       "id": "imported_t37",
       "title": "Finissage — Datum festlegen",
       "category": "koeln",
-      "who": [
-        "Laura Därr"
-      ],
+      "who": [],
       "dueDate": "April",
-      "status": "Erledigt",
+      "status": "Offen",
       "priority": "Dringend",
       "notes": "Datum noch offen",
-      "due": "2026-03-30",
-      "linkedEventId": "evt-1775824479895"
+      "due": "April"
     },
     {
       "id": "imported_t38",
       "title": "Finissage — Konzept und Ablauf planen",
       "category": "koeln",
-      "who": [
-        "Jessica Szczuka",
-        "Lisa Mühl",
-        "Joel Baumann",
-        "Laura Därr",
-        "Veelasha Moonsamy",
-        "Ramya Kandula",
-        "Maxi Nebel",
-        "Christian Geminn"
-      ],
+      "who": [],
       "dueDate": "Mai",
       "status": "Offen",
       "priority": "Normal",
       "notes": "",
-      "due": "",
-      "linkedEventId": "evt-1775824479895"
+      "due": "Mai"
     },
     {
       "id": "imported_t39",
       "title": "3. Event — intern besprechen und Format festlegen",
       "category": "koeln",
-      "who": [
-        "Jessica Szczuka",
-        "Lisa Mühl",
-        "Joel Baumann",
-        "Laura Därr",
-        "Veelasha Moonsamy",
-        "Ramya Kandula",
-        "Maxi Nebel",
-        "Christian Geminn"
-      ],
+      "who": [],
       "dueDate": "April",
-      "status": "In Bearbeitung",
+      "status": "Offen",
       "priority": "Dringend",
       "notes": "Noch nicht definiert — intern klaeren!",
-      "due": "2026-05-04",
-      "linkedEventId": "evt-1775824595282"
+      "due": "April"
     },
     {
       "id": "imported_t40",
       "title": "3. Event — Datum festlegen",
       "category": "koeln",
-      "who": [
-        "Jessica Szczuka",
-        "Lisa Mühl",
-        "Joel Baumann",
-        "Laura Därr",
-        "Veelasha Moonsamy",
-        "Ramya Kandula",
-        "Maxi Nebel",
-        "Christian Geminn"
-      ],
+      "who": [],
       "dueDate": "April",
-      "status": "In Bearbeitung",
+      "status": "Offen",
       "priority": "Normal",
       "notes": "",
-      "due": "2026-05-04",
-      "linkedEventId": "evt-1775824595282"
+      "due": "April"
     },
     {
       "id": "imported_t41",
-      "title": "3. Event — Einladung",
+      "title": "3. Event — Konzept, Einladung, Planung",
       "category": "koeln",
-      "who": [
-        "Laura Därr"
-      ],
+      "who": [],
       "dueDate": "Mai",
       "status": "Offen",
       "priority": "Normal",
       "notes": "",
-      "due": "2026-07-13",
-      "linkedEventId": "evt-1775824595282"
+      "due": "Mai"
+    },
+    {
+      "id": "imported_t42",
+      "title": "Keller-Programm planen: Talks, Panels, Sit-ins",
+      "category": "koeln",
+      "who": [],
+      "dueDate": "Mai",
+      "status": "Offen",
+      "priority": "Normal",
+      "notes": "Keller ab 11. Mai nutzbar",
+      "due": "Mai"
     },
     {
       "id": "imported_t43",
       "title": "Unterbringung Kuenstler:innen Koeln",
       "category": "koeln",
-      "who": [
-        "Joel Baumann",
-        "Laura Därr"
-      ],
+      "who": [],
       "dueDate": "Oktober",
       "status": "Offen",
       "priority": "Normal",
       "notes": "",
-      "due": "2026-05-18",
-      "linkedEventId": "evt-1775824421996"
+      "due": "Oktober"
     },
     {
       "id": "imported_t44",
       "title": "Unterbringung Studierende Koeln",
       "category": "koeln",
-      "who": [
-        "Joel Baumann",
-        "Laura Därr"
-      ],
+      "who": [],
       "dueDate": "Oktober",
-      "status": "In Bearbeitung",
+      "status": "Offen",
       "priority": "Normal",
       "notes": "",
-      "due": "2026-05-13",
-      "linkedEventId": "evt-1775824421996"
+      "due": "Oktober"
     },
     {
       "id": "imported_t45",
       "title": "Unterbringung Lehrpersonal Koeln",
       "category": "koeln",
-      "who": [
-        "Joel Baumann",
-        "Laura Därr"
-      ],
+      "who": [],
       "dueDate": "Oktober",
-      "status": "In Bearbeitung",
+      "status": "Offen",
       "priority": "Normal",
       "notes": "",
-      "due": "2026-05-13",
-      "linkedEventId": "evt-1775824421996"
+      "due": "Oktober"
     },
     {
       "id": "imported_t46",
       "title": "An-/Abreise alle koordinieren (Koeln)",
       "category": "koeln",
-      "who": [
-        "Laura Därr"
-      ],
+      "who": [],
       "dueDate": "Oktober",
-      "status": "In Bearbeitung",
+      "status": "Offen",
       "priority": "Normal",
       "notes": "",
-      "due": "2026-06-08",
-      "linkedEventId": "evt-1775824595282"
+      "due": "Oktober"
     },
     {
       "id": "imported_t47",
       "title": "Aufbauhelfer:innen koordinieren",
       "category": "koeln",
-      "who": [
-        "Joel Baumann",
-        "Laura Därr"
-      ],
+      "who": [],
       "dueDate": "November",
       "status": "Offen",
       "priority": "Normal",
       "notes": "",
-      "due": "2026-06-08",
-      "linkedEventId": "evt-1775824595282"
+      "due": "November"
     },
     {
       "id": "imported_t48",
       "title": "Verpflegung Aufbautage organisieren",
       "category": "koeln",
-      "who": [
-        "Laura Därr"
-      ],
+      "who": [],
       "dueDate": "November",
       "status": "Offen",
       "priority": "Normal",
       "notes": "",
-      "due": "2026-08-10",
-      "linkedEventId": "evt-1775824595282"
+      "due": "November"
     },
     {
       "id": "imported_t49",
@@ -876,26 +691,34 @@
         "Laura Därr"
       ],
       "dueDate": "sofort — April",
-      "status": "Erledigt",
+      "status": "Offen",
       "priority": "Dringend",
       "notes": "Wie bekommen Studis ihren Pass?",
-      "due": "2026-03-12",
-      "linkedEventId": "evt-1775849100666"
+      "due": "sofort — April"
+    },
+    {
+      "id": "imported_t50",
+      "title": "CPDP-Anmeldung Lehrende (Joel, Laura, Elko)",
+      "category": "cpdp",
+      "who": [
+        "Laura Därr"
+      ],
+      "dueDate": "sofort — April",
+      "status": "Offen",
+      "priority": "Dringend",
+      "notes": "",
+      "due": "sofort — April"
     },
     {
       "id": "imported_t51",
       "title": "Kosten Panel CPDP bezahlen",
       "category": "cpdp",
-      "who": [
-        "Laura Därr",
-        "Christian Geminn"
-      ],
+      "who": [],
       "dueDate": "sofort — April",
-      "status": "Erledigt",
+      "status": "Offen",
       "priority": "Dringend",
       "notes": "",
-      "due": "2026-03-02",
-      "linkedEventId": "evt-1775849046566"
+      "due": "sofort — April"
     },
     {
       "id": "imported_t52",
@@ -905,11 +728,10 @@
         "Laura Därr"
       ],
       "dueDate": "April",
-      "status": "Erledigt",
+      "status": "Offen",
       "priority": "Normal",
       "notes": "Zeitslot 20. Mai 11:50–13:05 bestaetigt",
-      "due": "2026-02-27",
-      "linkedEventId": "evt-1775849046566"
+      "due": "April"
     },
     {
       "id": "imported_t53",
@@ -951,32 +773,39 @@
       "due": ""
     },
     {
-      "id": "imported_t57",
-      "title": "Inhaltliche Planung Slot ausarbeiten",
+      "id": "imported_t56",
+      "title": "Zoomtermin finden (Geeske, Joel, Judith, Laura + Studi)",
       "category": "cpdp",
       "who": [
         "Laura Därr"
       ],
+      "dueDate": "sofort — April",
+      "status": "Offen",
+      "priority": "Dringend",
+      "notes": "",
+      "due": "sofort — April"
+    },
+    {
+      "id": "imported_t57",
+      "title": "Inhaltliche Planung Slot ausarbeiten",
+      "category": "cpdp",
+      "who": [],
       "dueDate": "April",
-      "status": "In Bearbeitung",
+      "status": "Offen",
       "priority": "Normal",
       "notes": "",
-      "due": "2026-04-15",
-      "linkedEventId": "evt-1775848688849"
+      "due": "April"
     },
     {
       "id": "imported_t58",
       "title": "Praesentation und Materialien vorbereiten",
       "category": "cpdp",
-      "who": [
-        "Laura Därr"
-      ],
+      "who": [],
       "dueDate": "Mai",
-      "status": "In Bearbeitung",
+      "status": "Offen",
       "priority": "Normal",
       "notes": "",
-      "due": "2026-04-20",
-      "linkedEventId": "evt-1775848688849"
+      "due": "Mai"
     },
     {
       "id": "imported_t59",
@@ -1034,147 +863,127 @@
       "id": "imported_t63",
       "title": "Folien / Beitraege der Peers einsammeln",
       "category": "cpdp",
-      "who": [
-        "Laura Därr"
-      ],
+      "who": [],
       "dueDate": "April",
       "status": "Offen",
       "priority": "Dringend",
       "notes": "",
-      "due": "2026-04-15",
-      "linkedEventId": "evt-1775849046566"
+      "due": "April"
     },
     {
       "id": "imported_t64",
       "title": "Praesentation finalisieren",
       "category": "cpdp",
-      "who": [
-        "Jessica Szczuka",
-        "Lisa Mühl",
-        "Laura Därr"
-      ],
+      "who": [],
       "dueDate": "Anfang Mai",
       "status": "Offen",
       "priority": "Normal",
       "notes": "",
-      "due": "2026-04-20",
-      "linkedEventId": "evt-1775849046566"
+      "due": "Anfang Mai"
+    },
+    {
+      "id": "imported_t65",
+      "title": "Raumplan Jan van Damme (Wintergarten) anfragen",
+      "category": "cpdp",
+      "who": [
+        "Joel Baumann",
+        "Laura Därr"
+      ],
+      "dueDate": "sofort — April",
+      "status": "Offen",
+      "priority": "Dringend",
+      "notes": "Masse anfragen",
+      "due": "sofort — April"
     },
     {
       "id": "imported_t66",
       "title": "Raumplan in Miro teilen",
       "category": "cpdp",
       "who": [
-        "Laura Därr"
+        "Leonie"
       ],
       "dueDate": "April",
-      "status": "Erledigt",
+      "status": "Offen",
       "priority": "Normal",
       "notes": "",
-      "due": "2026-04-06",
-      "linkedEventId": "evt-1775849100666"
+      "due": "April"
     },
     {
       "id": "imported_t67",
       "title": "3D-Modell Wintergarten erstellen",
       "category": "cpdp",
-      "who": [
-        "Laura Därr"
-      ],
+      "who": [],
       "dueDate": "April/Mai",
-      "status": "Erledigt",
+      "status": "Offen",
       "priority": "Normal",
       "notes": "",
-      "due": "2026-04-06",
-      "linkedEventId": "evt-1775849100666"
+      "due": "April/Mai"
     },
     {
       "id": "imported_t68",
       "title": "Kuration abstimmen: Brainrot, Einzelarbeiten, Geeske, Judith, Ueberwachungskamera?",
       "category": "cpdp",
-      "who": [
-        "Joel Baumann",
-        "Laura Därr"
-      ],
+      "who": [],
       "dueDate": "April",
-      "status": "In Bearbeitung",
+      "status": "Offen",
       "priority": "Dringend",
       "notes": "Bei Ueberwachungskamera: Konzepttext noetig",
-      "due": "2026-04-20",
-      "linkedEventId": "evt-1775849100666"
+      "due": "April"
     },
     {
       "id": "imported_t69",
       "title": "Kurationstext / Konzept fuer Einreichung schreiben",
       "category": "cpdp",
-      "who": [
-        "Laura Därr"
-      ],
+      "who": [],
       "dueDate": "April",
-      "status": "In Bearbeitung",
+      "status": "Offen",
       "priority": "Normal",
       "notes": "Nur wenn Ueberwachungskamera Teil der Kuration",
-      "due": "2026-04-13",
-      "linkedEventId": ""
+      "due": "April"
     },
     {
       "id": "imported_t70",
       "title": "Haenge-/Installationsplan Wintergarten",
       "category": "cpdp",
-      "who": [
-        "Joel Baumann",
-        "Laura Därr"
-      ],
+      "who": [],
       "dueDate": "April",
-      "status": "In Bearbeitung",
+      "status": "Offen",
       "priority": "Normal",
       "notes": "",
-      "due": "2026-04-20",
-      "linkedEventId": "evt-1775849100666"
+      "due": "April"
     },
     {
       "id": "imported_t71",
       "title": "Tech Rider Bruessel erstellen",
       "category": "cpdp",
-      "who": [
-        "Laura Därr"
-      ],
+      "who": [],
       "dueDate": "April",
-      "status": "In Bearbeitung",
+      "status": "Offen",
       "priority": "Dringend",
       "notes": "",
-      "due": "2026-04-20",
-      "linkedEventId": "evt-1775849100666"
+      "due": "April"
     },
     {
       "id": "imported_t72",
       "title": "Aufbau koordinieren: 17./18. Mai",
       "category": "cpdp",
-      "who": [
-        "Joel Baumann",
-        "Laura Därr"
-      ],
+      "who": [],
       "dueDate": "Mai",
-      "status": "In Bearbeitung",
+      "status": "Offen",
       "priority": "Normal",
       "notes": "",
-      "due": "",
-      "linkedEventId": "evt-1775849100666"
+      "due": "Mai"
     },
     {
       "id": "imported_t73",
       "title": "Abbau 23. Mai koordinieren",
       "category": "cpdp",
-      "who": [
-        "Joel Baumann",
-        "Laura Därr"
-      ],
+      "who": [],
       "dueDate": "Mai",
-      "status": "In Bearbeitung",
+      "status": "Offen",
       "priority": "Normal",
       "notes": "",
-      "due": "2026-04-20",
-      "linkedEventId": "evt-1775849100666"
+      "due": "Mai"
     },
     {
       "id": "imported_t74",
@@ -1194,776 +1003,85 @@
       "title": "Radiobeitrag produzieren",
       "category": "cpdp",
       "who": [
-        "Lisa Mühl",
+        "Laura Därr",
         "Joel Baumann",
-        "Laura Därr"
+        "Jessie",
+        "Lisa Mühl",
+        "Fabian",
+        "Bob",
+        "Elko"
       ],
       "dueDate": "April/Mai",
       "status": "Offen",
       "priority": "Normal",
       "notes": "",
-      "due": "",
-      "linkedEventId": "evt-1775849166451"
+      "due": "April/Mai"
     },
     {
       "id": "imported_t76",
       "title": "Interview vor Ort Jessi und Lisa planen (Technik, Ort, Zeit)",
       "category": "cpdp",
-      "who": [
-        "Joel Baumann",
-        "Laura Därr"
-      ],
+      "who": [],
       "dueDate": "April",
       "status": "Offen",
       "priority": "Normal",
       "notes": "",
-      "due": "2026-04-15",
-      "linkedEventId": "evt-1775849166451"
+      "due": "April"
     },
     {
       "id": "imported_t77",
       "title": "Snippets aus Interview schneiden (fuer Ankuendigung)",
       "category": "cpdp",
-      "who": [
-        "Joel Baumann",
-        "Laura Därr"
-      ],
+      "who": [],
       "dueDate": "Mai",
-      "status": "In Bearbeitung",
+      "status": "Offen",
       "priority": "Normal",
       "notes": "",
-      "due": "",
-      "linkedEventId": "evt-1775849166451"
+      "due": "Mai"
     },
     {
       "id": "imported_t78",
       "title": "Radiobeitrag finalisieren und veroeffentlichen",
       "category": "cpdp",
-      "who": [
-        "Joel Baumann",
-        "Laura Därr"
-      ],
+      "who": [],
       "dueDate": "vor CPDP",
       "status": "Offen",
       "priority": "Normal",
       "notes": "",
-      "due": "",
-      "linkedEventId": "evt-1775849166451"
+      "due": "vor CPDP"
     },
     {
       "id": "imported_t79",
       "title": "Buchformat festlegen: Hardcover / Softcover, Bindung, Masse, Sprache (DE / EN / zweispr.)",
       "category": "pub",
-      "who": [
-        "Jessica Szczuka",
-        "Lisa Mühl",
-        "Joel Baumann",
-        "Laura Därr",
-        "Veelasha Moonsamy",
-        "Ramya Kandula",
-        "Maxi Nebel",
-        "Christian Geminn"
-      ],
+      "who": [],
       "dueDate": "April",
       "status": "Offen",
       "priority": "Dringend",
       "notes": "",
-      "due": "2026-08-10",
-      "linkedEventId": "evt-1775824595282"
+      "due": "April"
     },
     {
       "id": "imported_t80",
       "title": "Inhaltsstruktur / Kapitelgliederung entwickeln",
       "category": "pub",
-      "who": [
-        "Laura Därr"
-      ],
+      "who": [],
       "dueDate": "April",
       "status": "Offen",
       "priority": "Dringend",
       "notes": "",
-      "due": "2026-07-06",
-      "linkedEventId": "evt-1775824595282"
+      "due": "April"
     },
     {
       "id": "imported_t81",
       "title": "Forschungsgebiete und Kernthesen definieren (was kommt rein?)",
       "category": "pub",
-      "who": [
-        "Jessica Szczuka",
-        "Lisa Mühl",
-        "Joel Baumann",
-        "Laura Därr",
-        "Veelasha Moonsamy",
-        "Ramya Kandula",
-        "Maxi Nebel",
-        "Christian Geminn"
-      ],
-      "dueDate": "April",
-      "status": "Offen",
-      "priority": "Dringend",
-      "notes": "",
-      "due": "2026-07-06",
-      "linkedEventId": "evt-1775824595282"
-    },
-    {
-      "id": "imported_t82",
-      "title": "Kurzbeschreibung ca. 2.000 Zeichen schreiben (pro Fachbereich)",
-      "category": "pub",
-      "who": [
-        "Jessica Szczuka",
-        "Lisa Mühl",
-        "Joel Baumann",
-        "Veelasha Moonsamy",
-        "Ramya Kandula",
-        "Maxi Nebel",
-        "Christian Geminn"
-      ],
-      "dueDate": "April",
-      "status": "Offen",
-      "priority": "Dringend",
-      "notes": "",
-      "due": "2026-07-06",
-      "linkedEventId": "evt-1775824595282"
-    },
-    {
-      "id": "imported_t84",
-      "title": "Druckerei anfragen und Angebote einholen",
-      "category": "pub",
-      "who": [
-        "Laura Därr"
-      ],
-      "dueDate": "April",
-      "status": "In Bearbeitung",
-      "priority": "Dringend",
-      "notes": "",
-      "due": "2026-06-08",
-      "linkedEventId": "evt-1775824595282"
-    },
-    {
-      "id": "imported_t86",
-      "title": "Google Drive Ordner anlegen (Texte / Bilder / Grafiken / Rohfassungen / Reinzeichnung / Druckdaten)",
-      "category": "pub",
-      "who": [
-        "Laura Därr"
-      ],
-      "dueDate": "sofort — April",
-      "status": "In Bearbeitung",
-      "priority": "Dringend",
-      "notes": "",
-      "due": "2026-04-27",
-      "linkedEventId": "evt-1775824595282"
-    },
-    {
-      "id": "imported_t87",
-      "title": "Beitraege Studierende einsammeln (Deadline setzen!)",
-      "category": "pub",
-      "who": [
-        "Laura Därr"
-      ],
-      "dueDate": "September",
-      "status": "Offen",
-      "priority": "Normal",
-      "notes": "",
-      "due": "2026-06-08",
-      "linkedEventId": "evt-1775824595282"
-    },
-    {
-      "id": "imported_t88",
-      "title": "Beitraege Peers einsammeln ",
-      "category": "pub",
-      "who": [
-        "Laura Därr"
-      ],
-      "dueDate": "September",
-      "status": "Offen",
-      "priority": "Normal",
-      "notes": "",
-      "due": "2026-07-13",
-      "linkedEventId": "evt-1775824595282"
-    },
-    {
-      "id": "imported_t89",
-      "title": "Bildmaterial sammeln: Artworks, Installationsfotos, Portraets",
-      "category": "pub",
-      "who": [
-        "Laura Därr"
-      ],
-      "dueDate": "laufend",
-      "status": "In Bearbeitung",
-      "priority": "Normal",
-      "notes": "",
-      "due": "2026-04-27",
-      "linkedEventId": "evt-1775824595282"
-    },
-    {
-      "id": "imported_t90",
-      "title": "Ausstellungsfotos beauftragen ",
-      "category": "pub",
-      "who": [
-        "Joel Baumann",
-        "Laura Därr"
-      ],
-      "dueDate": "Mai + Dez.",
-      "status": "Offen",
-      "priority": "Normal",
-      "notes": "",
-      "due": "2026-06-29",
-      "linkedEventId": "evt-1775824421996"
-    },
-    {
-      "id": "imported_t91",
-      "title": "Kuratorischen Text schreiben",
-      "category": "pub",
-      "who": [
-        "Laura Därr",
-        "Joel Baumann"
-      ],
-      "dueDate": "September",
-      "status": "Offen",
-      "priority": "Normal",
-      "notes": "",
-      "due": "September"
-    },
-    {
-      "id": "imported_t92",
-      "title": "Impressum, Foerderhinweise, Danksagungen zusammenstellen",
-      "category": "pub",
-      "who": [
-        "Jessica Szczuka",
-        "Lisa Mühl",
-        "Joel Baumann",
-        "Laura Därr"
-      ],
-      "dueDate": "Oktober",
-      "status": "Offen",
-      "priority": "Normal",
-      "notes": "",
-      "due": "2026-06-22",
-      "linkedEventId": "evt-1775824595282"
-    },
-    {
-      "id": "imported_t93",
-      "title": "Website-Beitraege und Blogposts aus Forschung erstellen",
-      "category": "pub",
-      "who": [
-        "Jessica Szczuka",
-        "Lisa Mühl",
-        "Joel Baumann",
-        "Laura Därr",
-        "Veelasha Moonsamy",
-        "Ramya Kandula",
-        "Maxi Nebel",
-        "Christian Geminn"
-      ],
-      "dueDate": "laufend",
-      "status": "Offen",
-      "priority": "Normal",
-      "notes": "",
-      "due": "2026-07-06",
-      "linkedEventId": "evt-1775824595282"
-    },
-    {
-      "id": "imported_t94",
-      "title": "Alle Texte gegenlesen und vereinheitlichen (Stil, Laenge, Formatvorgaben)",
-      "category": "pub",
-      "who": [
-        "Jessica Szczuka",
-        "Lisa Mühl",
-        "Joel Baumann",
-        "Laura Därr",
-        "Veelasha Moonsamy",
-        "Ramya Kandula",
-        "Maxi Nebel",
-        "Christian Geminn"
-      ],
-      "dueDate": "Oktober",
-      "status": "Offen",
-      "priority": "Normal",
-      "notes": "",
-      "due": "",
-      "linkedEventId": ""
-    },
-    {
-      "id": "imported_t95",
-      "title": "Lektorat: Rechtschreibung, Grammatik (intern oder extern?)",
-      "category": "pub",
-      "who": [
-        "Joel Baumann",
-        "Laura Därr"
-      ],
-      "dueDate": "Oktober",
-      "status": "Offen",
-      "priority": "Normal",
-      "notes": "",
-      "due": "",
-      "linkedEventId": ""
-    },
-    {
-      "id": "imported_t96",
-      "title": "Uebersetzungen pruefen / anfertigen",
-      "category": "pub",
-      "who": [
-        "Jessica Szczuka",
-        "Lisa Mühl",
-        "Joel Baumann",
-        "Laura Därr",
-        "Veelasha Moonsamy",
-        "Ramya Kandula",
-        "Maxi Nebel",
-        "Christian Geminn"
-      ],
-      "dueDate": "Oktober",
-      "status": "Offen",
-      "priority": "Normal",
-      "notes": "",
-      "due": "",
-      "linkedEventId": ""
-    },
-    {
-      "id": "imported_t97",
-      "title": "1. Korrekturrunde an Autorinnen zuruecksenden",
-      "category": "pub",
-      "who": [
-        "Laura Därr"
-      ],
-      "dueDate": "Oktober",
-      "status": "Offen",
-      "priority": "Normal",
-      "notes": "",
-      "due": "",
-      "linkedEventId": ""
-    },
-    {
-      "id": "imported_t98",
-      "title": "Korrekturen einarbeiten — Deadline fuer Aenderungen setzen",
-      "category": "pub",
-      "who": [
-        "Laura Därr"
-      ],
-      "dueDate": "Ende Oktober",
-      "status": "Offen",
-      "priority": "Normal",
-      "notes": "",
-      "due": "",
-      "linkedEventId": ""
-    },
-    {
-      "id": "imported_t99",
-      "title": "Layoutkonzept und Raster entwickeln ",
-      "category": "pub",
-      "who": [
-        "Laura Därr"
-      ],
-      "dueDate": "Oktober",
-      "status": "Offen",
-      "priority": "Dringend",
-      "notes": "",
-      "due": "2026-07-13",
-      "linkedEventId": ""
-    },
-    {
-      "id": "imported_t100",
-      "title": "Cover-Gestaltung",
-      "category": "pub",
-      "who": [
-        "Joel Baumann",
-        "Laura Därr"
-      ],
-      "dueDate": "Oktober",
-      "status": "Offen",
-      "priority": "Normal",
-      "notes": "",
-      "due": "2026-07-13",
-      "linkedEventId": ""
-    },
-    {
-      "id": "imported_t101",
-      "title": "Innenteil setzen: Texte und Bilder einpflegen",
-      "category": "pub",
-      "who": [
-        "Laura Därr"
-      ],
-      "dueDate": "Oktober / Nov.",
-      "status": "Offen",
-      "priority": "Normal",
-      "notes": "",
-      "due": "",
-      "linkedEventId": ""
-    },
-    {
-      "id": "imported_t102",
-      "title": "Probeausdruck / PDF zur internen Ansicht",
-      "category": "pub",
-      "who": [
-        "Laura Därr"
-      ],
-      "dueDate": "November",
-      "status": "Offen",
-      "priority": "Normal",
-      "notes": "",
-      "due": "",
-      "linkedEventId": ""
-    },
-    {
-      "id": "imported_t103",
-      "title": "2. Korrekturrunde Layout",
-      "category": "pub",
-      "who": [
-        "Laura Därr"
-      ],
-      "dueDate": "November",
-      "status": "Offen",
-      "priority": "Normal",
-      "notes": "",
-      "due": "",
-      "linkedEventId": ""
-    },
-    {
-      "id": "imported_t104",
-      "title": "Finales Okay einholen",
-      "category": "pub",
-      "who": [
-        "Laura Därr"
-      ],
-      "dueDate": "Anfang Nov.",
-      "status": "Offen",
-      "priority": "Normal",
-      "notes": "",
-      "due": "2026-08-24",
-      "linkedEventId": ""
-    },
-    {
-      "id": "imported_t105",
-      "title": "Reinzeichnung: Druckdaten erstellen (PDF/X-3, CMYK, 3mm Anschnitt, 300 dpi)",
-      "category": "pub",
-      "who": [
-        "Laura Därr"
-      ],
-      "dueDate": "Anfang Nov.",
-      "status": "Offen",
-      "priority": "Dringend",
-      "notes": "",
-      "due": "2026-09-01",
-      "linkedEventId": ""
-    },
-    {
-      "id": "imported_t106",
-      "title": "Druckdaten an Druckerei uebermitteln und Freigabe erteilen",
-      "category": "pub",
-      "who": [
-        "Laura Därr"
-      ],
-      "dueDate": "Anfang Nov.",
-      "status": "Offen",
-      "priority": "Dringend",
-      "notes": "",
-      "due": "2026-09-07",
-      "linkedEventId": ""
-    },
-    {
-      "id": "imported_t107",
-      "title": "Andruckpruefung durchfuehren",
-      "category": "pub",
-      "who": [
-        "Laura Därr"
-      ],
-      "dueDate": "Mitte Nov.",
-      "status": "Offen",
-      "priority": "Normal",
-      "notes": "",
-      "due": "2026-10-26",
-      "linkedEventId": ""
-    },
-    {
-      "id": "imported_t108",
-      "title": "Lieferdatum bestaetigen",
-      "category": "pub",
-      "who": [
-        "Laura Därr"
-      ],
-      "dueDate": "Mitte Nov.",
-      "status": "Offen",
-      "priority": "Dringend",
-      "notes": "",
-      "due": "",
-      "linkedEventId": "evt-1775824421996"
-    },
-    {
-      "id": "imported_t110",
-      "title": "Publikation auf Website veroeffentlichen und verlinken",
-      "category": "pub",
-      "who": [
-        "Laura Därr"
-      ],
-      "dueDate": "11. Dez.",
-      "status": "Offen",
-      "priority": "Normal",
-      "notes": "",
-      "due": "2026-12-01",
-      "linkedEventId": "evt-1775824595282"
-    },
-    {
-      "id": "imported_t111",
-      "title": "Exemplare an Peers, Foerderinnen, Presse versenden",
-      "category": "pub",
-      "who": [
-        "Laura Därr"
-      ],
-      "dueDate": "ab 11. Dez.",
-      "status": "Offen",
-      "priority": "Normal",
-      "notes": "",
-      "due": "2026-12-11",
-      "linkedEventId": "evt-1775824421996"
-    },
-    {
-      "id": "imported_t112",
-      "title": "Archivexemplare fuer KHK / Bibliothek",
-      "category": "pub",
-      "who": [
-        "Joel Baumann",
-        "Laura Därr"
-      ],
-      "dueDate": "ab 11. Dez.",
-      "status": "Offen",
-      "priority": "Normal",
-      "notes": "",
-      "due": "2026-12-11",
-      "linkedEventId": "evt-1775824421996"
-    },
-    {
-      "id": "imported_t113",
-      "title": "Pressetext schreiben (DE + EN)",
-      "category": "pr",
-      "who": [
-        "Jessica Szczuka",
-        "Lisa Mühl",
-        "Joel Baumann",
-        "Laura Därr"
-      ],
-      "dueDate": "April",
-      "status": "Offen",
-      "priority": "Normal",
-      "notes": "",
-      "due": "2026-06-01",
-      "linkedEventId": "evt-1775824595282"
-    },
-    {
-      "id": "imported_t114",
-      "title": "Pressetermine festlegen und Pressemappe zusammenstellen",
-      "category": "pr",
-      "who": [
-        "Laura Därr"
-      ],
-      "dueDate": "April",
-      "status": "In Bearbeitung",
-      "priority": "Normal",
-      "notes": "",
-      "due": "2026-06-15",
-      "linkedEventId": "evt-1775824595282"
-    },
-    {
-      "id": "imported_t115",
-      "title": "Presseverteiler aufbauen / aktualisieren",
-      "category": "pr",
-      "who": [
-        "Laura Därr"
-      ],
-      "dueDate": "April",
-      "status": "In Bearbeitung",
-      "priority": "Normal",
-      "notes": "",
-      "due": "2026-05-11",
-      "linkedEventId": "evt-1775824595282"
-    },
-    {
-      "id": "imported_t116",
-      "title": "Korrekturen Save the Date einarbeiten und versenden",
-      "category": "pr",
-      "who": [
-        "Laura Därr"
-      ],
-      "dueDate": "sofort — April",
-      "status": "Offen",
-      "priority": "Normal",
-      "notes": "",
-      "due": "2026-04-13",
-      "linkedEventId": "evt-1775824595282"
-    },
-    {
-      "id": "imported_t117",
-      "title": "Timetable Presse erstellen",
-      "category": "pr",
-      "who": [
-        "Laura Därr"
-      ],
-      "dueDate": "April",
-      "status": "In Bearbeitung",
-      "priority": "Normal",
-      "notes": "",
-      "due": "2026-05-04",
-      "linkedEventId": "evt-1775824595282"
-    },
-    {
-      "id": "imported_t118",
-      "title": "Entscheidung: eigene Website-Seite oder Unterseite Projektseite?",
-      "category": "pr",
-      "who": [
-        "Jessica Szczuka",
-        "Lisa Mühl",
-        "Joel Baumann",
-        "Laura Därr",
-        "Veelasha Moonsamy",
-        "Ramya Kandula",
-        "Maxi Nebel",
-        "Christian Geminn"
-      ],
-      "dueDate": "sofort — April",
-      "status": "Erledigt",
-      "priority": "Normal",
-      "notes": "",
-      "due": "2026-02-09",
-      "linkedEventId": "evt-1775824595282"
-    },
-    {
-      "id": "imported_t119",
-      "title": "Website-Texte Sentiment korrigieren und aktualisieren",
-      "category": "pr",
-      "who": [
-        "Lisa Mühl",
-        "Laura Därr"
-      ],
-      "dueDate": "April",
-      "status": "In Bearbeitung",
-      "priority": "Normal",
-      "notes": "",
-      "due": "2026-04-13",
-      "linkedEventId": "evt-1775824595282"
-    },
-    {
-      "id": "imported_t120",
-      "title": "Presseberichte verfolgen, auswerten, archivieren",
-      "category": "pr",
-      "who": [
-        "Laura Därr"
-      ],
-      "dueDate": "laufend",
-      "status": "Offen",
-      "priority": "Normal",
-      "notes": "",
-      "due": "2026-12-14",
-      "linkedEventId": "evt-1775824595282"
-    },
-    {
-      "id": "imported_t3",
-      "title": "Raumplan Brussel Wintergarten (Jan van Damme) anfragen",
-      "category": "koeln",
-      "who": [
-        "Joel Baumann",
-        "Laura Därr"
-      ],
-      "dueDate": "April",
-      "status": "Offen",
-      "priority": "Dringend",
-      "notes": "Masse, Licht, Strom",
-      "due": "April"
-    },
-    {
-      "id": "imported_t50",
-      "title": "CPDP-Anmeldung Lehrende (Joel, Laura, Elko)",
-      "category": "cpdp",
-      "who": [
-        "Laura Därr"
-      ],
-      "dueDate": "sofort — April",
-      "status": "In Bearbeitung",
-      "priority": "Dringend",
-      "notes": "",
-      "due": "2026-04-13",
-      "linkedEventId": "evt-1775849100666"
-    },
-    {
-      "id": "imported_t56",
-      "title": "Zoomtermin Geeske, Judith, Laura ",
-      "category": "cpdp",
-      "who": [
-        "Laura Därr"
-      ],
-      "dueDate": "sofort — April",
-      "status": "Erledigt",
-      "priority": "Dringend",
-      "notes": "",
-      "due": "2026-04-09",
-      "linkedEventId": "evt-1775848688849"
-    },
-    {
-      "id": "imported_t7",
-      "title": "3D-Modell Wintergarten CPDP erstellen",
-      "category": "koeln",
-      "who": [],
-      "dueDate": "Mai",
-      "status": "Offen",
-      "priority": "Normal",
-      "notes": "",
-      "due": "Mai"
-    },
-    {
-      "id": "imported_t23",
-      "title": "Kurationspositionen anfragen (externe Kuratorin?)",
-      "category": "koeln",
       "who": [],
       "dueDate": "April",
       "status": "Offen",
-      "priority": "Normal",
+      "priority": "Dringend",
       "notes": "",
       "due": "April"
-    },
-    {
-      "id": "imported_t24",
-      "title": "Tech Rider Koeln erstellen (vollstaendige Technik-Liste)",
-      "category": "koeln",
-      "who": [],
-      "dueDate": "April",
-      "status": "Offen",
-      "priority": "Dringend",
-      "notes": "AV, Licht, Strom, Kabel, Haengesysteme...",
-      "due": "April"
-    },
-    {
-      "id": "imported_t41",
-      "title": "3. Event — Konzept, Einladung, Planung",
-      "category": "koeln",
-      "who": [],
-      "dueDate": "Mai",
-      "status": "Offen",
-      "priority": "Normal",
-      "notes": "",
-      "due": "Mai"
-    },
-    {
-      "id": "imported_t42",
-      "title": "Keller-Programm planen: Talks, Panels, Sit-ins",
-      "category": "koeln",
-      "who": [],
-      "dueDate": "Mai",
-      "status": "Offen",
-      "priority": "Normal",
-      "notes": "Keller ab 11. Mai nutzbar",
-      "due": "Mai"
-    },
-    {
-      "id": "imported_t56",
-      "title": "Zoomtermin finden (Geeske, Joel, Judith, Laura + Studi)",
-      "category": "cpdp",
-      "who": [
-        "Laura Därr"
-      ],
-      "dueDate": "sofort — April",
-      "status": "Offen",
-      "priority": "Dringend",
-      "notes": "",
-      "due": "sofort — April"
     },
     {
       "id": "imported_t82",
@@ -1988,6 +1106,17 @@
       "due": "April"
     },
     {
+      "id": "imported_t84",
+      "title": "Druckerei anfragen und Angebote einholen",
+      "category": "pub",
+      "who": [],
+      "dueDate": "April",
+      "status": "Offen",
+      "priority": "Dringend",
+      "notes": "",
+      "due": "April"
+    },
+    {
       "id": "imported_t85",
       "title": "ISBN beantragen (falls gewuenscht)",
       "category": "pub",
@@ -1997,6 +1126,28 @@
       "priority": "Normal",
       "notes": "",
       "due": "Mai"
+    },
+    {
+      "id": "imported_t86",
+      "title": "Google Drive Ordner anlegen (Texte / Bilder / Grafiken / Rohfassungen / Reinzeichnung / Druckdaten)",
+      "category": "pub",
+      "who": [],
+      "dueDate": "sofort — April",
+      "status": "Offen",
+      "priority": "Dringend",
+      "notes": "",
+      "due": "sofort — April"
+    },
+    {
+      "id": "imported_t87",
+      "title": "Beitraege Studierende einsammeln (Deadline setzen!)",
+      "category": "pub",
+      "who": [],
+      "dueDate": "September",
+      "status": "Offen",
+      "priority": "Normal",
+      "notes": "",
+      "due": "September"
     },
     {
       "id": "imported_t88",
@@ -2010,6 +1161,17 @@
       "due": "September"
     },
     {
+      "id": "imported_t89",
+      "title": "Bildmaterial sammeln: Artworks, Installationsfotos, Portraets",
+      "category": "pub",
+      "who": [],
+      "dueDate": "laufend",
+      "status": "Offen",
+      "priority": "Normal",
+      "notes": "",
+      "due": "laufend"
+    },
+    {
       "id": "imported_t90",
       "title": "Ausstellungsfotos (professionell) beauftragen",
       "category": "pub",
@@ -2021,8 +1183,77 @@
       "due": "Mai + Dez."
     },
     {
+      "id": "imported_t91",
+      "title": "Kuratorischen Text schreiben",
+      "category": "pub",
+      "who": [
+        "Laura Därr",
+        "Joel Baumann"
+      ],
+      "dueDate": "September",
+      "status": "Offen",
+      "priority": "Normal",
+      "notes": "",
+      "due": "September"
+    },
+    {
+      "id": "imported_t92",
+      "title": "Impressum, Foerderhinweise, Danksagungen zusammenstellen",
+      "category": "pub",
+      "who": [],
+      "dueDate": "Oktober",
+      "status": "Offen",
+      "priority": "Normal",
+      "notes": "",
+      "due": "Oktober"
+    },
+    {
+      "id": "imported_t93",
+      "title": "Website-Beitraege und Blogposts aus Forschung erstellen",
+      "category": "pub",
+      "who": [],
+      "dueDate": "laufend",
+      "status": "Offen",
+      "priority": "Normal",
+      "notes": "",
+      "due": "laufend"
+    },
+    {
+      "id": "imported_t94",
+      "title": "Alle Texte gegenlesen und vereinheitlichen (Stil, Laenge, Formatvorgaben)",
+      "category": "pub",
+      "who": [],
+      "dueDate": "Oktober",
+      "status": "Offen",
+      "priority": "Normal",
+      "notes": "",
+      "due": "Oktober"
+    },
+    {
+      "id": "imported_t95",
+      "title": "Lektorat: Rechtschreibung, Grammatik (intern oder extern?)",
+      "category": "pub",
+      "who": [],
+      "dueDate": "Oktober",
+      "status": "Offen",
+      "priority": "Normal",
+      "notes": "",
+      "due": "Oktober"
+    },
+    {
       "id": "imported_t96",
       "title": "Uebersetzungen pruefen / anfertigen (falls zweisprachig)",
+      "category": "pub",
+      "who": [],
+      "dueDate": "Oktober",
+      "status": "Offen",
+      "priority": "Normal",
+      "notes": "",
+      "due": "Oktober"
+    },
+    {
+      "id": "imported_t97",
+      "title": "1. Korrekturrunde an Autorinnen zuruecksenden",
       "category": "pub",
       "who": [],
       "dueDate": "Oktober",
@@ -2054,6 +1285,39 @@
       "due": "Oktober"
     },
     {
+      "id": "imported_t100",
+      "title": "Cover-Gestaltung",
+      "category": "pub",
+      "who": [],
+      "dueDate": "Oktober",
+      "status": "Offen",
+      "priority": "Normal",
+      "notes": "",
+      "due": "Oktober"
+    },
+    {
+      "id": "imported_t101",
+      "title": "Innenteil setzen: Texte und Bilder einpflegen",
+      "category": "pub",
+      "who": [],
+      "dueDate": "Oktober / Nov.",
+      "status": "Offen",
+      "priority": "Normal",
+      "notes": "",
+      "due": "Oktober / Nov."
+    },
+    {
+      "id": "imported_t102",
+      "title": "Probeausdruck / PDF zur internen Ansicht",
+      "category": "pub",
+      "who": [],
+      "dueDate": "November",
+      "status": "Offen",
+      "priority": "Normal",
+      "notes": "",
+      "due": "November"
+    },
+    {
       "id": "imported_t103",
       "title": "2. Korrekturrunde Layout — alle Beteiligten",
       "category": "pub",
@@ -2063,6 +1327,61 @@
       "priority": "Normal",
       "notes": "",
       "due": "November"
+    },
+    {
+      "id": "imported_t104",
+      "title": "Finales Okay einholen",
+      "category": "pub",
+      "who": [],
+      "dueDate": "Anfang Nov.",
+      "status": "Offen",
+      "priority": "Normal",
+      "notes": "",
+      "due": "Anfang Nov."
+    },
+    {
+      "id": "imported_t105",
+      "title": "Reinzeichnung: Druckdaten erstellen (PDF/X-3, CMYK, 3mm Anschnitt, 300 dpi)",
+      "category": "pub",
+      "who": [],
+      "dueDate": "Anfang Nov.",
+      "status": "Offen",
+      "priority": "Dringend",
+      "notes": "",
+      "due": "Anfang Nov."
+    },
+    {
+      "id": "imported_t106",
+      "title": "Druckdaten an Druckerei uebermitteln und Freigabe erteilen",
+      "category": "pub",
+      "who": [],
+      "dueDate": "Anfang Nov.",
+      "status": "Offen",
+      "priority": "Dringend",
+      "notes": "",
+      "due": "Anfang Nov."
+    },
+    {
+      "id": "imported_t107",
+      "title": "Andruckpruefung durchfuehren",
+      "category": "pub",
+      "who": [],
+      "dueDate": "Mitte Nov.",
+      "status": "Offen",
+      "priority": "Normal",
+      "notes": "",
+      "due": "Mitte Nov."
+    },
+    {
+      "id": "imported_t108",
+      "title": "Lieferdatum bestaetigen",
+      "category": "pub",
+      "who": [],
+      "dueDate": "Mitte Nov.",
+      "status": "Offen",
+      "priority": "Dringend",
+      "notes": "",
+      "due": "Mitte Nov."
     },
     {
       "id": "imported_t109",
@@ -2076,22 +1395,129 @@
       "due": "11. Dez."
     },
     {
-      "id": "imported_t65",
-      "title": "Raumplan Jan van Damme (Wintergarten) anfragen",
-      "category": "cpdp",
-      "who": [
-        "Joel Baumann",
-        "Laura Därr"
-      ],
+      "id": "imported_t110",
+      "title": "Publikation auf Website veroeffentlichen und verlinken",
+      "category": "pub",
+      "who": [],
+      "dueDate": "11. Dez.",
+      "status": "Offen",
+      "priority": "Normal",
+      "notes": "",
+      "due": "11. Dez."
+    },
+    {
+      "id": "imported_t111",
+      "title": "Exemplare an Peers, Foerderinnen, Presse versenden",
+      "category": "pub",
+      "who": [],
+      "dueDate": "ab 11. Dez.",
+      "status": "Offen",
+      "priority": "Normal",
+      "notes": "",
+      "due": "ab 11. Dez."
+    },
+    {
+      "id": "imported_t112",
+      "title": "Archivexemplare fuer KHK / Bibliothek",
+      "category": "pub",
+      "who": [],
+      "dueDate": "ab 11. Dez.",
+      "status": "Offen",
+      "priority": "Normal",
+      "notes": "",
+      "due": "ab 11. Dez."
+    },
+    {
+      "id": "imported_t113",
+      "title": "Pressetext schreiben (DE + EN)",
+      "category": "pr",
+      "who": [],
+      "dueDate": "April",
+      "status": "Offen",
+      "priority": "Normal",
+      "notes": "",
+      "due": "April"
+    },
+    {
+      "id": "imported_t114",
+      "title": "Pressetermine festlegen und Pressemappe zusammenstellen",
+      "category": "pr",
+      "who": [],
+      "dueDate": "April",
+      "status": "Offen",
+      "priority": "Normal",
+      "notes": "",
+      "due": "April"
+    },
+    {
+      "id": "imported_t115",
+      "title": "Presseverteiler aufbauen / aktualisieren",
+      "category": "pr",
+      "who": [],
+      "dueDate": "April",
+      "status": "Offen",
+      "priority": "Normal",
+      "notes": "",
+      "due": "April"
+    },
+    {
+      "id": "imported_t116",
+      "title": "Korrekturen Save the Date einarbeiten und versenden",
+      "category": "pr",
+      "who": [],
       "dueDate": "sofort — April",
       "status": "Offen",
-      "priority": "Dringend",
-      "notes": "Masse anfragen",
+      "priority": "Normal",
+      "notes": "",
       "due": "sofort — April"
     },
     {
-      "id": "imported_t122",
-      "title": "vor Finissage",
+      "id": "imported_t117",
+      "title": "Timetable Presse erstellen",
+      "category": "pr",
+      "who": [],
+      "dueDate": "April",
+      "status": "Offen",
+      "priority": "Normal",
+      "notes": "",
+      "due": "April"
+    },
+    {
+      "id": "imported_t118",
+      "title": "Entscheidung: eigene Website-Seite oder Unterseite Projektseite?",
+      "category": "pr",
+      "who": [],
+      "dueDate": "sofort — April",
+      "status": "Offen",
+      "priority": "Normal",
+      "notes": "",
+      "due": "sofort — April"
+    },
+    {
+      "id": "imported_t119",
+      "title": "Website-Texte Sentiment korrigieren und aktualisieren",
+      "category": "pr",
+      "who": [],
+      "dueDate": "April",
+      "status": "Offen",
+      "priority": "Normal",
+      "notes": "",
+      "due": "April"
+    },
+    {
+      "id": "imported_t120",
+      "title": "Presseberichte verfolgen, auswerten, archivieren",
+      "category": "pr",
+      "who": [],
+      "dueDate": "laufend",
+      "status": "Offen",
+      "priority": "Normal",
+      "notes": "",
+      "due": "laufend"
+    },
+    {
+      "id": "imported_t121",
+      "title": "waehrend Ausstellung",
       "category": "pr",
       "who": [],
       "dueDate": "Post",
@@ -2101,8 +1527,8 @@
       "due": "Post"
     },
     {
-      "id": "imported_t121",
-      "title": "waehrend Ausstellung",
+      "id": "imported_t122",
+      "title": "vor Finissage",
       "category": "pr",
       "who": [],
       "dueDate": "Post",
@@ -2122,5 +1548,6 @@
       "notes": "",
       "due": "Post"
     }
-  ]
+  ],
+  "seeded": true
 }
