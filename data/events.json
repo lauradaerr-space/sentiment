@@ -207,10 +207,11 @@
         "Laura Därr"
       ],
       "dueDate": "April",
-      "status": "Offen",
+      "status": "Erledigt",
       "priority": "Dringend",
       "notes": "Grundriss von Jens anfragen — Masse, Tueren, Steckdosen, Licht",
-      "due": "April"
+      "due": "2025-09-12",
+      "linkedEventId": "evt-1775824595282"
     },
     {
       "id": "imported_t2",
