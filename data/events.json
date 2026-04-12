@@ -1603,17 +1603,6 @@
       "linkedEventId": "evt-1775824595282"
     },
     {
-      "id": "imported_t121",
-      "title": "waehrend Ausstellung",
-      "category": "pr",
-      "who": [],
-      "dueDate": "Post",
-      "status": "Offen",
-      "priority": "Normal",
-      "notes": "",
-      "due": "Post"
-    },
-    {
       "id": "imported_t3",
       "title": "Raumplan Brussel Wintergarten (Jan van Damme) anfragen",
       "category": "koeln",
