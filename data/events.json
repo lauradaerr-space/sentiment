@@ -437,12 +437,15 @@
       "id": "imported_t29",
       "title": "Netzwerk / WLAN in Halle klaeren",
       "category": "koeln",
-      "who": [],
+      "who": [
+        "Laura Därr"
+      ],
       "dueDate": "Mai",
-      "status": "Offen",
+      "status": "Erledigt",
       "priority": "Normal",
       "notes": "",
-      "due": "Mai"
+      "due": "2026-02-09",
+      "linkedEventId": "evt-1775824595282"
     },
     {
       "id": "imported_t30",
