@@ -2076,17 +2076,6 @@
       "due": "11. Dez."
     },
     {
-      "id": "imported_t121",
-      "title": "waehrend Ausstellung",
-      "category": "pr",
-      "who": [],
-      "dueDate": "Post",
-      "status": "Offen",
-      "priority": "Normal",
-      "notes": "",
-      "due": "Post"
-    },
-    {
       "id": "imported_t65",
       "title": "Raumplan Jan van Damme (Wintergarten) anfragen",
       "category": "cpdp",
