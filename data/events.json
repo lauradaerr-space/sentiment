@@ -1090,12 +1090,16 @@
       "id": "imported_t76",
       "title": "Interview vor Ort Jessi und Lisa planen (Technik, Ort, Zeit)",
       "category": "cpdp",
-      "who": [],
+      "who": [
+        "Joel Baumann",
+        "Laura Därr"
+      ],
       "dueDate": "April",
       "status": "Offen",
       "priority": "Normal",
       "notes": "",
-      "due": "April"
+      "due": "2026-04-15",
+      "linkedEventId": "evt-1775849166451"
     },
     {
       "id": "imported_t77",
