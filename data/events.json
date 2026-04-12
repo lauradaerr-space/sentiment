@@ -492,12 +492,15 @@
       "id": "imported_t34",
       "title": "Vernissage: Einladung designen und versenden",
       "category": "koeln",
-      "who": [],
+      "who": [
+        "Laura Därr"
+      ],
       "dueDate": "November",
-      "status": "Offen",
+      "status": "In Bearbeitung",
       "priority": "Normal",
       "notes": "3 Wochen vorher versenden — Versand bis 20. Nov.",
-      "due": "November"
+      "due": "2025-12-08",
+      "linkedEventId": "evt-1775824595282"
     },
     {
       "id": "imported_t35",
