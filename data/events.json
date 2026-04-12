@@ -1657,12 +1657,16 @@
       "id": "imported_t112",
       "title": "Archivexemplare fuer KHK / Bibliothek",
       "category": "pub",
-      "who": [],
+      "who": [
+        "Joel Baumann",
+        "Laura Därr"
+      ],
       "dueDate": "ab 11. Dez.",
       "status": "Offen",
       "priority": "Normal",
       "notes": "",
-      "due": "ab 11. Dez."
+      "due": "2026-12-11",
+      "linkedEventId": ""
     },
     {
       "id": "imported_t113",
