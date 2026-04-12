@@ -843,12 +843,16 @@
       "id": "imported_t47",
       "title": "Aufbauhelfer:innen koordinieren",
       "category": "koeln",
-      "who": [],
+      "who": [
+        "Joel Baumann",
+        "Laura Därr"
+      ],
       "dueDate": "November",
       "status": "Offen",
       "priority": "Normal",
       "notes": "",
-      "due": "November"
+      "due": "2026-06-08",
+      "linkedEventId": "evt-1775824595282"
     },
     {
       "id": "imported_t48",
