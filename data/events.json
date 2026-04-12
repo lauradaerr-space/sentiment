@@ -951,12 +951,16 @@
       "id": "imported_t68",
       "title": "Kuration abstimmen: Brainrot, Einzelarbeiten, Geeske, Judith, Ueberwachungskamera?",
       "category": "cpdp",
-      "who": [],
+      "who": [
+        "Joel Baumann",
+        "Laura Därr"
+      ],
       "dueDate": "April",
-      "status": "Offen",
+      "status": "In Bearbeitung",
       "priority": "Dringend",
       "notes": "Bei Ueberwachungskamera: Konzepttext noetig",
-      "due": "April"
+      "due": "2026-04-20",
+      "linkedEventId": "evt-1775849100666"
     },
     {
       "id": "imported_t69",
