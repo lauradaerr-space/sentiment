@@ -1896,6 +1896,217 @@
       "notes": "",
       "due": "2026-04-09",
       "linkedEventId": "evt-1775848688849"
+    },
+    {
+      "id": "imported_t7",
+      "title": "3D-Modell Wintergarten CPDP erstellen",
+      "category": "koeln",
+      "who": [],
+      "dueDate": "Mai",
+      "status": "Offen",
+      "priority": "Normal",
+      "notes": "",
+      "due": "Mai"
+    },
+    {
+      "id": "imported_t23",
+      "title": "Kurationspositionen anfragen (externe Kuratorin?)",
+      "category": "koeln",
+      "who": [],
+      "dueDate": "April",
+      "status": "Offen",
+      "priority": "Normal",
+      "notes": "",
+      "due": "April"
+    },
+    {
+      "id": "imported_t24",
+      "title": "Tech Rider Koeln erstellen (vollstaendige Technik-Liste)",
+      "category": "koeln",
+      "who": [],
+      "dueDate": "April",
+      "status": "Offen",
+      "priority": "Dringend",
+      "notes": "AV, Licht, Strom, Kabel, Haengesysteme...",
+      "due": "April"
+    },
+    {
+      "id": "imported_t41",
+      "title": "3. Event — Konzept, Einladung, Planung",
+      "category": "koeln",
+      "who": [],
+      "dueDate": "Mai",
+      "status": "Offen",
+      "priority": "Normal",
+      "notes": "",
+      "due": "Mai"
+    },
+    {
+      "id": "imported_t42",
+      "title": "Keller-Programm planen: Talks, Panels, Sit-ins",
+      "category": "koeln",
+      "who": [],
+      "dueDate": "Mai",
+      "status": "Offen",
+      "priority": "Normal",
+      "notes": "Keller ab 11. Mai nutzbar",
+      "due": "Mai"
+    },
+    {
+      "id": "imported_t56",
+      "title": "Zoomtermin finden (Geeske, Joel, Judith, Laura + Studi)",
+      "category": "cpdp",
+      "who": [
+        "Laura Därr"
+      ],
+      "dueDate": "sofort — April",
+      "status": "Offen",
+      "priority": "Dringend",
+      "notes": "",
+      "due": "sofort — April"
+    },
+    {
+      "id": "imported_t82",
+      "title": "Kurzbeschreibung ca. 2.000 Zeichen schreiben",
+      "category": "pub",
+      "who": [],
+      "dueDate": "April",
+      "status": "Offen",
+      "priority": "Dringend",
+      "notes": "",
+      "due": "April"
+    },
+    {
+      "id": "imported_t83",
+      "title": "Autorinnen-Liste und Aufgabenverteilung festlegen",
+      "category": "pub",
+      "who": [],
+      "dueDate": "April",
+      "status": "Offen",
+      "priority": "Dringend",
+      "notes": "",
+      "due": "April"
+    },
+    {
+      "id": "imported_t85",
+      "title": "ISBN beantragen (falls gewuenscht)",
+      "category": "pub",
+      "who": [],
+      "dueDate": "Mai",
+      "status": "Offen",
+      "priority": "Normal",
+      "notes": "",
+      "due": "Mai"
+    },
+    {
+      "id": "imported_t88",
+      "title": "Beitraege Peers einsammeln (Geeske, Judith, Joel, Elko u.a.)",
+      "category": "pub",
+      "who": [],
+      "dueDate": "September",
+      "status": "Offen",
+      "priority": "Normal",
+      "notes": "",
+      "due": "September"
+    },
+    {
+      "id": "imported_t90",
+      "title": "Ausstellungsfotos (professionell) beauftragen",
+      "category": "pub",
+      "who": [],
+      "dueDate": "Mai + Dez.",
+      "status": "Offen",
+      "priority": "Normal",
+      "notes": "",
+      "due": "Mai + Dez."
+    },
+    {
+      "id": "imported_t96",
+      "title": "Uebersetzungen pruefen / anfertigen (falls zweisprachig)",
+      "category": "pub",
+      "who": [],
+      "dueDate": "Oktober",
+      "status": "Offen",
+      "priority": "Normal",
+      "notes": "",
+      "due": "Oktober"
+    },
+    {
+      "id": "imported_t98",
+      "title": "Korrekturen einarbeiten — Deadline fuer Aenderungen setzen!",
+      "category": "pub",
+      "who": [],
+      "dueDate": "Ende Oktober",
+      "status": "Offen",
+      "priority": "Normal",
+      "notes": "",
+      "due": "Ende Oktober"
+    },
+    {
+      "id": "imported_t99",
+      "title": "Layoutkonzept und Raster entwickeln — wer macht das Layout?",
+      "category": "pub",
+      "who": [],
+      "dueDate": "Oktober",
+      "status": "Offen",
+      "priority": "Dringend",
+      "notes": "",
+      "due": "Oktober"
+    },
+    {
+      "id": "imported_t103",
+      "title": "2. Korrekturrunde Layout — alle Beteiligten",
+      "category": "pub",
+      "who": [],
+      "dueDate": "November",
+      "status": "Offen",
+      "priority": "Normal",
+      "notes": "",
+      "due": "November"
+    },
+    {
+      "id": "imported_t109",
+      "title": "PDF-Version fuer Website und Download aufbereiten",
+      "category": "pub",
+      "who": [],
+      "dueDate": "11. Dez.",
+      "status": "Offen",
+      "priority": "Normal",
+      "notes": "",
+      "due": "11. Dez."
+    },
+    {
+      "id": "imported_t121",
+      "title": "waehrend Ausstellung",
+      "category": "pr",
+      "who": [],
+      "dueDate": "Post",
+      "status": "Offen",
+      "priority": "Normal",
+      "notes": "",
+      "due": "Post"
+    },
+    {
+      "id": "imported_t122",
+      "title": "vor Finissage",
+      "category": "pr",
+      "who": [],
+      "dueDate": "Post",
+      "status": "Offen",
+      "priority": "Normal",
+      "notes": "",
+      "due": "Post"
+    },
+    {
+      "id": "imported_t123",
+      "title": "nach Finissage",
+      "category": "pr",
+      "who": [],
+      "dueDate": "Post",
+      "status": "Offen",
+      "priority": "Normal",
+      "notes": "",
+      "due": "Post"
     }
   ]
 }
