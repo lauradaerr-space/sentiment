@@ -461,12 +461,16 @@
       "id": "imported_t21",
       "title": "Werktexte und Beschriftungen aller Arbeiten erstellen",
       "category": "koeln",
-      "who": [],
+      "who": [
+        "Joel Baumann",
+        "Laura Därr"
+      ],
       "dueDate": "Oktober",
       "status": "Offen",
       "priority": "Normal",
       "notes": "Einheitliches Format festlegen",
-      "due": "Oktober"
+      "due": "2026-09-14",
+      "linkedEventId": "evt-1775824595282"
     },
     {
       "id": "imported_t22",
