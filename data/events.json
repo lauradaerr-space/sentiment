@@ -1546,12 +1546,15 @@
       "id": "imported_t120",
       "title": "Presseberichte verfolgen, auswerten, archivieren",
       "category": "pr",
-      "who": [],
+      "who": [
+        "Laura Därr"
+      ],
       "dueDate": "laufend",
       "status": "Offen",
       "priority": "Normal",
       "notes": "",
-      "due": "laufend"
+      "due": "2026-12-01",
+      "linkedEventId": "evt-1775824595282"
     }
   ],
   "seeded": true
