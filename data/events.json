@@ -728,12 +728,22 @@
       "id": "imported_t39",
       "title": "3. Event — intern besprechen und Format festlegen",
       "category": "koeln",
-      "who": [],
+      "who": [
+        "Jessica Szczuka",
+        "Lisa Mühl",
+        "Joel Baumann",
+        "Laura Därr",
+        "Veelasha Moonsamy",
+        "Ramya Kandula",
+        "Maxi Nebel",
+        "Christian Geminn"
+      ],
       "dueDate": "April",
-      "status": "Offen",
+      "status": "In Bearbeitung",
       "priority": "Dringend",
       "notes": "Noch nicht definiert — intern klaeren!",
-      "due": "April"
+      "due": "2026-05-04",
+      "linkedEventId": "evt-1775824595282"
     },
     {
       "id": "imported_t40",
