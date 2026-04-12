@@ -522,17 +522,6 @@
       "due": "Oktober"
     },
     {
-      "id": "imported_t37",
-      "title": "Finissage — Datum festlegen",
-      "category": "koeln",
-      "who": [],
-      "dueDate": "April",
-      "status": "Offen",
-      "priority": "Dringend",
-      "notes": "Datum noch offen",
-      "due": "April"
-    },
-    {
       "id": "imported_t38",
       "title": "Finissage — Konzept und Ablauf planen",
       "category": "koeln",
