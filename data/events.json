@@ -382,12 +382,15 @@
       "id": "imported_t24",
       "title": "Tech Rider Koeln erstellen (vollstaendige Technik-Liste)",
       "category": "koeln",
-      "who": [],
+      "who": [
+        "Laura Därr"
+      ],
       "dueDate": "April",
-      "status": "Offen",
+      "status": "In Bearbeitung",
       "priority": "Dringend",
       "notes": "AV, Licht, Strom, Kabel, Haengesysteme...",
-      "due": "April"
+      "due": "2026-05-19",
+      "linkedEventId": "evt-1775824595282"
     },
     {
       "id": "imported_t25",
