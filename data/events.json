@@ -302,12 +302,16 @@
       "id": "imported_t10",
       "title": "Lichtplan erstellen (welches Werk braucht welches Licht?)",
       "category": "koeln",
-      "who": [],
+      "who": [
+        "Joel Baumann",
+        "Laura Därr"
+      ],
       "dueDate": "Mai",
       "status": "Offen",
       "priority": "Normal",
       "notes": "Abstimmen mit Technik und Kunstwerk Koeln",
-      "due": "Mai"
+      "due": "2026-06-08",
+      "linkedEventId": "evt-1775824595282"
     },
     {
       "id": "imported_t11",
