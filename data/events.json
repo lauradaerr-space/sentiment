@@ -273,12 +273,15 @@
       "id": "imported_t8",
       "title": "Haenge-/Installationsplan Halle erarbeiten (Positionen aller Werke)",
       "category": "koeln",
-      "who": [],
+      "who": [
+        "Laura Därr"
+      ],
       "dueDate": "Mai",
       "status": "Offen",
       "priority": "Dringend",
       "notes": "Als Layer im Raumplan / Miro",
-      "due": "Mai"
+      "due": "2026-06-01",
+      "linkedEventId": "evt-1775824595282"
     },
     {
       "id": "imported_t9",
