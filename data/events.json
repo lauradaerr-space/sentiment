@@ -331,12 +331,16 @@
       "id": "imported_t19",
       "title": "Positionen aller Arbeiten im Raumplan festlegen",
       "category": "koeln",
-      "who": [],
+      "who": [
+        "Joel Baumann",
+        "Laura Därr"
+      ],
       "dueDate": "Mai",
       "status": "Offen",
       "priority": "Dringend",
       "notes": "Abstimmung mit Raumplan",
-      "due": "Mai"
+      "due": "2026-10-12",
+      "linkedEventId": "evt-1775824421996"
     },
     {
       "id": "imported_t20",
