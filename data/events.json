@@ -1446,12 +1446,22 @@
       "id": "imported_t93",
       "title": "Website-Beitraege und Blogposts aus Forschung erstellen",
       "category": "pub",
-      "who": [],
+      "who": [
+        "Jessica Szczuka",
+        "Lisa Mühl",
+        "Joel Baumann",
+        "Laura Därr",
+        "Veelasha Moonsamy",
+        "Ramya Kandula",
+        "Maxi Nebel",
+        "Christian Geminn"
+      ],
       "dueDate": "laufend",
       "status": "Offen",
       "priority": "Normal",
       "notes": "",
-      "due": "laufend"
+      "due": "2026-07-06",
+      "linkedEventId": "evt-1775824595282"
     },
     {
       "id": "imported_t94",
