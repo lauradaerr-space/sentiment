@@ -1646,12 +1646,15 @@
       "id": "imported_t111",
       "title": "Exemplare an Peers, Foerderinnen, Presse versenden",
       "category": "pub",
-      "who": [],
+      "who": [
+        "Laura Därr"
+      ],
       "dueDate": "ab 11. Dez.",
       "status": "Offen",
       "priority": "Normal",
       "notes": "",
-      "due": "ab 11. Dez."
+      "due": "2026-12-11",
+      "linkedEventId": "evt-1775824421996"
     },
     {
       "id": "imported_t112",
