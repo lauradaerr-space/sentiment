@@ -1601,17 +1601,6 @@
       "linkedEventId": "evt-1775824421996"
     },
     {
-      "id": "imported_t108",
-      "title": "Lieferdatum bestaetigen",
-      "category": "pub",
-      "who": [],
-      "dueDate": "Mitte Nov.",
-      "status": "Offen",
-      "priority": "Dringend",
-      "notes": "",
-      "due": "Mitte Nov."
-    },
-    {
       "id": "imported_t110",
       "title": "Publikation auf Website veroeffentlichen und verlinken",
       "category": "pub",
