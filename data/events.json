@@ -259,12 +259,15 @@
       "id": "imported_t6",
       "title": "3D-Modell Keller erstellen (Koeln)",
       "category": "koeln",
-      "who": [],
+      "who": [
+        "Laura Därr"
+      ],
       "dueDate": "Mai",
-      "status": "Offen",
+      "status": "In Bearbeitung",
       "priority": "Normal",
       "notes": "",
-      "due": "Mai"
+      "due": "2026-05-04",
+      "linkedEventId": "evt-1775824595282"
     },
     {
       "id": "imported_t8",
