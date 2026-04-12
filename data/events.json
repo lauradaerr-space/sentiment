@@ -1421,14 +1421,15 @@
     },
     {
       "id": "imported_t95",
-      "title": "Lektorat: Rechtschreibung, Grammatik (intern oder extern?)",
+      "title": "Lektorat: Rechtschreibung, Grammatik ",
       "category": "pub",
       "who": [],
       "dueDate": "Oktober",
       "status": "Offen",
       "priority": "Normal",
       "notes": "",
-      "due": "Oktober"
+      "due": "2026-10-12",
+      "linkedEventId": "evt-1775824421996"
     },
     {
       "id": "imported_t96",
