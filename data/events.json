@@ -968,13 +968,14 @@
       "title": "Raumplan in Miro teilen",
       "category": "cpdp",
       "who": [
-        "Leonie"
+        "Laura Därr"
       ],
       "dueDate": "April",
-      "status": "Offen",
+      "status": "Erledigt",
       "priority": "Normal",
       "notes": "",
-      "due": "April"
+      "due": "2026-04-06",
+      "linkedEventId": "evt-1775849100666"
     },
     {
       "id": "imported_t67",
