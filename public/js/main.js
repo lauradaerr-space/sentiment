@@ -650,7 +650,7 @@ const _p5inst = new p5(p => {
 
 /* ══ INIT ══ */
 const stageVideo = document.getElementById('stageVideo');
-if (stageVideo) stageVideo.playbackRate = 0.75;
+if (stageVideo) stageVideo.playbackRate = 0.5;
 
 renderTeam();
 loadEvents();
