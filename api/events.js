@@ -62,31 +62,43 @@ module.exports = async (req, res) => {
   if (req.method === 'POST') {
     try {
       const body = req.body || {};
+      console.log('POST /api/events — body keys:', Object.keys(body));
+
       // Accept both { events: {events,tasks} } (legacy) and { events, tasks } (new)
       let events, tasks;
-      if (body.events && body.events.events) {
-        // legacy format: { events: { events: [...], tasks: [...] } }
-        events = body.events.events || [];
+      if (body.events && Array.isArray(body.events.events)) {
+        events = body.events.events;
         tasks = body.events.tasks || [];
       } else {
         events = body.events || [];
         tasks = body.tasks || [];
       }
 
+      console.log('Saving events:', events.length, 'tasks:', tasks.length);
+
       const current = await githubRequest('GET', PATH);
+      if (!current.body || !current.body.sha) {
+        throw new Error('Could not get SHA: ' + JSON.stringify(current.body).substring(0, 200));
+      }
       const sha = current.body.sha;
 
       const payload = { events: events, tasks: tasks };
       const content = Buffer.from(JSON.stringify(payload, null, 2)).toString('base64');
-      await githubRequest('PUT', PATH, {
-        message: 'update: events and tasks via admin',
+      const result = await githubRequest('PUT', PATH, {
+        message: 'update: admin save ' + new Date().toISOString(),
         content,
         sha
       });
 
+      console.log('GitHub PUT status:', result.status);
+      if (result.status !== 200 && result.status !== 201) {
+        throw new Error('GitHub PUT failed: ' + JSON.stringify(result.body).substring(0, 200));
+      }
+
       return res.status(200).json({ ok: true });
     } catch (e) {
-      return res.status(500).json({ error: 'Failed to save data', detail: String(e) });
+      console.error('POST /api/events error:', e.message || e);
+      return res.status(500).json({ ok: false, error: e.message || String(e) });
     }
   }
 

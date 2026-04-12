@@ -64,13 +64,20 @@
   }
 
   function loadData() {
-    fetch(API)
-      .then(function (r) { return r.json(); })
+    console.log('loadData() called');
+    fetch(API + '?t=' + Date.now())
+      .then(function (r) {
+        console.log('loadData() status:', r.status);
+        if (!r.ok) throw new Error('HTTP ' + r.status);
+        return r.json();
+      })
       .then(function (d) {
         data = {
           events: (d && d.events) || [],
           tasks: (d && d.tasks) || []
         };
+        console.log('loadData() got events:', data.events.length, 'tasks:', data.tasks.length);
+
         // merge imported tasks
         var needsSeed = false;
         if (typeof IMPORTED_TASKS !== 'undefined') {
@@ -95,32 +102,40 @@
         }
         renderAll();
         setSyncStatus('ok');
-        // persist seeded tasks to GitHub
-        if (needsSeed) saveData();
+        if (needsSeed) {
+          console.log('Seeding', data.tasks.length, 'tasks to GitHub');
+          saveData();
+        }
       })
       .catch(function (err) {
-        console.error('loadData error:', err);
+        console.error('loadData() FAILED:', err);
         setSyncStatus('error');
       });
   }
 
   function saveData() {
     setSyncStatus('saving');
+    var payload = { events: data.events || [], tasks: data.tasks || [] };
+    console.log('saveData() called — events:', payload.events.length, 'tasks:', payload.tasks.length);
+
     fetch(API, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ events: data.events, tasks: data.tasks })
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify(payload)
     })
       .then(function (r) {
-        if (r.ok) {
+        console.log('saveData() response status:', r.status);
+        return r.text().then(function (text) {
+          console.log('saveData() response:', text.substring(0, 200));
+          var d;
+          try { d = JSON.parse(text); } catch (e) { throw new Error('Invalid JSON: ' + text.substring(0, 100)); }
+          if (!r.ok || !d.ok) throw new Error('API error: ' + (d.error || d.detail || JSON.stringify(d)));
           setSyncStatus('ok');
-        } else {
-          r.json().then(function (d) { console.error('saveData API error:', d); });
-          setSyncStatus('error');
-        }
+          console.log('saveData() SUCCESS');
+        });
       })
       .catch(function (err) {
-        console.error('saveData error:', err);
+        console.error('saveData() FAILED:', err);
         setSyncStatus('error');
       });
   }
