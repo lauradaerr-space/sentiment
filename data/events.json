@@ -619,12 +619,18 @@
       "id": "imported_t45",
       "title": "Unterbringung Lehrpersonal Koeln",
       "category": "koeln",
-      "who": [],
+      "who": [
+        "Jessica Szczuka",
+        "Lisa Mühl",
+        "Joel Baumann",
+        "Laura Därr"
+      ],
       "dueDate": "Oktober",
       "status": "Offen",
       "priority": "Normal",
       "notes": "",
-      "due": "Oktober"
+      "due": "2026-06-22",
+      "linkedEventId": "evt-1775824421996"
     },
     {
       "id": "imported_t46",
