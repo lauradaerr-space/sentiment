@@ -1064,12 +1064,18 @@
       "id": "imported_t76",
       "title": "Interview vor Ort Jessi und Lisa planen (Technik, Ort, Zeit)",
       "category": "cpdp",
-      "who": [],
+      "who": [
+        "Jessica Szczuka",
+        "Lisa Mühl",
+        "Joel Baumann",
+        "Laura Därr"
+      ],
       "dueDate": "April",
       "status": "Offen",
       "priority": "Normal",
       "notes": "",
-      "due": "April"
+      "due": "2026-05-04",
+      "linkedEventId": "evt-1775849166451"
     },
     {
       "id": "imported_t77",
