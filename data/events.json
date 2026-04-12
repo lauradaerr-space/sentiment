@@ -228,20 +228,6 @@
       "linkedEventId": "evt-1775824595282"
     },
     {
-      "id": "imported_t3",
-      "title": "Raumplan Brussel Wintergarten (Jan van Damme) anfragen",
-      "category": "koeln",
-      "who": [
-        "Joel Baumann",
-        "Laura Därr"
-      ],
-      "dueDate": "April",
-      "status": "Offen",
-      "priority": "Dringend",
-      "notes": "Masse, Licht, Strom",
-      "due": "April"
-    },
-    {
       "id": "imported_t4",
       "title": "Raumplan Brussel in Miro teilen",
       "category": "koeln",
