@@ -662,12 +662,18 @@
       "id": "imported_t35",
       "title": "Vernissage: Catering / Getraenke anfragen (Empfehlung Kunstwerk Koeln)",
       "category": "koeln",
-      "who": [],
+      "who": [
+        "Jessica Szczuka",
+        "Lisa Mühl",
+        "Joel Baumann",
+        "Laura Därr"
+      ],
       "dueDate": "Oktober",
-      "status": "Offen",
+      "status": "In Bearbeitung",
       "priority": "Normal",
       "notes": "",
-      "due": "Oktober"
+      "due": "2026-06-01",
+      "linkedEventId": "evt-1775824421996"
     },
     {
       "id": "imported_t36",
