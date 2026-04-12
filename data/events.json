@@ -778,12 +778,16 @@
       "id": "imported_t51",
       "title": "Kosten Panel CPDP bezahlen",
       "category": "cpdp",
-      "who": [],
+      "who": [
+        "Laura Därr",
+        "Christian Geminn"
+      ],
       "dueDate": "sofort — April",
-      "status": "Offen",
+      "status": "Erledigt",
       "priority": "Dringend",
       "notes": "",
-      "due": "sofort — April"
+      "due": "2026-03-02",
+      "linkedEventId": "evt-1775849046566"
     },
     {
       "id": "imported_t52",
