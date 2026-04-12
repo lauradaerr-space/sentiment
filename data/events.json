@@ -1581,12 +1581,15 @@
       "id": "imported_t101",
       "title": "Innenteil setzen: Texte und Bilder einpflegen",
       "category": "pub",
-      "who": [],
+      "who": [
+        "Laura Därr"
+      ],
       "dueDate": "Oktober / Nov.",
       "status": "Offen",
       "priority": "Normal",
       "notes": "",
-      "due": "Oktober / Nov."
+      "due": "",
+      "linkedEventId": ""
     },
     {
       "id": "imported_t102",
