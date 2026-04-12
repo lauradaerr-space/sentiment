@@ -1498,12 +1498,16 @@
       "id": "imported_t100",
       "title": "Cover-Gestaltung",
       "category": "pub",
-      "who": [],
+      "who": [
+        "Joel Baumann",
+        "Laura Därr"
+      ],
       "dueDate": "Oktober",
       "status": "Offen",
       "priority": "Normal",
       "notes": "",
-      "due": "Oktober"
+      "due": "2026-08-31",
+      "linkedEventId": "evt-1775824421996"
     },
     {
       "id": "imported_t101",
