@@ -1621,12 +1621,15 @@
       "id": "imported_t108",
       "title": "Lieferdatum bestaetigen",
       "category": "pub",
-      "who": [],
+      "who": [
+        "Laura Därr"
+      ],
       "dueDate": "Mitte Nov.",
       "status": "Offen",
       "priority": "Dringend",
       "notes": "",
-      "due": "Mitte Nov."
+      "due": "",
+      "linkedEventId": ""
     },
     {
       "id": "imported_t110",
