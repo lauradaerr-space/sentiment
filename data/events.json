@@ -1536,14 +1536,17 @@
     },
     {
       "id": "imported_t98",
-      "title": "Korrekturen einarbeiten — Deadline fuer Aenderungen setzen!",
+      "title": "Korrekturen einarbeiten — Deadline fuer Aenderungen setzen",
       "category": "pub",
-      "who": [],
+      "who": [
+        "Laura Därr"
+      ],
       "dueDate": "Ende Oktober",
       "status": "Offen",
       "priority": "Normal",
       "notes": "",
-      "due": "Ende Oktober"
+      "due": "",
+      "linkedEventId": ""
     },
     {
       "id": "imported_t99",
