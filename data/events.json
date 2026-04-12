@@ -1537,12 +1537,15 @@
       "id": "imported_t115",
       "title": "Presseverteiler aufbauen / aktualisieren",
       "category": "pr",
-      "who": [],
+      "who": [
+        "Laura Därr"
+      ],
       "dueDate": "April",
-      "status": "Offen",
+      "status": "In Bearbeitung",
       "priority": "Normal",
       "notes": "",
-      "due": "April"
+      "due": "2026-05-11",
+      "linkedEventId": "evt-1775824595282"
     },
     {
       "id": "imported_t116",
