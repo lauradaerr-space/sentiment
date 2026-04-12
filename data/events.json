@@ -1577,12 +1577,15 @@
       "id": "imported_t104",
       "title": "Finales Okay einholen",
       "category": "pub",
-      "who": [],
+      "who": [
+        "Laura Därr"
+      ],
       "dueDate": "Anfang Nov.",
       "status": "Offen",
       "priority": "Normal",
       "notes": "",
-      "due": "Anfang Nov."
+      "due": "2026-08-24",
+      "linkedEventId": ""
     },
     {
       "id": "imported_t105",
