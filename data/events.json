@@ -1684,6 +1684,18 @@
         "Laura Därr"
       ],
       "id": "task-1775993320462"
+    },
+    {
+      "title": "Restbuchungen Unterkunft/Fahrt",
+      "category": "cpdp",
+      "status": "Offen",
+      "due": "2026-04-16",
+      "linkedEventId": "evt-1775849100666",
+      "who": [
+        "Joel Baumann",
+        "Laura Därr"
+      ],
+      "id": "task-1775993408881"
     }
   ],
   "seeded": true
