@@ -592,12 +592,15 @@
       "id": "imported_t31",
       "title": "Transport- und Verpackungsplan fuer alle Werke erstellen",
       "category": "koeln",
-      "who": [],
+      "who": [
+        "Laura Därr"
+      ],
       "dueDate": "Oktober",
       "status": "Offen",
       "priority": "Normal",
       "notes": "Welche Kisten / Verpackung braucht was?",
-      "due": "Oktober"
+      "due": "2026-10-26",
+      "linkedEventId": "evt-1775824595282"
     },
     {
       "id": "imported_t32",
