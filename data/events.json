@@ -476,12 +476,16 @@
       "id": "imported_t22",
       "title": "Einleitungstext Ausstellung schreiben (Wandtext / Flyer)",
       "category": "koeln",
-      "who": [],
+      "who": [
+        "Joel Baumann",
+        "Laura Därr"
+      ],
       "dueDate": "Oktober",
       "status": "Offen",
       "priority": "Normal",
       "notes": "",
-      "due": "Oktober"
+      "due": "2026-07-13",
+      "linkedEventId": "evt-1775824595282"
     },
     {
       "id": "imported_t23",
