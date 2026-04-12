@@ -675,12 +675,16 @@
       "id": "imported_t48",
       "title": "Verpflegung Aufbautage organisieren",
       "category": "koeln",
-      "who": [],
+      "who": [
+        "Joel Baumann",
+        "Laura Därr"
+      ],
       "dueDate": "November",
       "status": "Offen",
       "priority": "Normal",
       "notes": "",
-      "due": "November"
+      "due": "2026-09-21",
+      "linkedEventId": "evt-1775824421996"
     },
     {
       "id": "imported_t49",
