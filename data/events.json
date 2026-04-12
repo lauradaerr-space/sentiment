@@ -1358,12 +1358,15 @@
       "id": "imported_t87",
       "title": "Beitraege Studierende einsammeln (Deadline setzen!)",
       "category": "pub",
-      "who": [],
+      "who": [
+        "Laura Därr"
+      ],
       "dueDate": "September",
       "status": "Offen",
       "priority": "Normal",
       "notes": "",
-      "due": "September"
+      "due": "2026-06-08",
+      "linkedEventId": "evt-1775824595282"
     },
     {
       "id": "imported_t88",
