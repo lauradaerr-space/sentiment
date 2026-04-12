@@ -470,12 +470,22 @@
       "id": "imported_t32",
       "title": "Vernissage 11. Dez. — Konzept und Ablauf planen",
       "category": "koeln",
-      "who": [],
+      "who": [
+        "Jessica Szczuka",
+        "Lisa Mühl",
+        "Joel Baumann",
+        "Laura Därr",
+        "Veelasha Moonsamy",
+        "Ramya Kandula",
+        "Maxi Nebel",
+        "Christian Geminn"
+      ],
       "dueDate": "Mai",
       "status": "Offen",
       "priority": "Dringend",
       "notes": "Datum: 11. Dezember 2026",
-      "due": "Mai"
+      "due": "2026-06-29",
+      "linkedEventId": "evt-1775824421996"
     },
     {
       "id": "imported_t33",
