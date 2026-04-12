@@ -1482,14 +1482,17 @@
     },
     {
       "id": "imported_t99",
-      "title": "Layoutkonzept und Raster entwickeln — wer macht das Layout?",
+      "title": "Layoutkonzept und Raster entwickeln",
       "category": "pub",
-      "who": [],
+      "who": [
+        "Laura Därr"
+      ],
       "dueDate": "Oktober",
       "status": "Offen",
       "priority": "Dringend",
       "notes": "",
-      "due": "Oktober"
+      "due": "2026-08-31",
+      "linkedEventId": "evt-1775824421996"
     },
     {
       "id": "imported_t100",
