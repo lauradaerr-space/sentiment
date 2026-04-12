@@ -1049,19 +1049,16 @@
       "title": "Radiobeitrag produzieren",
       "category": "cpdp",
       "who": [
-        "Laura Därr",
-        "Joel Baumann",
-        "Jessie",
         "Lisa Mühl",
-        "Fabian",
-        "Bob",
-        "Elko"
+        "Joel Baumann",
+        "Laura Därr"
       ],
       "dueDate": "April/Mai",
       "status": "Offen",
       "priority": "Normal",
       "notes": "",
-      "due": "April/Mai"
+      "due": "2026-05-20",
+      "linkedEventId": "evt-1775849166451"
     },
     {
       "id": "imported_t76",
