@@ -1324,7 +1324,8 @@
       "status": "Offen",
       "priority": "Normal",
       "notes": "",
-      "due": "laufend"
+      "due": "2026-08-03",
+      "linkedEventId": "evt-1775824421996"
     },
     {
       "id": "imported_t90",
