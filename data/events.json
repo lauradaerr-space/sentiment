@@ -587,12 +587,22 @@
       "id": "imported_t41",
       "title": "3. Event — Konzept, Einladung, Planung",
       "category": "koeln",
-      "who": [],
+      "who": [
+        "Jessica Szczuka",
+        "Lisa Mühl",
+        "Joel Baumann",
+        "Laura Därr",
+        "Veelasha Moonsamy",
+        "Ramya Kandula",
+        "Maxi Nebel",
+        "Christian Geminn"
+      ],
       "dueDate": "Mai",
       "status": "Offen",
       "priority": "Normal",
       "notes": "",
-      "due": "Mai"
+      "due": "",
+      "linkedEventId": "evt-1775824595282"
     },
     {
       "id": "imported_t43",
