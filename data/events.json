@@ -749,12 +749,22 @@
       "id": "imported_t40",
       "title": "3. Event — Datum festlegen",
       "category": "koeln",
-      "who": [],
+      "who": [
+        "Jessica Szczuka",
+        "Lisa Mühl",
+        "Joel Baumann",
+        "Laura Därr",
+        "Veelasha Moonsamy",
+        "Ramya Kandula",
+        "Maxi Nebel",
+        "Christian Geminn"
+      ],
       "dueDate": "April",
-      "status": "Offen",
+      "status": "In Bearbeitung",
       "priority": "Normal",
       "notes": "",
-      "due": "April"
+      "due": "2026-05-04",
+      "linkedEventId": "evt-1775824595282"
     },
     {
       "id": "imported_t41",
