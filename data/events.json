@@ -907,17 +907,17 @@
     },
     {
       "id": "imported_t65",
-      "title": "Raumplan Jan van Damme (Wintergarten) anfragen",
+      "title": "Raumplan Ferre (Wintergarten) anfragen",
       "category": "cpdp",
       "who": [
-        "Joel Baumann",
         "Laura Därr"
       ],
       "dueDate": "sofort — April",
-      "status": "Offen",
+      "status": "Erledigt",
       "priority": "Dringend",
       "notes": "Masse anfragen",
-      "due": "sofort — April"
+      "due": "2026-03-23",
+      "linkedEventId": "evt-1775848688849"
     },
     {
       "id": "imported_t66",
