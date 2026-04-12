@@ -679,7 +679,8 @@
       "status": "Offen",
       "priority": "Normal",
       "notes": "",
-      "due": "November"
+      "due": "2026-07-06",
+      "linkedEventId": "evt-1775824421996"
     },
     {
       "id": "imported_t48",
