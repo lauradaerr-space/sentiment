@@ -1603,12 +1603,15 @@
       "id": "imported_t112",
       "title": "Archivexemplare fuer KHK / Bibliothek",
       "category": "pub",
-      "who": [],
+      "who": [
+        "Laura Därr"
+      ],
       "dueDate": "ab 11. Dez.",
       "status": "Offen",
       "priority": "Normal",
       "notes": "",
-      "due": "ab 11. Dez."
+      "due": "2027-01-12",
+      "linkedEventId": "evt-1775824595282"
     },
     {
       "id": "imported_t113",
