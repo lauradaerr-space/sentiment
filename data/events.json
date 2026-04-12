@@ -707,12 +707,22 @@
       "id": "imported_t38",
       "title": "Finissage — Konzept und Ablauf planen",
       "category": "koeln",
-      "who": [],
+      "who": [
+        "Jessica Szczuka",
+        "Lisa Mühl",
+        "Joel Baumann",
+        "Laura Därr",
+        "Veelasha Moonsamy",
+        "Ramya Kandula",
+        "Maxi Nebel",
+        "Christian Geminn"
+      ],
       "dueDate": "Mai",
       "status": "Offen",
       "priority": "Normal",
       "notes": "",
-      "due": "Mai"
+      "due": "",
+      "linkedEventId": "evt-1775824479895"
     },
     {
       "id": "imported_t39",
