@@ -861,12 +861,15 @@
       "id": "imported_t58",
       "title": "Praesentation und Materialien vorbereiten",
       "category": "cpdp",
-      "who": [],
+      "who": [
+        "Laura Därr"
+      ],
       "dueDate": "Mai",
-      "status": "Offen",
+      "status": "In Bearbeitung",
       "priority": "Normal",
       "notes": "",
-      "due": "Mai"
+      "due": "2026-04-20",
+      "linkedEventId": "evt-1775848688849"
     },
     {
       "id": "imported_t59",
