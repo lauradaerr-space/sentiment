@@ -514,12 +514,15 @@
       "id": "imported_t36",
       "title": "Vernissage: Sicherheitsdienst anfragen (Pflicht >50 Personen)",
       "category": "koeln",
-      "who": [],
+      "who": [
+        "Laura Därr"
+      ],
       "dueDate": "Oktober",
       "status": "Offen",
       "priority": "Dringend",
       "notes": "Blaue Anlage — Aufsicht Pflicht bei oeffentl. Events",
-      "due": "Oktober"
+      "due": "2026-06-15",
+      "linkedEventId": "evt-1775824421996"
     },
     {
       "id": "imported_t38",
