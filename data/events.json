@@ -1527,12 +1527,15 @@
       "id": "imported_t102",
       "title": "Probeausdruck / PDF zur internen Ansicht",
       "category": "pub",
-      "who": [],
+      "who": [
+        "Laura Därr"
+      ],
       "dueDate": "November",
       "status": "Offen",
       "priority": "Normal",
       "notes": "",
-      "due": "November"
+      "due": "",
+      "linkedEventId": "evt-1775824421996"
     },
     {
       "id": "imported_t103",
