@@ -540,11 +540,72 @@
     });
 
     cell.addEventListener('click', function () {
-      openEventModal(null, dateStr);
+      if (window.innerWidth <= 768) {
+        openDayPanel(dateStr);
+      } else {
+        openEventModal(null, dateStr);
+      }
     });
 
     return cell;
   }
+
+  /* ────── DAY PANEL (mobile) ────── */
+  function openDayPanel(dateStr) {
+    var dayEvents = data.events.filter(function (ev) {
+      return dateStr >= ev.dateFrom && dateStr <= (ev.dateTo || ev.dateFrom);
+    });
+    var dayTasks = data.tasks.filter(function (t) { return t.due === dateStr; });
+
+    var parts = dateStr.split('-');
+    var mNames = ['Jan', 'Feb', 'Mär', 'Apr', 'Mai', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Dez'];
+    document.getElementById('dayPanelDate').textContent =
+      parseInt(parts[2]) + '. ' + mNames[parseInt(parts[1]) - 1] + ' ' + parts[0];
+
+    var eventsEl = document.getElementById('dayPanelEvents');
+    var html = '';
+
+    if (dayEvents.length === 0 && dayTasks.length === 0) {
+      html = '<div class="day-panel-empty">Keine Einträge an diesem Tag</div>';
+    }
+
+    dayEvents.forEach(function (ev) {
+      html += '<div class="day-panel-event-row" data-evid="' + ev.id + '">' +
+        '<div class="day-panel-event-dot" style="background:' + catColor(ev.category) + '"></div>' +
+        '<div class="day-panel-event-title">' + (ev.title || 'Event') + '</div>' +
+        (ev.time ? '<div class="day-panel-event-time">' + ev.time + '</div>' : '') +
+        '</div>';
+    });
+
+    dayTasks.forEach(function (t) {
+      html += '<div class="day-panel-task-row">' + (t.title || 'Aufgabe') + '</div>';
+    });
+
+    eventsEl.innerHTML = html;
+
+    eventsEl.querySelectorAll('.day-panel-event-row').forEach(function (row) {
+      row.addEventListener('click', function () {
+        closeDayPanel();
+        openEventModal(row.dataset.evid);
+      });
+    });
+
+    document.getElementById('dayPanelAdd').onclick = function () {
+      closeDayPanel();
+      openEventModal(null, dateStr);
+    };
+
+    document.getElementById('dayPanelBg').classList.add('open');
+    document.getElementById('dayPanel').classList.add('open');
+  }
+
+  function closeDayPanel() {
+    document.getElementById('dayPanelBg').classList.remove('open');
+    document.getElementById('dayPanel').classList.remove('open');
+  }
+
+  document.getElementById('dayPanelClose').addEventListener('click', closeDayPanel);
+  document.getElementById('dayPanelBg').addEventListener('click', closeDayPanel);
 
   /* ────── EVENT MODAL ────── */
   var eventModal = document.getElementById('event-modal');

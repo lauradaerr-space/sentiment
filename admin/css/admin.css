@@ -735,6 +735,72 @@ button, input, select, textarea { font: inherit; }
 }
 .reg-del-btn:hover { color: var(--red); background: rgba(204,43,29,.1); border-color: rgba(204,43,29,.4); }
 
+/* ── DAY PANEL (mobile) ── */
+.day-panel-bg {
+  display: none; position: fixed; inset: 0;
+  background: rgba(0,0,0,.4); z-index: 90;
+}
+.day-panel-bg.open { display: block; }
+.day-panel {
+  position: fixed; bottom: 0; left: 0; right: 0;
+  background: var(--bg-soft); border-radius: 16px 16px 0 0;
+  border-top: 1px solid var(--border); z-index: 91;
+  padding: 12px 16px 32px;
+  transform: translateY(100%);
+  transition: transform .28s var(--ease);
+  max-height: 70vh; overflow-y: auto;
+}
+.day-panel.open { transform: translateY(0); }
+.day-panel-handle {
+  width: 36px; height: 4px; background: var(--border);
+  border-radius: 2px; margin: 0 auto 14px;
+}
+.day-panel-header {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: 14px;
+}
+.day-panel-date { font-size: 15px; font-weight: 600; letter-spacing: -.01em; }
+.day-panel-close {
+  width: 28px; height: 28px; border-radius: 50%;
+  border: 1px solid var(--border); background: none;
+  color: var(--muted2); cursor: pointer; font-size: 14px;
+  display: flex; align-items: center; justify-content: center;
+}
+.day-panel-event-row {
+  display: flex; align-items: center; gap: 10px;
+  padding: 10px 12px; border-radius: 8px;
+  border: 1px solid var(--border); background: var(--panel);
+  margin-bottom: 7px; cursor: pointer; transition: background .14s;
+}
+.day-panel-event-row:active { background: var(--panel-strong); }
+.day-panel-event-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+.day-panel-event-title {
+  font-size: 13px; font-weight: 500; flex: 1;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.day-panel-event-time {
+  font-size: 10px; color: var(--muted2);
+  font-family: var(--mono); white-space: nowrap;
+}
+.day-panel-task-row {
+  display: flex; align-items: center; gap: 10px;
+  padding: 8px 12px; border-radius: 8px;
+  border: 1px solid var(--border); background: var(--panel);
+  margin-bottom: 5px; font-size: 12px; color: var(--muted);
+  font-style: italic;
+}
+.day-panel-add {
+  width: 100%; margin-top: 10px; padding: 12px;
+  border-radius: 10px; border: 1px dashed var(--border);
+  background: none; color: var(--muted);
+  font-family: var(--sans); font-size: 13px;
+  cursor: pointer; transition: all .14s;
+}
+.day-panel-add:active { border-color: var(--text); color: var(--text); }
+.day-panel-empty {
+  color: var(--muted2); font-size: 12px; padding: 8px 0;
+}
+
 /* ── RESPONSIVE ── */
 
 /* touch devices — bigger tap targets */
