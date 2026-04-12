@@ -1021,12 +1021,15 @@
       "id": "imported_t73",
       "title": "Abbau 23. Mai koordinieren",
       "category": "cpdp",
-      "who": [],
+      "who": [
+        "Laura Därr"
+      ],
       "dueDate": "Mai",
-      "status": "Offen",
+      "status": "In Bearbeitung",
       "priority": "Normal",
       "notes": "",
-      "due": "Mai"
+      "due": "2026-05-04",
+      "linkedEventId": "evt-1775849100666"
     },
     {
       "id": "imported_t74",
