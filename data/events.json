@@ -1363,12 +1363,15 @@
       "id": "imported_t86",
       "title": "Google Drive Ordner anlegen (Texte / Bilder / Grafiken / Rohfassungen / Reinzeichnung / Druckdaten)",
       "category": "pub",
-      "who": [],
+      "who": [
+        "Laura Därr"
+      ],
       "dueDate": "sofort — April",
-      "status": "Offen",
+      "status": "In Bearbeitung",
       "priority": "Dringend",
       "notes": "",
-      "due": "sofort — April"
+      "due": "2026-04-27",
+      "linkedEventId": "evt-1775824595282"
     },
     {
       "id": "imported_t87",
