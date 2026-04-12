@@ -1482,7 +1482,9 @@
       "id": "imported_t116",
       "title": "Korrekturen Save the Date einarbeiten und versenden",
       "category": "pr",
-      "who": [],
+      "who": [
+        "Laura Därr"
+      ],
       "dueDate": "sofort — April",
       "status": "In Bearbeitung",
       "priority": "Normal",
