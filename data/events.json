@@ -1039,12 +1039,15 @@
       "id": "imported_t71",
       "title": "Tech Rider Bruessel erstellen",
       "category": "cpdp",
-      "who": [],
+      "who": [
+        "Laura Därr"
+      ],
       "dueDate": "April",
-      "status": "Offen",
+      "status": "In Bearbeitung",
       "priority": "Dringend",
       "notes": "",
-      "due": "April"
+      "due": "2026-04-20",
+      "linkedEventId": "evt-1775849100666"
     },
     {
       "id": "imported_t72",
