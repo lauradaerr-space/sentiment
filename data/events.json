@@ -535,12 +535,15 @@
       "id": "imported_t27",
       "title": "Leinwaende / Projektoren — Bedarf klaeren und bestellen",
       "category": "koeln",
-      "who": [],
+      "who": [
+        "Laura Därr"
+      ],
       "dueDate": "Mai",
-      "status": "Offen",
+      "status": "In Bearbeitung",
       "priority": "Normal",
       "notes": "",
-      "due": "Mai"
+      "due": "2026-05-25",
+      "linkedEventId": "evt-1775824595282"
     },
     {
       "id": "imported_t28",
