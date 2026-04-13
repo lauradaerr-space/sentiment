@@ -58,10 +58,10 @@ body.light {
   --panel-mid:    rgba(255,255,255,0.80);
   --panel-strong: rgba(255,255,255,0.92);
   --text:         #0a0a08;
-  --muted:        rgba(10,10,8,0.55);
-  --muted2:       rgba(10,10,8,0.28);
-  --border:       rgba(10,10,8,0.09);
-  --border2:      rgba(10,10,8,0.16);
+  --muted:        rgba(10,10,8,0.72);
+  --muted2:       rgba(10,10,8,0.50);
+  --border:       rgba(10,10,8,0.12);
+  --border2:      rgba(10,10,8,0.22);
   --shadow:       0 16px 44px rgba(0,0,0,0.08);
 }
 
@@ -749,6 +749,27 @@ footer { padding: 18px 0 48px; }
   .cursor-dot, .cursor-ring { display: none; }
   * { cursor: auto !important; }
 }
+
+/* ── LIGHT MODE contrast overrides ── */
+body.light .eyebrow { color: rgba(10,10,8,0.55); }
+body.light .hero-subtitle { color: rgba(10,10,8,0.55); }
+body.light .stat-label { color: rgba(10,10,8,0.55); }
+body.light .sec-n { color: rgba(10,10,8,0.50); }
+body.light .sec-m { color: rgba(10,10,8,0.50); }
+body.light .ev-meta { color: rgba(10,10,8,0.55); }
+body.light .ev-time { color: rgba(10,10,8,0.55); }
+body.light .pill-track span { color: rgba(10,10,8,0.55); }
+body.light .footer-box { color: rgba(10,10,8,0.55); }
+body.light .footer-box a { color: rgba(10,10,8,0.55); }
+body.light .footer-box a:hover { color: rgba(10,10,8,0.9); }
+body.light .nav-menu a { color: rgba(10,10,8,0.65); }
+body.light .venue-block { color: rgba(10,10,8,0.60); }
+body.light .about-main p { color: rgba(10,10,8,0.70); }
+body.light .cpdp-item { color: rgba(10,10,8,0.70); }
+body.light .lede { color: rgba(10,10,8,0.72); }
+body.light .ev-desc { color: rgba(10,10,8,0.65); }
+body.light .date-item { color: var(--orange); }
+body.light .opening-note { color: var(--orange); }
 
 /* ── tablet / small desktop ── */
 @media (max-width: 1024px) {
