@@ -94,17 +94,6 @@ const TEAM = [
     bio_long_de: 'Lisa Mühl ist wissenschaftliche Mitarbeiterin im SENTIMENT-Projekt und Doktorandin in der Nachwuchsforschungsgruppe INTITEC der Universität Duisburg-Essen. Sie hat Abschlüsse in Medien- und Wirtschaftspsychologie sowie in Angewandter Kognitions- und Medienwissenschaft. Ihre Doktorarbeit untersucht intime Kommunikation mit natürlichsprachlichen Dialogsystemen, mit Fokus auf Selbstoffenbarung in Text- und Sprachmodalitäten und die Entwicklung von Interaktionsmustern über die Zeit.'
   },
   {
-    id: 'anna-straub', name: 'B.Sc. Anna Straub',
-    role_en: 'Student Assistant, University of Duisburg-Essen',
-    role_de: 'Studentische Hilfskraft, Universität Duisburg-Essen',
-    type: 'researcher', initials: 'AS',
-    image: '/public/img/team/anna-straub.jpg',
-    bio_short_en: 'Anna Straub is a student assistant in the SENTIMENT project, currently pursuing her Bachelor\'s degree in Applied Cognitive and Media Sciences at the University of Duisburg-Essen.',
-    bio_short_de: 'Anna Straub ist studentische Hilfskraft im SENTIMENT-Projekt und studiert derzeit Applied Cognitive and Media Sciences an der Universität Duisburg-Essen.',
-    bio_long_en: 'Anna Straub is a student assistant in the SENTIMENT project and is currently pursuing a Bachelor\'s degree in Applied Cognitive and Media Sciences at the University of Duisburg-Essen.',
-    bio_long_de: 'Anna Straub ist studentische Hilfskraft im SENTIMENT-Projekt und studiert derzeit Applied Cognitive and Media Sciences an der Universität Duisburg-Essen.'
-  },
-  {
     id: 'veelasha-moonsamy', name: 'Prof. Dr. Veelasha Moonsamy',
     role_en: 'Professor for Security and Privacy of Ubiquitous Systems, Ruhr University Bochum',
     role_de: 'Professorin für Sicherheit und Datenschutz ubiquitärer Systeme, Ruhr-Universität Bochum',
