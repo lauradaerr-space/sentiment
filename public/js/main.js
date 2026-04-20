@@ -76,7 +76,7 @@ const TEAM = [
     role_en: 'Head of Junior Research Group INTITEC, University of Duisburg-Essen',
     role_de: 'Leiterin der Nachwuchsforschungsgruppe INTITEC, Universität Duisburg-Essen',
     type: 'researcher', initials: 'JS',
-    image: '/public/img/team/jessica-szczuka.jpg',
+    image: 'public/img/team/jessica-szczuka.jpg',
     bio_short_en: 'Dr. Szczuka leads the INTITEC research group at the University of Duisburg-Essen, investigating digitized intimacy through media, social, and communication psychology combined with Human-Computer Interaction.',
     bio_short_de: 'Dr. Szczuka leitet die Forschungsgruppe INTITEC an der Universität Duisburg-Essen und untersucht digitale Intimität aus Perspektive der Medien-, Sozial- und Kommunikationspsychologie sowie der Mensch-Computer-Interaktion.',
     bio_long_en: 'Dr. Jessica Szczuka is the head of the Junior Research Group INTITEC (Intimacy with and through Technologies) at the University of Duisburg-Essen. Her research integrates media, social, and communication psychology with Human-Computer Interaction to explore the impact of digitalisation on concepts of love and sexuality. She earned her PhD in Social Psychology at the University of Duisburg-Essen. Her research addresses two core directions: what makes humans unique in interaction with machines, and what ethical frameworks are needed for the responsible development of digital intimacy technologies.',
@@ -87,7 +87,7 @@ const TEAM = [
     role_en: 'Research Associate & PhD Candidate, University of Duisburg-Essen',
     role_de: 'Wissenschaftliche Mitarbeiterin & Doktorandin, Universität Duisburg-Essen',
     type: 'researcher', initials: 'LM',
-    image: '/public/img/team/lisa-muehl.jpg',
+    image: 'public/img/team/lisa-muehl.jpg',
     bio_short_en: 'Lisa Mühl is a research associate in SENTIMENT and PhD candidate in the INTITEC group, researching intimate communication with natural language dialogue systems and self-disclosure behaviour.',
     bio_short_de: 'Lisa Mühl ist wissenschaftliche Mitarbeiterin im SENTIMENT-Projekt und Doktorandin in der INTITEC-Gruppe. Sie erforscht intime Kommunikation mit natürlichsprachlichen Dialogsystemen und Selbstoffenbarungsverhalten.',
     bio_long_en: 'Lisa Mühl is a research associate in the SENTIMENT project and a PhD candidate in the INTITEC junior research group at the University of Duisburg-Essen. She holds degrees in Media and Business Psychology and Applied Cognitive and Media Science. Her doctoral research investigates intimate communication with natural language dialogue systems, focusing on self-disclosure across text and voice modalities and how interaction patterns evolve over time.',
@@ -98,7 +98,7 @@ const TEAM = [
     role_en: 'Professor for Security and Privacy of Ubiquitous Systems, Ruhr University Bochum',
     role_de: 'Professorin für Sicherheit und Datenschutz ubiquitärer Systeme, Ruhr-Universität Bochum',
     type: 'researcher', initials: 'VM',
-    image: '/public/img/team/veelasha-moonsamy.jpg',
+    image: 'public/img/team/veelasha-moonsamy.jpg',
     bio_short_en: 'Prof. Moonsamy leads the Chair for Security and Privacy of Ubiquitous Systems at Ruhr University Bochum and is a Principal Investigator in the Excellence Cluster CASA.',
     bio_short_de: 'Prof. Moonsamy leitet den Lehrstuhl für Sicherheit und Datenschutz ubiquitärer Systeme an der Ruhr-Universität Bochum und ist Principal Investigator im Exzellenzcluster CASA.',
     bio_long_en: 'Prof. Dr. Veelasha Moonsamy is a Professor in the Faculty of Computer Science at Ruhr University Bochum, where she leads the Chair for Security and Privacy of Ubiquitous Systems. She is a member of the Horst Görtz Institute for IT Security and a Principal Investigator in the Excellence Cluster CASA. Her research covers IoT, mobile and embedded systems, data privacy, and machine learning applications for security. She is the recipient of a Google Faculty Award and Meta Research Award.',
@@ -109,7 +109,7 @@ const TEAM = [
     role_en: 'PhD Student, Chair for Security and Privacy of Ubiquitous Systems, Ruhr University Bochum',
     role_de: 'Doktorandin, Lehrstuhl für Sicherheit und Datenschutz ubiquitärer Systeme, Ruhr-Universität Bochum',
     type: 'researcher', initials: 'RK',
-    image: '/public/img/team/ramya-kandula.jpg',
+    image: 'public/img/team/ramya-kandula.jpg',
     bio_short_en: 'Ramya Kandula is a PhD student at Ruhr University Bochum researching self-disclosure in human-chatbot interactions using privacy-by-design mechanisms and HCI methods.',
     bio_short_de: 'Ramya Kandula ist Doktorandin an der Ruhr-Universität Bochum und erforscht Selbstoffenbarung in Mensch-Chatbot-Interaktionen mit Methoden aus Privacy-by-Design und HCI.',
     bio_long_en: 'Ramya Kandula is a PhD student at the Chair for Security and Privacy of Ubiquitous Systems at Ruhr University Bochum. She holds a Master\'s degree in Interactive Media Technologies from KTH Royal Institute of Technology. In SENTIMENT, she explores self-disclosure tendencies in human-chatbot interactions through privacy and user-centric lenses, combining computational and psychological approaches to develop secure self-disclosure strategies.',
@@ -120,7 +120,7 @@ const TEAM = [
     role_en: 'Professor of New Media, Kunsthochschule Kassel',
     role_de: 'Professor für Neue Medien, Kunsthochschule Kassel',
     type: 'artist', initials: 'JB',
-    image: '/public/img/team/joel-baumann.jpg',
+    image: 'public/img/team/joel-baumann.jpg',
     bio_short_en: 'Prof. Baumann examines self-disclosure in human-machine interaction from a critical-artistic perspective, using exhibition formats as dialogical spaces that make scientific knowledge sensually accessible.',
     bio_short_de: 'Prof. Baumann untersucht Selbstoffenbarung in der Mensch-Maschine-Interaktion aus kritisch-künstlerischer Perspektive und nutzt Ausstellungsformate als dialogische Räume, die wissenschaftliches Wissen sinnlich zugänglich machen.',
     bio_long_en: 'Prof. Joel Baumann is Professor of New Media at the Kunsthochschule Kassel. In SENTIMENT, he examines processes of self-disclosure in human-machine interaction from a critical-artistic perspective, focusing on the societal and ethical implications of digital intimacy. His curatorial practice employs exhibition formats as dialogical spaces in which scientific knowledge becomes sensually and emotionally accessible, bridging technology, ethics, and aesthetics.',
@@ -131,7 +131,7 @@ const TEAM = [
     role_en: 'Artistic Research Associate in New Media, Kunsthochschule Kassel',
     role_de: 'Künstlerische Mitarbeiterin Neue Medien, Kunsthochschule Kassel',
     type: 'artist', initials: 'LD',
-    image: '/public/img/team/laura-daerr.jpg',
+    image: 'public/img/team/laura-daerr.jpg',
     bio_short_en: 'Laura Därr\'s artistic research focuses on algorithmic intervention in AI-based systems, employing critical making methodologies to interrogate the sociopolitical implications of automated decision-making.',
     bio_short_de: 'Laura Därrs künstlerische Forschung konzentriert sich auf algorithmische Intervention in KI-basierten Systemen und nutzt Critical-Making-Methoden, um die gesellschaftspolitischen Implikationen automatisierter Entscheidungsprozesse zu hinterfragen.',
     bio_long_en: 'Laura Därr is an artistic research associate in New Media at Kunsthochschule Kassel and a member of the SENTIMENT project. Her artistic research focuses on algorithmic intervention in AI-based systems that autonomously structure and influence human interaction patterns. Her practice employs critical making methodologies to interrogate the sociopolitical implications of automated decision-making, developing experimental frameworks that expose the hidden logics embedded within computational systems.',
@@ -142,7 +142,7 @@ const TEAM = [
     role_en: 'Researcher, Research Center for Information Systems Design (ITeG), University of Kassel',
     role_de: 'Wissenschaftlerin, Forschungszentrum für Informationssystemgestaltung (ITeG), Universität Kassel',
     type: 'researcher', initials: 'MN',
-    image: '/public/img/team/maxi-nebel.jpg',
+    image: 'public/img/team/maxi-nebel.jpg',
     bio_short_en: 'Dr. Nebel researches data protection law, technology law, and artificial intelligence at the University of Kassel\'s ITeG research center, with extensive experience in interdisciplinary research projects.',
     bio_short_de: 'Dr. Nebel forscht am ITeG der Universität Kassel zu Datenschutzrecht, Technologierecht und Künstlicher Intelligenz und verfügt über langjährige Erfahrung in interdisziplinären Forschungsprojekten.',
     bio_long_en: 'Dr. Maxi Nebel is a researcher at the Research Center for Information Systems Design (ITeG) at the University of Kassel. She completed her PhD on privacy protection in social networks. With many years of experience in interdisciplinary research, she conducts research on data protection law, technology law, and artificial intelligence, and is the author of numerous publications.',
@@ -153,7 +153,7 @@ const TEAM = [
     role_en: 'Private Lecturer for Public Law and Law of the Digital Society, University of Kassel',
     role_de: 'Privatdozent für Öffentliches Recht und Recht der digitalen Gesellschaft, Universität Kassel',
     type: 'researcher', initials: 'CG',
-    image: '/public/img/team/christian-geminn.jpg',
+    image: 'public/img/team/christian-geminn.jpg',
     bio_short_en: 'PD Dr. Geminn is a private lecturer at the University of Kassel and consultant for ministries and organisations, researching fundamental rights, data protection, and technology law.',
     bio_short_de: 'PD Dr. Geminn ist Privatdozent an der Universität Kassel und Berater für Ministerien und Organisationen, mit Forschungsschwerpunkten in Grundrechten, Datenschutz und Technologierecht.',
     bio_long_en: 'PD Dr. Christian Geminn is a private lecturer for Public Law and Law of the Digital Society at the University of Kassel. He is active as a consultant for ministries, non-profit organisations, and companies, and is a principal investigator in several third-party funded research projects. His research focuses on fundamental rights, comparative law, data protection, governance, and technology law.',
@@ -208,7 +208,7 @@ document.getElementById('person-modal').addEventListener('click', e => {
 
 async function loadEvents() {
   try {
-    const res  = await fetch('/api/events');
+    const res  = await fetch('api/events');
     const data = await res.json();
     // Nur veröffentlichte Events anzeigen
     const list = Array.isArray(data) ? data : (data.events || []);
@@ -434,7 +434,7 @@ if (form) {
     };
 
     try {
-      const res = await fetch('/api/register', {
+      const res = await fetch('api/register', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(body)
@@ -491,7 +491,7 @@ const _p5inst = new p5(p => {
   const PARTICLE_COUNT = isMobile ? 30 : 75;
 
   p.preload = () => {
-    p.loadImage('/public/img/stage-motif.png',
+    p.loadImage('public/img/stage-motif.png',
       img => { motif = img; },
       () => { motif = null; }
     );

@@ -74,14 +74,14 @@ body {
   overflow-x: hidden;
   transition: color .32s var(--ease);
   background-color: var(--bg);
-  background-image: linear-gradient(rgba(10,10,8,0.7), rgba(10,10,8,0.7)), url('/public/img/12-pic.png');
+  background-image: linear-gradient(rgba(10,10,8,0.7), rgba(10,10,8,0.7)), url('../img/12-pic.png');
   background-size: cover;
   background-position: center 30%;
   background-attachment: fixed;
   background-repeat: no-repeat;
 }
 body.light {
-  background-image: linear-gradient(rgba(240,235,226,0.75), rgba(240,235,226,0.75)), url('/public/img/12-pic.png');
+  background-image: linear-gradient(rgba(240,235,226,0.75), rgba(240,235,226,0.75)), url('../img/12-pic.png');
 }
 
 /* bg-canvas hidden — background image on body */

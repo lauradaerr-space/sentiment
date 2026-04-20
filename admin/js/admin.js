@@ -3,7 +3,7 @@
   'use strict';
 
   var PASSWORD = 'sentiment2026';
-  var API = '/api/events';
+  var API = '../api/events';
   var INTERNAL_CATS = ['pub', 'pr', 'other'];
 
   var data = { events: [], tasks: [] };
@@ -136,7 +136,7 @@
   var registrations = [];
 
   function loadRegistrations() {
-    fetch('/api/register', { headers: { 'X-Admin-Token': 'sentiment2026' } })
+    fetch('../api/register', { headers: { 'X-Admin-Token': 'sentiment2026' } })
       .then(function (r) { return r.json(); })
       .then(function (d) {
         registrations = Array.isArray(d) ? d : [];
@@ -231,7 +231,7 @@
   function deleteRegistration(id) {
     registrations = registrations.filter(function (r) { return r.id !== id; });
     renderRegistrations();
-    fetch('/api/register', {
+    fetch('../api/register', {
       method: 'DELETE',
       headers: { 'Content-Type': 'application/json', 'X-Admin-Token': 'sentiment2026' },
       body: JSON.stringify({ registrations: registrations })
