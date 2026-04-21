@@ -1824,7 +1824,7 @@
     {
       "title": "Präsentation CPDP einreichen",
       "category": "cpdp",
-      "status": "Offen",
+      "status": "Erledigt",
       "due": "2026-04-27",
       "linkedEventId": "evt-1775849046566",
       "who": [
@@ -1858,7 +1858,7 @@
     {
       "title": "Restbuchungen Unterkunft/Fahrt",
       "category": "cpdp",
-      "status": "In Bearbeitung",
+      "status": "Erledigt",
       "due": "2026-04-16",
       "linkedEventId": "evt-1775849100666",
       "who": [
