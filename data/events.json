@@ -1858,7 +1858,7 @@
     {
       "title": "Restbuchungen Unterkunft/Fahrt",
       "category": "cpdp",
-      "status": "Offen",
+      "status": "In Bearbeitung",
       "due": "2026-04-16",
       "linkedEventId": "evt-1775849100666",
       "who": [
