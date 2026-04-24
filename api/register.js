@@ -1,11 +1,30 @@
 const https = require('https');
+const nodemailer = require('nodemailer');
 
 const OWNER = process.env.GITHUB_OWNER;
 const REPO  = process.env.GITHUB_REPO;
 const TOKEN = process.env.GITHUB_TOKEN;
 const PATH  = 'data/registrations.json';
-const RESEND_KEY = process.env.RESEND_API_KEY;
-const FROM_EMAIL = process.env.FROM_EMAIL || 'noreply@project-sentiment.org';
+
+const SMTP_HOST = process.env.SMTP_HOST;
+const SMTP_PORT = parseInt(process.env.SMTP_PORT || '465', 10);
+const SMTP_USER = process.env.SMTP_USER;
+const SMTP_PASS = process.env.SMTP_PASS;
+const FROM_EMAIL = process.env.FROM_EMAIL || SMTP_USER;
+const SITE_URL  = process.env.SITE_URL || 'https://project-sentiment.org/exhibition';
+
+let transporter = null;
+function getTransporter() {
+  if (transporter) return transporter;
+  if (!SMTP_HOST || !SMTP_USER || !SMTP_PASS) return null;
+  transporter = nodemailer.createTransport({
+    host: SMTP_HOST,
+    port: SMTP_PORT,
+    secure: SMTP_PORT === 465,
+    auth: { user: SMTP_USER, pass: SMTP_PASS }
+  });
+  return transporter;
+}
 
 function githubRequest(method, path, body) {
   return new Promise((resolve, reject) => {
@@ -32,8 +51,12 @@ function githubRequest(method, path, body) {
   });
 }
 
-function sendConfirmationEmail(to, vorname, eventName, personen) {
-  if (!RESEND_KEY) return Promise.resolve();
+async function sendConfirmationEmail(to, vorname, eventName, personen) {
+  const t = getTransporter();
+  if (!t) {
+    console.log('SMTP not configured — skipping email');
+    return;
+  }
 
   const html = `
     <div style="font-family:'Space Grotesk',Helvetica,Arial,sans-serif;max-width:520px;margin:0 auto;padding:32px 24px;color:#ede8df;background:#0a0a08;border-radius:16px;">
@@ -45,49 +68,48 @@ function sendConfirmationEmail(to, vorname, eventName, personen) {
         vielen Dank f&uuml;r deine Anmeldung! Wir best&auml;tigen hiermit deine Registrierung:
       </p>
       <div style="padding:16px;border:1px solid rgba(255,255,255,0.09);border-radius:10px;background:rgba(255,255,255,0.04);margin:0 0 20px;">
-        <p style="margin:0 0 6px;font-size:13px;color:rgba(237,232,223,0.5);text-transform:uppercase;letter-spacing:.12em;font-size:9px;">Veranstaltung</p>
+        <p style="margin:0 0 6px;font-size:9px;color:rgba(237,232,223,0.5);text-transform:uppercase;letter-spacing:.12em;">Veranstaltung</p>
         <p style="margin:0 0 12px;font-size:15px;font-weight:600;color:#ede8df;">${eventName}</p>
-        <p style="margin:0;font-size:13px;color:rgba(237,232,223,0.5);text-transform:uppercase;letter-spacing:.12em;font-size:9px;">Personen</p>
+        <p style="margin:0 0 6px;font-size:9px;color:rgba(237,232,223,0.5);text-transform:uppercase;letter-spacing:.12em;">Personen</p>
         <p style="margin:0;font-size:15px;font-weight:600;color:#ede8df;">${personen}</p>
       </div>
-      <p style="font-size:15px;line-height:1.7;color:rgba(237,232,223,0.7);margin:0 0 16px;">
+      <p style="font-size:15px;line-height:1.7;color:rgba(237,232,223,0.7);margin:0 0 20px;">
         Wir freuen uns auf dich!
       </p>
-      <hr style="border:none;border-top:1px solid rgba(255,255,255,0.09);margin:24px 0 16px;">
+      <a href="${SITE_URL}" style="display:inline-block;padding:11px 22px;background:#8766ff;color:#fff;text-decoration:none;border-radius:999px;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;">Zur Website →</a>
+      <hr style="border:none;border-top:1px solid rgba(255,255,255,0.09);margin:28px 0 16px;">
       <p style="font-size:10px;color:rgba(237,232,223,0.35);letter-spacing:.06em;line-height:1.7;margin:0;">
         SENTIMENT &mdash; Creating Safe &amp; Supportive Spaces for Intimate Communication<br>
         KunstWerk e.V. &middot; Deutz-M&uuml;lheimer Str. 115 &middot; 51063 K&ouml;ln<br>
-        <a href="https://sentiment-exhibition.vercel.app" style="color:rgba(237,232,223,0.35);">sentiment-exhibition.vercel.app</a>
+        <a href="${SITE_URL}" style="color:rgba(237,232,223,0.35);">project-sentiment.org/exhibition</a>
       </p>
     </div>
   `;
 
-  const payload = JSON.stringify({
-    from: FROM_EMAIL,
-    to: [to],
+  const text = [
+    'Hallo ' + vorname + ',',
+    '',
+    'vielen Dank für deine Anmeldung!',
+    '',
+    'Veranstaltung: ' + eventName,
+    'Personen: ' + personen,
+    '',
+    'Wir freuen uns auf dich!',
+    '',
+    '—',
+    'SENTIMENT — KunstWerk e.V.',
+    'Deutz-Mülheimer Str. 115, 51063 Köln',
+    SITE_URL
+  ].join('\n');
+
+  await t.sendMail({
+    from: '"SENTIMENT" <' + FROM_EMAIL + '>',
+    to: to,
     subject: 'Anmeldung bestätigt — SENTIMENT',
+    text: text,
     html: html
   });
-
-  return new Promise((resolve) => {
-    const req = https.request({
-      hostname: 'api.resend.com',
-      path: '/emails',
-      method: 'POST',
-      headers: {
-        'Authorization': 'Bearer ' + RESEND_KEY,
-        'Content-Type': 'application/json',
-        'Content-Length': Buffer.byteLength(payload)
-      }
-    }, (r) => {
-      let raw = '';
-      r.on('data', c => raw += c);
-      r.on('end', () => resolve(raw));
-    });
-    req.on('error', () => resolve());
-    req.write(payload);
-    req.end();
-  });
+  console.log('Confirmation email sent to', to);
 }
 
 module.exports = async (req, res) => {
