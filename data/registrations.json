@@ -9,5 +9,16 @@
     "personen": "3",
     "nachricht": "Testmail",
     "timestamp": "2026-05-04T09:16:50.810Z"
+  },
+  {
+    "id": "reg-1777887487785",
+    "vorname": "Laura",
+    "nachname": "Därr",
+    "email": "laura.daerr@googlemail.com",
+    "event": "CPDP - Radio - Avatar.fm",
+    "bereich": "industry",
+    "personen": "4",
+    "nachricht": "Testmail",
+    "timestamp": "2026-05-04T09:38:07.785Z"
   }
 ]
