@@ -11,6 +11,7 @@ const SMTP_PORT = parseInt(process.env.SMTP_PORT || '465', 10);
 const SMTP_USER = process.env.SMTP_USER;
 const SMTP_PASS = process.env.SMTP_PASS;
 const FROM_EMAIL = process.env.FROM_EMAIL || SMTP_USER;
+const ADMIN_NOTIFY_EMAIL = process.env.ADMIN_NOTIFY_EMAIL || SMTP_USER;
 const SITE_URL  = process.env.SITE_URL || 'https://project-sentiment.org/exhibition';
 
 let transporter = null;
@@ -112,6 +113,70 @@ async function sendConfirmationEmail(to, vorname, eventName, personen) {
   console.log('Confirmation email sent to', to);
 }
 
+async function sendAdminNotification(reg) {
+  const t = getTransporter();
+  if (!t || !ADMIN_NOTIFY_EMAIL) return;
+
+  const ts = new Date(reg.timestamp);
+  const dateStr = String(ts.getDate()).padStart(2, '0') + '.' +
+    String(ts.getMonth() + 1).padStart(2, '0') + '.' + ts.getFullYear() + ' ' +
+    String(ts.getHours()).padStart(2, '0') + ':' + String(ts.getMinutes()).padStart(2, '0');
+
+  const escapeHtml = s => String(s || '').replace(/[&<>"']/g, c => ({
+    '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+  }[c]));
+
+  const row = (label, value) => `
+    <tr>
+      <td style="padding:8px 12px;border-bottom:1px solid rgba(255,255,255,0.09);font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:rgba(237,232,223,0.5);width:130px;vertical-align:top;">${label}</td>
+      <td style="padding:8px 12px;border-bottom:1px solid rgba(255,255,255,0.09);font-size:14px;color:#ede8df;">${escapeHtml(value) || '<span style="color:rgba(237,232,223,0.3)">—</span>'}</td>
+    </tr>`;
+
+  const html = `
+    <div style="font-family:'Space Grotesk',Helvetica,Arial,sans-serif;max-width:560px;margin:0 auto;padding:32px 24px;color:#ede8df;background:#0a0a08;border-radius:16px;">
+      <div style="font-size:14px;font-weight:700;letter-spacing:.05em;margin-bottom:8px;color:#ede8df;">SENTIMENT · NEUE ANMELDUNG</div>
+      <p style="font-size:13px;color:rgba(237,232,223,0.5);margin:0 0 20px;">${dateStr}</p>
+      <table style="width:100%;border-collapse:collapse;border-top:1px solid rgba(255,255,255,0.09);">
+        ${row('Name', reg.vorname + ' ' + reg.nachname)}
+        ${row('E-Mail', reg.email)}
+        ${row('Veranstaltung', reg.event)}
+        ${row('Personen', reg.personen || '1')}
+        ${row('Bereich', reg.bereich)}
+        ${row('Nachricht', reg.nachricht)}
+      </table>
+      <p style="font-size:11px;color:rgba(237,232,223,0.4);margin:20px 0 0;line-height:1.7;">
+        Antworte direkt auf diese Mail, um den Anmeldenden zu erreichen.<br>
+        Alle Anmeldungen im Admin: <a href="${SITE_URL}/admin/" style="color:rgba(237,232,223,0.5);">${SITE_URL.replace('https://','')}/admin/</a>
+      </p>
+    </div>
+  `;
+
+  const text = [
+    'Neue Anmeldung — SENTIMENT',
+    dateStr,
+    '',
+    'Name:           ' + reg.vorname + ' ' + reg.nachname,
+    'E-Mail:         ' + reg.email,
+    'Veranstaltung:  ' + reg.event,
+    'Personen:       ' + (reg.personen || '1'),
+    'Bereich:        ' + reg.bereich,
+    'Nachricht:      ' + (reg.nachricht || '—'),
+    '',
+    'Antworte direkt auf diese Mail, um den Anmeldenden zu erreichen.',
+    SITE_URL + '/admin/'
+  ].join('\n');
+
+  await t.sendMail({
+    from: '"SENTIMENT Anmeldung" <' + FROM_EMAIL + '>',
+    to: ADMIN_NOTIFY_EMAIL,
+    replyTo: reg.email,
+    subject: 'Neue Anmeldung: ' + reg.vorname + ' ' + reg.nachname + ' · ' + reg.event,
+    text: text,
+    html: html
+  });
+  console.log('Admin notification sent to', ADMIN_NOTIFY_EMAIL);
+}
+
 module.exports = async (req, res) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, DELETE, OPTIONS');
@@ -172,7 +237,7 @@ module.exports = async (req, res) => {
       const registrations = JSON.parse(Buffer.from(current.body.content, 'base64').toString());
 
       // add new registration
-      registrations.push({
+      const newReg = {
         id: 'reg-' + Date.now(),
         vorname,
         nachname,
@@ -182,7 +247,8 @@ module.exports = async (req, res) => {
         personen: personen || '1',
         nachricht: nachricht || '',
         timestamp: new Date().toISOString()
-      });
+      };
+      registrations.push(newReg);
 
       // save back
       const content = Buffer.from(JSON.stringify(registrations, null, 2)).toString('base64');
@@ -192,8 +258,11 @@ module.exports = async (req, res) => {
         sha
       });
 
-      // send confirmation email (non-blocking, don't fail if email fails)
-      sendConfirmationEmail(email, vorname, event, personen || '1').catch(() => {});
+      // send emails in parallel — non-blocking, never fail the registration
+      Promise.all([
+        sendConfirmationEmail(email, vorname, event, personen || '1').catch(err => console.error('confirmation email failed:', err.message)),
+        sendAdminNotification(newReg).catch(err => console.error('admin notification failed:', err.message))
+      ]);
 
       return res.status(200).json({ ok: true });
     } catch (e) {
