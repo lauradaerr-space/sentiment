@@ -1,1 +1,13 @@
-[]
+[
+  {
+    "id": "reg-1777886210810",
+    "vorname": "Laura",
+    "nachname": "Därr",
+    "email": "laura.daerr@googlemail.com",
+    "event": "Exhibtion",
+    "bereich": "art",
+    "personen": "3",
+    "nachricht": "Testmail",
+    "timestamp": "2026-05-04T09:16:50.810Z"
+  }
+]
