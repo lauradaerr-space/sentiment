@@ -1,1 +1,13 @@
-[]
+[
+  {
+    "id": "reg-1777886142521",
+    "vorname": "x",
+    "nachname": "x",
+    "email": "x@x.x",
+    "event": "x",
+    "bereich": "x",
+    "personen": "1",
+    "nachricht": "",
+    "timestamp": "2026-05-04T09:15:42.521Z"
+  }
+]
