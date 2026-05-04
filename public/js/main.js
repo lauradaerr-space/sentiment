@@ -490,12 +490,6 @@ const _p5inst = new p5(p => {
   const isMobile = window.innerWidth < 768;
   const PARTICLE_COUNT = isMobile ? 30 : 75;
 
-  p.preload = () => {
-    p.loadImage('public/img/stage-motif.png',
-      img => { motif = img; },
-      () => { motif = null; }
-    );
-  };
 
   p.setup = () => {
     el = document.getElementById('p5-stage');
