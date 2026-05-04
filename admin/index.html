@@ -2,6 +2,19 @@
 <html lang="de">
 <head>
   <meta charset="UTF-8"/>
+  <script>
+    (function () {
+      var p = location.pathname;
+      var dir;
+      if (p.charAt(p.length - 1) === '/') {
+        dir = p;
+      } else {
+        var last = p.substring(p.lastIndexOf('/') + 1);
+        dir = last.indexOf('.') === -1 ? p + '/' : p.substring(0, p.lastIndexOf('/') + 1);
+      }
+      document.write('<base href="' + dir + '">');
+    })();
+  </script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>SENTIMENT — Intern</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
