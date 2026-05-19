@@ -22,9 +22,9 @@ has been asked yet.
 
 ### 1. Save the background image (optional)
 
-Save the panel poster (the violet image with “INTIMATE UNKNOWNS /
-Sentiment”) as `bg.jpg` in this `cpdp/` folder. If it isn't present, the
-stage simply shows the purple gradient — which still looks good.
+The panel poster (the violet image with “INTIMATE UNKNOWNS / Sentiment”)
+is included as `bg.png`. The stage page picks it up automatically. If
+you remove the file, the stage falls back to the purple gradient.
 
 ### 2. Create a Firebase project (≈5 minutes)
 
@@ -116,7 +116,7 @@ at `https://sentiment-exhibition.vercel.app/cpdp/`.
 | `style.css` | Shared styles in the panel poster look |
 | `firebase-config.js` | Firebase keys (you fill in, step 3) |
 | `app-firebase.js` | Realtime data layer (Firebase + demo fallback) |
-| `bg.jpg` | (Optional) Stage background image |
+| `bg.png` | Stage background image (panel poster) |
 
 ## Tech stack
 
