@@ -1,8 +1,8 @@
 // ============================================================
-// Firebase Config — hier deine Werte aus der Firebase Console
-// einfügen (siehe README.md, Schritt 4).
-// Bis das passiert, läuft die Seite im "Demo-Modus" mit
-// localStorage (Fragen bleiben nur im selben Browser sichtbar).
+// Firebase Config — paste your values from the Firebase Console
+// here (see README.md, step 3).
+// Until then, the page runs in "demo mode" using localStorage
+// (questions are only visible within the same browser).
 // ============================================================
 
 window.FIREBASE_CONFIG = {

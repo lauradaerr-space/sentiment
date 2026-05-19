@@ -17,8 +17,8 @@
   } else {
     initDemo();
     console.warn(
-      "[cpdp] Firebase nicht konfiguriert — Demo-Modus mit localStorage. " +
-      "Siehe README.md, Schritt 4."
+      "[cpdp] Firebase not configured — demo mode using localStorage. " +
+      "See README.md, step 3."
     );
   }
 

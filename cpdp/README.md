@@ -1,48 +1,49 @@
 # CPDP Panel — Intimate Unknowns: Sentiment
 
-Kleine Webpräsenz für das CPDP Panel: Publikum scannt einen QR-Code, tippt
-eine Frage ein, die Frage erscheint live auf dem Bühnen-Bildschirm als
-schwebendes Pop-up-Fenster. Moderator:in kann die aktuelle Frage durch
-Klick in den Vordergrund holen oder entfernen.
+A small web app for the CPDP panel: the audience scans a QR code, types a
+question on their phone, and the question appears live on the stage screen
+as a floating pop-up window. The moderator can click a question to bring
+it to the front, or remove it.
 
-**Wichtig:** Dieser Ordner ist komplett unabhängig vom Rest des
-`sentiment-exhibition` Projekts. Er nutzt nur einen Unterpfad `/cpdp/` und
-greift auf nichts Bestehendes zu.
+**Important:** This folder is fully independent from the rest of the
+`sentiment-exhibition` project. It only lives at the subpath `/cpdp/` and
+does not touch anything existing.
 
-## URLs nach dem Deploy
+## URLs after deploy
 
-- **Publikum (Handy):** `https://sentiment-exhibition.vercel.app/cpdp/`
-- **Bühne (Beamer):** `https://sentiment-exhibition.vercel.app/cpdp/stage.html`
+- **Audience (phone):** `https://sentiment-exhibition.vercel.app/cpdp/`
+- **Stage (projector):** `https://sentiment-exhibition.vercel.app/cpdp/stage.html`
 
-Den QR-Code für die Handy-URL generiert die Bühnen-Seite automatisch oben
-rechts und groß in der Mitte (solange noch keine Frage da ist).
+The stage page automatically generates the QR code for the phone URL —
+small in the top-right corner, and large in the center while no question
+has been asked yet.
 
-## Setup — Schritt für Schritt
+## Setup — step by step
 
-### 1. Hintergrundbild speichern (optional)
+### 1. Save the background image (optional)
 
-Speichere das Panel-Poster (das violette Bild mit „INTIMATE UNKNOWNS /
-Sentiment") als `bg.jpg` in diesem `cpdp/` Ordner. Wenn es nicht da ist,
-zeigt die Bühne einfach den lila Verlauf — sieht auch gut aus.
+Save the panel poster (the violet image with “INTIMATE UNKNOWNS /
+Sentiment”) as `bg.jpg` in this `cpdp/` folder. If it isn't present, the
+stage simply shows the purple gradient — which still looks good.
 
-### 2. Firebase-Projekt anlegen (≈5 Minuten)
+### 2. Create a Firebase project (≈5 minutes)
 
-Du brauchst einen Google-Account.
+You need a Google account.
 
-1. Gehe auf <https://console.firebase.google.com/>
-2. Klicke **„Projekt hinzufügen"** → Name z.B. `sentiment-cpdp` →
-   Google Analytics **deaktivieren** → **Projekt erstellen**.
-3. Linkes Menü → **Build → Realtime Database** → **Datenbank erstellen** →
-   Standort `europe-west1` → **„Im Testmodus starten"** wählen → fertig.
-4. Linkes Menü → **Zahnrad ⚙ → Projekteinstellungen** → unter „Deine Apps"
-   auf das **Web-Icon `</>`** klicken → App-Name z.B. `cpdp-stage` →
-   **App registrieren** (Hosting NICHT aktivieren).
-5. Du siehst jetzt ein Code-Snippet mit `const firebaseConfig = { ... }`.
-   Kopiere die Werte (apiKey, authDomain, databaseURL, …).
+1. Go to <https://console.firebase.google.com/>
+2. Click **“Add project”** → name it e.g. `sentiment-cpdp` → **disable**
+   Google Analytics → **Create project**.
+3. Left menu → **Build → Realtime Database** → **Create Database** →
+   location `europe-west1` → choose **“Start in test mode”** → done.
+4. Left menu → **Gear ⚙ → Project settings** → under “Your apps”, click
+   the **Web icon `</>`** → app nickname e.g. `cpdp-stage` →
+   **Register app** (do NOT enable Firebase Hosting).
+5. You now see a code snippet with `const firebaseConfig = { ... }`. Copy
+   the values (apiKey, authDomain, databaseURL, …).
 
-### 3. Config eintragen
+### 3. Paste your config
 
-Öffne `cpdp/firebase-config.js` und füge die Werte ein:
+Open `cpdp/firebase-config.js` and fill in the values:
 
 ```js
 window.FIREBASE_CONFIG = {
@@ -56,12 +57,12 @@ window.FIREBASE_CONFIG = {
 };
 ```
 
-> Diese Werte sind nicht geheim — sie identifizieren nur dein Projekt. Die
-> Sicherheit kommt über die Regeln im nächsten Schritt.
+> These values are not secret — they only identify your project. Security
+> comes from the rules in the next step.
 
-### 4. Datenbank-Regeln einschränken
+### 4. Restrict the database rules
 
-In der Firebase Console → **Realtime Database → Regeln** → ersetzen mit:
+In the Firebase Console → **Realtime Database → Rules** → replace with:
 
 ```json
 {
@@ -77,71 +78,49 @@ In der Firebase Console → **Realtime Database → Regeln** → ersetzen mit:
 }
 ```
 
-→ **Veröffentlichen**.
+→ **Publish**.
 
-Das erlaubt anonymes Lesen/Schreiben nur unterhalb von `cpdp_questions`
-und begrenzt die Textlänge auf 500 Zeichen.
+This allows anonymous read/write only under `cpdp_questions` and caps
+the text length at 500 characters.
 
-### 5. Deployen
+### 5. Deploy
 
 ```bash
 git add cpdp/
-git commit -m "Add CPDP panel Q&A app under /cpdp/"
+git commit -m "Update CPDP panel config"
 git push
 ```
 
-Vercel deployed automatisch. Nach 30–60 Sekunden ist die App live unter
-`https://sentiment-exhibition.vercel.app/cpdp/`.
+Vercel will redeploy automatically. After 30–60 seconds the app is live
+at `https://sentiment-exhibition.vercel.app/cpdp/`.
 
-## Lokal testen (ohne Deploy)
+## During the event
 
-In diesem Ordner:
+1. **Before:** Open the stage URL (`/cpdp/stage.html`) in your browser in
+   fullscreen (F11) and connect the projector.
+2. **Reset the database:** In the Firebase Console → Realtime Database →
+   delete the `cpdp_questions` node (trash icon).
+3. **During:**
+   - Click a question → moves to the front + scales up
+   - Click the ✕ (only visible when focused) → removes it
+   - ESC → unfocus
+4. **Fallback:** If the internet drops, the app stops syncing. Already
+   loaded questions stay visible until the page is reloaded.
 
-```bash
-npx serve .
-```
+## Files in this folder
 
-oder Python:
-
-```bash
-python -m http.server 8000
-```
-
-Dann im Browser: `http://localhost:8000/` (Handy-Form) und
-`http://localhost:8000/stage.html` (Bühne).
-
-Wenn du Firebase noch nicht konfiguriert hast, läuft die App im
-**Demo-Modus** mit `localStorage` — zwei Tabs im **selben** Browser sehen
-die gleichen Fragen. Für das echte Setup mit mehreren Geräten brauchst du
-Firebase (Schritt 2–4).
-
-## Während der Veranstaltung
-
-1. **Vorher:** Bühnen-URL (`/cpdp/stage.html`) im Browser im Vollbild
-   (F11) öffnen, Beamer anschließen.
-2. **Datenbank zurücksetzen:** In der Firebase Console → Realtime
-   Database → den `cpdp_questions` Knoten löschen (Mülleimer-Icon).
-3. **Während:**
-   - Klick auf eine Frage → kommt nach vorne + wird größer
-   - Klick auf das ✕ (nur sichtbar wenn fokussiert) → entfernt sie
-   - ESC → Fokus aufheben
-4. **Backup-Plan:** Wenn Internet ausfällt, läuft die App nicht. Die
-   schon geladenen Fragen bleiben aber sichtbar bis Reload.
-
-## Dateien in diesem Ordner
-
-| Datei | Zweck |
+| File | Purpose |
 |---|---|
-| `index.html` | Handy-Formular (per QR-Code aufgerufen) |
-| `stage.html` | Bühnen-Display mit schwebenden Fenstern |
-| `style.css` | Geteilte Styles im Look des Panel-Posters |
-| `firebase-config.js` | Firebase-Schlüssel (du füllst aus, Schritt 3) |
-| `app-firebase.js` | Echtzeit-Datenlogik (Firebase + Demo-Modus) |
-| `bg.jpg` | (Optional) Hintergrundbild für die Bühne |
+| `index.html` | Phone form (opened via QR code) |
+| `stage.html` | Stage display with floating windows |
+| `style.css` | Shared styles in the panel poster look |
+| `firebase-config.js` | Firebase keys (you fill in, step 3) |
+| `app-firebase.js` | Realtime data layer (Firebase + demo fallback) |
+| `bg.jpg` | (Optional) Stage background image |
 
-## Tech-Stack
+## Tech stack
 
-- Vanilla HTML/CSS/JS — kein Build, kein npm install
-- Firebase Realtime Database (Free Tier reicht locker)
-- QR-Code via `qrcode-generator` (CDN)
-- Inter Font (Google Fonts)
+- Vanilla HTML/CSS/JS — no build step, no `npm install`
+- Firebase Realtime Database (free tier is more than enough)
+- QR codes via `qrcode-generator` (CDN)
+- Inter font (Google Fonts)

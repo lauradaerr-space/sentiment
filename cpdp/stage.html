@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Intimate Unknowns — Bühne</title>
+  <title>Intimate Unknowns — Stage</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" />
@@ -25,24 +25,24 @@
 
     <div class="corner top-right">
       <div id="qrcode"></div>
-      <span class="qr-label">Frage stellen</span>
+      <span class="qr-label">Ask a question</span>
     </div>
 
     <div class="corner bottom-left">
       <span class="count" id="qcount">0</span>
-      <span>Fragen</span>
+      <span>Questions</span>
     </div>
 
     <div class="corner bottom-right">
-      Klick auf eine Frage → in den Vordergrund.<br/>
-      Klick auf ✕ → entfernen.
+      Click a question → bring to front.<br/>
+      Click ✕ → remove.
     </div>
   </div>
 
   <div class="empty-state" id="empty-state">
     <div class="big-qr" id="big-qr"></div>
-    <div class="prompt">Stell deine Frage.</div>
-    <div class="prompt-sub">Scanne den QR-Code mit deinem Handy.</div>
+    <div class="prompt">Ask your question.</div>
+    <div class="prompt-sub">Scan the QR code with your phone.</div>
   </div>
 
   <div class="window-layer" id="window-layer"></div>
@@ -133,16 +133,16 @@
             <span class="dot yellow"></span>
             <span class="dot green"></span>
           </div>
-          <div class="title-text">frage_${hh}${mm}.txt</div>
+          <div class="title-text">question_${hh}${mm}.txt</div>
         </div>
         <div class="content">
           <div class="text"></div>
           <div class="author"></div>
-          <button class="dismiss" title="Entfernen">×</button>
+          <button class="dismiss" title="Remove">×</button>
         </div>
       `;
       el.querySelector('.text').textContent = q.text || '';
-      el.querySelector('.author').textContent = q.name ? `— ${q.name}` : '— Anonym';
+      el.querySelector('.author').textContent = q.name ? `— ${q.name}` : '— Anonymous';
 
       // Click → focus / unfocus (toggle)
       el.addEventListener('click', (e) => {
@@ -159,7 +159,7 @@
       // Dismiss (only visible when focused)
       el.querySelector('.dismiss').addEventListener('click', async (e) => {
         e.stopPropagation();
-        if (!confirm('Diese Frage entfernen?')) return;
+        if (!confirm('Remove this question?')) return;
         el.classList.add('dismissed');
         try { await window.QStore.dismiss(q.id); } catch (err) { console.error(err); }
       });
@@ -210,7 +210,7 @@
         border-radius:10px; z-index:10000; font-family:Inter,sans-serif;
         box-shadow:0 4px 16px rgba(0,0,0,0.2);
       `;
-      banner.textContent = '⚠ Demo-Modus (kein Firebase verbunden) — siehe README, Schritt 4';
+      banner.textContent = '⚠ Demo mode (Firebase not connected) — see README, step 4';
       document.body.appendChild(banner);
     }
   </script>
