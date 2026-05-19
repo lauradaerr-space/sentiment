@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Intimate Unknowns — Bühne</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" />
+  <link rel="stylesheet" href="./style.css" />
+  <style>
+    /* If you save the panel poster as cpdp/bg.jpg it shows behind the windows. */
+    .stage-bg { --bg-image: url('./bg.jpg'); }
+  </style>
+</head>
+<body class="stage">
+
+  <div class="stage-bg"></div>
+
+  <div class="stage-overlay">
+    <div class="corner top-left">
+      Intimate Unknowns
+      <span class="title">Sentiment</span>
+    </div>
+
+    <div class="corner top-right">
+      <div id="qrcode"></div>
+      <span class="qr-label">Frage stellen</span>
+    </div>
+
+    <div class="corner bottom-left">
+      <span class="count" id="qcount">0</span>
+      <span>Fragen</span>
+    </div>
+
+    <div class="corner bottom-right">
+      Klick auf eine Frage → in den Vordergrund.<br/>
+      Klick auf ✕ → entfernen.
+    </div>
+  </div>
+
+  <div class="empty-state" id="empty-state">
+    <div class="big-qr" id="big-qr"></div>
+    <div class="prompt">Stell deine Frage.</div>
+    <div class="prompt-sub">Scanne den QR-Code mit deinem Handy.</div>
+  </div>
+
+  <div class="window-layer" id="window-layer"></div>
+
+  <!-- Libraries -->
+  <script src="https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.min.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-database-compat.js"></script>
+  <script src="./firebase-config.js"></script>
+  <script src="./app-firebase.js"></script>
+
+  <script>
+    // ---------- QR codes (corner + big empty state) ----------
+    function mobileUrl() {
+      const u = new URL(window.location.href);
+      u.pathname = u.pathname.replace(/stage\.html$/, '');
+      if (!u.pathname.endsWith('/')) u.pathname += '/';
+      u.hash = '';
+      u.search = '';
+      return u.toString();
+    }
+
+    function drawQR(targetEl, size) {
+      const qr = qrcode(0, 'M');
+      qr.addData(mobileUrl());
+      qr.make();
+      targetEl.innerHTML = qr.createImgTag(Math.max(2, Math.floor(size / qr.getModuleCount())), 0);
+      const img = targetEl.querySelector('img');
+      if (img) { img.style.width = size + 'px'; img.style.height = size + 'px'; img.style.display = 'block'; }
+    }
+
+    drawQR(document.getElementById('qrcode'), 120);
+    drawQR(document.getElementById('big-qr'), 280);
+
+    // ---------- Question windows ----------
+    const layer = document.getElementById('window-layer');
+    const $count = document.getElementById('qcount');
+    const $empty = document.getElementById('empty-state');
+
+    // Track DOM nodes by question id so we don't re-render the world on every change
+    const nodes = new Map();
+    let topZ = 100;
+
+    // Cascading slot allocator — keeps windows from piling on the same spot
+    const slots = [];
+    function nextSlot() {
+      // Distribute around the canvas in a loose grid + jitter
+      const cols = 4;
+      const rows = 3;
+      const i = slots.length % (cols * rows);
+      const col = i % cols;
+      const row = Math.floor(i / cols);
+      const cellW = window.innerWidth / cols;
+      const cellH = window.innerHeight / rows;
+      const margin = 60;
+      const jitterX = (Math.random() - 0.5) * (cellW * 0.4);
+      const jitterY = (Math.random() - 0.5) * (cellH * 0.4);
+      const x = col * cellW + cellW / 2 + jitterX - 190;
+      const y = row * cellH + cellH / 2 + jitterY - 80;
+      const rot = (Math.random() - 0.5) * 6; // -3deg .. +3deg
+      const slot = {
+        x: Math.max(margin, Math.min(window.innerWidth - 380 - margin, x)),
+        y: Math.max(margin + 80, Math.min(window.innerHeight - 200 - margin, y)),
+        rot,
+      };
+      slots.push(slot);
+      return slot;
+    }
+
+    function makeWindow(q) {
+      const slot = nextSlot();
+      const el = document.createElement('article');
+      el.className = 'qwindow';
+      el.style.left = slot.x + 'px';
+      el.style.top = slot.y + 'px';
+      el.style.setProperty('--rot', `rotate(${slot.rot}deg)`);
+      el.style.transform = `rotate(${slot.rot}deg)`;
+      el.style.zIndex = ++topZ;
+
+      const labelDate = new Date(q.timestamp || Date.now());
+      const hh = String(labelDate.getHours()).padStart(2, '0');
+      const mm = String(labelDate.getMinutes()).padStart(2, '0');
+
+      el.innerHTML = `
+        <div class="titlebar">
+          <div class="dots">
+            <span class="dot red"></span>
+            <span class="dot yellow"></span>
+            <span class="dot green"></span>
+          </div>
+          <div class="title-text">frage_${hh}${mm}.txt</div>
+        </div>
+        <div class="content">
+          <div class="text"></div>
+          <div class="author"></div>
+          <button class="dismiss" title="Entfernen">×</button>
+        </div>
+      `;
+      el.querySelector('.text').textContent = q.text || '';
+      el.querySelector('.author').textContent = q.name ? `— ${q.name}` : '— Anonym';
+
+      // Click → focus / unfocus (toggle)
+      el.addEventListener('click', (e) => {
+        if (e.target.classList.contains('dismiss')) return;
+        const wasFocused = el.classList.contains('focused');
+        // Unfocus any others
+        document.querySelectorAll('.qwindow.focused').forEach((n) => n.classList.remove('focused'));
+        if (!wasFocused) {
+          el.classList.add('focused');
+          el.style.zIndex = ++topZ;
+        }
+      });
+
+      // Dismiss (only visible when focused)
+      el.querySelector('.dismiss').addEventListener('click', async (e) => {
+        e.stopPropagation();
+        if (!confirm('Diese Frage entfernen?')) return;
+        el.classList.add('dismissed');
+        try { await window.QStore.dismiss(q.id); } catch (err) { console.error(err); }
+      });
+
+      return el;
+    }
+
+    function render(questions) {
+      const ids = new Set(questions.map((q) => q.id));
+
+      // Add new ones
+      for (const q of questions) {
+        if (!nodes.has(q.id)) {
+          const el = makeWindow(q);
+          layer.appendChild(el);
+          nodes.set(q.id, el);
+        }
+      }
+
+      // Remove dismissed ones
+      for (const [id, el] of nodes.entries()) {
+        if (!ids.has(id)) {
+          el.classList.add('dismissed');
+          setTimeout(() => el.remove(), 500);
+          nodes.delete(id);
+        }
+      }
+
+      $count.textContent = nodes.size;
+      $empty.classList.toggle('hidden', nodes.size > 0);
+    }
+
+    window.QStore.subscribe(render);
+
+    // Keyboard: ESC to clear focus
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        document.querySelectorAll('.qwindow.focused').forEach((n) => n.classList.remove('focused'));
+      }
+    });
+
+    // If demo mode, show a small banner so Laura notices on the stage view
+    if (window.QStore && window.QStore.mode === 'demo') {
+      const banner = document.createElement('div');
+      banner.style.cssText = `
+        position:fixed; bottom:12px; left:50%; transform:translateX(-50%);
+        background:#FFD; color:#553; font-size:12px; padding:8px 14px;
+        border-radius:10px; z-index:10000; font-family:Inter,sans-serif;
+        box-shadow:0 4px 16px rgba(0,0,0,0.2);
+      `;
+      banner.textContent = '⚠ Demo-Modus (kein Firebase verbunden) — siehe README, Schritt 4';
+      document.body.appendChild(banner);
+    }
+  </script>
+</body>
+</html>
