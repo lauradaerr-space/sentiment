@@ -39,9 +39,8 @@
   </div>
 
   <div class="empty-state" id="empty-state">
-    <div class="big-qr" id="big-qr"></div>
     <div class="prompt">Ask your question.</div>
-    <div class="prompt-sub">Scan the QR code with your phone.</div>
+    <div class="prompt-sub">Scan the QR code in the top-right with your phone.</div>
   </div>
 
   <div class="window-layer" id="window-layer"></div>
@@ -74,7 +73,6 @@
     }
 
     drawQR(document.getElementById('qrcode'), 120);
-    drawQR(document.getElementById('big-qr'), 280);
 
     // ---------- Question windows ----------
     const layer = document.getElementById('window-layer');
