@@ -327,75 +327,29 @@ body.stage {
 .qwindow {
   position: absolute;
   width: 380px;
-  background: rgba(255, 255, 255, 0.96);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-radius: 4px;
   box-shadow: var(--shadow);
-  overflow: hidden;
   cursor: pointer;
   transform-origin: center center;
   transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1),
               box-shadow 0.35s ease,
               opacity 0.4s ease;
-  animation: qwindow-in 0.5s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  animation: qwindow-in 0.45s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  padding: 28px 30px;
 }
 
 @keyframes qwindow-in {
-  from {
-    opacity: 0;
-    transform: var(--rot, rotate(0deg)) scale(0.85);
-  }
-  to {
-    opacity: 1;
-    transform: var(--rot, rotate(0deg)) scale(1);
-  }
+  from { opacity: 0; transform: scale(0.92); }
+  to   { opacity: 1; transform: scale(1); }
 }
 
 .qwindow.focused {
-  transform: var(--rot, rotate(0deg)) scale(1.35) !important;
+  transform: scale(1.35) !important;
   box-shadow: var(--shadow-focus);
   z-index: 9999 !important;
-}
-
-.qwindow .titlebar {
-  background: linear-gradient(180deg, #ECE7FF 0%, #DDD4FF 100%);
-  padding: 10px 14px;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
-}
-
-.qwindow .dots {
-  display: flex;
-  gap: 6px;
-}
-
-.qwindow .dot {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-}
-
-.qwindow .dot.red { background: #FF5F57; }
-.qwindow .dot.yellow { background: #FEBC2E; }
-.qwindow .dot.green { background: #28C840; }
-
-.qwindow .title-text {
-  margin-left: 12px;
-  font-size: 12px;
-  color: var(--ink-soft);
-  letter-spacing: 0.05em;
-  font-weight: 500;
-  flex: 1;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.qwindow .content {
-  padding: 24px 26px 28px;
 }
 
 .qwindow .text {
@@ -437,7 +391,7 @@ body.stage {
 
 .qwindow.dismissed {
   opacity: 0;
-  transform: var(--rot, rotate(0deg)) scale(0.6) !important;
+  transform: scale(0.6) !important;
   pointer-events: none;
 }
 

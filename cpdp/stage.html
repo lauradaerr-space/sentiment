@@ -31,11 +31,6 @@
       <span class="count" id="qcount">0</span>
       <span>Questions</span>
     </div>
-
-    <div class="corner bottom-right">
-      Click a question → bring to front.<br/>
-      Click ✕ → remove.
-    </div>
   </div>
 
   <div class="empty-state" id="empty-state">
@@ -96,11 +91,9 @@
       const jitterY = (Math.random() - 0.5) * (cellH * 0.4);
       const x = col * cellW + cellW / 2 + jitterX - 190;
       const y = row * cellH + cellH / 2 + jitterY - 80;
-      const rot = (Math.random() - 0.5) * 6; // -3deg .. +3deg
       const slot = {
         x: Math.max(margin, Math.min(window.innerWidth - 380 - margin, x)),
         y: Math.max(margin + 80, Math.min(window.innerHeight - 200 - margin, y)),
-        rot,
       };
       slots.push(slot);
       return slot;
@@ -112,28 +105,12 @@
       el.className = 'qwindow';
       el.style.left = slot.x + 'px';
       el.style.top = slot.y + 'px';
-      el.style.setProperty('--rot', `rotate(${slot.rot}deg)`);
-      el.style.transform = `rotate(${slot.rot}deg)`;
       el.style.zIndex = ++topZ;
 
-      const labelDate = new Date(q.timestamp || Date.now());
-      const hh = String(labelDate.getHours()).padStart(2, '0');
-      const mm = String(labelDate.getMinutes()).padStart(2, '0');
-
       el.innerHTML = `
-        <div class="titlebar">
-          <div class="dots">
-            <span class="dot red"></span>
-            <span class="dot yellow"></span>
-            <span class="dot green"></span>
-          </div>
-          <div class="title-text">question_${hh}${mm}.txt</div>
-        </div>
-        <div class="content">
-          <div class="text"></div>
-          <div class="author"></div>
-          <button class="dismiss" title="Remove">×</button>
-        </div>
+        <div class="text"></div>
+        <div class="author"></div>
+        <button class="dismiss" title="Remove">×</button>
       `;
       el.querySelector('.text').textContent = q.text || '';
       el.querySelector('.author').textContent = q.name ? `— ${q.name}` : '— Anonymous';
