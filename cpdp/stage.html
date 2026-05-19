@@ -47,10 +47,7 @@
 
   <!-- Libraries -->
   <script src="https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.min.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-database-compat.js"></script>
-  <script src="./firebase-config.js"></script>
-  <script src="./app-firebase.js"></script>
+  <script src="./app-store.js"></script>
 
   <script>
     // ---------- QR codes (corner + big empty state) ----------
@@ -198,18 +195,6 @@
       }
     });
 
-    // If demo mode, show a small banner so Laura notices on the stage view
-    if (window.QStore && window.QStore.mode === 'demo') {
-      const banner = document.createElement('div');
-      banner.style.cssText = `
-        position:fixed; bottom:12px; left:50%; transform:translateX(-50%);
-        background:#FFD; color:#553; font-size:12px; padding:8px 14px;
-        border-radius:10px; z-index:10000; font-family:Inter,sans-serif;
-        box-shadow:0 4px 16px rgba(0,0,0,0.2);
-      `;
-      banner.textContent = '⚠ Demo mode (Firebase not connected) — see README, step 4';
-      document.body.appendChild(banner);
-    }
   </script>
 </body>
 </html>
