@@ -437,6 +437,47 @@ button, input, select, textarea { font: inherit; }
 }
 .btn-publish.hidden { display: none; }
 
+/* ── PROGRAM editor ── */
+.program-list { display: flex; flex-direction: column; gap: 8px; margin-bottom: 8px; }
+.program-item {
+  padding: 10px;
+  border: 1px solid var(--border); border-radius: 8px;
+  background: var(--panel);
+  display: grid;
+  grid-template-columns: 90px 1fr auto;
+  gap: 8px;
+  align-items: start;
+}
+.program-item input, .program-item textarea {
+  padding: 6px 8px; font-size: 12px;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  background: var(--bg); color: var(--text);
+  width: 100%;
+}
+.program-item .program-fields {
+  display: flex; flex-direction: column; gap: 6px;
+}
+.program-item textarea {
+  font-family: var(--sans); resize: vertical; min-height: 50px;
+}
+.program-item-time { font-family: var(--mono); }
+.program-del {
+  width: 28px; height: 28px; border-radius: 6px;
+  border: 1px solid rgba(204,43,29,.25); background: none;
+  color: var(--red); cursor: pointer; font-size: 14px;
+  align-self: start;
+}
+.program-del:hover { background: rgba(204,43,29,.1); }
+.btn-add-program {
+  padding: 7px 14px; border-radius: 7px;
+  border: 1px dashed var(--border2); background: none;
+  color: var(--muted); font-size: 11px; cursor: pointer;
+  transition: color .14s, border-color .14s;
+  width: 100%;
+}
+.btn-add-program:hover { color: var(--text); border-color: var(--muted); }
+
 /* ── LINKED TASKS in event modal ── */
 .linked-tasks-list {
   display: flex; flex-direction: column; gap: 4px;

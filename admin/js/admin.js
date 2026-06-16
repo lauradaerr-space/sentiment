@@ -650,16 +650,65 @@
       updatePublishBtn(ev);
 
       renderLinkedTasks(ev.id);
+      renderProgramEditor(ev.program || []);
     } else {
       document.getElementById('modal-title').textContent = 'Neues Event';
       if (defaultDate) eventForm.dateFrom.value = defaultDate;
       btnPublish.classList.add('hidden');
       btnDelete.classList.add('hidden');
       renderLinkedTasks(null);
+      renderProgramEditor([]);
     }
 
     eventModal.classList.add('open');
   }
+
+  /* ────── PROGRAM EDITOR ────── */
+  function renderProgramEditor(items) {
+    var list = document.getElementById('program-list');
+    list.innerHTML = '';
+    items.forEach(function (item, idx) {
+      list.appendChild(createProgramItem(item, idx));
+    });
+  }
+
+  function createProgramItem(item, idx) {
+    item = item || {};
+    var row = document.createElement('div');
+    row.className = 'program-item';
+    row.dataset.idx = idx;
+    row.innerHTML =
+      '<input type="text" class="program-item-time" placeholder="14:30" value="' + (item.time || '').replace(/"/g, '&quot;') + '" data-field="time">' +
+      '<div class="program-fields">' +
+        '<input type="text" placeholder="Titel (DE)" value="' + (item.titleDE || '').replace(/"/g, '&quot;') + '" data-field="titleDE">' +
+        '<input type="text" placeholder="Titel (EN)" value="' + (item.titleEN || item.title || '').replace(/"/g, '&quot;') + '" data-field="titleEN">' +
+        '<textarea placeholder="Beschreibung (DE) — optional" data-field="descDE">' + (item.descDE || '') + '</textarea>' +
+        '<textarea placeholder="Beschreibung (EN) — optional" data-field="descEN">' + (item.descEN || '') + '</textarea>' +
+      '</div>' +
+      '<button type="button" class="program-del" title="Löschen">&times;</button>';
+    row.querySelector('.program-del').addEventListener('click', function () {
+      row.remove();
+    });
+    return row;
+  }
+
+  function readProgramFromEditor() {
+    var rows = document.querySelectorAll('#program-list .program-item');
+    var items = [];
+    rows.forEach(function (row) {
+      var item = {};
+      row.querySelectorAll('[data-field]').forEach(function (el) {
+        var v = (el.value || '').trim();
+        if (v) item[el.dataset.field] = v;
+      });
+      if (item.time || item.titleDE || item.titleEN) items.push(item);
+    });
+    return items;
+  }
+
+  document.getElementById('btn-add-program').addEventListener('click', function () {
+    document.getElementById('program-list').appendChild(createProgramItem({}));
+  });
 
   function renderLinkedTasks(eventId) {
     var container = document.getElementById('linked-tasks-list');
@@ -786,6 +835,7 @@
     var obj = {};
     fd.forEach(function (v, k) { obj[k] = v; });
     if (obj.capacity) obj.capacity = parseInt(obj.capacity, 10);
+    obj.program = readProgramFromEditor();
 
     // Force unpublish for internal categories
     if (INTERNAL_CATS.indexOf(obj.category) !== -1) {

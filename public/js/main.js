@@ -204,6 +204,81 @@ document.getElementById('person-modal').addEventListener('click', e => {
   if (e.target === e.currentTarget) e.currentTarget.classList.remove('open');
 });
 
+/* ══ EVENT DETAIL MODAL ══ */
+function openEventDetailModal(ev) {
+  const modal = document.getElementById('event-modal');
+  const body = document.getElementById('event-modal-body');
+  if (!modal || !body) return;
+
+  const title = lang === 'de' ? (ev.titleDE || ev.title) : ev.title;
+  const desc = lang === 'de' ? (ev.descDE || ev.descEN || '') : (ev.descEN || ev.descDE || '');
+  const dateStr = ev.dateTo && ev.dateTo !== ev.dateFrom
+    ? fmtDate(ev.dateFrom) + ' — ' + fmtDate(ev.dateTo)
+    : fmtDate(ev.dateFrom || '');
+  const timeStr = (ev.time || '') + (ev.timeEnd ? ' – ' + ev.timeEnd : '');
+
+  const program = Array.isArray(ev.program) ? ev.program : [];
+
+  const programHtml = program.length === 0 ? '' : `
+    <div class="em-program">
+      <div class="em-section-label">${lang === 'de' ? 'Programm' : 'Programme'}</div>
+      <div class="em-program-list">
+        ${program.map(p => {
+          const pt = lang === 'de' ? (p.titleDE || p.titleEN || p.title || '') : (p.titleEN || p.titleDE || p.title || '');
+          const pd = lang === 'de' ? (p.descDE || p.descEN || '') : (p.descEN || p.descDE || '');
+          return `
+            <div class="em-program-item">
+              <div class="em-program-time">${p.time || ''}</div>
+              <div class="em-program-content">
+                <div class="em-program-title">${pt}</div>
+                ${pd ? `<div class="em-program-desc">${pd}</div>` : ''}
+              </div>
+            </div>
+          `;
+        }).join('')}
+      </div>
+    </div>
+  `;
+
+  body.innerHTML = `
+    <div class="em-format ${ev.format || ''}">${({ talk: 'Talk', workshop: 'Workshop', tour: lang === 'de' ? 'Führung' : 'Tour', screening: 'Screening', lecture: 'Lecture', other: lang === 'de' ? 'Sonstiges' : 'Other' }[ev.format]) || ev.format || ''}</div>
+    <h2 class="em-title">${title}</h2>
+    <div class="em-meta">
+      <span>${dateStr}</span>
+      ${timeStr ? `<span>${timeStr}</span>` : ''}
+      ${ev.location ? `<span>${ev.location}</span>` : ''}
+      ${ev.language ? `<span>${ev.language}</span>` : ''}
+      ${ev.capacity ? `<span>Max. ${ev.capacity}</span>` : ''}
+    </div>
+    ${desc ? `<p class="em-desc">${desc}</p>` : ''}
+    ${programHtml}
+    <div class="em-actions">
+      <button class="reg-btn em-register" data-event="${ev.title}">${lang === 'de' ? 'Zur Anmeldung →' : 'Register →'}</button>
+    </div>
+  `;
+
+  body.querySelector('.em-register').addEventListener('click', () => {
+    modal.classList.remove('open');
+    const sel = document.getElementById('registerSelect');
+    if (sel) sel.value = ev.title;
+    document.getElementById('register').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    setTimeout(() => {
+      const f = document.getElementById('inp-fn');
+      if (f) f.focus();
+    }, 500);
+  });
+
+  modal.classList.add('open');
+}
+
+document.addEventListener('click', e => {
+  const modal = document.getElementById('event-modal');
+  if (!modal) return;
+  if (e.target.id === 'event-modal' || e.target.classList.contains('event-modal-close')) {
+    modal.classList.remove('open');
+  }
+});
+
 /* ══ EVENTS: laden & rendern ══ */
 
 async function loadEvents() {
@@ -254,12 +329,14 @@ function renderSchedule() {
     const desc  = lang === 'de' ? (e.descDE  || e.desc  || '') : (e.desc || '');
     const full  = e.capacity > 0 && e.registered >= e.capacity;
 
-    return `<article class="ev-card">
+    const hasProgram = Array.isArray(e.program) && e.program.length > 0;
+    return `<article class="ev-card" data-event-id="${e.id}">
       <div class="ev-header">
         <span class="ev-format ${e.format}">${fmtLabels[e.format] || e.format}</span>
+        ${hasProgram ? `<span class="ev-program-badge">${e.program.length} ${lang === 'de' ? 'Programmpunkte' : 'items'}</span>` : ''}
       </div>
       <div class="ev-title">${title}</div>
-      ${desc ? `<p class="ev-desc">${desc}</p><button class="ev-expand">${lang === 'de' ? 'Mehr lesen' : 'Read more'}</button>` : ''}
+      ${desc ? `<p class="ev-desc">${desc}</p>` : ''}
       <div class="ev-meta">
         ${e.location ? `<span>${e.location}</span>` : ''}
         ${e.language ? `<span>${e.language}</span>` : ''}
@@ -277,11 +354,22 @@ function renderSchedule() {
           }
         </button>
       </div>
+      <button class="ev-card-overlay" aria-label="${lang === 'de' ? 'Details anzeigen' : 'Show details'}"></button>
     </article>`;
   }).join('');
 
+  document.querySelectorAll('.ev-card-overlay').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      const card = btn.closest('.ev-card');
+      const id = card && card.dataset.eventId;
+      const ev = allEvents.find(x => x.id === id);
+      if (ev) openEventDetailModal(ev);
+    });
+  });
+
   document.querySelectorAll('.inline-register').forEach(btn => {
-    btn.addEventListener('click', () => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
       const sel = document.getElementById('registerSelect');
       if (sel) sel.value = btn.dataset.event;
       document.getElementById('register').scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -289,15 +377,6 @@ function renderSchedule() {
         const f = document.getElementById('inp-fn');
         if (f) f.focus();
       }, 500);
-    });
-  });
-
-  document.querySelectorAll('.ev-expand').forEach(btn => {
-    const desc = btn.previousElementSibling;
-    if (!desc) return;
-    btn.addEventListener('click', () => {
-      const expanded = desc.classList.toggle('expanded');
-      btn.textContent = expanded ? (lang === 'de' ? 'Weniger' : 'Less') : (lang === 'de' ? 'Mehr lesen' : 'Read more');
     });
   });
 }
