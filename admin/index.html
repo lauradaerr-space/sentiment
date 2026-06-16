@@ -5,16 +5,11 @@
   <script>
     (function () {
       var p = location.pathname;
-      var dir;
-      if (p.charAt(p.length - 1) === '/') {
-        dir = p;
-      } else {
-        var last = p.substring(p.lastIndexOf('/') + 1);
-        dir = last.indexOf('.') === -1 ? p + '/' : p.substring(0, p.lastIndexOf('/') + 1);
+      if (p === '/exhibition/admin' || p === '/admin') {
+        location.replace(p + '/' + location.search + location.hash); return;
       }
-      var base = document.createElement('base');
-      base.setAttribute('href', dir);
-      document.head.appendChild(base);
+      var dir = (p.charAt(p.length - 1) === '/') ? p : p.substring(0, p.lastIndexOf('/') + 1);
+      document.write('<base href="' + dir + '">');
     })();
   </script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
