@@ -410,8 +410,10 @@
       row.className = 'info-card-row';
       row.dataset.id = card.id;
 
-      var thumb = card.image
-        ? '<div class="ic-thumb"><img src="' + card.image.replace(/"/g, '&quot;') + '" alt="" onerror="this.parentNode.innerHTML=\'<span class=ic-thumb-empty>Kein Bild</span>\'"></div>'
+      var firstImg = (Array.isArray(card.images) && card.images[0]) || card.image || '';
+      var multi = Array.isArray(card.images) && card.images.length > 1;
+      var thumb = firstImg
+        ? '<div class="ic-thumb"><img src="' + firstImg.replace(/"/g, '&quot;') + '" alt="" onerror="this.parentNode.innerHTML=\'<span class=ic-thumb-empty>Kein Bild</span>\'">' + (multi ? '<span class="ic-thumb-count">' + card.images.length + '</span>' : '') + '</div>'
         : '<div class="ic-thumb"><span class="ic-thumb-empty">Kein Bild</span></div>';
 
       row.innerHTML =
@@ -471,7 +473,7 @@
       cardForm.title_en.value = c.title_en || '';
       cardForm.body_de.value = c.body_de || '';
       cardForm.body_en.value = c.body_en || '';
-      cardForm.image.value = c.image || '';
+      cardForm.images.value = (Array.isArray(c.images) ? c.images : (c.image ? [c.image] : [])).join('\n');
       cardForm.items.value = (Array.isArray(c.items) ? c.items : []).map(function (it) {
         return (it.de || '') + ' | ' + (it.en || '');
       }).join('\n');
@@ -511,6 +513,8 @@
       return parts[0] ? { de: parts[0], en: parts[1] || parts[0] } : null;
     }).filter(Boolean);
 
+    var images = (cardForm.images.value || '').split('\n')
+      .map(function (s) { return s.trim(); }).filter(Boolean);
     var obj = {
       label_de: cardForm.label_de.value,
       label_en: cardForm.label_en.value,
@@ -518,7 +522,8 @@
       title_en: cardForm.title_en.value,
       body_de: cardForm.body_de.value,
       body_en: cardForm.body_en.value,
-      image: cardForm.image.value,
+      images: images,
+      image: images[0] || '',
       items: items
     };
 

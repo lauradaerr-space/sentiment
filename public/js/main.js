@@ -327,7 +327,11 @@ function renderAboutCards() {
     const body  = lang === 'de' ? c.body_de  : (c.body_en  || c.body_de);
     const items = Array.isArray(c.items) ? c.items : [];
 
-    const imageBlock = c.image ? `<div class="info-card-image"><img src="${escape(c.image)}" alt="" onerror="this.parentNode.remove()"></div>` : '';
+    const imgs = (Array.isArray(c.images) && c.images.length) ? c.images : (c.image ? [c.image] : []);
+    const imageBlock = imgs.length === 0 ? ''
+      : imgs.length === 1
+        ? `<div class="info-card-image"><img src="${escape(imgs[0])}" alt="" onerror="this.parentNode.remove()"></div>`
+        : `<div class="info-card-image info-card-slideshow">${imgs.map((u, i) => `<img src="${escape(u)}" alt="" class="${i === 0 ? 'active' : ''}" onerror="this.remove()">`).join('')}</div>`;
     const labelBlock = label ? `<span class="about-tag">${escape(label)}</span>` : '';
     const titleBlock = title ? `<h3>${escape(title)}</h3>` : '';
     const bodyBlock  = body ? paragraphs(body) : '';
@@ -345,6 +349,17 @@ function renderAboutCards() {
       ${itemsBlock}
     </article>`;
   }).join('');
+
+  grid.querySelectorAll('.info-card-slideshow').forEach(slide => {
+    const frames = slide.querySelectorAll('img');
+    if (frames.length < 2) return;
+    let i = 0;
+    setInterval(() => {
+      frames[i].classList.remove('active');
+      i = (i + 1) % frames.length;
+      frames[i].classList.add('active');
+    }, 4500);
+  });
 }
 
 function fmtDate(s) {
