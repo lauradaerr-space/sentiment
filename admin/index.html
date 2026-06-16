@@ -184,6 +184,7 @@
         <div class="field">
           <label>Format</label>
           <select name="format">
+            <option value="exhibition">Ausstellung</option>
             <option value="talk">Talk</option>
             <option value="workshop">Workshop</option>
             <option value="tour">Führung / Tour</option>
@@ -243,6 +244,12 @@
       <div class="field">
         <label>Beschreibung (DE)</label>
         <textarea name="descDE" rows="3"></textarea>
+      </div>
+
+      <div class="field">
+        <label>Bild-URL (optional)</label>
+        <input type="text" name="image" placeholder="https://... oder /public/img/events/...">
+        <small style="font-size:10px;color:var(--muted2);margin-top:4px">Externe URL oder relativer Pfad im Repo (z.B. /public/img/events/vernissage.jpg)</small>
       </div>
 
       <!-- Programm -->

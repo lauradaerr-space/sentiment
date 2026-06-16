@@ -644,6 +644,7 @@
       eventForm.status.value = ev.status || 'Offen';
       eventForm.descEN.value = ev.descEN || '';
       eventForm.descDE.value = ev.descDE || '';
+      if (eventForm.image) eventForm.image.value = ev.image || '';
 
       btnPublish.classList.remove('hidden');
       btnDelete.classList.remove('hidden');

@@ -5,7 +5,7 @@
 
 /* ── STATE ── */
 let allEvents     = [];
-let currentFormat = 'all';
+let activeFormats = new Set(['all']);
 let lang          = 'de';
 let archiveOpen   = false;
 
@@ -242,7 +242,8 @@ function openEventDetailModal(ev) {
   `;
 
   body.innerHTML = `
-    <div class="em-format ${ev.format || ''}">${({ talk: 'Talk', workshop: 'Workshop', tour: lang === 'de' ? 'Führung' : 'Tour', screening: 'Screening', lecture: 'Lecture', other: lang === 'de' ? 'Sonstiges' : 'Other' }[ev.format]) || ev.format || ''}</div>
+    ${ev.image ? `<div class="em-image"><img src="${ev.image}" alt="" onerror="this.parentNode.remove()"></div>` : ''}
+    <div class="em-format ${ev.format || ''}">${({ exhibition: lang === 'de' ? 'Ausstellung' : 'Exhibition', talk: 'Talk', workshop: 'Workshop', tour: lang === 'de' ? 'Führung' : 'Tour', screening: 'Screening', lecture: 'Lecture', other: lang === 'de' ? 'Sonstiges' : 'Other' }[ev.format]) || ev.format || ''}</div>
     <h2 class="em-title">${title}</h2>
     <div class="em-meta">
       <span>${dateStr}</span>
@@ -312,7 +313,7 @@ function fmtDate(s) {
 
 function renderSchedule() {
   const list     = document.getElementById('scheduleList');
-  const filtered = allEvents.filter(e => currentFormat === 'all' || e.format === currentFormat);
+  const filtered = allEvents.filter(e => activeFormats.has('all') || activeFormats.has(e.format));
 
   if (!filtered.length) {
     list.innerHTML = `<div class="no-results">${
@@ -324,12 +325,13 @@ function renderSchedule() {
   }
 
   const fmtLabels = {
-    talk:      'Talk',
-    workshop:  'Workshop',
-    tour:      lang === 'de' ? 'Führung' : 'Tour',
-    screening: 'Screening',
-    lecture:   'Lecture',
-    other:     lang === 'de' ? 'Sonstiges' : 'Other'
+    exhibition: lang === 'de' ? 'Ausstellung' : 'Exhibition',
+    talk:       'Talk',
+    workshop:   'Workshop',
+    tour:       lang === 'de' ? 'Führung' : 'Tour',
+    screening:  'Screening',
+    lecture:    'Lecture',
+    other:      lang === 'de' ? 'Sonstiges' : 'Other'
   };
 
   const today = (new Date()).toISOString().slice(0,10);
@@ -341,6 +343,7 @@ function renderSchedule() {
     const isPast = endDate && endDate < today;
     const hasProgram = Array.isArray(e.program) && e.program.length > 0;
     return `<article class="ev-card${isPast ? ' past' : ''}" data-event-id="${e.id}">
+      ${e.image ? `<div class="ev-image"><img src="${e.image}" alt="" loading="lazy" onerror="this.parentNode.remove()"></div>` : ''}
       <div class="ev-header">
         <span class="ev-format ${e.format}">${fmtLabels[e.format] || e.format}</span>
         ${isPast ? `<span class="ev-past-badge">${lang === 'de' ? 'Vergangen' : 'Past'}</span>` : ''}
@@ -453,13 +456,24 @@ function renderSelect() {
   sel.innerHTML = `<option value="">${ph}</option>${opts}${newsletter}`;
 }
 
-/* ══ FORMAT FILTER ══ */
+/* ══ FORMAT FILTER (multi-select) ══ */
+function syncFormatChips() {
+  document.querySelectorAll('#formatFilters .chip[data-format]').forEach(b =>
+    b.classList.toggle('active', activeFormats.has(b.dataset.format))
+  );
+}
 document.querySelectorAll('#formatFilters .chip[data-format]').forEach(btn => {
   btn.addEventListener('click', () => {
-    currentFormat = btn.dataset.format;
-    document.querySelectorAll('#formatFilters .chip[data-format]').forEach(b =>
-      b.classList.toggle('active', b.dataset.format === currentFormat)
-    );
+    const fmt = btn.dataset.format;
+    if (fmt === 'all') {
+      activeFormats = new Set(['all']);
+    } else {
+      activeFormats.delete('all');
+      if (activeFormats.has(fmt)) activeFormats.delete(fmt);
+      else activeFormats.add(fmt);
+      if (activeFormats.size === 0) activeFormats = new Set(['all']);
+    }
+    syncFormatChips();
     renderSchedule();
   });
 });
