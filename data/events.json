@@ -46,25 +46,6 @@
       "published": true
     },
     {
-      "title": "Exhibtion",
-      "titleDE": "Ausstellung",
-      "dateFrom": "2026-12-12",
-      "dateTo": "2027-01-21",
-      "time": "14:00",
-      "timeEnd": "20:00",
-      "format": "other",
-      "category": "koeln",
-      "location": "Kunstwerk Köln",
-      "language": "DE",
-      "capacity": 50,
-      "who": "Laura + Joel",
-      "status": "Offen",
-      "descEN": "",
-      "descDE": "",
-      "id": "evt-1775824595282",
-      "published": true
-    },
-    {
       "title": "CPDP - Culture Club",
       "titleDE": "CPDP - Culture Club",
       "dateFrom": "2026-05-20",
@@ -155,7 +136,7 @@
       "priority": "Dringend",
       "notes": "Grundriss von Jens anfragen — Masse, Tueren, Steckdosen, Licht",
       "due": "2025-09-08",
-      "linkedEventId": "evt-1775824595282"
+      "linkedEventId": ""
     },
     {
       "id": "imported_t2",
@@ -169,7 +150,7 @@
       "priority": "Dringend",
       "notes": "",
       "due": "2026-06-01",
-      "linkedEventId": "evt-1775824595282"
+      "linkedEventId": ""
     },
     {
       "id": "imported_t5",
@@ -183,7 +164,7 @@
       "priority": "Normal",
       "notes": "Tool klaeren: SketchUp / Blender / Matterport — wer macht das?",
       "due": "2026-06-01",
-      "linkedEventId": "evt-1775824595282"
+      "linkedEventId": ""
     },
     {
       "id": "imported_t6",
@@ -197,7 +178,7 @@
       "priority": "Normal",
       "notes": "",
       "due": "2026-06-01",
-      "linkedEventId": "evt-1775824595282"
+      "linkedEventId": ""
     },
     {
       "id": "imported_t8",
@@ -212,7 +193,7 @@
       "priority": "Dringend",
       "notes": "Als Layer im Raumplan / Miro",
       "due": "2026-07-06",
-      "linkedEventId": "evt-1775824595282"
+      "linkedEventId": ""
     },
     {
       "id": "imported_t10",
@@ -227,7 +208,7 @@
       "priority": "Normal",
       "notes": "Abstimmen mit Technik und Kunstwerk Koeln",
       "due": "2026-07-06",
-      "linkedEventId": "evt-1775824595282"
+      "linkedEventId": ""
     },
     {
       "id": "imported_t11",
@@ -242,7 +223,7 @@
       "priority": "Normal",
       "notes": "",
       "due": "2026-07-06",
-      "linkedEventId": "evt-1775824595282"
+      "linkedEventId": ""
     },
     {
       "id": "imported_t12",
@@ -256,7 +237,7 @@
       "priority": "Normal",
       "notes": "Reihenfolge und Zeitbedarf pro Werk planen",
       "due": "2026-07-20",
-      "linkedEventId": "evt-1775824595282"
+      "linkedEventId": ""
     },
     {
       "id": "imported_t13",
@@ -271,7 +252,7 @@
       "priority": "Dringend",
       "notes": "Mit Jens / Leon abstimmen",
       "due": "2026-05-04",
-      "linkedEventId": "evt-1775824595282"
+      "linkedEventId": ""
     },
     {
       "id": "imported_t14",
@@ -285,7 +266,7 @@
       "priority": "Dringend",
       "notes": "Pflicht! Evakuierungsplan, Zustaendigkeiten",
       "due": "2026-03-09",
-      "linkedEventId": "evt-1775824595282"
+      "linkedEventId": ""
     },
     {
       "id": "imported_t15",
@@ -300,7 +281,7 @@
       "priority": "Dringend",
       "notes": "",
       "due": "2026-05-25",
-      "linkedEventId": "evt-1775824595282"
+      "linkedEventId": ""
     },
     {
       "id": "imported_t16",
@@ -315,7 +296,7 @@
       "priority": "Dringend",
       "notes": "Konzept Centerpiece als Ausgangspunkt — Seminar-Ergebnis vorhanden",
       "due": "",
-      "linkedEventId": "evt-1775824595282"
+      "linkedEventId": ""
     },
     {
       "id": "imported_t17",
@@ -343,7 +324,7 @@
       "priority": "Dringend",
       "notes": "",
       "due": "2026-06-01",
-      "linkedEventId": "evt-1775824595282"
+      "linkedEventId": ""
     },
     {
       "id": "imported_t19",
@@ -387,7 +368,7 @@
       "priority": "Normal",
       "notes": "Einheitliches Format festlegen",
       "due": "2026-08-31",
-      "linkedEventId": "evt-1775824595282"
+      "linkedEventId": ""
     },
     {
       "id": "imported_t22",
@@ -402,7 +383,7 @@
       "priority": "Normal",
       "notes": "",
       "due": "2026-08-31",
-      "linkedEventId": "evt-1775824595282"
+      "linkedEventId": ""
     },
     {
       "id": "imported_t24",
@@ -416,7 +397,7 @@
       "priority": "Dringend",
       "notes": "AV, Licht, Strom, Kabel, Haengesysteme...",
       "due": "2026-05-19",
-      "linkedEventId": "evt-1775824595282"
+      "linkedEventId": ""
     },
     {
       "id": "imported_t25",
@@ -430,7 +411,7 @@
       "priority": "Normal",
       "notes": "",
       "due": "2026-04-27",
-      "linkedEventId": "evt-1775824595282"
+      "linkedEventId": ""
     },
     {
       "id": "imported_t26",
@@ -444,7 +425,7 @@
       "priority": "Normal",
       "notes": "",
       "due": "2026-07-13",
-      "linkedEventId": "evt-1775824595282"
+      "linkedEventId": ""
     },
     {
       "id": "imported_t27",
@@ -458,7 +439,7 @@
       "priority": "Normal",
       "notes": "",
       "due": "2026-05-18",
-      "linkedEventId": "evt-1775824595282"
+      "linkedEventId": ""
     },
     {
       "id": "imported_t28",
@@ -470,7 +451,7 @@
       "priority": "Normal",
       "notes": "",
       "due": "2026-05-18",
-      "linkedEventId": "evt-1775824595282"
+      "linkedEventId": ""
     },
     {
       "id": "imported_t29",
@@ -484,7 +465,7 @@
       "priority": "Normal",
       "notes": "",
       "due": "2026-02-09",
-      "linkedEventId": "evt-1775824595282"
+      "linkedEventId": ""
     },
     {
       "id": "imported_t30",
@@ -498,7 +479,7 @@
       "priority": "Normal",
       "notes": "",
       "due": "2026-07-06",
-      "linkedEventId": "evt-1775824595282"
+      "linkedEventId": ""
     },
     {
       "id": "imported_t31",
@@ -512,7 +493,7 @@
       "priority": "Normal",
       "notes": "Welche Kisten / Verpackung braucht was?",
       "due": "2026-08-10",
-      "linkedEventId": "evt-1775824595282"
+      "linkedEventId": ""
     },
     {
       "id": "imported_t32",
@@ -568,7 +549,7 @@
       "priority": "Normal",
       "notes": "3 Wochen vorher versenden — Versand bis 20. Nov.",
       "due": "2025-12-08",
-      "linkedEventId": "evt-1775824595282"
+      "linkedEventId": ""
     },
     {
       "id": "imported_t35",
@@ -641,7 +622,7 @@
       "priority": "Dringend",
       "notes": "Noch nicht definiert — intern klaeren!",
       "due": "2026-05-11",
-      "linkedEventId": "evt-1775824595282"
+      "linkedEventId": ""
     },
     {
       "id": "imported_t40",
@@ -662,7 +643,7 @@
       "priority": "Normal",
       "notes": "",
       "due": "2026-05-11",
-      "linkedEventId": "evt-1775824595282"
+      "linkedEventId": ""
     },
     {
       "id": "imported_t41",
@@ -683,7 +664,7 @@
       "priority": "Normal",
       "notes": "",
       "due": "",
-      "linkedEventId": "evt-1775824595282"
+      "linkedEventId": ""
     },
     {
       "id": "imported_t43",
@@ -748,7 +729,7 @@
       "priority": "Normal",
       "notes": "",
       "due": "2026-04-27",
-      "linkedEventId": "evt-1775824595282"
+      "linkedEventId": ""
     },
     {
       "id": "imported_t47",
@@ -1053,7 +1034,7 @@
       "priority": "Normal",
       "notes": "Nur wenn Ueberwachungskamera Teil der Kuration",
       "due": "2026-03-30",
-      "linkedEventId": "evt-1775824595282"
+      "linkedEventId": ""
     },
     {
       "id": "imported_t70",
@@ -1361,7 +1342,7 @@
       "priority": "Normal",
       "notes": "",
       "due": "2026-08-03",
-      "linkedEventId": "evt-1775824595282"
+      "linkedEventId": ""
     },
     {
       "id": "imported_t92",
@@ -1633,7 +1614,7 @@
       "priority": "Normal",
       "notes": "",
       "due": "2027-01-12",
-      "linkedEventId": "evt-1775824595282"
+      "linkedEventId": ""
     },
     {
       "id": "imported_t112",
@@ -1647,7 +1628,7 @@
       "priority": "Normal",
       "notes": "",
       "due": "2027-01-12",
-      "linkedEventId": "evt-1775824595282"
+      "linkedEventId": ""
     },
     {
       "id": "imported_t113",
@@ -1691,7 +1672,7 @@
       "priority": "Normal",
       "notes": "",
       "due": "2026-05-04",
-      "linkedEventId": "evt-1775824595282"
+      "linkedEventId": ""
     },
     {
       "id": "imported_t116",
@@ -1705,7 +1686,7 @@
       "priority": "Normal",
       "notes": "",
       "due": "2025-12-08",
-      "linkedEventId": "evt-1775824595282"
+      "linkedEventId": ""
     },
     {
       "id": "imported_t117",
@@ -1719,7 +1700,7 @@
       "priority": "Normal",
       "notes": "",
       "due": "2026-06-15",
-      "linkedEventId": "evt-1775824595282"
+      "linkedEventId": ""
     },
     {
       "id": "imported_t118",
@@ -1740,7 +1721,7 @@
       "priority": "Normal",
       "notes": "",
       "due": "2026-02-02",
-      "linkedEventId": "evt-1775824595282"
+      "linkedEventId": ""
     },
     {
       "id": "imported_t119",
@@ -1755,7 +1736,7 @@
       "priority": "Normal",
       "notes": "",
       "due": "2026-04-13",
-      "linkedEventId": "evt-1775824595282"
+      "linkedEventId": ""
     },
     {
       "id": "imported_t120",
@@ -1769,7 +1750,7 @@
       "priority": "Normal",
       "notes": "",
       "due": "2026-12-01",
-      "linkedEventId": "evt-1775824595282"
+      "linkedEventId": ""
     },
     {
       "title": "Material an Ferre",
