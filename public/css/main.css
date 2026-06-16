@@ -610,11 +610,34 @@ body.light .ev-format.lecture   { color:#6b21a8; border-color:rgba(107,33,168,.2
 
 /* Past events */
 .ev-card.past {
-  opacity: 0.65;
-  filter: grayscale(0.45);
+  opacity: 0.78;
 }
-.ev-card.past:hover { opacity: 0.85; filter: grayscale(0.25); }
+.ev-card.past:hover { opacity: 1; }
 .ev-card.past .ev-title { color: var(--muted); }
+
+/* Archive section */
+.events-archive-toggle {
+  grid-column: 1 / -1;
+  margin-top: 12px; padding: 16px 20px;
+  display: flex; align-items: center; justify-content: space-between;
+  border: 1px solid var(--border); border-radius: 12px;
+  background: var(--panel); cursor: pointer;
+  font-family: var(--mono); font-size: 12px; font-weight: 700;
+  letter-spacing: .12em; text-transform: uppercase;
+  color: var(--muted); transition: background .14s, color .14s, border-color .14s;
+}
+.events-archive-toggle:hover {
+  background: var(--panel-mid); color: var(--text); border-color: var(--border2);
+}
+.archive-arrow { color: var(--orange); font-size: 14px; }
+.events-archive {
+  grid-column: 1 / -1;
+  display: none;
+}
+.events-archive.open {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 14px; margin-top: 8px;
+}
 .ev-past-badge {
   font-family: var(--mono); font-size: 9px; font-weight: 700; letter-spacing: .14em;
   text-transform: uppercase; padding: 3px 10px;

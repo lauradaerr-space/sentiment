@@ -7,6 +7,7 @@
 let allEvents     = [];
 let currentFormat = 'all';
 let lang          = 'de';
+let archiveOpen   = false;
 
 /* ══ ANIMATED CANVAS BACKGROUND ══ */
 (function () {
@@ -331,15 +332,13 @@ function renderSchedule() {
     other:     lang === 'de' ? 'Sonstiges' : 'Other'
   };
 
-  list.innerHTML = filtered.map(e => {
+  const today = (new Date()).toISOString().slice(0,10);
+  const renderCard = (e) => {
     const title = lang === 'de' ? (e.titleDE || e.title) : e.title;
     const desc  = lang === 'de' ? (e.descDE  || e.desc  || '') : (e.desc || '');
     const full  = e.capacity > 0 && e.registered >= e.capacity;
-
-    const today = (new Date()).toISOString().slice(0,10);
     const endDate = e.dateTo || e.dateFrom || e.date || '';
     const isPast = endDate && endDate < today;
-
     const hasProgram = Array.isArray(e.program) && e.program.length > 0;
     return `<article class="ev-card${isPast ? ' past' : ''}" data-event-id="${e.id}">
       <div class="ev-header">
@@ -370,7 +369,44 @@ function renderSchedule() {
         }
       </div>
     </article>`;
-  }).join('');
+  };
+
+  const upcoming = filtered.filter(e => !(e.dateTo || e.dateFrom || e.date || '') || (e.dateTo || e.dateFrom || e.date) >= today);
+  const past = filtered.filter(e => {
+    const end = e.dateTo || e.dateFrom || e.date || '';
+    return end && end < today;
+  });
+
+  let html = upcoming.map(renderCard).join('');
+
+  if (upcoming.length === 0) {
+    html = `<div class="no-results">${lang === 'de' ? 'Keine kommenden Veranstaltungen.' : 'No upcoming events.'}</div>`;
+  }
+
+  if (past.length > 0) {
+    const archiveLabel = lang === 'de'
+      ? `Archiv — ${past.length} vergangene Veranstaltung${past.length !== 1 ? 'en' : ''}`
+      : `Archive — ${past.length} past event${past.length !== 1 ? 's' : ''}`;
+    html += `
+      <div class="events-archive-toggle ${archiveOpen ? 'open' : ''}" id="archiveToggle">
+        <span>${archiveLabel}</span>
+        <span class="archive-arrow">${archiveOpen ? '▴' : '▾'}</span>
+      </div>
+      <div class="events-archive ${archiveOpen ? 'open' : ''}" id="eventsArchive">
+        ${past.map(renderCard).join('')}
+      </div>
+    `;
+  }
+
+  list.innerHTML = html;
+
+  const toggle = document.getElementById('archiveToggle');
+  if (toggle) {
+    toggle.addEventListener('click', () => {
+      archiveOpen = !archiveOpen;
+      renderSchedule();
+    });
+  }
 
   document.querySelectorAll('.ev-card').forEach(card => {
     card.addEventListener('click', (e) => {
@@ -582,7 +618,7 @@ const _p5inst = new p5(p => {
   const pts = [];
   const anchors = [];
   const isMobile = window.innerWidth < 768;
-  const PARTICLE_COUNT = isMobile ? 30 : 75;
+  const PARTICLE_COUNT = isMobile ? 20 : 45;
 
 
   p.setup = () => {
