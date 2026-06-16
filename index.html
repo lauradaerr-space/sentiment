@@ -10,10 +10,11 @@
         dir = p;
       } else {
         var last = p.substring(p.lastIndexOf('/') + 1);
-        // If last segment has no dot, treat path as a directory and add trailing slash
         dir = last.indexOf('.') === -1 ? p + '/' : p.substring(0, p.lastIndexOf('/') + 1);
       }
-      document.write('<base href="' + dir + '">');
+      var base = document.createElement('base');
+      base.setAttribute('href', dir);
+      document.head.appendChild(base);
     })();
   </script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
