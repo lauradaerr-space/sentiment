@@ -270,6 +270,7 @@ function openEventDetailModal(ev) {
     modal.classList.remove('open');
     const cb = document.querySelector('#registerSelect input[value="' + ev.title.replace(/"/g, '\\"') + '"]');
     if (cb) cb.checked = true;
+    if (typeof updateDropdownLabel === 'function') updateDropdownLabel();
     document.getElementById('register').scrollIntoView({ behavior: 'smooth', block: 'start' });
     setTimeout(() => {
       const f = document.getElementById('inp-fn');
@@ -427,6 +428,7 @@ function renderSchedule() {
       const title = btn.dataset.event;
       const cb = document.querySelector('#registerSelect input[value="' + title.replace(/"/g, '\\"') + '"]');
       if (cb) cb.checked = true;
+      if (typeof updateDropdownLabel === 'function') updateDropdownLabel();
       document.getElementById('register').scrollIntoView({ behavior: 'smooth', block: 'start' });
       setTimeout(() => {
         const f = document.getElementById('inp-fn');
@@ -476,8 +478,52 @@ function renderSelect() {
     </label>
   `;
 
-  sel.innerHTML = rows + newsletter;
+  sel.className = 'event-dropdown';
+  sel.innerHTML = `
+    <button type="button" class="event-dropdown-trigger">
+      <span class="event-dropdown-label"></span>
+      <span class="event-dropdown-arrow" aria-hidden="true">▾</span>
+    </button>
+    <div class="event-dropdown-panel">${rows}${newsletter}</div>
+  `;
+
+  updateDropdownLabel();
+
+  const trigger = sel.querySelector('.event-dropdown-trigger');
+  trigger.addEventListener('click', e => {
+    e.stopPropagation();
+    sel.classList.toggle('open');
+  });
+  sel.querySelectorAll('input[type="checkbox"]').forEach(cb => {
+    cb.addEventListener('change', updateDropdownLabel);
+  });
 }
+
+function updateDropdownLabel() {
+  const sel = document.getElementById('registerSelect');
+  if (!sel) return;
+  const label = sel.querySelector('.event-dropdown-label');
+  if (!label) return;
+  const values = Array.from(sel.querySelectorAll('input[type="checkbox"]:checked')).map(i => i.value);
+  if (values.length === 0) {
+    label.textContent = lang === 'de' ? 'Veranstaltungen wählen …' : 'Choose events …';
+    label.classList.add('is-placeholder');
+  } else if (values.length === 1) {
+    label.textContent = values[0];
+    label.classList.remove('is-placeholder');
+  } else {
+    label.textContent = (lang === 'de' ? values.length + ' ausgewählt' : values.length + ' selected');
+    label.classList.remove('is-placeholder');
+  }
+}
+
+// Close dropdown when clicking outside it
+document.addEventListener('click', e => {
+  const sel = document.getElementById('registerSelect');
+  if (sel && sel.classList.contains('open') && !sel.contains(e.target)) {
+    sel.classList.remove('open');
+  }
+});
 
 /* ══ FORMAT FILTER (multi-select) ══ */
 function syncFormatChips() {
