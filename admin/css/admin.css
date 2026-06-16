@@ -738,6 +738,51 @@ button, input, select, textarea { font: inherit; }
 }
 .reg-table tr:hover td { color: var(--text); background: var(--panel); }
 
+/* Info-Karten admin */
+.info-cards-help {
+  font-family: var(--mono); font-size: 11px; letter-spacing: .04em;
+  color: var(--muted2); margin-bottom: 16px; line-height: 1.6;
+}
+.info-cards-list { display: flex; flex-direction: column; gap: 10px; }
+.info-card-row {
+  display: flex; align-items: center; gap: 12px;
+  padding: 14px 18px;
+  border: 1px solid var(--border); border-radius: 10px;
+  background: var(--panel); cursor: pointer;
+  transition: background .14s, border-color .14s;
+}
+.info-card-row:hover { background: var(--panel-mid); border-color: var(--border2); }
+.info-card-row .ic-thumb {
+  width: 56px; height: 56px; border-radius: 8px;
+  background: var(--panel-strong);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0; overflow: hidden;
+}
+.info-card-row .ic-thumb img { width: 100%; height: 100%; object-fit: cover; }
+.info-card-row .ic-thumb-empty {
+  font-family: var(--mono); font-size: 8px; letter-spacing: .1em;
+  color: var(--muted2); text-transform: uppercase;
+}
+.info-card-row .ic-body { flex: 1; min-width: 0; }
+.info-card-row .ic-label {
+  font-family: var(--mono); font-size: 9px; letter-spacing: .12em;
+  text-transform: uppercase; color: var(--orange); margin-bottom: 4px;
+}
+.info-card-row .ic-title {
+  font-size: 14px; font-weight: 600;
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+.info-card-row .ic-arrow { color: var(--muted2); font-size: 18px; }
+.info-card-row .ic-actions {
+  display: flex; gap: 6px; flex-shrink: 0;
+}
+.ic-order-btn {
+  padding: 4px 8px; border-radius: 6px;
+  border: 1px solid var(--border); background: none;
+  color: var(--muted); cursor: pointer; font-size: 12px;
+}
+.ic-order-btn:hover { color: var(--text); background: var(--panel-strong); }
+
 .reg-group { margin-bottom: 20px; border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
 .reg-group-header {
   display: flex; align-items: center; justify-content: space-between;

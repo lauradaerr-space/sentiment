@@ -6,16 +6,50 @@
   var API = '../api/events';
   var INTERNAL_CATS = ['pub', 'pr', 'other'];
 
-  var data = { events: [], tasks: [] };
+  var data = { events: [], tasks: [], infoCards: [] };
   var currentMonth = new Date();
   var editingEventId = null;
   var editingTaskId = null;
+  var editingCardId = null;
   var taskFilterCat = 'all';
   var taskFilterPerson = 'all';
   var taskFilterEvent = 'all';
   var lastTaskChange = null;
   var undoTimer = null;
   var completedSectionOpen = false;
+
+  /* ────── DEFAULT INFO CARDS (seeded once if empty) ────── */
+  function defaultInfoCards() {
+    return [
+      {
+        id: 'card-about',
+        label_de: 'Forschungs- und Kunstprojekt',
+        label_en: 'Research & Art Project',
+        title_de: 'Intime Kommunikation mit Chatbots — zwischen Nähe, Vertrauen und Verantwortung',
+        title_en: 'Intimate Communication with Chatbots — between Closeness, Trust, and Responsibility',
+        body_de: 'Was passiert, wenn Menschen beginnen, Maschinen zu vertrauen — oder sich ihnen anzuvertrauen? In einer Zeit, in der KI immer öfter unser vertrautester Gesprächspartner wird, werden diese Begegnungen zur gesellschaftlichen Dringlichkeit.\n\nDas vom BMFTR geförderte Projekt SENTIMENT untersucht intime Kommunikation mit KI-basierten Chatbots an der Schnittstelle von Psychologie, Informatik, Rechtswissenschaft und künstlerischer Forschung. Installative, performative und diskursive Formate machen zentrale Fragen um dieses Thema erfahrbar.\n\nSENTIMENT navigiert die Grenzen zwischen Verbindung und Berechnung: Warum vertrauen sich Menschen KI an und wie kann Intimität gestaltet werden, ohne Autonomie zu gefährden?',
+        body_en: 'What happens when people begin to trust machines — or confide in them? At a time when AI is increasingly becoming our most trusted conversation partner, these encounters have become a matter of urgent social concern.\n\nFunded by the BMFTR, SENTIMENT examines intimate communication with AI-based chatbots at the intersection of psychology, computer science, law, and artistic research. Installation, performance, and discursive formats make the central questions around this topic tangible.\n\nSENTIMENT navigates the boundaries between connection and calculus: asking not only why people confide in AI but how intimacy can be designed without compromising autonomy.',
+        image: '',
+        items: []
+      },
+      {
+        id: 'card-cpdp',
+        label_de: 'CPDP 2026 · Brüssel',
+        label_en: 'CPDP 2026 · Brussels',
+        title_de: 'SENTIMENT bei den Computers, Privacy & Data Protection 2026',
+        title_en: 'SENTIMENT at Computers, Privacy & Data Protection 2026',
+        body_de: '',
+        body_en: '',
+        image: '',
+        items: [
+          { de: 'Panel im Engineering Privacy Track — SENTIMENT Partnerinstitutionen', en: 'Panel in the Engineering Privacy Track — SENTIMENT partner institutions' },
+          { de: 'Programmslot im Culture Club — SENTIMENT Arts (75 Min.)', en: 'Programme slot in the Culture Club — SENTIMENT Arts (75 min.)' },
+          { de: 'Radio Avatar.fm', en: 'Radio Avatar.fm' },
+          { de: 'Pop-up-Ausstellung SENTIMENT im CPDP-Konferenzgebäude', en: 'Pop-up exhibition SENTIMENT in the CPDP conference building' }
+        ]
+      }
+    ];
+  }
 
   /* ────── AUTH ────── */
   function checkAuth() {
@@ -76,25 +110,33 @@
       .then(function (d) {
         data = {
           events: (d && d.events) || [],
-          tasks: (d && d.tasks) || []
+          tasks: (d && d.tasks) || [],
+          infoCards: (d && d.infoCards) || []
         };
         dataSeeded = !!(d && d.seeded);
-        console.log('loadData() got events:', data.events.length, 'tasks:', data.tasks.length, 'seeded:', dataSeeded);
+        console.log('loadData() got events:', data.events.length, 'tasks:', data.tasks.length, 'infoCards:', data.infoCards.length, 'seeded:', dataSeeded);
 
-        // Only seed ONCE — if seeded flag is not set
+        var needsSave = false;
+
+        // Seed tasks ONCE
         if (!dataSeeded && typeof IMPORTED_TASKS !== 'undefined') {
           console.log('First load — seeding', IMPORTED_TASKS.length, 'tasks from Excel');
           data.tasks = IMPORTED_TASKS.map(function (t) {
             return Object.assign({}, t, { id: 'imported_' + t.id, due: t.dueDate || '' });
           });
           dataSeeded = true;
-          renderAll();
-          saveData();
-          return;
+          needsSave = true;
+        }
+
+        // Seed default info-cards if empty (only once)
+        if (data.infoCards.length === 0) {
+          data.infoCards = defaultInfoCards();
+          needsSave = true;
         }
 
         renderAll();
         setSyncStatus('ok');
+        if (needsSave) saveData();
       })
       .catch(function (err) {
         console.error('loadData() FAILED:', err);
@@ -107,9 +149,10 @@
     var payload = {
       events: data.events || [],
       tasks: data.tasks || [],
+      infoCards: data.infoCards || [],
       seeded: dataSeeded
     };
-    console.log('saveData() called — events:', payload.events.length, 'tasks:', payload.tasks.length, 'seeded:', payload.seeded);
+    console.log('saveData() called — events:', payload.events.length, 'tasks:', payload.tasks.length, 'infoCards:', payload.infoCards.length, 'seeded:', payload.seeded);
 
     fetch(API, {
       method: 'POST',
@@ -267,7 +310,149 @@
     renderOverview();
     renderCalendar();
     renderTasks();
+    renderInfoCards();
   }
+
+  /* ────── INFO CARDS (CRUD) ────── */
+  function renderInfoCards() {
+    var container = document.getElementById('info-cards-list');
+    if (!container) return;
+    container.innerHTML = '';
+    if (!data.infoCards || data.infoCards.length === 0) {
+      var empty = document.createElement('div');
+      empty.className = 'no-tasks';
+      empty.textContent = 'Noch keine Karten — klick "+ Neue Karte" um anzufangen';
+      container.appendChild(empty);
+      return;
+    }
+    data.infoCards.forEach(function (card, idx) {
+      var row = document.createElement('div');
+      row.className = 'info-card-row';
+      row.dataset.id = card.id;
+
+      var thumb = card.image
+        ? '<div class="ic-thumb"><img src="' + card.image.replace(/"/g, '&quot;') + '" alt="" onerror="this.parentNode.innerHTML=\'<span class=ic-thumb-empty>Kein Bild</span>\'"></div>'
+        : '<div class="ic-thumb"><span class="ic-thumb-empty">Kein Bild</span></div>';
+
+      row.innerHTML =
+        thumb +
+        '<div class="ic-body">' +
+          (card.label_de ? '<div class="ic-label">' + escapeHtml(card.label_de) + '</div>' : '') +
+          '<div class="ic-title">' + escapeHtml(card.title_de || card.title_en || 'Ohne Titel') + '</div>' +
+        '</div>' +
+        '<div class="ic-actions">' +
+          (idx > 0 ? '<button class="ic-order-btn" data-act="up" title="Nach oben">↑</button>' : '') +
+          (idx < data.infoCards.length - 1 ? '<button class="ic-order-btn" data-act="down" title="Nach unten">↓</button>' : '') +
+        '</div>' +
+        '<span class="ic-arrow">›</span>';
+
+      row.addEventListener('click', function (e) {
+        if (e.target.classList.contains('ic-order-btn')) {
+          e.stopPropagation();
+          var act = e.target.dataset.act;
+          var i = data.infoCards.findIndex(function (c) { return c.id === card.id; });
+          if (act === 'up' && i > 0) { var t = data.infoCards[i-1]; data.infoCards[i-1] = data.infoCards[i]; data.infoCards[i] = t; }
+          if (act === 'down' && i < data.infoCards.length - 1) { var t = data.infoCards[i+1]; data.infoCards[i+1] = data.infoCards[i]; data.infoCards[i] = t; }
+          renderInfoCards();
+          saveData();
+          return;
+        }
+        openCardModal(card.id);
+      });
+      container.appendChild(row);
+    });
+  }
+
+  function escapeHtml(s) {
+    return String(s || '').replace(/[&<>"']/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+    });
+  }
+
+  /* Card modal */
+  var cardModal = document.getElementById('card-modal');
+  var cardForm = document.getElementById('card-form');
+  var cardBtnDelete = document.getElementById('card-btn-delete');
+
+  document.getElementById('btn-add-card').addEventListener('click', function () {
+    openCardModal(null);
+  });
+
+  function openCardModal(id) {
+    editingCardId = id;
+    cardForm.reset();
+    if (id) {
+      var c = data.infoCards.find(function (x) { return x.id === id; });
+      if (!c) return;
+      document.getElementById('card-modal-title').textContent = 'Karte bearbeiten';
+      cardForm.label_de.value = c.label_de || '';
+      cardForm.label_en.value = c.label_en || '';
+      cardForm.title_de.value = c.title_de || '';
+      cardForm.title_en.value = c.title_en || '';
+      cardForm.body_de.value = c.body_de || '';
+      cardForm.body_en.value = c.body_en || '';
+      cardForm.image.value = c.image || '';
+      cardForm.items.value = (Array.isArray(c.items) ? c.items : []).map(function (it) {
+        return (it.de || '') + ' | ' + (it.en || '');
+      }).join('\n');
+      cardBtnDelete.classList.remove('hidden');
+    } else {
+      document.getElementById('card-modal-title').textContent = 'Neue Karte';
+      cardBtnDelete.classList.add('hidden');
+    }
+    cardModal.classList.add('open');
+  }
+
+  function closeCardModal() {
+    cardModal.classList.remove('open');
+    editingCardId = null;
+  }
+
+  document.getElementById('card-modal-close').addEventListener('click', closeCardModal);
+  document.getElementById('card-btn-cancel').addEventListener('click', closeCardModal);
+  cardModal.addEventListener('click', function (e) {
+    if (e.target === cardModal) closeCardModal();
+  });
+
+  cardBtnDelete.addEventListener('click', function () {
+    if (!editingCardId) return;
+    if (!confirm('Karte wirklich löschen?')) return;
+    data.infoCards = data.infoCards.filter(function (c) { return c.id !== editingCardId; });
+    saveData();
+    closeCardModal();
+    renderInfoCards();
+  });
+
+  cardForm.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var itemsRaw = cardForm.items.value || '';
+    var items = itemsRaw.split('\n').map(function (line) {
+      var parts = line.split('|').map(function (p) { return p.trim(); });
+      return parts[0] ? { de: parts[0], en: parts[1] || parts[0] } : null;
+    }).filter(Boolean);
+
+    var obj = {
+      label_de: cardForm.label_de.value,
+      label_en: cardForm.label_en.value,
+      title_de: cardForm.title_de.value,
+      title_en: cardForm.title_en.value,
+      body_de: cardForm.body_de.value,
+      body_en: cardForm.body_en.value,
+      image: cardForm.image.value,
+      items: items
+    };
+
+    if (editingCardId) {
+      var c = data.infoCards.find(function (x) { return x.id === editingCardId; });
+      if (c) Object.keys(obj).forEach(function (k) { c[k] = obj[k]; });
+    } else {
+      obj.id = 'card-' + Date.now();
+      data.infoCards.push(obj);
+    }
+    saveData();
+    closeCardModal();
+    renderInfoCards();
+  });
 
   /* ────── TOAST ────── */
   var toastTimer;

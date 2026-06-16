@@ -291,19 +291,56 @@ document.addEventListener('click', e => {
 
 /* ══ EVENTS: laden & rendern ══ */
 
+let allInfoCards = [];
 async function loadEvents() {
   try {
     const res  = await fetch('api/events');
     const data = await res.json();
-    // Nur veröffentlichte Events anzeigen
     const list = Array.isArray(data) ? data : (data.events || []);
     const INTERNAL = ['pub', 'pr', 'other'];
     allEvents = list.filter(e => e.published && INTERNAL.indexOf(e.category) === -1);
+    allInfoCards = (data && data.infoCards) || [];
   } catch (e) {
     allEvents = [];
+    allInfoCards = [];
   }
   renderSchedule();
   renderSelect();
+  renderAboutCards();
+}
+
+function renderAboutCards() {
+  const grid = document.getElementById('aboutGrid');
+  if (!grid) return;
+  if (!allInfoCards.length) { grid.innerHTML = ''; return; }
+
+  const escape = s => String(s || '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const paragraphs = txt => (txt || '').split(/\n\s*\n/).map(p => p.trim()).filter(Boolean).map(p => `<p>${escape(p)}</p>`).join('');
+
+  grid.innerHTML = allInfoCards.map(c => {
+    const label = lang === 'de' ? c.label_de : (c.label_en || c.label_de);
+    const title = lang === 'de' ? c.title_de : (c.title_en || c.title_de);
+    const body  = lang === 'de' ? c.body_de  : (c.body_en  || c.body_de);
+    const items = Array.isArray(c.items) ? c.items : [];
+
+    const imageBlock = c.image ? `<div class="info-card-image"><img src="${escape(c.image)}" alt="" onerror="this.parentNode.remove()"></div>` : '';
+    const labelBlock = label ? `<span class="about-tag">${escape(label)}</span>` : '';
+    const titleBlock = title ? `<h3>${escape(title)}</h3>` : '';
+    const bodyBlock  = body ? paragraphs(body) : '';
+    const itemsBlock = items.length ? `
+      <div class="cpdp-items">
+        ${items.map(it => `<div class="cpdp-item"><div class="cpdp-dot"></div><span>${escape(lang === 'de' ? it.de : (it.en || it.de))}</span></div>`).join('')}
+      </div>
+    ` : '';
+
+    return `<article class="panel about-main">
+      ${imageBlock}
+      ${labelBlock}
+      ${titleBlock}
+      ${bodyBlock}
+      ${itemsBlock}
+    </article>`;
+  }).join('');
 }
 
 function fmtDate(s) {
@@ -604,6 +641,7 @@ document.querySelectorAll('.lang-b').forEach(btn => {
     renderSchedule();
     renderSelect();
     renderTeam();
+    renderAboutCards();
     try { localStorage.setItem('sn-lang', lang); } catch (e) {}
   });
 });

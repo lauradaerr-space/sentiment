@@ -55,6 +55,7 @@
     <button class="tab active" data-tab="kalender">Kalender</button>
     <button class="tab" data-tab="aufgaben">Aufgaben</button>
     <button class="tab" data-tab="anmeldungen">Anmeldungen</button>
+    <button class="tab" data-tab="info-karten">Info-Karten</button>
   </div>
 
   <!-- ÜBERSICHT TAB -->
@@ -135,6 +136,16 @@
       </div>
     </div>
     <div id="reg-grouped"></div>
+  </div>
+
+  <!-- INFO-KARTEN TAB -->
+  <div class="tab-content" id="tab-info-karten">
+    <div class="tasks-toolbar">
+      <div class="tasks-title">Info-Karten (About-Section)</div>
+      <button class="btn-add" id="btn-add-card">+ Neue Karte</button>
+    </div>
+    <div class="info-cards-help">Diese Karten erscheinen auf der öffentlichen Seite im "Über das Projekt" Bereich. Reihenfolge wird durch die Position bestimmt — neue Karten landen am Ende.</div>
+    <div class="info-cards-list" id="info-cards-list"></div>
   </div>
 
 </div>
@@ -358,6 +369,63 @@
   </div>
   <div class="day-panel-events" id="dayPanelEvents"></div>
   <button class="day-panel-add" id="dayPanelAdd">+ Neues Event</button>
+</div>
+
+<!-- INFO CARD MODAL -->
+<div class="modal-overlay" id="card-modal">
+  <div class="modal">
+    <div class="modal-header">
+      <div class="modal-title" id="card-modal-title">Karte bearbeiten</div>
+      <button class="modal-close" id="card-modal-close">&times;</button>
+    </div>
+    <form class="modal-form" id="card-form">
+      <div class="form-row">
+        <div class="field">
+          <label>Label (DE) — z.B. "CPDP 2026 · Brüssel"</label>
+          <input type="text" name="label_de">
+        </div>
+        <div class="field">
+          <label>Label (EN)</label>
+          <input type="text" name="label_en">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="field">
+          <label>Titel (DE) *</label>
+          <input type="text" name="title_de" required>
+        </div>
+        <div class="field">
+          <label>Titel (EN)</label>
+          <input type="text" name="title_en">
+        </div>
+      </div>
+      <div class="field">
+        <label>Beschreibung (DE) — Absätze mit Leerzeile trennen</label>
+        <textarea name="body_de" rows="5"></textarea>
+      </div>
+      <div class="field">
+        <label>Beschreibung (EN)</label>
+        <textarea name="body_en" rows="5"></textarea>
+      </div>
+      <div class="field">
+        <label>Bild-URL (optional)</label>
+        <input type="text" name="image" placeholder="https://... oder /public/img/...">
+      </div>
+      <div class="field">
+        <label>Stichpunkte (optional) — eine Zeile pro Punkt, Format: DE | EN</label>
+        <textarea name="items" rows="4" placeholder="Panel im Engineering Privacy Track | Panel in the Engineering Privacy Track&#10;Programmslot im Culture Club | Programme slot in the Culture Club"></textarea>
+      </div>
+      <div class="modal-actions">
+        <div class="modal-actions-left">
+          <button type="button" class="btn-delete" id="card-btn-delete">Löschen</button>
+        </div>
+        <div class="modal-actions-right">
+          <button type="button" class="btn-cancel" id="card-btn-cancel">Abbrechen</button>
+          <button type="submit" class="btn-save">Speichern</button>
+        </div>
+      </div>
+    </form>
+  </div>
 </div>
 
 <script src="js/tasks_data.js"></script>
