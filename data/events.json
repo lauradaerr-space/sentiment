@@ -1856,5 +1856,46 @@
       "id": "task-1775993408881"
     }
   ],
+  "infoCards": [
+    {
+      "id": "card-about",
+      "label_de": "Forschungs- und Kunstprojekt",
+      "label_en": "Research & Art Project",
+      "title_de": "Intime Kommunikation mit Chatbots — zwischen Nähe, Vertrauen und Verantwortung",
+      "title_en": "Intimate Communication with Chatbots — between Closeness, Trust, and Responsibility",
+      "body_de": "Was passiert, wenn Menschen beginnen, Maschinen zu vertrauen — oder sich ihnen anzuvertrauen? In einer Zeit, in der KI immer öfter unser vertrautester Gesprächspartner wird, werden diese Begegnungen zur gesellschaftlichen Dringlichkeit.\n\nDas vom BMFTR geförderte Projekt SENTIMENT untersucht intime Kommunikation mit KI-basierten Chatbots an der Schnittstelle von Psychologie, Informatik, Rechtswissenschaft und künstlerischer Forschung. Installative, performative und diskursive Formate machen zentrale Fragen um dieses Thema erfahrbar.\n\nSENTIMENT navigiert die Grenzen zwischen Verbindung und Berechnung: Warum vertrauen sich Menschen KI an und wie kann Intimität gestaltet werden, ohne Autonomie zu gefährden?",
+      "body_en": "What happens when people begin to trust machines — or confide in them? At a time when AI is increasingly becoming our most trusted conversation partner, these encounters have become a matter of urgent social concern.\n\nFunded by the BMFTR, SENTIMENT examines intimate communication with AI-based chatbots at the intersection of psychology, computer science, law, and artistic research. Installation, performance, and discursive formats make the central questions around this topic tangible.\n\nSENTIMENT navigates the boundaries between connection and calculus: asking not only why people confide in AI but how intimacy can be designed without compromising autonomy.",
+      "image": "",
+      "items": []
+    },
+    {
+      "id": "card-cpdp",
+      "label_de": "CPDP 2026 · Brüssel",
+      "label_en": "CPDP 2026 · Brussels",
+      "title_de": "SENTIMENT bei den Computers, Privacy & Data Protection 2026",
+      "title_en": "SENTIMENT at Computers, Privacy & Data Protection 2026",
+      "body_de": "",
+      "body_en": "",
+      "image": "",
+      "items": [
+        {
+          "de": "Panel im Engineering Privacy Track — SENTIMENT Partnerinstitutionen",
+          "en": "Panel in the Engineering Privacy Track — SENTIMENT partner institutions"
+        },
+        {
+          "de": "Programmslot im Culture Club — SENTIMENT Arts (75 Min.)",
+          "en": "Programme slot in the Culture Club — SENTIMENT Arts (75 min.)"
+        },
+        {
+          "de": "Radio Avatar.fm",
+          "en": "Radio Avatar.fm"
+        },
+        {
+          "de": "Pop-up-Ausstellung SENTIMENT im CPDP-Konferenzgebäude",
+          "en": "Pop-up exhibition SENTIMENT in the CPDP conference building"
+        }
+      ]
+    }
+  ],
   "seeded": true
 }
