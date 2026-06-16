@@ -54,14 +54,14 @@
 body.light {
   --bg:           #f0ebe2;
   --bg-soft:      #ffffff;
-  --panel:        rgba(255,255,255,0.68);
-  --panel-mid:    rgba(255,255,255,0.80);
-  --panel-strong: rgba(255,255,255,0.92);
+  --panel:        rgba(255,255,255,0.78);
+  --panel-mid:    rgba(255,255,255,0.88);
+  --panel-strong: rgba(255,255,255,0.96);
   --text:         #0a0a08;
-  --muted:        rgba(10,10,8,0.72);
-  --muted2:       rgba(10,10,8,0.50);
-  --border:       rgba(10,10,8,0.12);
-  --border2:      rgba(10,10,8,0.22);
+  --muted:        rgba(10,10,8,0.88);
+  --muted2:       rgba(10,10,8,0.72);
+  --border:       rgba(10,10,8,0.20);
+  --border2:      rgba(10,10,8,0.35);
   --shadow:       0 16px 44px rgba(0,0,0,0.08);
 }
 
@@ -606,7 +606,6 @@ body.light .ev-format.lecture   { color:#6b21a8; border-color:rgba(107,33,168,.2
   border-radius: 999px; border: 1px solid var(--border2);
   color: var(--muted2); white-space: nowrap;
 }
-body.light .ev-program-badge { color: rgba(10,10,8,0.55); border-color: rgba(10,10,8,0.22); }
 
 /* ── EVENT DETAIL MODAL ── */
 .event-modal-overlay {
@@ -849,23 +848,7 @@ footer { padding: 18px 0 48px; }
 }
 
 /* ── LIGHT MODE contrast overrides ── */
-body.light .eyebrow { color: rgba(10,10,8,0.55); }
-body.light .hero-subtitle { color: rgba(10,10,8,0.55); }
-body.light .stat-label { color: rgba(10,10,8,0.55); }
-body.light .sec-n { color: rgba(10,10,8,0.50); }
-body.light .sec-m { color: rgba(10,10,8,0.50); }
-body.light .ev-meta { color: rgba(10,10,8,0.55); }
-body.light .ev-time { color: rgba(10,10,8,0.55); }
-body.light .pill-track span { color: rgba(10,10,8,0.55); }
-body.light .footer-box { color: rgba(10,10,8,0.55); }
-body.light .footer-box a { color: rgba(10,10,8,0.55); }
-body.light .footer-box a:hover { color: rgba(10,10,8,0.9); }
-body.light .nav-menu a { color: rgba(10,10,8,0.65); }
-body.light .venue-block { color: rgba(10,10,8,0.60); }
-body.light .about-main p { color: rgba(10,10,8,0.70); }
-body.light .cpdp-item { color: rgba(10,10,8,0.70); }
-body.light .lede { color: rgba(10,10,8,0.72); }
-body.light .ev-desc { color: rgba(10,10,8,0.65); }
+body.light .footer-box a:hover { color: var(--text); }
 body.light .date-item { color: var(--orange); }
 body.light .opening-note { color: var(--orange); }
 
