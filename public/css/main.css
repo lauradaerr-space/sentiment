@@ -39,10 +39,10 @@
   --panel-mid:    rgba(255,255,255,0.10);
   --panel-strong: rgba(255,255,255,0.14);
   --text:         #fffaf0;
-  --muted:        rgba(255,250,240,0.78);
-  --muted2:       rgba(255,250,240,0.55);
-  --border:       rgba(255,255,255,0.16);
-  --border2:      rgba(255,255,255,0.28);
+  --muted:        rgba(255,250,240,0.92);
+  --muted2:       rgba(255,250,240,0.78);
+  --border:       rgba(255,255,255,0.20);
+  --border2:      rgba(255,255,255,0.35);
   --shadow:       0 20px 56px rgba(0,0,0,0.30);
   --max:          1400px;
   --mono:         'Space Mono', monospace;
@@ -74,7 +74,7 @@ body {
   overflow-x: hidden;
   transition: color .32s var(--ease);
   background-color: var(--bg);
-  background-image: linear-gradient(rgba(28,18,56,0.35), rgba(28,18,56,0.45)), url('../img/hg_sentiment-neu.png');
+  background-image: linear-gradient(rgba(20,12,42,0.55), rgba(20,12,42,0.65)), url('../img/hg_sentiment-neu.png');
   background-size: cover;
   background-position: center 30%;
   background-attachment: fixed;
@@ -90,6 +90,15 @@ body.light {
 a { color: inherit; text-decoration: none; }
 img { max-width: 100%; display: block; }
 button, input, select, textarea { font: inherit; }
+
+/* readability boost: small mono labels rendered bold for legibility on textured bg */
+.hero-subtitle, .stat-label, .sec-n, .sec-m, .ev-meta, .ev-format, .ev-time,
+.cpdp-label, .pill-track span, .footer-box, .footer-box a,
+.opening-note, .date-item, .about-tag,
+.em-meta, .em-section-label, .em-format,
+.person-role, .pm-role, .reg-count-badge, .ev-program-badge {
+  font-weight: 700;
+}
 
 /* ── CUSTOM CURSOR ── */
 @media (pointer: fine) {
@@ -252,9 +261,9 @@ body.light .sw-thumb { transform: translateX(17px); background: var(--muted); }
 }
 .eyebrow {
   display: inline-block; padding: 6px 13px; border-radius: 999px;
-  border: 1px solid var(--border); background: var(--panel);
-  font-family: var(--mono); font-size: 9px; letter-spacing: .2em; text-transform: uppercase;
-  color: var(--muted2); margin-bottom: 16px;
+  border: 1px solid var(--border2); background: var(--panel-mid);
+  font-family: var(--mono); font-size: 10px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase;
+  color: var(--text); margin-bottom: 16px;
 }
 h1 {
   font-family: var(--serif); font-weight: 300; font-style: italic;
