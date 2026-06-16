@@ -815,6 +815,39 @@ body.light .ev-format.lecture   { color:#6b21a8; border-color:rgba(107,33,168,.2
 .venue-link:hover { color: var(--text); }
 
 .register-form { display: grid; gap: 12px; }
+
+/* Multi-event checklist */
+.event-checklist {
+  display: flex; flex-direction: column; gap: 6px;
+  max-height: 260px; overflow-y: auto;
+  padding: 8px; border-radius: 11px;
+  border: 1px solid var(--border); background: var(--bg-soft);
+}
+.event-chip-check {
+  display: flex; align-items: center; gap: 10px;
+  padding: 10px 12px; border-radius: 8px;
+  border: 1px solid var(--border); background: var(--panel);
+  cursor: pointer;
+  font-size: 13px; color: var(--text);
+  transition: border-color .14s, background .14s;
+}
+.event-chip-check:hover { border-color: var(--border2); background: var(--panel-mid); }
+.event-chip-check input[type="checkbox"] {
+  width: 18px; height: 18px; accent-color: var(--lilac);
+  cursor: pointer; flex-shrink: 0; margin: 0;
+}
+.event-chip-check .ec-title { flex: 1; font-weight: 500; }
+.event-chip-check .ec-date {
+  font-family: var(--mono); font-size: 10px; letter-spacing: .06em;
+  color: var(--muted2); white-space: nowrap;
+}
+.event-chip-check:has(input:checked) {
+  border-color: var(--lilac); background: rgba(135,102,255,0.12);
+}
+.event-chip-check.newsletter:has(input:checked) {
+  border-color: var(--orange); background: rgba(229,92,44,0.10);
+}
+.event-chip-check.newsletter .ec-title { color: var(--orange); font-weight: 700; }
 .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
 .field { display: flex; flex-direction: column; gap: 5px; }
 .field label {

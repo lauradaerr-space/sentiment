@@ -139,7 +139,7 @@ async function sendAdminNotification(reg) {
       <table style="width:100%;border-collapse:collapse;border-top:1px solid rgba(255,255,255,0.09);">
         ${row('Name', reg.vorname + ' ' + reg.nachname)}
         ${row('E-Mail', reg.email)}
-        ${row('Veranstaltung', reg.event)}
+        ${row('Veranstaltungen', Array.isArray(reg.events) ? reg.events.join(', ') : (reg.event || ''))}
         ${row('Personen', reg.personen || '1')}
         ${row('Bereich', reg.bereich)}
         ${row('Nachricht', reg.nachricht)}
@@ -157,7 +157,7 @@ async function sendAdminNotification(reg) {
     '',
     'Name:           ' + reg.vorname + ' ' + reg.nachname,
     'E-Mail:         ' + reg.email,
-    'Veranstaltung:  ' + reg.event,
+    'Veranstaltungen:' + (Array.isArray(reg.events) ? reg.events.join(', ') : (reg.event || '')),
     'Personen:       ' + (reg.personen || '1'),
     'Bereich:        ' + reg.bereich,
     'Nachricht:      ' + (reg.nachricht || '—'),
@@ -170,7 +170,7 @@ async function sendAdminNotification(reg) {
     from: '"SENTIMENT Anmeldung" <' + FROM_EMAIL + '>',
     to: ADMIN_NOTIFY_EMAIL,
     replyTo: reg.email,
-    subject: 'Neue Anmeldung: ' + reg.vorname + ' ' + reg.nachname + ' · ' + reg.event,
+    subject: 'Neue Anmeldung: ' + reg.vorname + ' ' + reg.nachname + ' · ' + (Array.isArray(reg.events) ? reg.events.join(', ') : (reg.event || '')),
     text: text,
     html: html
   });
@@ -195,9 +195,11 @@ module.exports = async (req, res) => {
       try {
         const r = await githubRequest('GET', PATH);
         const registrations = JSON.parse(Buffer.from(r.body.content, 'base64').toString());
-        const filtered = registrations.filter(reg =>
-          reg.event && reg.event.toLowerCase() === eventFilter.toLowerCase()
-        );
+        const ef = eventFilter.toLowerCase();
+        const filtered = registrations.filter(reg => {
+          const list = Array.isArray(reg.events) ? reg.events : (reg.event ? [reg.event] : []);
+          return list.some(e => e && e.toLowerCase() === ef);
+        });
         const totalPersons = filtered.reduce((s, r) => s + parseInt(r.personen || '1', 10), 0);
         return res.status(200).json({ count: filtered.length, persons: totalPersons });
       } catch (e) {
@@ -220,13 +222,18 @@ module.exports = async (req, res) => {
 
   // POST — public registration
   if (req.method === 'POST') {
-    const { vorname, nachname, email, event, bereich, personen, nachricht, _gotcha } = req.body || {};
+    const body = req.body || {};
+    const { vorname, nachname, email, bereich, personen, nachricht, _gotcha } = body;
 
     // honeypot check
     if (_gotcha) return res.status(200).json({ ok: true });
 
+    // Accept either new `events: []` array or legacy `event: ''` string
+    let events = Array.isArray(body.events) ? body.events.filter(Boolean) : [];
+    if (!events.length && body.event) events = [body.event];
+
     // validate required fields
-    if (!vorname || !nachname || !email || !event || !bereich) {
+    if (!vorname || !nachname || !email || !events.length || !bereich) {
       return res.status(400).json({ error: 'Missing required fields' });
     }
 
@@ -242,7 +249,8 @@ module.exports = async (req, res) => {
         vorname,
         nachname,
         email,
-        event,
+        events,
+        event: events[0], // backward compat
         bereich,
         personen: personen || '1',
         nachricht: nachricht || '',
@@ -259,8 +267,9 @@ module.exports = async (req, res) => {
       });
 
       // send emails in parallel — non-blocking, never fail the registration
+      const eventsLabel = events.join(', ');
       Promise.all([
-        sendConfirmationEmail(email, vorname, event, personen || '1').catch(err => console.error('confirmation email failed:', err.message)),
+        sendConfirmationEmail(email, vorname, eventsLabel, personen || '1').catch(err => console.error('confirmation email failed:', err.message)),
         sendAdminNotification(newReg).catch(err => console.error('admin notification failed:', err.message))
       ]);
 

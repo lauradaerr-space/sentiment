@@ -268,8 +268,8 @@ function openEventDetailModal(ev) {
   const regBtn = body.querySelector('.em-register');
   if (regBtn) regBtn.addEventListener('click', () => {
     modal.classList.remove('open');
-    const sel = document.getElementById('registerSelect');
-    if (sel) sel.value = ev.title;
+    const cb = document.querySelector('#registerSelect input[value="' + ev.title.replace(/"/g, '\\"') + '"]');
+    if (cb) cb.checked = true;
     document.getElementById('register').scrollIntoView({ behavior: 'smooth', block: 'start' });
     setTimeout(() => {
       const f = document.getElementById('inp-fn');
@@ -424,8 +424,9 @@ function renderSchedule() {
   document.querySelectorAll('.inline-register').forEach(btn => {
     btn.addEventListener('click', (e) => {
       e.stopPropagation();
-      const sel = document.getElementById('registerSelect');
-      if (sel) sel.value = btn.dataset.event;
+      const title = btn.dataset.event;
+      const cb = document.querySelector('#registerSelect input[value="' + title.replace(/"/g, '\\"') + '"]');
+      if (cb) cb.checked = true;
       document.getElementById('register').scrollIntoView({ behavior: 'smooth', block: 'start' });
       setTimeout(() => {
         const f = document.getElementById('inp-fn');
@@ -438,22 +439,44 @@ function renderSchedule() {
 function renderSelect() {
   const sel = document.getElementById('registerSelect');
   if (!sel) return;
-  const ph = lang === 'de' ? 'Veranstaltung wählen …' : 'Choose event …';
 
-  // sort chronologically by dateFrom
-  const sorted = allEvents.slice().sort((a, b) => (a.dateFrom || '').localeCompare(b.dateFrom || ''));
+  // Remember previously checked
+  const checked = new Set(
+    Array.from(sel.querySelectorAll('input[type="checkbox"]:checked')).map(i => i.value)
+  );
 
-  const opts = sorted.map(e => {
+  // Future-first chronologically; past are excluded from registration
+  const today = (new Date()).toISOString().slice(0,10);
+  const upcoming = allEvents
+    .filter(e => {
+      const end = e.dateTo || e.dateFrom || '';
+      return !end || end >= today;
+    })
+    .slice()
+    .sort((a, b) => (a.dateFrom || '').localeCompare(b.dateFrom || ''));
+
+  const rows = upcoming.map(e => {
     const label = lang === 'de' ? (e.titleDE || e.title) : e.title;
-    const date = e.dateFrom ? ' — ' + fmtDate(e.dateFrom) : '';
-    return `<option value="${e.title}">${label}${date}</option>`;
+    const date = e.dateFrom ? fmtDate(e.dateFrom) : '';
+    const val = e.title.replace(/"/g, '&quot;');
+    return `
+      <label class="event-chip-check">
+        <input type="checkbox" name="events" value="${val}" ${checked.has(e.title) ? 'checked' : ''}>
+        <span class="ec-title">${label}</span>
+        ${date ? `<span class="ec-date">${date}</span>` : ''}
+      </label>
+    `;
   }).join('');
 
-  const newsletter = lang === 'de'
-    ? '<option value="Newsletter">Newsletter — informiert bleiben</option>'
-    : '<option value="Newsletter">Newsletter — stay informed</option>';
+  const nlLabel = lang === 'de' ? 'Newsletter — informiert bleiben' : 'Newsletter — stay informed';
+  const newsletter = `
+    <label class="event-chip-check newsletter">
+      <input type="checkbox" name="events" value="Newsletter" ${checked.has('Newsletter') ? 'checked' : ''}>
+      <span class="ec-title">${nlLabel}</span>
+    </label>
+  `;
 
-  sel.innerHTML = `<option value="">${ph}</option>${opts}${newsletter}`;
+  sel.innerHTML = rows + newsletter;
 }
 
 /* ══ FORMAT FILTER (multi-select) ══ */
@@ -563,6 +586,17 @@ const okBox  = document.getElementById('ok-box');
 if (form) {
   form.addEventListener('submit', async e => {
     e.preventDefault();
+
+    // collect selected events
+    const selectedEvents = Array.from(
+      document.querySelectorAll('#registerSelect input[type="checkbox"]:checked')
+    ).map(i => i.value);
+
+    if (selectedEvents.length === 0) {
+      alert(lang === 'de' ? 'Bitte mindestens eine Veranstaltung auswählen.' : 'Please select at least one event.');
+      return;
+    }
+
     subBtn.disabled  = true;
     subBtn.innerHTML = `<span>${lang === 'de' ? 'Wird gesendet …' : 'Sending …'}</span>`;
 
@@ -570,7 +604,7 @@ if (form) {
       vorname:   form.vorname.value,
       nachname:  form.nachname.value,
       email:     form.email.value,
-      event:     form.event.value,
+      events:    selectedEvents,
       bereich:   form.bereich.value,
       personen:  form.personen.value,
       nachricht: form.nachricht.value,
@@ -585,11 +619,11 @@ if (form) {
       });
       if (res.ok) {
         const vn = body.vorname;
-        const ev = form.event.options[form.event.selectedIndex].textContent;
+        const evList = selectedEvents.join(', ');
         document.getElementById('ok-title').textContent = lang === 'de' ? 'Angemeldet' : 'Registered';
         document.getElementById('ok-msg').textContent = lang === 'de'
-          ? `Danke, ${vn}! Deine Anmeldung für ${ev} wurde erfasst.`
-          : `Thank you, ${vn}! Your registration for ${ev} has been received.`;
+          ? `Danke, ${vn}! Deine Anmeldung für ${evList} wurde erfasst.`
+          : `Thank you, ${vn}! Your registration for ${evList} has been received.`;
         form.style.display = 'none';
         okBox.style.display = 'block';
       } else throw new Error();

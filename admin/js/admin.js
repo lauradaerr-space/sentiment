@@ -158,12 +158,16 @@
 
     countEl.textContent = registrations.length + ' Anmeldung' + (registrations.length !== 1 ? 'en' : '');
 
-    // group by event
+    // group by event — a registration appears under each event it has
     var groups = {};
     registrations.forEach(function (r) {
-      var ev = r.event || 'Ohne Event';
-      if (!groups[ev]) groups[ev] = [];
-      groups[ev].push(r);
+      var list = Array.isArray(r.events) && r.events.length
+        ? r.events
+        : (r.event ? [r.event] : ['Ohne Event']);
+      list.forEach(function (ev) {
+        if (!groups[ev]) groups[ev] = [];
+        groups[ev].push(r);
+      });
     });
 
     // sort each group newest first
