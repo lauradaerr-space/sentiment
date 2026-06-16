@@ -942,8 +942,8 @@ footer { padding: 18px 0 48px; }
 .lang-en [data-de] { display: none !important; }
 .lang-de [data-en] { display: none !important; }
 
-/* ── REVEAL ANIMATION ── */
-.reveal { opacity: 0; transform: translateY(16px); transition: opacity .65s var(--ease), transform .65s var(--ease); }
+/* ── REVEAL ANIMATION (always visible — JS-independent) ── */
+.reveal { opacity: 1; transform: none; }
 .reveal.visible { opacity: 1; transform: none; }
 
 /* ── FLOAT NAV (mobile) ── */
