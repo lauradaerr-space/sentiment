@@ -354,14 +354,14 @@ function renderSchedule() {
           }
         </button>
       </div>
-      <button class="ev-card-overlay" aria-label="${lang === 'de' ? 'Details anzeigen' : 'Show details'}"></button>
     </article>`;
   }).join('');
 
-  document.querySelectorAll('.ev-card-overlay').forEach(btn => {
-    btn.addEventListener('click', (e) => {
-      const card = btn.closest('.ev-card');
-      const id = card && card.dataset.eventId;
+  document.querySelectorAll('.ev-card').forEach(card => {
+    card.addEventListener('click', (e) => {
+      // Ignore clicks on the register button
+      if (e.target.closest('.inline-register')) return;
+      const id = card.dataset.eventId;
       const ev = allEvents.find(x => x.id === id);
       if (ev) openEventDetailModal(ev);
     });

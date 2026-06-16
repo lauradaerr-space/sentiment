@@ -586,16 +586,10 @@ body.light .ev-format.lecture   { color:#6b21a8; border-color:rgba(107,33,168,.2
 }
 .pm-link:hover { color: var(--text); }
 
-/* ── EVENT CARD overlay + badge ── */
-.ev-card { position: relative; }
-.ev-card-overlay {
-  position: absolute; inset: 0;
-  border: none; background: transparent;
-  cursor: pointer; padding: 0;
-  z-index: 1;
-}
-/* keep real buttons clickable above the overlay */
-.ev-card > *:not(.ev-card-overlay) { position: relative; z-index: 2; }
+/* ── EVENT CARD click + badge ── */
+.ev-card { cursor: pointer; }
+.ev-card:hover { border-color: var(--border2); }
+.ev-card .inline-register { cursor: pointer; }
 
 .ev-program-badge {
   font-family: var(--mono); font-size: 8px; letter-spacing: .12em;
