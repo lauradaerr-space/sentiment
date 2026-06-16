@@ -864,8 +864,10 @@ body.light .ev-format.lecture   { color:#6b21a8; border-color:rgba(107,33,168,.2
 }
 .event-chip-check:hover { border-color: var(--border2); background: var(--panel-mid); }
 .event-chip-check input[type="checkbox"] {
-  width: 18px; height: 18px; accent-color: var(--lilac);
-  cursor: pointer; flex-shrink: 0; margin: 0;
+  position: absolute;
+  width: 1px; height: 1px;
+  opacity: 0; pointer-events: none;
+  margin: 0;
 }
 .event-chip-check .ec-title { flex: 1; font-weight: 500; }
 .event-chip-check .ec-date {
@@ -873,10 +875,12 @@ body.light .ev-format.lecture   { color:#6b21a8; border-color:rgba(107,33,168,.2
   color: var(--muted2); white-space: nowrap;
 }
 .event-chip-check:has(input:checked) {
-  border-color: var(--lilac); background: rgba(135,102,255,0.12);
+  border-color: var(--lilac); background: rgba(135,102,255,0.22);
+  color: var(--text);
 }
+.event-chip-check:has(input:checked) .ec-title { font-weight: 700; }
 .event-chip-check.newsletter:has(input:checked) {
-  border-color: var(--orange); background: rgba(229,92,44,0.10);
+  border-color: var(--orange); background: rgba(229,92,44,0.18);
 }
 .event-chip-check.newsletter .ec-title { color: var(--orange); font-weight: 700; }
 .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
