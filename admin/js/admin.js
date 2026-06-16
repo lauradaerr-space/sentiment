@@ -6,11 +6,12 @@
   var API = '../api/events';
   var INTERNAL_CATS = ['pub', 'pr', 'other'];
 
-  var data = { events: [], tasks: [], infoCards: [] };
+  var data = { events: [], tasks: [], infoCards: [], team: [] };
   var currentMonth = new Date();
   var editingEventId = null;
   var editingTaskId = null;
   var editingCardId = null;
+  var editingPersonId = null;
   var taskFilterCat = 'all';
   var taskFilterPerson = 'all';
   var taskFilterEvent = 'all';
@@ -48,6 +49,76 @@
           { de: 'Pop-up-Ausstellung SENTIMENT im CPDP-Konferenzgebäude', en: 'Pop-up exhibition SENTIMENT in the CPDP conference building' }
         ]
       }
+    ];
+  }
+
+  /* ────── DEFAULT TEAM (seeded once if empty) ────── */
+  function defaultTeam() {
+    return [
+      { id:'jessica-szczuka', name:'Dr. Jessica Szczuka', type:'researcher', initials:'JS',
+        role_en:'Head of Junior Research Group INTITEC, University of Duisburg-Essen',
+        role_de:'Leiterin der Nachwuchsforschungsgruppe INTITEC, Universität Duisburg-Essen',
+        image:'public/img/team/jessica-szczuka.jpg',
+        bio_short_en:'Dr. Szczuka leads the INTITEC research group at the University of Duisburg-Essen, investigating digitized intimacy through media, social, and communication psychology combined with Human-Computer Interaction.',
+        bio_short_de:'Dr. Szczuka leitet die Forschungsgruppe INTITEC an der Universität Duisburg-Essen und untersucht digitale Intimität aus Perspektive der Medien-, Sozial- und Kommunikationspsychologie sowie der Mensch-Computer-Interaktion.',
+        bio_long_en:'Dr. Jessica Szczuka is the head of the Junior Research Group INTITEC (Intimacy with and through Technologies) at the University of Duisburg-Essen. Her research integrates media, social, and communication psychology with Human-Computer Interaction to explore the impact of digitalisation on concepts of love and sexuality. She earned her PhD in Social Psychology at the University of Duisburg-Essen. Her research addresses two core directions: what makes humans unique in interaction with machines, and what ethical frameworks are needed for the responsible development of digital intimacy technologies.',
+        bio_long_de:'Dr. Jessica Szczuka leitet die Nachwuchsforschungsgruppe INTITEC (Intimität mit und durch Technologien) an der Universität Duisburg-Essen. Ihre Forschung verbindet Medien-, Sozial- und Kommunikationspsychologie mit Human-Computer Interaction, um die Auswirkungen der Digitalisierung auf Konzepte von Liebe und Sexualität zu untersuchen. Sie promovierte in Sozialpsychologie an der Universität Duisburg-Essen. Ihre Forschung verfolgt zwei Kernrichtungen: Was macht Menschen in der Interaktion mit Maschinen einzigartig, und welche ethischen Rahmenbedingungen werden für die verantwortungsvolle Entwicklung digitaler Intimitätstechnologien benötigt?' },
+      { id:'lisa-muehl', name:'M.Sc. Lisa Mühl', type:'researcher', initials:'LM',
+        role_en:'Research Associate & PhD Candidate, University of Duisburg-Essen',
+        role_de:'Wissenschaftliche Mitarbeiterin & Doktorandin, Universität Duisburg-Essen',
+        image:'public/img/team/lisa-muehl.jpg',
+        bio_short_en:'Lisa Mühl is a research associate in SENTIMENT and PhD candidate in the INTITEC group, researching intimate communication with natural language dialogue systems and self-disclosure behaviour.',
+        bio_short_de:'Lisa Mühl ist wissenschaftliche Mitarbeiterin im SENTIMENT-Projekt und Doktorandin in der INTITEC-Gruppe. Sie erforscht intime Kommunikation mit natürlichsprachlichen Dialogsystemen und Selbstoffenbarungsverhalten.',
+        bio_long_en:'Lisa Mühl is a research associate in the SENTIMENT project and a PhD candidate in the INTITEC junior research group at the University of Duisburg-Essen. She holds degrees in Media and Business Psychology and Applied Cognitive and Media Science. Her doctoral research investigates intimate communication with natural language dialogue systems, focusing on self-disclosure across text and voice modalities and how interaction patterns evolve over time.',
+        bio_long_de:'Lisa Mühl ist wissenschaftliche Mitarbeiterin im SENTIMENT-Projekt und Doktorandin in der Nachwuchsforschungsgruppe INTITEC der Universität Duisburg-Essen. Sie hat Abschlüsse in Medien- und Wirtschaftspsychologie sowie in Angewandter Kognitions- und Medienwissenschaft. Ihre Doktorarbeit untersucht intime Kommunikation mit natürlichsprachlichen Dialogsystemen, mit Fokus auf Selbstoffenbarung in Text- und Sprachmodalitäten und die Entwicklung von Interaktionsmustern über die Zeit.' },
+      { id:'veelasha-moonsamy', name:'Prof. Dr. Veelasha Moonsamy', type:'researcher', initials:'VM',
+        role_en:'Professor for Security and Privacy of Ubiquitous Systems, Ruhr University Bochum',
+        role_de:'Professorin für Sicherheit und Datenschutz ubiquitärer Systeme, Ruhr-Universität Bochum',
+        image:'public/img/team/veelasha-moonsamy.jpg',
+        bio_short_en:'Prof. Moonsamy leads the Chair for Security and Privacy of Ubiquitous Systems at Ruhr University Bochum and is a Principal Investigator in the Excellence Cluster CASA.',
+        bio_short_de:'Prof. Moonsamy leitet den Lehrstuhl für Sicherheit und Datenschutz ubiquitärer Systeme an der Ruhr-Universität Bochum und ist Principal Investigator im Exzellenzcluster CASA.',
+        bio_long_en:'Prof. Dr. Veelasha Moonsamy is a Professor in the Faculty of Computer Science at Ruhr University Bochum, where she leads the Chair for Security and Privacy of Ubiquitous Systems. She is a member of the Horst Görtz Institute for IT Security and a Principal Investigator in the Excellence Cluster CASA. Her research covers IoT, mobile and embedded systems, data privacy, and machine learning applications for security. She is the recipient of a Google Faculty Award and Meta Research Award.',
+        bio_long_de:'Prof. Dr. Veelasha Moonsamy ist Professorin an der Fakultät für Informatik der Ruhr-Universität Bochum, wo sie den Lehrstuhl für Sicherheit und Datenschutz ubiquitärer Systeme leitet. Sie ist Mitglied des Horst-Görtz-Instituts für IT-Sicherheit und Principal Investigator im Exzellenzcluster CASA. Ihre Forschung umfasst IoT-, Mobile- und Embedded-Systeme, Datenschutz sowie maschinelles Lernen für Sicherheitsanwendungen. Sie ist Trägerin des Google Faculty Award und des Meta Research Award.' },
+      { id:'ramya-kandula', name:'M.Sc. Ramya Kandula', type:'researcher', initials:'RK',
+        role_en:'PhD Student, Chair for Security and Privacy of Ubiquitous Systems, Ruhr University Bochum',
+        role_de:'Doktorandin, Lehrstuhl für Sicherheit und Datenschutz ubiquitärer Systeme, Ruhr-Universität Bochum',
+        image:'public/img/team/ramya-kandula.jpg',
+        bio_short_en:'Ramya Kandula is a PhD student at Ruhr University Bochum researching self-disclosure in human-chatbot interactions using privacy-by-design mechanisms and HCI methods.',
+        bio_short_de:'Ramya Kandula ist Doktorandin an der Ruhr-Universität Bochum und erforscht Selbstoffenbarung in Mensch-Chatbot-Interaktionen mit Methoden aus Privacy-by-Design und HCI.',
+        bio_long_en:'Ramya Kandula is a PhD student at the Chair for Security and Privacy of Ubiquitous Systems at Ruhr University Bochum. She holds a Master\'s degree in Interactive Media Technologies from KTH Royal Institute of Technology. In SENTIMENT, she explores self-disclosure tendencies in human-chatbot interactions through privacy and user-centric lenses, combining computational and psychological approaches to develop secure self-disclosure strategies.',
+        bio_long_de:'Ramya Kandula ist Doktorandin am Lehrstuhl für Sicherheit und Datenschutz ubiquitärer Systeme der Ruhr-Universität Bochum. Sie hat einen Master in Interactive Media Technologies vom KTH Royal Institute of Technology. Im SENTIMENT-Projekt untersucht sie Selbstoffenbarungstendenzen in Mensch-Chatbot-Interaktionen aus Datenschutz- und nutzerzentrierter Perspektive, um sichere Strategien zur Selbstoffenbarung zu entwickeln.' },
+      { id:'joel-baumann', name:'Prof. Joel Baumann', type:'artist', initials:'JB',
+        role_en:'Professor of New Media, Kunsthochschule Kassel',
+        role_de:'Professor für Neue Medien, Kunsthochschule Kassel',
+        image:'public/img/team/joel-baumann.jpg',
+        bio_short_en:'Prof. Baumann examines self-disclosure in human-machine interaction from a critical-artistic perspective, using exhibition formats as dialogical spaces that make scientific knowledge sensually accessible.',
+        bio_short_de:'Prof. Baumann untersucht Selbstoffenbarung in der Mensch-Maschine-Interaktion aus kritisch-künstlerischer Perspektive und nutzt Ausstellungsformate als dialogische Räume, die wissenschaftliches Wissen sinnlich zugänglich machen.',
+        bio_long_en:'Prof. Joel Baumann is Professor of New Media at the Kunsthochschule Kassel. In SENTIMENT, he examines processes of self-disclosure in human-machine interaction from a critical-artistic perspective, focusing on the societal and ethical implications of digital intimacy. His curatorial practice employs exhibition formats as dialogical spaces in which scientific knowledge becomes sensually and emotionally accessible, bridging technology, ethics, and aesthetics.',
+        bio_long_de:'Prof. Joel Baumann ist Professor für Neue Medien an der Kunsthochschule Kassel. Im SENTIMENT-Projekt untersucht er Prozesse der Selbstoffenbarung in der Mensch-Maschine-Interaktion aus kritisch-künstlerischer Perspektive, mit Fokus auf gesellschaftliche und ethische Implikationen digitaler Intimität. Seine kuratorische Praxis nutzt Ausstellungsformate als dialogische Räume, in denen wissenschaftliches Wissen sinnlich und emotional zugänglich wird und Technologie, Ethik und Ästhetik verbindet.' },
+      { id:'laura-daerr', name:'Laura Därr', type:'artist', initials:'LD',
+        role_en:'Artistic Research Associate in New Media, Kunsthochschule Kassel',
+        role_de:'Künstlerische Mitarbeiterin Neue Medien, Kunsthochschule Kassel',
+        image:'public/img/team/laura-daerr.jpg',
+        bio_short_en:'Laura Därr\'s artistic research focuses on algorithmic intervention in AI-based systems, employing critical making methodologies to interrogate the sociopolitical implications of automated decision-making.',
+        bio_short_de:'Laura Därrs künstlerische Forschung konzentriert sich auf algorithmische Intervention in KI-basierten Systemen und nutzt Critical-Making-Methoden, um die gesellschaftspolitischen Implikationen automatisierter Entscheidungsprozesse zu hinterfragen.',
+        bio_long_en:'Laura Därr is an artistic research associate in New Media at Kunsthochschule Kassel and a member of the SENTIMENT project. Her artistic research focuses on algorithmic intervention in AI-based systems that autonomously structure and influence human interaction patterns. Her practice employs critical making methodologies to interrogate the sociopolitical implications of automated decision-making, developing experimental frameworks that expose the hidden logics embedded within computational systems.',
+        bio_long_de:'Laura Därr ist künstlerische Mitarbeiterin für Neue Medien an der Kunsthochschule Kassel und Mitglied des SENTIMENT-Projekts. Ihre künstlerische Forschung konzentriert sich auf algorithmische Intervention in KI-basierte Systeme, die menschliche Interaktionsmuster autonom strukturieren und beeinflussen. Ihre Praxis setzt Critical-Making-Methoden ein, um die gesellschaftspolitischen Implikationen automatisierter Entscheidungsprozesse zu hinterfragen und experimentelle Frameworks zu entwickeln, die die verborgenen Logiken computationaler Systeme freilegen.' },
+      { id:'maxi-nebel', name:'Dr. Maxi Nebel', type:'researcher', initials:'MN',
+        role_en:'Researcher, Research Center for Information Systems Design (ITeG), University of Kassel',
+        role_de:'Wissenschaftlerin, Forschungszentrum für Informationssystemgestaltung (ITeG), Universität Kassel',
+        image:'public/img/team/maxi-nebel.jpg',
+        bio_short_en:'Dr. Nebel researches data protection law, technology law, and artificial intelligence at the University of Kassel\'s ITeG research center, with extensive experience in interdisciplinary research projects.',
+        bio_short_de:'Dr. Nebel forscht am ITeG der Universität Kassel zu Datenschutzrecht, Technologierecht und Künstlicher Intelligenz und verfügt über langjährige Erfahrung in interdisziplinären Forschungsprojekten.',
+        bio_long_en:'Dr. Maxi Nebel is a researcher at the Research Center for Information Systems Design (ITeG) at the University of Kassel. She completed her PhD on privacy protection in social networks. With many years of experience in interdisciplinary research, she conducts research on data protection law, technology law, and artificial intelligence, and is the author of numerous publications.',
+        bio_long_de:'Dr. Maxi Nebel ist Wissenschaftlerin am Forschungszentrum für Informationssystemgestaltung (ITeG) der Universität Kassel. Sie promovierte zum Thema Datenschutz in sozialen Netzwerken. Mit langjähriger Erfahrung in interdisziplinären Forschungsprojekten forscht sie zu Datenschutzrecht, Technologierecht und Künstlicher Intelligenz und ist Autorin zahlreicher Publikationen.' },
+      { id:'christian-geminn', name:'PD Dr. Christian Geminn', type:'researcher', initials:'CG',
+        role_en:'Private Lecturer for Public Law and Law of the Digital Society, University of Kassel',
+        role_de:'Privatdozent für Öffentliches Recht und Recht der digitalen Gesellschaft, Universität Kassel',
+        image:'public/img/team/christian-geminn.jpg',
+        bio_short_en:'PD Dr. Geminn is a private lecturer at the University of Kassel and consultant for ministries and organisations, researching fundamental rights, data protection, and technology law.',
+        bio_short_de:'PD Dr. Geminn ist Privatdozent an der Universität Kassel und Berater für Ministerien und Organisationen, mit Forschungsschwerpunkten in Grundrechten, Datenschutz und Technologierecht.',
+        bio_long_en:'PD Dr. Christian Geminn is a private lecturer for Public Law and Law of the Digital Society at the University of Kassel. He is active as a consultant for ministries, non-profit organisations, and companies, and is a principal investigator in several third-party funded research projects. His research focuses on fundamental rights, comparative law, data protection, governance, and technology law.',
+        bio_long_de:'PD Dr. Christian Geminn ist Privatdozent für Öffentliches Recht und Recht der digitalen Gesellschaft an der Universität Kassel. Er ist als Berater für Ministerien, Non-Profit-Organisationen und Unternehmen tätig und Principal Investigator in mehreren drittmittelgeförderten Forschungsprojekten. Seine Forschungsschwerpunkte sind Grundrechte, Rechtsvergleichung, Datenschutz, Governance und Technologierecht.' }
     ];
   }
 
@@ -111,7 +182,8 @@
         data = {
           events: (d && d.events) || [],
           tasks: (d && d.tasks) || [],
-          infoCards: (d && d.infoCards) || []
+          infoCards: (d && d.infoCards) || [],
+          team: (d && d.team) || []
         };
         dataSeeded = !!(d && d.seeded);
         console.log('loadData() got events:', data.events.length, 'tasks:', data.tasks.length, 'infoCards:', data.infoCards.length, 'seeded:', dataSeeded);
@@ -134,6 +206,12 @@
           needsSave = true;
         }
 
+        // Seed default team if empty (only once)
+        if (data.team.length === 0) {
+          data.team = defaultTeam();
+          needsSave = true;
+        }
+
         renderAll();
         setSyncStatus('ok');
         if (needsSave) saveData();
@@ -150,6 +228,7 @@
       events: data.events || [],
       tasks: data.tasks || [],
       infoCards: data.infoCards || [],
+      team: data.team || [],
       seeded: dataSeeded
     };
     console.log('saveData() called — events:', payload.events.length, 'tasks:', payload.tasks.length, 'infoCards:', payload.infoCards.length, 'seeded:', payload.seeded);
@@ -311,6 +390,7 @@
     renderCalendar();
     renderTasks();
     renderInfoCards();
+    renderTeam();
   }
 
   /* ────── INFO CARDS (CRUD) ────── */
@@ -452,6 +532,160 @@
     saveData();
     closeCardModal();
     renderInfoCards();
+  });
+
+  /* ────── TEAM (CRUD) ────── */
+  function slugify(s) {
+    return String(s || '').toLowerCase()
+      .replace(/ä/g, 'ae').replace(/ö/g, 'oe').replace(/ü/g, 'ue').replace(/ß/g, 'ss')
+      .replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+  }
+
+  function autoInitials(name) {
+    return String(name || '').split(/\s+/).filter(Boolean)
+      .filter(function (w) { return !/^(dr|prof|m\.sc|pd|b\.a|m\.a)\.?$/i.test(w); })
+      .slice(0, 2).map(function (w) { return w.charAt(0).toUpperCase(); }).join('');
+  }
+
+  function renderTeam() {
+    var container = document.getElementById('team-list');
+    if (!container) return;
+    container.innerHTML = '';
+    if (!data.team || data.team.length === 0) {
+      var empty = document.createElement('div');
+      empty.className = 'no-tasks';
+      empty.textContent = 'Noch keine Personen — klick "+ Neue Person" um anzufangen';
+      container.appendChild(empty);
+      return;
+    }
+    data.team.forEach(function (person, idx) {
+      var row = document.createElement('div');
+      row.className = 'info-card-row';
+      row.dataset.id = person.id;
+
+      var thumb = person.image
+        ? '<div class="ic-thumb"><img src="' + person.image.replace(/"/g, '&quot;') + '" alt="" onerror="this.parentNode.innerHTML=\'<span class=ic-thumb-empty>' + escapeHtml(person.initials || '?') + '</span>\'"></div>'
+        : '<div class="ic-thumb"><span class="ic-thumb-empty">' + escapeHtml(person.initials || '?') + '</span></div>';
+
+      var typeLabel = person.type === 'artist' ? 'Künstler:in' : 'Forscher:in';
+
+      row.innerHTML =
+        thumb +
+        '<div class="ic-body">' +
+          '<div class="ic-label">' + typeLabel + '</div>' +
+          '<div class="ic-title">' + escapeHtml(person.name || 'Ohne Namen') + '</div>' +
+        '</div>' +
+        '<div class="ic-actions">' +
+          (idx > 0 ? '<button class="ic-order-btn" data-act="up" title="Nach oben">↑</button>' : '') +
+          (idx < data.team.length - 1 ? '<button class="ic-order-btn" data-act="down" title="Nach unten">↓</button>' : '') +
+        '</div>' +
+        '<span class="ic-arrow">›</span>';
+
+      row.addEventListener('click', function (e) {
+        if (e.target.classList.contains('ic-order-btn')) {
+          e.stopPropagation();
+          var act = e.target.dataset.act;
+          var i = data.team.findIndex(function (p) { return p.id === person.id; });
+          if (act === 'up' && i > 0) { var t = data.team[i-1]; data.team[i-1] = data.team[i]; data.team[i] = t; }
+          if (act === 'down' && i < data.team.length - 1) { var t = data.team[i+1]; data.team[i+1] = data.team[i]; data.team[i] = t; }
+          renderTeam();
+          saveData();
+          return;
+        }
+        openPersonModal(person.id);
+      });
+      container.appendChild(row);
+    });
+  }
+
+  var personModal = document.getElementById('person-modal');
+  var personForm = document.getElementById('person-form');
+  var personBtnDelete = document.getElementById('person-btn-delete');
+
+  document.getElementById('btn-add-person').addEventListener('click', function () {
+    openPersonModal(null);
+  });
+
+  function openPersonModal(id) {
+    editingPersonId = id;
+    personForm.reset();
+    if (id) {
+      var p = data.team.find(function (x) { return x.id === id; });
+      if (!p) return;
+      document.getElementById('person-modal-title').textContent = 'Person bearbeiten';
+      personForm.name.value = p.name || '';
+      personForm.initials.value = p.initials || '';
+      personForm.type.value = p.type || 'researcher';
+      personForm.id.value = p.id || '';
+      personForm.role_de.value = p.role_de || '';
+      personForm.role_en.value = p.role_en || '';
+      personForm.image.value = p.image || '';
+      personForm.bio_short_de.value = p.bio_short_de || '';
+      personForm.bio_short_en.value = p.bio_short_en || '';
+      personForm.bio_long_de.value = p.bio_long_de || '';
+      personForm.bio_long_en.value = p.bio_long_en || '';
+      personBtnDelete.classList.remove('hidden');
+    } else {
+      document.getElementById('person-modal-title').textContent = 'Neue Person';
+      personBtnDelete.classList.add('hidden');
+    }
+    personModal.classList.add('open');
+  }
+
+  function closePersonModal() {
+    personModal.classList.remove('open');
+    editingPersonId = null;
+  }
+
+  document.getElementById('person-modal-close').addEventListener('click', closePersonModal);
+  document.getElementById('person-btn-cancel').addEventListener('click', closePersonModal);
+  personModal.addEventListener('click', function (e) {
+    if (e.target === personModal) closePersonModal();
+  });
+
+  personBtnDelete.addEventListener('click', function () {
+    if (!editingPersonId) return;
+    if (!confirm('Person wirklich löschen?')) return;
+    data.team = data.team.filter(function (p) { return p.id !== editingPersonId; });
+    saveData();
+    closePersonModal();
+    renderTeam();
+  });
+
+  personForm.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var nameVal = personForm.name.value.trim();
+    var obj = {
+      name: nameVal,
+      initials: (personForm.initials.value.trim() || autoInitials(nameVal)),
+      type: personForm.type.value || 'researcher',
+      role_de: personForm.role_de.value,
+      role_en: personForm.role_en.value,
+      image: personForm.image.value,
+      bio_short_de: personForm.bio_short_de.value,
+      bio_short_en: personForm.bio_short_en.value,
+      bio_long_de: personForm.bio_long_de.value,
+      bio_long_en: personForm.bio_long_en.value
+    };
+
+    if (editingPersonId) {
+      var p = data.team.find(function (x) { return x.id === editingPersonId; });
+      if (p) {
+        var newId = personForm.id.value.trim() || p.id;
+        Object.keys(obj).forEach(function (k) { p[k] = obj[k]; });
+        p.id = newId;
+      }
+    } else {
+      var inputId = personForm.id.value.trim();
+      obj.id = inputId || slugify(nameVal) || ('person-' + Date.now());
+      if (data.team.some(function (x) { return x.id === obj.id; })) {
+        obj.id = obj.id + '-' + Date.now();
+      }
+      data.team.push(obj);
+    }
+    saveData();
+    closePersonModal();
+    renderTeam();
   });
 
   /* ────── TOAST ────── */

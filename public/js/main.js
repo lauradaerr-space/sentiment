@@ -70,8 +70,8 @@ let archiveOpen   = false;
   draw();
 })();
 
-/* ══ TEAM DATA ══ */
-const TEAM = [
+/* ══ TEAM DATA (default — overridden by API if admin has saved a team) ══ */
+let TEAM = [
   {
     id: 'jessica-szczuka', name: 'Dr. Jessica Szczuka',
     role_en: 'Head of Junior Research Group INTITEC, University of Duisburg-Essen',
@@ -300,6 +300,10 @@ async function loadEvents() {
     const INTERNAL = ['pub', 'pr', 'other'];
     allEvents = list.filter(e => e.published && INTERNAL.indexOf(e.category) === -1);
     allInfoCards = (data && data.infoCards) || [];
+    if (data && Array.isArray(data.team) && data.team.length) {
+      TEAM = data.team;
+      renderTeam();
+    }
   } catch (e) {
     allEvents = [];
     allInfoCards = [];

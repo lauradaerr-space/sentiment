@@ -56,6 +56,7 @@
     <button class="tab" data-tab="aufgaben">Aufgaben</button>
     <button class="tab" data-tab="anmeldungen">Anmeldungen</button>
     <button class="tab" data-tab="info-karten">Info-Karten</button>
+    <button class="tab" data-tab="team">Team</button>
   </div>
 
   <!-- ÜBERSICHT TAB -->
@@ -146,6 +147,16 @@
     </div>
     <div class="info-cards-help">Diese Karten erscheinen auf der öffentlichen Seite im "Über das Projekt" Bereich. Reihenfolge wird durch die Position bestimmt — neue Karten landen am Ende.</div>
     <div class="info-cards-list" id="info-cards-list"></div>
+  </div>
+
+  <!-- TEAM TAB -->
+  <div class="tab-content" id="tab-team">
+    <div class="tasks-toolbar">
+      <div class="tasks-title">Team (Künstler:innen & Forscher:innen)</div>
+      <button class="btn-add" id="btn-add-person">+ Neue Person</button>
+    </div>
+    <div class="info-cards-help">Diese Personen erscheinen im "Team" Bereich der öffentlichen Seite. Mit den Pfeilen ↑↓ kann die Reihenfolge angepasst werden.</div>
+    <div class="info-cards-list" id="team-list"></div>
   </div>
 
 </div>
@@ -421,6 +432,78 @@
         </div>
         <div class="modal-actions-right">
           <button type="button" class="btn-cancel" id="card-btn-cancel">Abbrechen</button>
+          <button type="submit" class="btn-save">Speichern</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- TEAM PERSON MODAL -->
+<div class="modal-overlay" id="person-modal">
+  <div class="modal">
+    <div class="modal-header">
+      <div class="modal-title" id="person-modal-title">Person bearbeiten</div>
+      <button class="modal-close" id="person-modal-close">&times;</button>
+    </div>
+    <form class="modal-form" id="person-form">
+      <div class="form-row">
+        <div class="field">
+          <label>Name *</label>
+          <input type="text" name="name" required placeholder="Dr. Vorname Nachname">
+        </div>
+        <div class="field">
+          <label>Initialen (Fallback wenn kein Bild)</label>
+          <input type="text" name="initials" maxlength="3" placeholder="z.B. JS">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="field">
+          <label>Typ</label>
+          <select name="type">
+            <option value="researcher">Forscher:in</option>
+            <option value="artist">Künstler:in</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>ID (URL-freundlich, automatisch wenn leer)</label>
+          <input type="text" name="id" placeholder="z.B. max-mustermann">
+        </div>
+      </div>
+      <div class="field">
+        <label>Rolle (DE)</label>
+        <input type="text" name="role_de" placeholder="z.B. Wissenschaftliche Mitarbeiterin, Uni X">
+      </div>
+      <div class="field">
+        <label>Rolle (EN)</label>
+        <input type="text" name="role_en">
+      </div>
+      <div class="field">
+        <label>Bild-URL (optional)</label>
+        <input type="text" name="image" placeholder="public/img/team/...jpg oder https://...">
+      </div>
+      <div class="field">
+        <label>Kurz-Bio (DE) — erscheint in der Kachel</label>
+        <textarea name="bio_short_de" rows="3"></textarea>
+      </div>
+      <div class="field">
+        <label>Kurz-Bio (EN)</label>
+        <textarea name="bio_short_en" rows="3"></textarea>
+      </div>
+      <div class="field">
+        <label>Lange Bio (DE) — erscheint beim Klick auf die Kachel</label>
+        <textarea name="bio_long_de" rows="5"></textarea>
+      </div>
+      <div class="field">
+        <label>Lange Bio (EN)</label>
+        <textarea name="bio_long_en" rows="5"></textarea>
+      </div>
+      <div class="modal-actions">
+        <div class="modal-actions-left">
+          <button type="button" class="btn-delete" id="person-btn-delete">Löschen</button>
+        </div>
+        <div class="modal-actions-right">
+          <button type="button" class="btn-cancel" id="person-btn-cancel">Abbrechen</button>
           <button type="submit" class="btn-save">Speichern</button>
         </div>
       </div>

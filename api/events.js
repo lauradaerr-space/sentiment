@@ -53,6 +53,7 @@ module.exports = async (req, res) => {
         events: raw.events || [],
         tasks: raw.tasks || [],
         infoCards: raw.infoCards || [],
+        team: raw.team || [],
         seeded: raw.seeded || false
       });
     } catch (e) {
@@ -67,18 +68,20 @@ module.exports = async (req, res) => {
       console.log('POST /api/events — body keys:', Object.keys(body));
 
       // Accept both { events: {events,tasks} } (legacy) and { events, tasks } (new)
-      let events, tasks, infoCards;
+      let events, tasks, infoCards, team;
       if (body.events && Array.isArray(body.events.events)) {
         events = body.events.events;
         tasks = body.events.tasks || [];
         infoCards = body.events.infoCards || [];
+        team = body.events.team || [];
       } else {
         events = body.events || [];
         tasks = body.tasks || [];
         infoCards = body.infoCards || [];
+        team = body.team || [];
       }
 
-      console.log('Saving events:', events.length, 'tasks:', tasks.length, 'infoCards:', infoCards.length);
+      console.log('Saving events:', events.length, 'tasks:', tasks.length, 'infoCards:', infoCards.length, 'team:', team.length);
 
       const current = await githubRequest('GET', PATH);
       if (!current.body || !current.body.sha) {
@@ -87,7 +90,7 @@ module.exports = async (req, res) => {
       const sha = current.body.sha;
 
       const seeded = body.seeded || false;
-      const payload = { events: events, tasks: tasks, infoCards: infoCards, seeded: seeded };
+      const payload = { events: events, tasks: tasks, infoCards: infoCards, team: team, seeded: seeded };
       const content = Buffer.from(JSON.stringify(payload, null, 2)).toString('base64');
       const result = await githubRequest('PUT', PATH, {
         message: 'update: admin save ' + new Date().toISOString(),
