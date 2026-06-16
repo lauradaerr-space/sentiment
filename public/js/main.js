@@ -253,11 +253,18 @@ function openEventDetailModal(ev) {
     ${desc ? `<p class="em-desc">${desc}</p>` : ''}
     ${programHtml}
     <div class="em-actions">
-      <button class="reg-btn em-register" data-event="${ev.title}">${lang === 'de' ? 'Zur Anmeldung →' : 'Register →'}</button>
+      ${(() => {
+        const today = (new Date()).toISOString().slice(0,10);
+        const end = ev.dateTo || ev.dateFrom || '';
+        return end && end < today
+          ? `<span class="em-past">${lang === 'de' ? 'Diese Veranstaltung ist bereits vorbei.' : 'This event has already taken place.'}</span>`
+          : `<button class="reg-btn em-register" data-event="${ev.title}">${lang === 'de' ? 'Zur Anmeldung →' : 'Register →'}</button>`;
+      })()}
     </div>
   `;
 
-  body.querySelector('.em-register').addEventListener('click', () => {
+  const regBtn = body.querySelector('.em-register');
+  if (regBtn) regBtn.addEventListener('click', () => {
     modal.classList.remove('open');
     const sel = document.getElementById('registerSelect');
     if (sel) sel.value = ev.title;
@@ -329,11 +336,16 @@ function renderSchedule() {
     const desc  = lang === 'de' ? (e.descDE  || e.desc  || '') : (e.desc || '');
     const full  = e.capacity > 0 && e.registered >= e.capacity;
 
+    const today = (new Date()).toISOString().slice(0,10);
+    const endDate = e.dateTo || e.dateFrom || e.date || '';
+    const isPast = endDate && endDate < today;
+
     const hasProgram = Array.isArray(e.program) && e.program.length > 0;
-    return `<article class="ev-card" data-event-id="${e.id}">
+    return `<article class="ev-card${isPast ? ' past' : ''}" data-event-id="${e.id}">
       <div class="ev-header">
         <span class="ev-format ${e.format}">${fmtLabels[e.format] || e.format}</span>
-        ${hasProgram ? `<span class="ev-program-badge">${e.program.length} ${lang === 'de' ? 'Programmpunkte' : 'items'}</span>` : ''}
+        ${isPast ? `<span class="ev-past-badge">${lang === 'de' ? 'Vergangen' : 'Past'}</span>` : ''}
+        ${!isPast && hasProgram ? `<span class="ev-program-badge">${e.program.length} ${lang === 'de' ? 'Programmpunkte' : 'items'}</span>` : ''}
       </div>
       <div class="ev-title">${title}</div>
       ${desc ? `<p class="ev-desc">${desc}</p>` : ''}
@@ -347,12 +359,15 @@ function renderSchedule() {
           <div class="ev-date">${e.dateTo && e.dateTo !== e.dateFrom ? fmtDate(e.dateFrom) + ' — ' + fmtDate(e.dateTo) : fmtDate(e.dateFrom || e.date || '')}</div>
           <div class="ev-time">${e.time || ''}${e.timeEnd ? ' – ' + e.timeEnd : ''}</div>
         </div>
-        <button class="reg-btn inline-register" data-event="${e.title}" ${full ? 'disabled' : ''}>
-          ${full
-            ? (lang === 'de' ? 'Ausgebucht' : 'Full')
-            : (lang === 'de' ? 'Anmelden →' : 'Register →')
-          }
-        </button>
+        ${isPast
+          ? `<span class="reg-past-label">${lang === 'de' ? 'Abgelaufen' : 'Past'}</span>`
+          : `<button class="reg-btn inline-register" data-event="${e.title}" ${full ? 'disabled' : ''}>
+              ${full
+                ? (lang === 'de' ? 'Ausgebucht' : 'Full')
+                : (lang === 'de' ? 'Anmelden →' : 'Register →')
+              }
+            </button>`
+        }
       </div>
     </article>`;
   }).join('');

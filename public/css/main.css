@@ -81,7 +81,8 @@ body {
   background-repeat: no-repeat;
 }
 body.light {
-  background-image: linear-gradient(rgba(255,236,200,0.55), rgba(255,224,170,0.45)), url('../img/hg_sentiment-neu.png');
+  background-image: none;
+  background-color: var(--bg);
 }
 
 /* bg-canvas hidden — background image on body */
@@ -305,19 +306,6 @@ h1 {
 .btn-lilac   { background: linear-gradient(135deg, var(--lilac),  #a793ff); border-color: transparent; color: #fff; }
 .btn-primary:hover, .btn-lilac:hover { filter: brightness(1.08); }
 
-/* shimmer pulse on primary button */
-.btn-primary {
-  position: relative; overflow: hidden;
-}
-.btn-primary::after {
-  content: ''; position: absolute; inset: -50%;
-  background: linear-gradient(90deg, transparent 30%, rgba(255,255,255,.18) 50%, transparent 70%);
-  animation: btnShimmer 4s ease-in-out infinite;
-}
-@keyframes btnShimmer {
-  0%, 75%, 100% { transform: translateX(-100%); }
-  85% { transform: translateX(100%); }
-}
 
 .hero-stats {
   display: grid; grid-template-columns: repeat(4, 1fr);
@@ -390,6 +378,16 @@ body.light .stat-item { background: rgba(255,245,230,.78); }
 }
 .pill-track span:nth-child(3n+3) {
   color: var(--mint); border: 1px solid rgba(102,255,226,0.40); background: rgba(102,255,226,0.10);
+}
+/* Light mode: deeper, contrasty pill colors on warm cream */
+body.light .pill-track span:nth-child(3n+1) {
+  color: #b8410f; border-color: rgba(184,65,15,0.55); background: rgba(229,92,44,0.18);
+}
+body.light .pill-track span:nth-child(3n+2) {
+  color: #4d2eb8; border-color: rgba(77,46,184,0.55); background: rgba(135,102,255,0.18);
+}
+body.light .pill-track span:nth-child(3n+3) {
+  color: #0f7a66; border-color: rgba(15,122,102,0.55); background: rgba(15,122,102,0.14);
 }
 @keyframes marquee {
   from { transform: translateX(0); }
@@ -609,6 +607,33 @@ body.light .ev-format.lecture   { color:#6b21a8; border-color:rgba(107,33,168,.2
 .ev-card { cursor: pointer; }
 .ev-card:hover { border-color: var(--border2); }
 .ev-card .inline-register { cursor: pointer; }
+
+/* Past events */
+.ev-card.past {
+  opacity: 0.65;
+  filter: grayscale(0.45);
+}
+.ev-card.past:hover { opacity: 0.85; filter: grayscale(0.25); }
+.ev-card.past .ev-title { color: var(--muted); }
+.ev-past-badge {
+  font-family: var(--mono); font-size: 9px; font-weight: 700; letter-spacing: .14em;
+  text-transform: uppercase; padding: 3px 10px;
+  border-radius: 999px; border: 1px solid var(--muted2);
+  color: var(--muted); background: transparent;
+}
+.reg-past-label {
+  font-family: var(--mono); font-size: 10px; font-weight: 700; letter-spacing: .14em;
+  text-transform: uppercase; color: var(--muted2);
+  padding: 8px 14px; border-radius: 999px;
+  border: 1px solid var(--border);
+  white-space: nowrap;
+}
+.em-past {
+  font-family: var(--mono); font-size: 12px; font-weight: 700; letter-spacing: .1em;
+  text-transform: uppercase; color: var(--muted2);
+  padding: 10px 16px; border-radius: 10px;
+  border: 1px solid var(--border); background: var(--panel);
+}
 
 .ev-program-badge {
   font-family: var(--mono); font-size: 8px; letter-spacing: .12em;
