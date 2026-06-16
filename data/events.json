@@ -17,7 +17,14 @@
       "descEN": "",
       "descDE": "",
       "id": "evt-1775824421996",
-      "published": true
+      "published": true,
+      "program": [
+        {
+          "time": "18:00",
+          "titleDE": "Eröffnung",
+          "titleEN": "Opening"
+        }
+      ]
     },
     {
       "title": "Finissage",
