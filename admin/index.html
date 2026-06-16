@@ -5,10 +5,13 @@
   <script>
     (function () {
       var p = location.pathname;
-      if (p === '/exhibition/admin' || p === '/admin') {
-        location.replace(p + '/' + location.search + location.hash); return;
+      var dir;
+      if (p.charAt(p.length - 1) === '/') {
+        dir = p;
+      } else {
+        var last = p.substring(p.lastIndexOf('/') + 1);
+        dir = (last && last.indexOf('.') === -1) ? p + '/' : p.substring(0, p.lastIndexOf('/') + 1);
       }
-      var dir = (p.charAt(p.length - 1) === '/') ? p : p.substring(0, p.lastIndexOf('/') + 1);
       document.write('<base href="' + dir + '">');
     })();
   </script>

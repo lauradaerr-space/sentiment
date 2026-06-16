@@ -5,9 +5,14 @@
   <script>
     (function () {
       var p = location.pathname;
-      // If we land on /exhibition without trailing slash, redirect so relative paths work
-      if (p === '/exhibition') { location.replace('/exhibition/' + location.search + location.hash); return; }
-      var dir = (p.charAt(p.length - 1) === '/') ? p : p.substring(0, p.lastIndexOf('/') + 1);
+      var dir;
+      if (p.charAt(p.length - 1) === '/') {
+        dir = p;
+      } else {
+        var last = p.substring(p.lastIndexOf('/') + 1);
+        // No dot in last segment → it's a directory without trailing slash → add it
+        dir = (last && last.indexOf('.') === -1) ? p + '/' : p.substring(0, p.lastIndexOf('/') + 1);
+      }
       document.write('<base href="' + dir + '">');
     })();
   </script>
