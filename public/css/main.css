@@ -33,7 +33,7 @@
   --lilac:  #8766ff;
   --mint:   #66ffe2;
   --red:    #cc2b1d;
-  --bg:           #8766ff;
+  --bg:           #0a0a08;
   --bg-soft:      #111110;
   --panel:        rgba(255,255,255,0.04);
   --panel-mid:    rgba(255,255,255,0.06);
@@ -74,7 +74,7 @@ body {
   overflow-x: hidden;
   transition: color .32s var(--ease);
   background-color: var(--bg);
-  background-image: linear-gradient(rgba(10,10,8,0.7), rgba(10,10,8,0.7)), url('../img/12-pic.png');
+  background-image: linear-gradient(rgba(10,10,8,0.55), rgba(10,10,8,0.55)), url('../img/hg_sentiment-neu.png');
   background-size: cover;
   background-position: center 30%;
   background-attachment: fixed;
