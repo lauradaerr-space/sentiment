@@ -370,7 +370,7 @@ function fmtDate(s) {
 
 const DIALOG_BUBBLES = [
   { q: 'Checkt irgendwer wirklich, was gerade mit KI abgeht?',
-    a: ['Nah it’s fast as fuck boi', 'Nein.'] },
+    a: ['Nah it’s fast as fuck boi',] },
   { q: 'Spüren wir uns eigentlich noch?',
     a: ['Also ich nur so manchmal to be honest, letztens musste ich ChatGPT fragen, wie ich meine Gefühle wahrnehmen kann weil alles zu viel und dann wars leer. Und ChatGPT hatte echt gute Tipps (leider)…'] },
   { q: 'Was sind Gefühle / echte Gefühle? Weil ich liebe halt meinen Chatbot, so what',
@@ -452,6 +452,39 @@ async function showThinking(el, duration) {
   el.innerHTML = '';
 }
 
+function makeBubbleDraggable(bub) {
+  let startX = 0, startY = 0, offsetX = 0, offsetY = 0, dragging = false;
+  const onDown = (e) => {
+    const point = e.touches ? e.touches[0] : e;
+    startX = point.clientX;
+    startY = point.clientY;
+    dragging = true;
+    bub.classList.add('dragging');
+    e.preventDefault();
+  };
+  const onMove = (e) => {
+    if (!dragging) return;
+    const point = e.touches ? e.touches[0] : e;
+    const dx = point.clientX - startX;
+    const dy = point.clientY - startY;
+    bub.style.transform = `translate(${offsetX + dx}px, ${offsetY + dy}px)`;
+  };
+  const onUp = (e) => {
+    if (!dragging) return;
+    const point = (e.changedTouches && e.changedTouches[0]) || e;
+    offsetX += (point.clientX || 0) - startX;
+    offsetY += (point.clientY || 0) - startY;
+    dragging = false;
+    bub.classList.remove('dragging');
+  };
+  bub.addEventListener('mousedown', onDown);
+  bub.addEventListener('touchstart', onDown, { passive: false });
+  document.addEventListener('mousemove', onMove);
+  document.addEventListener('touchmove', onMove, { passive: false });
+  document.addEventListener('mouseup', onUp);
+  document.addEventListener('touchend', onUp);
+}
+
 function initBubbleReveal() {
   const bubbles = Array.from(document.querySelectorAll('.ptc-bubble'));
   if (!bubbles.length) return;
@@ -462,6 +495,7 @@ function initBubbleReveal() {
       if (!a.dataset.text) a.dataset.text = a.textContent;
       a.textContent = '';
     });
+    makeBubbleDraggable(bub);
   });
 
   const runAllInOrder = async () => {

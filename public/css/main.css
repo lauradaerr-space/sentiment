@@ -478,17 +478,25 @@ body.light .sec-bar { background: rgba(0,0,0,.022); }
   border: 1px solid var(--border2);
   border-radius: 16px;
   padding: 13px 15px;
-  font-size: 12.5px; line-height: 1.55;
+  font-size: 13px; line-height: 1.55;
   box-shadow: 0 8px 28px rgba(0,0,0,.28);
   opacity: 0;
-  transition: opacity .55s ease, box-shadow .25s ease;
+  transition: opacity .55s ease;
   z-index: 4;
+  cursor: grab;
+  user-select: none;
+  touch-action: none;
 }
 .ptc-bubble.visible { opacity: 1; }
-.ptc-bubble:hover { box-shadow: 0 14px 36px rgba(0,0,0,.36); z-index: 6; }
+.ptc-bubble.dragging {
+  cursor: grabbing;
+  box-shadow: 0 16px 40px rgba(0,0,0,.42);
+  z-index: 20;
+  transition: opacity .55s ease;
+}
 
 .ptc-bubble .b-q {
-  font-size: 11px;
+  font-size: 13px;
   color: var(--muted);
   margin-bottom: 10px;
   padding: 0 0 8px 16px;
