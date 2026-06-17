@@ -14,8 +14,8 @@
       "capacity": 400,
       "who": "Laura + Joel",
       "status": "Bestätigt",
-      "descEN": "We invite you to the opening of the closing exhibition of the research project SENTIMENT on 11 December 2026 at 6:00 p.m. at Kunstwerk Köln.\nThrough films, installations, textile works, performances, sound pieces, and other media-based works, the participating artists offer viewers a tangible space in which to engage with subjects that are difficult to grasp. Their artistic research explores vulnerability, intimacy, and the handling of private data. The works move within the field of tension between digitality, closeness, and the discourses that shape our present moment.\nThis exhibition captures the current state of the research and understands itself not as a finished result, but as a method for opening up the complexity of the field to discussion and for engaging with possible futures.\nA couple of notes: I kept \"vernissage\" in parentheses since it's commonly understood in English art contexts, but you could simply use \"opening\" if you prefer. I rendered \"Kunstwerk Köln\" as-is, assuming it's the proper venue name; let me know if you'd like \"KUNSTWERK e.V.\" or another form instead.",
-      "descDE": "Wir laden ein zur Vernissage der abschließenden Ausstellung des Forschungsprojekts SENTIMENT am 11.12.2026 um 18:00 Uhr im Kunstwerk Köln.\nMit Filmen, Installationen, Textilarbeiten, Performances, Soundpieces und anderen medialen Umsetzungen bieten \nKunstschaffende Betrachtenden eine erlebbar Ebene über schwer greifbare Thematiken in Austausch zu kommen. Ihre künstlerische Forschung thematisiert Verletzlichkeit, Intimität und den Umgang mit privaten Daten. \nDie Arbeiten bewegen sich im Spannungsfeld von Digitalität, Nähe und den Diskursen, die unsere Gegenwart prägen.\nDiese Ausstellung fängt den aktuellen Forschungsstand ein und versteht sich nicht als abgeschlossenes Ergebnis, sondern als eine Methode, die Komplexität des Feldes diskursfähig zu machen und sich mit möglichen Zukünften zu befassen.",
+      "descEN": "",
+      "descDE": "",
       "id": "evt-1775824421996",
       "published": true,
       "program": [
@@ -24,8 +24,7 @@
           "titleDE": "Eröffnung",
           "titleEN": "Opening"
         }
-      ],
-      "image": ""
+      ]
     },
     {
       "title": "Finissage",
@@ -1874,8 +1873,11 @@
       "title_en": "Intimate Communication with Chatbots — between Closeness, Trust, and Responsibility",
       "body_de": "Was passiert, wenn Menschen beginnen, Maschinen zu vertrauen — oder sich ihnen anzuvertrauen? In einer Zeit, in der KI immer öfter unser vertrautester Gesprächspartner wird, werden diese Begegnungen zur gesellschaftlichen Dringlichkeit.\n\nDas vom BMFTR geförderte Projekt SENTIMENT untersucht intime Kommunikation mit KI-basierten Chatbots an der Schnittstelle von Psychologie, Informatik, Rechtswissenschaft und künstlerischer Forschung. Installative, performative und diskursive Formate machen zentrale Fragen um dieses Thema erfahrbar.\n\nSENTIMENT navigiert die Grenzen zwischen Verbindung und Berechnung: Warum vertrauen sich Menschen KI an und wie kann Intimität gestaltet werden, ohne Autonomie zu gefährden?",
       "body_en": "What happens when people begin to trust machines — or confide in them? At a time when AI is increasingly becoming our most trusted conversation partner, these encounters have become a matter of urgent social concern.\n\nFunded by the BMFTR, SENTIMENT examines intimate communication with AI-based chatbots at the intersection of psychology, computer science, law, and artistic research. Installation, performance, and discursive formats make the central questions around this topic tangible.\n\nSENTIMENT navigates the boundaries between connection and calculus: asking not only why people confide in AI but how intimacy can be designed without compromising autonomy.",
-      "image": "",
-      "items": []
+      "image": "public\\img\\A7_06932.JPG",
+      "items": [],
+      "images": [
+        "public\\img\\A7_06932.JPG"
+      ]
     },
     {
       "id": "card-cpdp",
