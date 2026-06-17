@@ -9,5 +9,19 @@
     "personen": "4",
     "nachricht": "Testmail",
     "timestamp": "2026-05-04T09:38:07.785Z"
+  },
+  {
+    "id": "reg-1781712525023",
+    "vorname": "Joel",
+    "nachname": "Baumann",
+    "email": "jbaumann@uni-kassel.de",
+    "events": [
+      "Vernissage"
+    ],
+    "event": "Vernissage",
+    "bereich": "academia",
+    "personen": "2",
+    "nachricht": "",
+    "timestamp": "2026-06-17T16:08:45.023Z"
   }
 ]
