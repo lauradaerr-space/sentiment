@@ -688,8 +688,13 @@ function initBubbleReveal() {
   const bubbles = Array.from(document.querySelectorAll('.ptc-bubble'));
   if (!bubbles.length) return;
 
-  // stash answer text and blank the visible content
+  // stash question & answer text, blank visible content
   bubbles.forEach(bub => {
+    const q = bub.querySelector('.b-q');
+    if (q && !q.dataset.text) {
+      q.dataset.text = q.textContent;
+      q.textContent = '';
+    }
     bub.querySelectorAll('.b-a').forEach(a => {
       if (!a.dataset.text) a.dataset.text = a.textContent;
       a.textContent = '';
@@ -704,7 +709,17 @@ function initBubbleReveal() {
       const bub = bubbles[i];
       if (bub.classList.contains('closed')) continue;
       bub.classList.add('visible');
-      await sleep(500);
+      await sleep(450);
+
+      // type question first
+      const qEl = bub.querySelector('.b-q');
+      if (qEl && qEl.dataset.text) {
+        const qTxt = qEl.dataset.text;
+        const qSpeed = qTxt.length > 180 ? 28 : 36;
+        qEl.classList.add('active');
+        await typewriteInto(qEl, qTxt, qSpeed);
+      }
+
       const answers = Array.from(bub.querySelectorAll('.b-a'));
       for (const a of answers) {
         if (bub.classList.contains('closed')) break;
@@ -713,11 +728,11 @@ function initBubbleReveal() {
         await showThinking(a, thinkMs);
         const speed = txt.length > 220 ? 32 : 42;
         await typewriteInto(a, txt, speed);
-        await sleep(360);
+        await sleep(280);
       }
-      // Close-Button nach erster Bubble einblenden — User kann jederzeit alles schließen
+      // Close-Button nach erster Bubble einblenden
       if (i === 0 && closeBtn) closeBtn.classList.add('visible');
-      await sleep(500);
+      await sleep(420);
     }
     if (closeBtn) closeBtn.classList.add('visible');
   };
@@ -833,7 +848,11 @@ function renderSchedule() {
   if (toggle) {
     toggle.addEventListener('click', () => {
       archiveOpen = !archiveOpen;
-      renderSchedule();
+      toggle.classList.toggle('open', archiveOpen);
+      const archive = document.getElementById('eventsArchive');
+      if (archive) archive.classList.toggle('open', archiveOpen);
+      const arrow = toggle.querySelector('.archive-arrow');
+      if (arrow) arrow.textContent = archiveOpen ? '▴' : '▾';
     });
   }
 

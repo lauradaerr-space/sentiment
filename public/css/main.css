@@ -488,7 +488,7 @@ body.light .sec-bar { background: rgba(0,0,0,.022); }
   box-shadow: 0 8px 28px rgba(0,0,0,.28);
   opacity: 0;
   transition: opacity .55s ease;
-  z-index: 4;
+  z-index: 50;
   cursor: grab;
   user-select: none;
   touch-action: none;
@@ -508,22 +508,23 @@ body.light .sec-bar { background: rgba(0,0,0,.022); }
 .ptc-bubble-close {
   position: absolute;
   top: 14px; right: 14px;
-  width: 30px; height: 30px;
+  width: 34px; height: 34px;
   border-radius: 50%;
-  background: var(--bg-soft);
-  border: 1px solid var(--border2);
-  color: var(--muted);
-  font-size: 18px; line-height: 1;
+  background: var(--orange);
+  border: 1px solid var(--orange);
+  color: #fff;
+  font-size: 20px; line-height: 1; font-weight: 600;
   font-family: inherit;
   cursor: pointer;
-  z-index: 8;
+  z-index: 60;
   display: flex; align-items: center; justify-content: center;
   opacity: 0;
   pointer-events: none;
-  transition: opacity .4s ease, color .15s, border-color .15s, transform .25s;
+  box-shadow: 0 4px 14px rgba(229, 92, 44, .35);
+  transition: opacity .4s ease, transform .25s, box-shadow .25s;
 }
-.ptc-bubble-close.visible { opacity: .7; pointer-events: auto; }
-.ptc-bubble-close:hover { opacity: 1; color: var(--text); border-color: var(--orange); transform: scale(1.08); }
+.ptc-bubble-close.visible { opacity: 1; pointer-events: auto; }
+.ptc-bubble-close:hover { transform: scale(1.08); box-shadow: 0 6px 18px rgba(229, 92, 44, .55); }
 .ptc-bubble-close.hidden { opacity: 0 !important; pointer-events: none; }
 
 .ptc-bubble .b-q {
@@ -551,6 +552,7 @@ body.light .sec-bar { background: rgba(0,0,0,.022); }
 .ptc-bubble .b-a + .b-a { margin-top: 8px; padding-top: 8px; border-top: 1px dashed var(--border); }
 
 /* typewriter caret on the currently typing line */
+.ptc-bubble .b-q.active::after,
 .ptc-bubble .b-a.active::after {
   content: '▍';
   display: inline-block;
