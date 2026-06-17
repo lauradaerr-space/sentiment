@@ -677,29 +677,31 @@ function initMobileInlineReveal() {
     running = false;
   };
 
-  if (!('IntersectionObserver' in window)) {
+  const startAll = () => {
+    if (queue.length || running) return;
+    // alle Inline-Comments in DOM-Reihenfolge (oben → unten) in die Queue
     inlines.forEach(el => queue.push(el));
+    if (closeBtn) setTimeout(() => closeBtn.classList.add('visible'), 900);
     processQueue();
-    if (closeBtn) closeBtn.classList.add('visible');
+  };
+
+  if (!('IntersectionObserver' in window)) {
+    startAll();
     return;
   }
 
-  let firstQueued = false;
+  // Trigger: sobald die Programm-Kachel oder das erste Inline überhaupt sichtbar wird,
+  // starten ALLE Comments sequentiell von oben — garantiert oben → unten
+  const trigger = document.querySelector('.program-text-card') || inlines[0];
   const obs = new IntersectionObserver((entries) => {
-    entries
-      .filter(entry => entry.isIntersecting)
-      .sort((a, b) => inlines.indexOf(a.target) - inlines.indexOf(b.target))
-      .forEach(entry => {
-        obs.unobserve(entry.target);
-        queue.push(entry.target);
-        if (!firstQueued && closeBtn) {
-          firstQueued = true;
-          setTimeout(() => closeBtn.classList.add('visible'), 900);
-        }
-      });
-    processQueue();
-  }, { threshold: 0.5, rootMargin: '0px 0px -60px 0px' });
-  inlines.forEach(el => obs.observe(el));
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        obs.disconnect();
+        startAll();
+      }
+    });
+  }, { threshold: 0, rootMargin: '0px 0px -40px 0px' });
+  obs.observe(trigger);
 }
 
 function initBubbleReveal() {
