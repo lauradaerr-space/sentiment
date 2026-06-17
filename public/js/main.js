@@ -1173,14 +1173,20 @@ if (stageVideo) stageVideo.playbackRate = 0.5;
 renderTeam();
 loadEvents();
 
-/* ══ FLOAT NAV (mobile) ══ */
-const floatNavBtn  = document.getElementById('floatNavBtn');
-const floatNavMenu = document.getElementById('floatNavMenu');
-function closeFloatNav() { if (floatNavMenu) floatNavMenu.classList.remove('open'); }
-if (floatNavBtn) {
-  floatNavBtn.addEventListener('click', e => {
-    e.stopPropagation();
-    floatNavMenu.classList.toggle('open');
+/* ══ BACK TO TOP (mobile) ══ */
+const backToTop = document.getElementById('backToTop');
+if (backToTop) {
+  backToTop.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   });
-  document.addEventListener('click', () => closeFloatNav());
+  let ticking = false;
+  window.addEventListener('scroll', () => {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(() => {
+      if (window.scrollY > 400) backToTop.classList.add('visible');
+      else backToTop.classList.remove('visible');
+      ticking = false;
+    });
+  });
 }
