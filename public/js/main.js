@@ -419,14 +419,26 @@ const DIALOG_BUBBLES_POOL = [
 ];
 
 let pickedBubbles = null;
-function getPickedBubbles() {
-  if (pickedBubbles) return pickedBubbles;
-  const arr = DIALOG_BUBBLES_POOL.slice();
+function shuffle(arr) {
   for (let i = arr.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
     const t = arr[i]; arr[i] = arr[j]; arr[j] = t;
   }
-  pickedBubbles = arr.slice(0, Math.min(BUBBLES_VISIBLE, arr.length));
+  return arr;
+}
+function getPickedBubbles() {
+  if (pickedBubbles) return pickedBubbles;
+
+  // Community-Antworten (anonym, kein Quellen-Label) — zuerst die neuesten
+  const community = (Array.isArray(allQuestions) ? allQuestions : [])
+    .filter(q => q.answer && q.answer.trim())
+    .slice(-BUBBLES_VISIBLE)
+    .map(q => ({ q: q.text, a: [q.answer] }));
+
+  const remaining = Math.max(0, BUBBLES_VISIBLE - community.length);
+  const staticPicked = shuffle(DIALOG_BUBBLES_POOL.slice()).slice(0, remaining);
+
+  pickedBubbles = shuffle([...community, ...staticPicked]).slice(0, BUBBLES_VISIBLE);
   return pickedBubbles;
 }
 
@@ -457,18 +469,6 @@ function renderProgramTextCard() {
       ${b.a.map(a => `<div class="b-a">${esc(a)}</div>`).join('')}
     </div>
   `).join('');
-
-  const answered = allQuestions.filter(q => q.answer && q.answer.trim()).slice(-6);
-  const communityHTML = answered.length === 0 ? '' : `
-    <div class="ptc-community">
-      <div class="ptc-community-title">${lang === 'de' ? 'Aus der Community' : 'From the community'}</div>
-      ${answered.map(q => `
-        <div class="community-msg">
-          <div class="cm-q">${esc(q.text)}</div>
-          <div class="cm-a">${esc(q.answer)}</div>
-        </div>
-      `).join('')}
-    </div>`;
 
   const askFormHTML = `
     <form class="ptc-ask" id="ptc-ask">
@@ -522,7 +522,6 @@ function renderProgramTextCard() {
       <span class="ptc-label">${esc(label)}</span>
       <div class="ptc-heading">${esc(heading)}</div>
       <div class="ptc-body">${lang === 'de' ? bodyDE : bodyEN}</div>
-      ${communityHTML}
       ${askFormHTML}
       ${bubbles}
     </div>
