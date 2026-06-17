@@ -450,10 +450,12 @@ function renderProgramTextCard() {
     : 'Opening on 11 December 2026 — Kunstwerk Cologne';
 
   const bodyDE = `
-    <p>Im interdisziplinären Forschungsprojekt SENTIMENT der Universität Duisburg-Essen, der Ruhr-Universität Bochum und der Universität Kassel forschen Wissenschaftler:innen und Künstler:innen aus den Bereichen Psychologie, Informatik, Rechtswissenschaften und Kunst zu den Prozessen im Umgang mit Dialogsystemen.</p>
-    <p>Wir laden ein zur Vernissage am 11.12.2026 im Kunstwerk Köln, mit einem vielfältigen Abendprogramm, bestehend aus Soundperformances, Musik und vielem mehr. Außerdem bieten wir Raum für Fragen wie z.B. „was zur Hölle ist eigentlich artistic research?“ oder „hast du auch schon mal deine Beziehungsprobleme mit ChatGPT besprochen?“</p>
-    <p>Verletzlichkeiten, die im Austausch entstehen, sowie die Verarbeitung intimer Daten sind zentrale Punkte der künstlerischen und theoretischen Auseinandersetzungen. Die Arbeiten bewegen sich im Spannungsfeld von Digitalität, Nähe und den Diskursen, die unsere Gegenwart prägen — und ermöglichen den Betrachtenden auf erlebbarer Ebene über schwer greifbare Thematiken in Austausch zu kommen.</p>
-    <p>Diese Ausstellung fängt den aktuellen Forschungsstand unserer Studierenden ein und versteht sich nicht als abgeschlossenes Ergebnis, sondern als eine Methode, die versucht an die Grenzen der Vorstellung zu gehen, um einen informierten Gedanken der Zukunft zu kreieren. Das Projekt begleitet die soziokulturelle Entwicklung von generativer KI und betont die Relevanz von Kunst und Kultur im modernen Zeitalter.</p>
+    <p>Im interdisziplinären Forschungsprojekt SENTIMENT der Universität Duisburg-Essen, der Ruhr-Universität Bochum, der Universität Kassel und der Kunsthochschule Kassel befassen sich Wissenschaftler:innen und Künstler:innen aus den Bereichen Psychologie, Kunst, Rechtswissenschaften und Informatik mit den Prozessen im intimen Umgang mit Dialogsystemen.</p>
+    <p>Wir laden ein zur Vernissage der abschließenden Ausstellung des Forschungsprojekts SENTIMENT am 11.12.2026 um 18:00 Uhr im Kunstwerk Köln.</p>
+    <p>Mit Filmen, Installationen, Textilarbeiten, Performances, Soundpieces und anderen medialen Umsetzungen bieten Kunstschaffende Betrachtenden eine erlebbare Ebene, über schwer greifbare Thematiken in Austausch zu kommen. Ihre künstlerische Forschung thematisiert Verletzlichkeit, Intimität und den Umgang mit privaten Daten. Die Arbeiten bewegen sich im Spannungsfeld von Digitalität, Nähe und den Diskursen, die unsere Gegenwart prägen.</p>
+    <p>Diese Ausstellung fängt den aktuellen Forschungsstand ein und versteht sich nicht als abgeschlossenes Ergebnis, sondern als eine Methode, die Komplexität des Feldes diskursfähig zu machen und sich mit möglichen Zukünften zu befassen.</p>
+    <p>Ein Abendprogramm, bestehend aus Soundperformances, Musik u.v.m., rahmt die Eröffnung der Ausstellung ein und bietet Raum für Fragen wie z.B.: „was zur Hölle ist eigentlich artistic research?“ oder „hast du auch schon mal deine Beziehungsprobleme mit ChatGPT besprochen?“</p>
+    <p>Das Projekt begleitet die soziokulturelle Entwicklung von generativer KI und betont die Relevanz von Kunst und Kultur als Ort der Auseinandersetzung – als Dialogforum – der sich aktualisierenden Gesellschaft.</p>
   `;
 
   const bodyEN = `
