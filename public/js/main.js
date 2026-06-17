@@ -781,7 +781,7 @@ function renderSchedule() {
   const today = (new Date()).toISOString().slice(0,10);
   const renderCard = (e) => {
     const title = lang === 'de' ? (e.titleDE || e.title) : e.title;
-    const desc  = lang === 'de' ? (e.descDE  || e.desc  || '') : (e.desc || '');
+    const desc  = lang === 'de' ? (e.descDE  || e.descEN || '') : (e.descEN || e.descDE || '');
     const full  = e.capacity > 0 && e.registered >= e.capacity;
     const endDate = e.dateTo || e.dateFrom || e.date || '';
     const isPast = endDate && endDate < today;
