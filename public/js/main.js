@@ -480,12 +480,48 @@ function renderProgramTextCard() {
     aria-label="${lang === 'de' ? 'Kommentare ausblenden' : 'Hide comments'}"
     title="${lang === 'de' ? 'Kommentare ausblenden' : 'Hide comments'}">×</button>`;
 
+  const todayStr = (new Date()).toISOString().slice(0, 10);
+  const upcomingForList = allEvents.filter(e => {
+    const end = e.dateTo || e.dateFrom || e.date || '';
+    return !end || end >= todayStr;
+  }).sort((a, b) => (a.dateFrom || '').localeCompare(b.dateFrom || ''));
+
+  const fmtLabels = {
+    exhibition: lang === 'de' ? 'Ausstellung' : 'Exhibition',
+    talk: 'Talk', workshop: 'Workshop',
+    tour: lang === 'de' ? 'Führung' : 'Tour',
+    screening: 'Screening', lecture: 'Lecture',
+    other: lang === 'de' ? 'Sonstiges' : 'Other'
+  };
+
+  const scheduleListHTML = upcomingForList.length === 0 ? '' : `
+    <div class="ptc-schedule">
+      <div class="ptc-schedule-title">${lang === 'de' ? 'Programmübersicht' : 'Programme overview'}</div>
+      <ul class="ptc-schedule-list">
+        ${upcomingForList.map(e => {
+          const title = lang === 'de' ? (e.titleDE || e.title) : e.title;
+          const date = fmtDate(e.dateFrom || e.date || '');
+          const time = (e.time || '') + (e.timeEnd ? '–' + e.timeEnd : '');
+          const formatLabel = fmtLabels[e.format] || '';
+          return `<li>
+            <span class="ps-when">${date}${time ? ' · ' + time : ''}</span>
+            <span class="ps-content">
+              ${formatLabel ? `<span class="ps-format">${esc(formatLabel)}</span>` : ''}
+              <span class="ps-title">${esc(title)}</span>
+              ${e.location ? `<span class="ps-loc">${esc(e.location)}</span>` : ''}
+            </span>
+          </li>`;
+        }).join('')}
+      </ul>
+    </div>`;
+
   return `<article class="program-text-card">
     <div class="ptc-inner">
       ${closeBtnHTML}
       <span class="ptc-label">${esc(label)}</span>
       <div class="ptc-heading">${esc(heading)}</div>
       <div class="ptc-body">${lang === 'de' ? bodyDE : bodyEN}</div>
+      ${scheduleListHTML}
       ${communityHTML}
       ${askFormHTML}
       ${bubbles}
@@ -665,7 +701,8 @@ function initBubbleReveal() {
   const closeBtn = wireCommentsCloseBtn();
 
   const runAllInOrder = async () => {
-    for (const bub of bubbles) {
+    for (let i = 0; i < bubbles.length; i++) {
+      const bub = bubbles[i];
       if (bub.classList.contains('closed')) continue;
       bub.classList.add('visible');
       await sleep(500);
@@ -679,9 +716,10 @@ function initBubbleReveal() {
         await typewriteInto(a, txt, speed);
         await sleep(360);
       }
+      // Close-Button nach erster Bubble einblenden — User kann jederzeit alles schließen
+      if (i === 0 && closeBtn) closeBtn.classList.add('visible');
       await sleep(500);
     }
-    // alle Bubbles fertig → Close-Button erscheint
     if (closeBtn) closeBtn.classList.add('visible');
   };
 

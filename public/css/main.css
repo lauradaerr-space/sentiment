@@ -420,7 +420,7 @@ body.light .sec-bar { background: rgba(0,0,0,.022); }
 
 .events-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: minmax(280px, 0.85fr) minmax(380px, 1.25fr);
   row-gap: 12px;
   column-gap: 22px;
   align-items: start;
@@ -645,6 +645,46 @@ body.light .sec-bar { background: rgba(0,0,0,.022); }
   border-radius: 10px;
   font-size: 13px;
   color: var(--text);
+}
+
+.ptc-schedule {
+  margin-top: 22px;
+  padding-top: 18px;
+  border-top: 1px dashed var(--border);
+}
+.ptc-schedule-title {
+  font-family: var(--mono); font-size: 10px; letter-spacing: .14em;
+  text-transform: uppercase; color: var(--muted2);
+  margin-bottom: 12px;
+}
+.ptc-schedule-list { list-style: none; padding: 0; margin: 0; }
+.ptc-schedule-list li {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  align-items: baseline;
+  gap: 14px;
+  padding: 9px 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 13px;
+  line-height: 1.4;
+}
+.ptc-schedule-list li:last-child { border-bottom: none; }
+.ptc-schedule-list .ps-when {
+  font-family: var(--mono); font-size: 11px;
+  color: var(--muted2); white-space: nowrap;
+}
+.ptc-schedule-list .ps-content { display: flex; flex-direction: column; gap: 2px; }
+.ptc-schedule-list .ps-format {
+  font-family: var(--mono); font-size: 9px; letter-spacing: .12em;
+  text-transform: uppercase; color: var(--orange);
+}
+.ptc-schedule-list .ps-title { color: var(--text); font-weight: 500; }
+.ptc-schedule-list .ps-loc { color: var(--muted); font-size: 12px; }
+@media (max-width: 900px) {
+  .ptc-schedule-list li {
+    grid-template-columns: 90px 1fr;
+    gap: 10px;
+  }
 }
 
 .ptc-community {
