@@ -421,7 +421,8 @@ body.light .sec-bar { background: rgba(0,0,0,.022); }
 .events-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 24px;
+  row-gap: 12px;
+  column-gap: 22px;
   align-items: start;
   overflow: visible;
 }
@@ -678,7 +679,7 @@ body.light .sec-bar { background: rgba(0,0,0,.022); }
 }
 .community-msg .cm-a { color: var(--text); }
 
-/* mobile / narrow: bubbles inline between paragraphs */
+/* mobile: inline Q&A im Text, keine Bubble-Kacheln */
 @media (max-width: 900px) {
   .program-text-card {
     grid-column: 1 / -1;
@@ -686,19 +687,7 @@ body.light .sec-bar { background: rgba(0,0,0,.022); }
     position: static;
   }
   .program-text-card .ptc-inner { padding: 32px 22px; }
-  .ptc-bubble {
-    position: static !important;
-    display: block;
-    width: auto !important;
-    max-width: 100%;
-    margin: 18px 0 !important;
-    left: auto !important; right: auto !important;
-    top: auto !important; bottom: auto !important;
-    box-shadow: 0 4px 16px rgba(0,0,0,.20);
-  }
-  .ptc-body .ptc-bubble {
-    margin: 18px 0 22px !important;
-  }
+  .ptc-bubble { display: none !important; }
   .events-grid {
     grid-template-columns: 1fr;
   }
@@ -706,6 +695,42 @@ body.light .sec-bar { background: rgba(0,0,0,.022); }
   .events-grid > .events-archive-toggle,
   .events-grid > .events-archive,
   .events-grid > .no-results { grid-column: 1; }
+
+  .inline-comment {
+    margin: 16px 0;
+    color: var(--orange);
+    font-size: 14.5px;
+    line-height: 1.6;
+    min-height: 36px;
+  }
+  .inline-comment .ic-q {
+    font-style: italic;
+    font-weight: 500;
+  }
+  .inline-comment .ic-thinking {
+    display: flex; align-items: center; gap: 5px;
+    margin: 8px 0;
+  }
+  .inline-comment .ic-thinking span {
+    width: 5px; height: 5px;
+    background: var(--orange);
+    border-radius: 50%;
+    opacity: .35;
+    animation: dot-bounce 1.3s infinite;
+  }
+  .inline-comment .ic-thinking span:nth-child(2) { animation-delay: .18s; }
+  .inline-comment .ic-thinking span:nth-child(3) { animation-delay: .36s; }
+  .inline-comment .ic-a {
+    margin-top: 6px;
+  }
+  .inline-comment .ic-q.active::after,
+  .inline-comment .ic-a.active::after {
+    content: '▍';
+    display: inline-block;
+    margin-left: 1px;
+    color: var(--orange);
+    animation: caret-blink 1s steps(2) infinite;
+  }
 }
 .ev-card:hover { border-color: var(--border2); transform: translateY(-2px); }
 

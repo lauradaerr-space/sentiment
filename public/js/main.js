@@ -560,22 +560,77 @@ function makeBubbleDraggable(bub) {
   document.addEventListener('touchend', onUp);
 }
 
-function rearrangeBubblesForMobile() {
-  if (window.innerWidth > 900) return;
-  const bubbles = Array.from(document.querySelectorAll('.ptc-bubble'));
+function setupMobileInlineComments() {
+  if (window.innerWidth > 900) return false;
   const body = document.querySelector('.ptc-body');
-  if (!body || !bubbles.length) return;
+  if (!body) return false;
   const paragraphs = Array.from(body.querySelectorAll('p'));
-  if (paragraphs.length === 0) return;
-  bubbles.forEach((bub, i) => {
+  if (paragraphs.length === 0) return false;
+  const picked = getPickedBubbles();
+  let inserted = 0;
+  picked.forEach((b, i) => {
     if (i >= paragraphs.length) return;
     const target = paragraphs[i];
-    if (target.parentNode) target.parentNode.insertBefore(bub, target.nextSibling);
+    const inline = document.createElement('div');
+    inline.className = 'inline-comment';
+    inline.dataset.q = b.q || '';
+    inline.dataset.a = (b.a && b.a[0]) || '';
+    target.parentNode.insertBefore(inline, target.nextSibling);
+    inserted++;
   });
+  return inserted > 0;
+}
+
+async function playInlineComment(el) {
+  if (el.dataset.played) return;
+  el.dataset.played = '1';
+  const q = el.dataset.q || '';
+  const a = el.dataset.a || '';
+
+  const qEl = document.createElement('div');
+  qEl.className = 'ic-q';
+  el.appendChild(qEl);
+  await typewriteInto(qEl, q, 38);
+
+  await sleep(420);
+  const thinkEl = document.createElement('div');
+  thinkEl.className = 'ic-thinking';
+  thinkEl.innerHTML = '<span></span><span></span><span></span>';
+  el.appendChild(thinkEl);
+  await sleep(1100 + Math.random() * 700);
+  thinkEl.remove();
+
+  if (!a) return;
+  const aEl = document.createElement('div');
+  aEl.className = 'ic-a';
+  el.appendChild(aEl);
+  await typewriteInto(aEl, a, 38);
+}
+
+function initMobileInlineReveal() {
+  setupMobileInlineComments();
+  const inlines = Array.from(document.querySelectorAll('.inline-comment'));
+  if (!inlines.length) return;
+  if (!('IntersectionObserver' in window)) {
+    inlines.forEach(el => playInlineComment(el));
+    return;
+  }
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        obs.unobserve(entry.target);
+        playInlineComment(entry.target);
+      }
+    });
+  }, { threshold: 0.5, rootMargin: '0px 0px -60px 0px' });
+  inlines.forEach(el => obs.observe(el));
 }
 
 function initBubbleReveal() {
-  rearrangeBubblesForMobile();
+  if (window.innerWidth <= 900) {
+    initMobileInlineReveal();
+    return;
+  }
   const bubbles = Array.from(document.querySelectorAll('.ptc-bubble'));
   if (!bubbles.length) return;
 
