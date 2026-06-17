@@ -1898,5 +1898,14 @@
     }
   ],
   "team": [],
-  "seeded": true
+  "seeded": true,
+  "questions": [
+    {
+      "id": "q-1781699005202-jrvjw",
+      "text": "Halt die Backen",
+      "answer": "",
+      "published": false,
+      "createdAt": "2026-06-17T12:23:25.202Z"
+    }
+  ]
 }
