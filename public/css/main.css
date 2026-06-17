@@ -453,7 +453,8 @@ body.light .sec-bar { background: rgba(0,0,0,.022); }
   backdrop-filter: blur(12px);
   border-radius: 18px;
   padding: 40px 36px;
-  z-index: 2;
+  z-index: 1;
+  overflow: visible;
 }
 .program-text-card .ptc-label {
   font-family: var(--mono); font-size: 10px; letter-spacing: .16em;
@@ -472,29 +473,27 @@ body.light .sec-bar { background: rgba(0,0,0,.022); }
 
 .ptc-bubble {
   position: absolute;
-  width: clamp(180px, 21%, 240px);
+  width: 230px;
   background: var(--bg-soft);
   border: 1px solid var(--border2);
   border-radius: 16px;
-  padding: 12px 14px;
+  padding: 13px 15px;
   font-size: 12.5px; line-height: 1.55;
-  box-shadow: 0 6px 22px rgba(0,0,0,.18);
+  box-shadow: 0 8px 28px rgba(0,0,0,.28);
   opacity: 0;
-  transform: translateY(8px);
-  transition: opacity .5s ease, transform .5s ease, box-shadow .25s ease;
-  z-index: 3;
+  transition: opacity .55s ease, box-shadow .25s ease;
+  z-index: 4;
 }
-.ptc-bubble.visible { opacity: 1; transform: translateY(0); }
-.ptc-bubble:hover { box-shadow: 0 12px 32px rgba(0,0,0,.28); z-index: 5; }
+.ptc-bubble.visible { opacity: 1; }
+.ptc-bubble:hover { box-shadow: 0 14px 36px rgba(0,0,0,.36); z-index: 6; }
 
 .ptc-bubble .b-q {
   font-size: 11px;
   color: var(--muted);
   margin-bottom: 10px;
-  padding-bottom: 8px;
+  padding: 0 0 8px 16px;
   border-bottom: 1px solid var(--border);
   position: relative;
-  padding-left: 16px;
 }
 .ptc-bubble .b-q::before {
   content: '›';
@@ -512,8 +511,8 @@ body.light .sec-bar { background: rgba(0,0,0,.022); }
 }
 .ptc-bubble .b-a + .b-a { margin-top: 8px; padding-top: 8px; border-top: 1px dashed var(--border); }
 
-/* live typewriter caret */
-.ptc-bubble.typing .b-a.active::after {
+/* typewriter caret on the currently typing line */
+.ptc-bubble .b-a.active::after {
   content: '▍';
   display: inline-block;
   margin-left: 1px;
@@ -522,28 +521,54 @@ body.light .sec-bar { background: rgba(0,0,0,.022); }
 }
 @keyframes caret-blink { 50% { opacity: 0; } 0%,100% { opacity: 1; } }
 
-/* positions: 3 left, 3 right — sides of the centred inner card */
-.ptc-b1 { top: 50px;   left: 0; }
-.ptc-b2 { top: 50px;   right: 0; }
-.ptc-b3 { top: 42%;    left: 0; transform: translateY(-50%) translateY(8px); }
-.ptc-b3.visible { transform: translateY(-50%); }
-.ptc-b4 { top: 42%;    right: 0; transform: translateY(-50%) translateY(8px); }
-.ptc-b4.visible { transform: translateY(-50%); }
-.ptc-b5 { bottom: 50px; left: 0; }
-.ptc-b6 { bottom: 50px; right: 0; }
+/* "thinking" dots before answer types */
+.b-thinking {
+  display: inline-flex;
+  gap: 4px;
+  align-items: center;
+  padding: 2px 0;
+}
+.b-thinking span {
+  width: 6px; height: 6px;
+  background: var(--muted);
+  border-radius: 50%;
+  opacity: .35;
+  animation: dot-bounce 1.3s infinite;
+}
+.b-thinking span:nth-child(2) { animation-delay: .18s; }
+.b-thinking span:nth-child(3) { animation-delay: .36s; }
+@keyframes dot-bounce {
+  0%, 60%, 100% { opacity: .25; transform: translateY(0); }
+  30% { opacity: 1; transform: translateY(-3px); }
+}
+
+/* positions: 3 left, 3 right — overlapping the inner card edges */
+.ptc-b1 { top: 30px;   left: -160px; }
+.ptc-b2 { top: 80px;   right: -170px; }
+.ptc-b3 { top: 42%;    left: -180px; }
+.ptc-b4 { top: 50%;    right: -160px; }
+.ptc-b5 { bottom: 50px; left: -150px; }
+.ptc-b6 { bottom: 26px; right: -180px; }
+
+@media (max-width: 1180px) {
+  .ptc-b1, .ptc-b3, .ptc-b5 { left: -100px; }
+  .ptc-b2, .ptc-b4, .ptc-b6 { right: -100px; }
+}
+@media (max-width: 1040px) {
+  .ptc-b1, .ptc-b3, .ptc-b5 { left: -50px; }
+  .ptc-b2, .ptc-b4, .ptc-b6 { right: -50px; }
+}
 
 /* mobile / narrow: stack bubbles below text */
-@media (max-width: 980px) {
+@media (max-width: 900px) {
   .program-text-card .ptc-inner { padding: 32px 22px; }
   .ptc-bubble {
     position: static !important;
-    width: 100% !important;
-    transform: none !important;
-    margin-top: 12px;
-    opacity: 1;
-    max-width: 640px;
-    margin-left: auto;
-    margin-right: auto;
+    width: auto !important;
+    margin: 14px auto 0 !important;
+    max-width: 560px;
+    left: auto !important; right: auto !important;
+    top: auto !important; bottom: auto !important;
   }
 }
 .ev-card:hover { border-color: var(--border2); transform: translateY(-2px); }

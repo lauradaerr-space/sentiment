@@ -416,10 +416,12 @@ function renderProgramTextCard() {
       <span class="ptc-label">${esc(label)}</span>
       <div class="ptc-heading">${esc(heading)}</div>
       <div class="ptc-body">${lang === 'de' ? bodyDE : bodyEN}</div>
+      ${bubbles}
     </div>
-    ${bubbles}
   </article>`;
 }
+
+const sleep = (ms) => new Promise(r => setTimeout(r, ms));
 
 function typewriteInto(el, text, speed) {
   return new Promise(resolve => {
@@ -432,16 +434,26 @@ function typewriteInto(el, text, speed) {
         resolve();
         return;
       }
-      el.textContent += text.charAt(i++);
+      const ch = text.charAt(i++);
+      el.textContent += ch;
       const jitter = Math.random() * 24 - 8;
-      setTimeout(tick, Math.max(8, speed + jitter));
+      const pauseExtra = (ch === '.' || ch === '!' || ch === '?') ? 220
+                       : (ch === ',' || ch === ';') ? 110
+                       : 0;
+      setTimeout(tick, Math.max(14, speed + jitter + pauseExtra));
     };
     tick();
   });
 }
 
+async function showThinking(el, duration) {
+  el.innerHTML = '<span class="b-thinking"><span></span><span></span><span></span></span>';
+  await sleep(duration);
+  el.innerHTML = '';
+}
+
 function initBubbleReveal() {
-  const bubbles = document.querySelectorAll('.ptc-bubble');
+  const bubbles = Array.from(document.querySelectorAll('.ptc-bubble'));
   if (!bubbles.length) return;
 
   // stash answer text and blank the visible content
@@ -452,34 +464,37 @@ function initBubbleReveal() {
     });
   });
 
+  const runAllInOrder = async () => {
+    for (const bub of bubbles) {
+      bub.classList.add('visible');
+      await sleep(500);
+      const answers = Array.from(bub.querySelectorAll('.b-a'));
+      for (const a of answers) {
+        const txt = a.dataset.text || '';
+        const thinkMs = 900 + Math.random() * 700;
+        await showThinking(a, thinkMs);
+        const speed = txt.length > 220 ? 32 : 42;
+        await typewriteInto(a, txt, speed);
+        await sleep(360);
+      }
+      await sleep(500);
+    }
+  };
+
   if (!('IntersectionObserver' in window)) {
-    bubbles.forEach(b => {
-      b.classList.add('visible');
-      b.querySelectorAll('.b-a').forEach(a => { a.textContent = a.dataset.text; });
-    });
+    runAllInOrder();
     return;
   }
 
+  const card = document.querySelector('.program-text-card') || bubbles[0];
   const obs = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (!entry.isIntersecting) return;
-      const bub = entry.target;
-      obs.unobserve(bub);
-      bub.classList.add('visible');
-      bub.classList.add('typing');
-      const answers = Array.from(bub.querySelectorAll('.b-a'));
-      let chain = new Promise(r => setTimeout(r, 250));
-      answers.forEach(a => {
-        const txt = a.dataset.text || '';
-        const speed = txt.length > 220 ? 14 : 22;
-        chain = chain.then(() => typewriteInto(a, txt, speed))
-                     .then(() => new Promise(r => setTimeout(r, 220)));
-      });
-      chain.then(() => bub.classList.remove('typing'));
+      obs.unobserve(entry.target);
+      runAllInOrder();
     });
-  }, { threshold: 0.25, rootMargin: '0px 0px -40px 0px' });
-
-  bubbles.forEach(b => obs.observe(b));
+  }, { threshold: 0.2, rootMargin: '0px 0px -80px 0px' });
+  obs.observe(card);
 }
 
 function renderSchedule() {
