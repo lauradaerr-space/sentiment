@@ -41,9 +41,17 @@
       "who": "Laura + Joel",
       "status": "Bestätigt",
       "descEN": "",
-      "descDE": "",
+      "descDE": "Im interdisziplinären Forschungsprojekt SENTIMENT der Universität Duisburg-Essen, der Ruhr-Universität Bochum und der Universität Kassel forschen Wissenschaftler:innen und Künstler:innen aus den Bereichen Psychologie, Informatik, Rechtswissenschaften und Kunst zu den Prozessen im Umgang mit Dialogsystemen. \nWir laden ein zur Vernissage am 11.12.2026 im Kunstwerk Köln, mit einem vielfältigen Abendprogramm, bestehend aus Soundperformances, Musik uvm. Außerdem bieten wir Raum für Fragen wie zB „was zur Hölle ist eigentlich artistic reserach?“ oder „hast du auch schonmal deine Beziehungsprobleme mit ChatGPT besprochen?\". ",
       "id": "evt-1775824479895",
-      "published": true
+      "published": true,
+      "image": "",
+      "program": [
+        {
+          "time": "20:00",
+          "titleDE": "Performance Angelika Waniek",
+          "titleEN": "Performance Angelika Waniek"
+        }
+      ]
     },
     {
       "title": "CPDP - Culture Club",
