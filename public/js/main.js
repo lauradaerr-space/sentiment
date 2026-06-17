@@ -560,7 +560,22 @@ function makeBubbleDraggable(bub) {
   document.addEventListener('touchend', onUp);
 }
 
+function rearrangeBubblesForMobile() {
+  if (window.innerWidth > 900) return;
+  const bubbles = Array.from(document.querySelectorAll('.ptc-bubble'));
+  const body = document.querySelector('.ptc-body');
+  if (!body || !bubbles.length) return;
+  const paragraphs = Array.from(body.querySelectorAll('p'));
+  if (paragraphs.length === 0) return;
+  bubbles.forEach((bub, i) => {
+    if (i >= paragraphs.length) return;
+    const target = paragraphs[i];
+    if (target.parentNode) target.parentNode.insertBefore(bub, target.nextSibling);
+  });
+}
+
 function initBubbleReveal() {
+  rearrangeBubblesForMobile();
   const bubbles = Array.from(document.querySelectorAll('.ptc-bubble'));
   if (!bubbles.length) return;
 

@@ -678,7 +678,7 @@ body.light .sec-bar { background: rgba(0,0,0,.022); }
 }
 .community-msg .cm-a { color: var(--text); }
 
-/* mobile / narrow: stack bubbles below text */
+/* mobile / narrow: bubbles inline between paragraphs */
 @media (max-width: 900px) {
   .program-text-card {
     grid-column: 1 / -1;
@@ -688,11 +688,16 @@ body.light .sec-bar { background: rgba(0,0,0,.022); }
   .program-text-card .ptc-inner { padding: 32px 22px; }
   .ptc-bubble {
     position: static !important;
+    display: block;
     width: auto !important;
-    margin: 14px auto 0 !important;
-    max-width: 560px;
+    max-width: 100%;
+    margin: 18px 0 !important;
     left: auto !important; right: auto !important;
     top: auto !important; bottom: auto !important;
+    box-shadow: 0 4px 16px rgba(0,0,0,.20);
+  }
+  .ptc-body .ptc-bubble {
+    margin: 18px 0 22px !important;
   }
   .events-grid {
     grid-template-columns: 1fr;
