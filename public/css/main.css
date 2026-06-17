@@ -421,16 +421,15 @@ body.light .sec-bar { background: rgba(0,0,0,.022); }
 .events-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  row-gap: 8px;
-  column-gap: 16px;
+  gap: 16px;
   align-items: start;
   overflow: visible;
 }
-.events-grid > .ev-card,
-.events-grid > .events-archive-toggle,
-.events-grid > .events-archive,
-.events-grid > .no-results {
-  grid-column: 1;
+.events-column {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
 }
 .ev-card {
   border: 1px solid var(--border);
@@ -442,13 +441,9 @@ body.light .sec-bar { background: rgba(0,0,0,.022); }
   transition: border-color .18s, transform .2s var(--ease);
 }
 
-/* ── Programm-Text-Kachel (rechte Spalte, sticky) + ChatGPT-Stil Bubbles ── */
+/* ── Programm-Text-Kachel (rechte Spalte) + ChatGPT-Stil Bubbles ── */
 .program-text-card {
-  grid-column: 2;
-  grid-row: 1;
-  position: sticky;
-  top: 92px;
-  align-self: start;
+  position: relative;
   background: transparent;
   border: none;
   padding: 0;
@@ -721,20 +716,11 @@ body.light .sec-bar { background: rgba(0,0,0,.022); }
 
 /* mobile: inline Q&A im Text, keine Bubble-Kacheln */
 @media (max-width: 900px) {
-  .program-text-card {
-    grid-column: 1 / -1;
-    grid-row: auto;
-    position: static;
-  }
   .program-text-card .ptc-inner { padding: 32px 22px; }
   .ptc-bubble { display: none !important; }
   .events-grid {
     grid-template-columns: 1fr;
   }
-  .events-grid > .ev-card,
-  .events-grid > .events-archive-toggle,
-  .events-grid > .events-archive,
-  .events-grid > .no-results { grid-column: 1; }
 
   .inline-comment {
     margin: 16px 0;

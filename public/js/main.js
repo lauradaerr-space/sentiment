@@ -808,17 +808,15 @@ function renderSchedule() {
   });
 
   const programCardHTML = renderProgramTextCard();
-  let html = programCardHTML + upcoming.map(renderCard).join('');
-
-  if (upcoming.length === 0) {
-    html = programCardHTML + `<div class="no-results">${lang === 'de' ? 'Keine kommenden Veranstaltungen.' : 'No upcoming events.'}</div>`;
-  }
+  let eventsInner = upcoming.length === 0
+    ? `<div class="no-results">${lang === 'de' ? 'Keine kommenden Veranstaltungen.' : 'No upcoming events.'}</div>`
+    : upcoming.map(renderCard).join('');
 
   if (past.length > 0) {
     const archiveLabel = lang === 'de'
       ? `Archiv — ${past.length} vergangene Veranstaltung${past.length !== 1 ? 'en' : ''}`
       : `Archive — ${past.length} past event${past.length !== 1 ? 's' : ''}`;
-    html += `
+    eventsInner += `
       <div class="events-archive-toggle ${archiveOpen ? 'open' : ''}" id="archiveToggle">
         <span>${archiveLabel}</span>
         <span class="archive-arrow">${archiveOpen ? '▴' : '▾'}</span>
@@ -829,7 +827,7 @@ function renderSchedule() {
     `;
   }
 
-  list.innerHTML = html;
+  list.innerHTML = `<div class="events-column">${eventsInner}</div>${programCardHTML}`;
 
   const toggle = document.getElementById('archiveToggle');
   if (toggle) {
