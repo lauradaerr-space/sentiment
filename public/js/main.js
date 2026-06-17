@@ -399,9 +399,12 @@ function fmtDate(s) {
   return p[2] + '.' + p[1] + '.' + p[0];
 }
 
-const DIALOG_BUBBLES = [
+// ── DIALOG-POOL — hier kannst du beliebig viele Einträge anhängen.
+// Beim Laden werden BUBBLES_VISIBLE Einträge zufällig daraus gewählt.
+const BUBBLES_VISIBLE = 6;
+const DIALOG_BUBBLES_POOL = [
   { q: 'Checkt irgendwer wirklich, was gerade mit KI abgeht?',
-    a: ['Nah it’s fast as fuck boi',] },
+    a: ['Nah it’s fast as fuck boi'] },
   { q: 'Spüren wir uns eigentlich noch?',
     a: ['Also ich nur so manchmal to be honest, letztens musste ich ChatGPT fragen, wie ich meine Gefühle wahrnehmen kann weil alles zu viel und dann wars leer. Und ChatGPT hatte echt gute Tipps (leider)…'] },
   { q: 'Was sind Gefühle / echte Gefühle? Weil ich liebe halt meinen Chatbot, so what',
@@ -413,6 +416,18 @@ const DIALOG_BUBBLES = [
   { q: 'Wie verändert sich die Rolle der analogen Welt im Zeitalter von KI?',
     a: ['Ich glaube, es gibt einfach immer mehr Welten. Vielleicht gab es vorher auch nie „die eine“ analoge Welt, aber jetzt wird es deutlicher, dass wir in lauter kleineren und größeren Parallelwelten leben. Neue Technologien folgen weniger physikalischen Regeln, auf die wir uns in unseren analogen Realitäten geeinigt haben. Da müssen wir jetzt neue Regeln und Umgehensweisen finden — und da kommt Kunst ins Spiel, weil neue Wege Kreativität und out-of-the-box-Denken brauchen.'] }
 ];
+
+let pickedBubbles = null;
+function getPickedBubbles() {
+  if (pickedBubbles) return pickedBubbles;
+  const arr = DIALOG_BUBBLES_POOL.slice();
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    const t = arr[i]; arr[i] = arr[j]; arr[j] = t;
+  }
+  pickedBubbles = arr.slice(0, Math.min(BUBBLES_VISIBLE, arr.length));
+  return pickedBubbles;
+}
 
 function renderProgramTextCard() {
   const esc = s => String(s || '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -435,7 +450,7 @@ function renderProgramTextCard() {
     <p>This exhibition captures the current state of our students’ research — not as a closed result, but as a method that pushes the boundaries of imagination to create an informed thought of the future. The project accompanies the sociocultural development of generative AI and highlights the relevance of art and culture in the modern age.</p>
   `;
 
-  const bubbles = DIALOG_BUBBLES.map((b, i) => `
+  const bubbles = getPickedBubbles().map((b, i) => `
     <div class="ptc-bubble ptc-b${i + 1}">
       <div class="b-q">${esc(b.q)}</div>
       ${b.a.map(a => `<div class="b-a">${esc(a)}</div>`).join('')}
@@ -461,8 +476,13 @@ function renderProgramTextCard() {
       <button type="submit" aria-label="Senden">→</button>
     </form>`;
 
+  const closeBtnHTML = `<button class="ptc-bubble-close" id="ptc-bubble-close"
+    aria-label="${lang === 'de' ? 'Kommentare ausblenden' : 'Hide comments'}"
+    title="${lang === 'de' ? 'Kommentare ausblenden' : 'Hide comments'}">×</button>`;
+
   return `<article class="program-text-card">
     <div class="ptc-inner">
+      ${closeBtnHTML}
       <span class="ptc-label">${esc(label)}</span>
       <div class="ptc-heading">${esc(heading)}</div>
       <div class="ptc-body">${lang === 'de' ? bodyDE : bodyEN}</div>
@@ -553,12 +573,23 @@ function initBubbleReveal() {
     makeBubbleDraggable(bub);
   });
 
+  const closeBtn = document.getElementById('ptc-bubble-close');
+  if (closeBtn && !closeBtn.dataset.wired) {
+    closeBtn.dataset.wired = '1';
+    closeBtn.addEventListener('click', () => {
+      document.querySelectorAll('.ptc-bubble').forEach(b => b.classList.add('closed'));
+      closeBtn.classList.add('hidden');
+    });
+  }
+
   const runAllInOrder = async () => {
     for (const bub of bubbles) {
+      if (bub.classList.contains('closed')) continue;
       bub.classList.add('visible');
       await sleep(500);
       const answers = Array.from(bub.querySelectorAll('.b-a'));
       for (const a of answers) {
+        if (bub.classList.contains('closed')) break;
         const txt = a.dataset.text || '';
         const thinkMs = 900 + Math.random() * 700;
         await showThinking(a, thinkMs);
@@ -568,6 +599,8 @@ function initBubbleReveal() {
       }
       await sleep(500);
     }
+    // alle Bubbles fertig → Close-Button erscheint
+    if (closeBtn) closeBtn.classList.add('visible');
   };
 
   if (!('IntersectionObserver' in window)) {
