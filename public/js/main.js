@@ -174,6 +174,7 @@ function renderTeam() {
       <div class="person-name">${p.name}</div>
       <div class="person-role">${lang === 'de' ? p.role_de : p.role_en}</div>
       <div class="person-bio-short">${lang === 'de' ? p.bio_short_de : p.bio_short_en}</div>
+      <div class="person-more">${lang === 'de' ? 'Weiterlesen →' : 'Read more →'}</div>
     </div>
   `).join('');
 

@@ -893,6 +893,7 @@ body.light .ev-format.lecture   { color:#6b21a8; border-color:rgba(107,33,168,.2
   font-size: 12px; line-height: 1.6; color: var(--muted);
   display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;
 }
+.person-more { display: none; }
 
 /* Person modal */
 .person-modal-overlay {
@@ -1401,7 +1402,7 @@ body.light .opening-note { color: var(--orange); }
   .hero-stats { grid-template-columns: 1fr 1fr; }
   .stat-item:nth-child(odd):last-child { grid-column: span 2; }
   .hero-stage { min-height: 260px; }
-  .stage-video { object-position: center 78%; }
+  .stage-video { object-position: center 18%; }
 
   /* nav */
   .nav-logo { height: 24px; }
@@ -1450,7 +1451,22 @@ body.light .opening-note { color: var(--orange); }
 
   /* team */
   .team-grid { grid-template-columns: 1fr; }
-  .person-avatar { width: 64px; height: 64px; font-size: 18px; }
+  .person-card {
+    text-align: left;
+    align-items: flex-start;
+    padding: 18px 18px 16px;
+    gap: 6px;
+  }
+  .person-card .person-avatar { display: none; }
+  .person-card .person-bio-short { display: none; }
+  .person-card .person-name { font-size: 16px; }
+  .person-card .person-role { margin-bottom: 4px; }
+  .person-card .person-more {
+    display: inline-block;
+    margin-top: 8px;
+    color: var(--orange);
+    font-size: 12px; font-weight: 500;
+  }
 
   /* modal full screen */
   .person-modal-overlay { padding: 0; }
