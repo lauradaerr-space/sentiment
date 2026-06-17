@@ -607,19 +607,38 @@ async function playInlineComment(el) {
   await typewriteInto(aEl, a, 38);
 }
 
+function wireCommentsCloseBtn() {
+  const closeBtn = document.getElementById('ptc-bubble-close');
+  if (!closeBtn || closeBtn.dataset.wired) return closeBtn;
+  closeBtn.dataset.wired = '1';
+  closeBtn.addEventListener('click', () => {
+    document.querySelectorAll('.ptc-bubble').forEach(b => b.classList.add('closed'));
+    document.querySelectorAll('.inline-comment').forEach(c => c.classList.add('closed'));
+    closeBtn.classList.add('hidden');
+  });
+  return closeBtn;
+}
+
 function initMobileInlineReveal() {
   setupMobileInlineComments();
   const inlines = Array.from(document.querySelectorAll('.inline-comment'));
+  const closeBtn = wireCommentsCloseBtn();
   if (!inlines.length) return;
   if (!('IntersectionObserver' in window)) {
     inlines.forEach(el => playInlineComment(el));
+    if (closeBtn) closeBtn.classList.add('visible');
     return;
   }
+  let firstPlayed = false;
   const obs = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         obs.unobserve(entry.target);
         playInlineComment(entry.target);
+        if (!firstPlayed && closeBtn) {
+          firstPlayed = true;
+          setTimeout(() => closeBtn.classList.add('visible'), 900);
+        }
       }
     });
   }, { threshold: 0.5, rootMargin: '0px 0px -60px 0px' });
@@ -643,14 +662,7 @@ function initBubbleReveal() {
     makeBubbleDraggable(bub);
   });
 
-  const closeBtn = document.getElementById('ptc-bubble-close');
-  if (closeBtn && !closeBtn.dataset.wired) {
-    closeBtn.dataset.wired = '1';
-    closeBtn.addEventListener('click', () => {
-      document.querySelectorAll('.ptc-bubble').forEach(b => b.classList.add('closed'));
-      closeBtn.classList.add('hidden');
-    });
-  }
+  const closeBtn = wireCommentsCloseBtn();
 
   const runAllInOrder = async () => {
     for (const bub of bubbles) {
