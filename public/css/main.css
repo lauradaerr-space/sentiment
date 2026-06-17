@@ -420,8 +420,9 @@ body.light .sec-bar { background: rgba(0,0,0,.022); }
 
 .events-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-columns: repeat(2, 1fr);
   gap: 14px;
+  overflow: visible;
 }
 .ev-card {
   border: 1px solid var(--border);
@@ -431,6 +432,88 @@ body.light .sec-bar { background: rgba(0,0,0,.022); }
   padding: 20px;
   display: flex; flex-direction: column; gap: 14px;
   transition: border-color .18s, transform .2s var(--ease);
+}
+
+/* ── Programm-Text-Kachel mit schwebenden Dialog-Bubbles ── */
+.program-text-card {
+  grid-column: 1 / -1;
+  position: relative;
+  border: 1px solid var(--border);
+  background: linear-gradient(160deg, var(--panel-strong), var(--panel));
+  backdrop-filter: blur(12px);
+  border-radius: 18px;
+  padding: 64px 40px;
+  margin: 24px 0;
+  overflow: visible;
+}
+.program-text-card .ptc-inner {
+  position: relative;
+  max-width: 620px;
+  margin: 0 auto;
+  z-index: 2;
+}
+.program-text-card .ptc-label {
+  font-family: var(--mono); font-size: 10px; letter-spacing: .16em;
+  text-transform: uppercase; color: var(--orange);
+  margin-bottom: 14px; display: block;
+}
+.program-text-card .ptc-heading {
+  font-size: clamp(20px, 2.4vw, 26px);
+  font-weight: 600; line-height: 1.25;
+  margin-bottom: 22px;
+}
+.program-text-card .ptc-body p {
+  font-size: 14.5px; line-height: 1.65;
+  color: var(--text); margin: 0 0 14px;
+}
+.program-text-card .ptc-body p.muted {
+  color: var(--muted); font-size: 13px; font-style: italic;
+}
+
+.ptc-bubble {
+  position: absolute;
+  width: 230px;
+  background: var(--bg-soft);
+  border: 1px solid var(--border2);
+  border-radius: 14px;
+  padding: 12px 14px;
+  font-size: 12px; line-height: 1.5;
+  box-shadow: 0 8px 28px rgba(0,0,0,.18);
+  opacity: 0;
+  transition: opacity .8s ease, transform .8s var(--ease);
+  z-index: 3;
+  pointer-events: auto;
+}
+.ptc-bubble.visible { opacity: 1; }
+.ptc-bubble:hover { transform: scale(1.04) rotate(0deg) !important; z-index: 5; }
+.ptc-bubble .b-q { font-weight: 600; color: var(--text); margin-bottom: 6px; }
+.ptc-bubble .b-a { color: var(--muted); }
+.ptc-bubble .b-a + .b-a { margin-top: 5px; padding-top: 5px; border-top: 1px dashed var(--border); }
+
+/* fixed positions around the wide card (desktop) */
+.ptc-b1 { top: 24px;  left: 12px;  transform: translateY(20px) rotate(-3deg); }
+.ptc-b1.visible { transform: translateY(0) rotate(-3deg); }
+.ptc-b2 { top: 60px;  right: 12px; transform: translateY(20px) rotate(2.5deg); }
+.ptc-b2.visible { transform: translateY(0) rotate(2.5deg); }
+.ptc-b3 { top: 240px; left: 8px;   transform: translateY(20px) rotate(2deg); }
+.ptc-b3.visible { transform: translateY(0) rotate(2deg); }
+.ptc-b4 { top: 320px; right: 4px;  transform: translateY(20px) rotate(-2deg); width: 250px; }
+.ptc-b4.visible { transform: translateY(0) rotate(-2deg); }
+.ptc-b5 { bottom: 90px; left: 16px; transform: translateY(20px) rotate(-1.5deg); width: 250px; }
+.ptc-b5.visible { transform: translateY(0) rotate(-1.5deg); }
+.ptc-b6 { bottom: 24px; right: 14px; transform: translateY(20px) rotate(1.5deg); width: 260px; }
+.ptc-b6.visible { transform: translateY(0) rotate(1.5deg); }
+
+/* mobile / narrow: stack bubbles below text */
+@media (max-width: 900px) {
+  .program-text-card { padding: 40px 22px; }
+  .ptc-bubble {
+    position: static !important;
+    width: 100% !important;
+    transform: none !important;
+    margin-top: 12px;
+    opacity: 1;
+  }
 }
 .ev-card:hover { border-color: var(--border2); transform: translateY(-2px); }
 

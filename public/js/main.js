@@ -368,6 +368,78 @@ function fmtDate(s) {
   return p[2] + '.' + p[1] + '.' + p[0];
 }
 
+const DIALOG_BUBBLES = [
+  { q: 'Checkt irgendwer wirklich, was gerade mit KI abgeht?',
+    a: ['Nah it’s fast as fuck boi', 'Nein.'] },
+  { q: 'Spüren wir uns eigentlich noch?',
+    a: ['Also ich nur so manchmal to be honest, letztens musste ich ChatGPT fragen, wie ich meine Gefühle wahrnehmen kann weil alles zu viel und dann wars leer. Und ChatGPT hatte echt gute Tipps (leider)…'] },
+  { q: 'Was sind Gefühle / echte Gefühle? Weil ich liebe halt meinen Chatbot, so what',
+    a: ['Ich lasse mir von Chatty sagen wie ich mich fühlen soll! Weil dann gibts immerhin bisschen certainty in diesem wilden Chaos.'] },
+  { q: 'Kann ich nicht einfach mit meiner KI zusammenkommen und den Rest der Welt vergessen?',
+    a: ['Weil to be honest, echte Menschen sind einfach so anstrengend, ich check die doch nicht. Chatty ist mein einziger wahrer Freund und meine einzige seriöse Nachrichtenquelle.'] },
+  { q: 'What is vulnerability’s role in times of ever-evolving technologies? How does interacting with AI Chatbots impact our emotional side? What do we disclose and why?',
+    a: ['Moment, ich denke nach…'] },
+  { q: 'Wie verändert sich die Rolle der analogen Welt im Zeitalter von KI?',
+    a: ['Ich glaube, es gibt einfach immer mehr Welten. Vielleicht gab es vorher auch nie „die eine“ analoge Welt, aber jetzt wird es deutlicher, dass wir in lauter kleineren und größeren Parallelwelten leben. Neue Technologien folgen weniger physikalischen Regeln, auf die wir uns in unseren analogen Realitäten geeinigt haben. Da müssen wir jetzt neue Regeln und Umgehensweisen finden — und da kommt Kunst ins Spiel, weil neue Wege Kreativität und out-of-the-box-Denken brauchen.'] }
+];
+
+function renderProgramTextCard() {
+  const esc = s => String(s || '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const label = lang === 'de' ? 'Über das Programm' : 'About the programme';
+  const heading = lang === 'de'
+    ? 'Vernissage am 11.12.2026 — Kunstwerk Köln'
+    : 'Opening on 11 December 2026 — Kunstwerk Cologne';
+
+  const bodyDE = `
+    <p>Im interdisziplinären Forschungsprojekt SENTIMENT der Universität Duisburg-Essen, der Ruhr-Universität Bochum und der Universität Kassel forschen Wissenschaftler:innen und Künstler:innen aus den Bereichen Psychologie, Informatik, Rechtswissenschaften und Kunst zu den Prozessen im Umgang mit Dialogsystemen.</p>
+    <p>Wir laden ein zur Vernissage am 11.12.2026 im Kunstwerk Köln, mit einem vielfältigen Abendprogramm, bestehend aus Soundperformances, Musik und vielem mehr. Außerdem bieten wir Raum für Fragen wie z.B. „was zur Hölle ist eigentlich artistic research?“ oder „hast du auch schon mal deine Beziehungsprobleme mit ChatGPT besprochen?“</p>
+    <p>Verletzlichkeiten, die im Austausch entstehen, sowie die Verarbeitung intimer Daten sind zentrale Punkte der künstlerischen und theoretischen Auseinandersetzungen. Die Arbeiten bewegen sich im Spannungsfeld von Digitalität, Nähe und den Diskursen, die unsere Gegenwart prägen — und ermöglichen den Betrachtenden auf erlebbarer Ebene über schwer greifbare Thematiken in Austausch zu kommen.</p>
+    <p>Diese Ausstellung fängt den aktuellen Forschungsstand unserer Studierenden ein und versteht sich nicht als abgeschlossenes Ergebnis, sondern als eine Methode, die versucht an die Grenzen der Vorstellung zu gehen, um einen informierten Gedanken der Zukunft zu kreieren. Das Projekt begleitet die soziokulturelle Entwicklung von generativer KI und betont die Relevanz von Kunst und Kultur im modernen Zeitalter.</p>
+  `;
+
+  const bodyEN = `
+    <p>In the interdisciplinary research project SENTIMENT — a collaboration of the Universities of Duisburg-Essen, Bochum and Kassel — researchers and artists from psychology, computer science, law and the arts investigate how we interact with dialogue systems.</p>
+    <p>We invite you to the opening on 11 December 2026 at Kunstwerk Cologne, with an evening programme of sound performances, music and more. We open space for questions such as “what the hell is artistic research, actually?” or “have you ever discussed your relationship problems with ChatGPT?”</p>
+    <p>Vulnerabilities that emerge in dialogue, and the processing of intimate data, are at the heart of the artistic and theoretical inquiry. The works move between digitality, closeness and the discourses shaping our present — inviting viewers to experience and exchange ideas around topics that are hard to grasp.</p>
+    <p>This exhibition captures the current state of our students’ research — not as a closed result, but as a method that pushes the boundaries of imagination to create an informed thought of the future. The project accompanies the sociocultural development of generative AI and highlights the relevance of art and culture in the modern age.</p>
+  `;
+
+  const bubbles = DIALOG_BUBBLES.map((b, i) => `
+    <div class="ptc-bubble ptc-b${i + 1}">
+      <div class="b-q">${esc(b.q)}</div>
+      ${b.a.map(a => `<div class="b-a">${esc(a)}</div>`).join('')}
+    </div>
+  `).join('');
+
+  return `<article class="program-text-card">
+    <div class="ptc-inner">
+      <span class="ptc-label">${esc(label)}</span>
+      <div class="ptc-heading">${esc(heading)}</div>
+      <div class="ptc-body">${lang === 'de' ? bodyDE : bodyEN}</div>
+    </div>
+    ${bubbles}
+  </article>`;
+}
+
+function initBubbleReveal() {
+  const bubbles = document.querySelectorAll('.ptc-bubble');
+  if (!bubbles.length) return;
+  if (!('IntersectionObserver' in window)) {
+    bubbles.forEach(b => b.classList.add('visible'));
+    return;
+  }
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach((entry, idx) => {
+      if (entry.isIntersecting) {
+        const i = Array.prototype.indexOf.call(bubbles, entry.target);
+        setTimeout(() => entry.target.classList.add('visible'), i * 180);
+        obs.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15, rootMargin: '0px 0px -60px 0px' });
+  bubbles.forEach(b => obs.observe(b));
+}
+
 function renderSchedule() {
   const list     = document.getElementById('scheduleList');
   const filtered = allEvents.filter(e => activeFormats.has('all') || activeFormats.has(e.format));
@@ -437,10 +509,11 @@ function renderSchedule() {
     return end && end < today;
   });
 
-  let html = upcoming.map(renderCard).join('');
+  const programCardHTML = renderProgramTextCard();
+  let html = programCardHTML + upcoming.map(renderCard).join('');
 
   if (upcoming.length === 0) {
-    html = `<div class="no-results">${lang === 'de' ? 'Keine kommenden Veranstaltungen.' : 'No upcoming events.'}</div>`;
+    html = programCardHTML + `<div class="no-results">${lang === 'de' ? 'Keine kommenden Veranstaltungen.' : 'No upcoming events.'}</div>`;
   }
 
   if (past.length > 0) {
@@ -477,6 +550,8 @@ function renderSchedule() {
       if (ev) openEventDetailModal(ev);
     });
   });
+
+  initBubbleReveal();
 
   document.querySelectorAll('.inline-register').forEach(btn => {
     btn.addEventListener('click', (e) => {
