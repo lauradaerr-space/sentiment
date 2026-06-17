@@ -661,23 +661,43 @@ function initMobileInlineReveal() {
   const inlines = Array.from(document.querySelectorAll('.inline-comment'));
   const closeBtn = wireCommentsCloseBtn();
   if (!inlines.length) return;
+
+  const queue = [];
+  let running = false;
+  const processQueue = async () => {
+    if (running) return;
+    running = true;
+    while (queue.length) {
+      const el = queue.shift();
+      if (!el.dataset.played) {
+        await playInlineComment(el);
+        await sleep(400);
+      }
+    }
+    running = false;
+  };
+
   if (!('IntersectionObserver' in window)) {
-    inlines.forEach(el => playInlineComment(el));
+    inlines.forEach(el => queue.push(el));
+    processQueue();
     if (closeBtn) closeBtn.classList.add('visible');
     return;
   }
-  let firstPlayed = false;
+
+  let firstQueued = false;
   const obs = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
+    entries
+      .filter(entry => entry.isIntersecting)
+      .sort((a, b) => inlines.indexOf(a.target) - inlines.indexOf(b.target))
+      .forEach(entry => {
         obs.unobserve(entry.target);
-        playInlineComment(entry.target);
-        if (!firstPlayed && closeBtn) {
-          firstPlayed = true;
+        queue.push(entry.target);
+        if (!firstQueued && closeBtn) {
+          firstQueued = true;
           setTimeout(() => closeBtn.classList.add('visible'), 900);
         }
-      }
-    });
+      });
+    processQueue();
   }, { threshold: 0.5, rootMargin: '0px 0px -60px 0px' });
   inlines.forEach(el => obs.observe(el));
 }
