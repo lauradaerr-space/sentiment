@@ -458,7 +458,7 @@ function renderProgramTextCard() {
     </div>
   `).join('');
 
-  const answered = allQuestions.filter(q => q.published && q.answer).slice(-6);
+  const answered = allQuestions.filter(q => q.answer && q.answer.trim()).slice(-6);
   const communityHTML = answered.length === 0 ? '' : `
     <div class="ptc-community">
       <div class="ptc-community-title">${lang === 'de' ? 'Aus der Community' : 'From the community'}</div>
@@ -522,7 +522,6 @@ function renderProgramTextCard() {
       <span class="ptc-label">${esc(label)}</span>
       <div class="ptc-heading">${esc(heading)}</div>
       <div class="ptc-body">${lang === 'de' ? bodyDE : bodyEN}</div>
-      ${scheduleListHTML}
       ${communityHTML}
       ${askFormHTML}
       ${bubbles}

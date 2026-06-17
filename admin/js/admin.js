@@ -421,15 +421,15 @@
       var card = document.createElement('div');
       card.className = 'q-card' + (q.published ? ' published' : '');
       var dateStr = q.createdAt ? new Date(q.createdAt).toLocaleString('de-DE', { dateStyle: 'medium', timeStyle: 'short' }) : '';
+      var hasAnswer = !!(q.answer && q.answer.trim());
       card.innerHTML =
         '<div class="q-meta">' +
           '<span class="q-date">' + escapeHtml(dateStr) + '</span>' +
-          (q.published ? '<span class="q-badge published">veröffentlicht</span>' : '<span class="q-badge open">offen</span>') +
+          (hasAnswer ? '<span class="q-badge published">veröffentlicht</span>' : '<span class="q-badge open">offen</span>') +
         '</div>' +
         '<div class="q-text">' + escapeHtml(q.text) + '</div>' +
-        '<textarea class="q-answer" placeholder="Antwort eingeben…" rows="3">' + escapeHtml(q.answer || '') + '</textarea>' +
+        '<textarea class="q-answer" placeholder="Antwort eingeben — sobald gespeichert ist sie automatisch öffentlich. Leerlassen zum Verstecken." rows="3">' + escapeHtml(q.answer || '') + '</textarea>' +
         '<div class="q-actions">' +
-          '<label class="q-publish-lbl"><input type="checkbox" class="q-publish"' + (q.published ? ' checked' : '') + '> öffentlich anzeigen</label>' +
           '<button class="btn-save q-save">Speichern</button>' +
           '<button class="btn-delete q-delete">Löschen</button>' +
         '</div>';
@@ -438,11 +438,11 @@
         var src = data.questions.find(function (x) { return x.id === q.id; });
         if (!src) return;
         src.answer = card.querySelector('.q-answer').value.trim();
-        src.published = card.querySelector('.q-publish').checked;
+        src.published = src.answer.length > 0;
         if (src.published && !src.answeredAt) src.answeredAt = new Date().toISOString();
         saveData();
         renderQuestions();
-        showToast('Antwort gespeichert');
+        showToast(src.published ? 'Antwort veröffentlicht' : 'Antwort gespeichert');
       });
       card.querySelector('.q-delete').addEventListener('click', function () {
         if (!confirm('Frage wirklich löschen?')) return;

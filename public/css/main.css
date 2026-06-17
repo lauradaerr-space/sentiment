@@ -420,9 +420,9 @@ body.light .sec-bar { background: rgba(0,0,0,.022); }
 
 .events-grid {
   display: grid;
-  grid-template-columns: minmax(280px, 0.85fr) minmax(380px, 1.25fr);
-  row-gap: 12px;
-  column-gap: 22px;
+  grid-template-columns: 1fr 1fr;
+  row-gap: 8px;
+  column-gap: 16px;
   align-items: start;
   overflow: visible;
 }
