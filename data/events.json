@@ -2010,6 +2010,13 @@
       "answer": "okay",
       "published": false,
       "createdAt": "2026-06-17T12:23:25.202Z"
+    },
+    {
+      "id": "q-1781699768464-cokcl",
+      "text": "was ist dein Problem?",
+      "answer": "",
+      "published": false,
+      "createdAt": "2026-06-17T12:36:08.464Z"
     }
   ],
   "seeded": true
