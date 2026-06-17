@@ -8,6 +8,7 @@ let allEvents     = [];
 let activeFormats = new Set(['all']);
 let lang          = 'de';
 let archiveOpen   = false;
+let allQuestions  = [];
 
 /* ══ ANIMATED CANVAS BACKGROUND ══ */
 (function () {
@@ -292,6 +293,34 @@ document.addEventListener('click', e => {
 /* ══ EVENTS: laden & rendern ══ */
 
 let allInfoCards = [];
+
+document.addEventListener('submit', async function (e) {
+  if (!(e.target && e.target.id === 'ptc-ask')) return;
+  e.preventDefault();
+  const form = e.target;
+  const input = form.querySelector('input[name="question"]');
+  const btn = form.querySelector('button');
+  const text = (input.value || '').trim();
+  if (!text) return;
+  btn.disabled = true;
+  input.disabled = true;
+  try {
+    const res = await fetch('api/question', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ question: text })
+    });
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+    form.outerHTML = `<div class="ptc-thanks">${lang === 'de'
+      ? 'Danke — wir lesen alles und antworten so bald wie möglich. Deine Antwort erscheint dann hier.'
+      : 'Thanks — we read everything and answer as soon as we can. Your answer will appear here.'}</div>`;
+  } catch (err) {
+    btn.disabled = false;
+    input.disabled = false;
+    alert(lang === 'de' ? 'Konnte nicht senden. Versuch es nochmal.' : 'Could not send. Please try again.');
+  }
+});
+
 async function loadEvents() {
   try {
     const res  = await fetch('api/events');
@@ -300,6 +329,7 @@ async function loadEvents() {
     const INTERNAL = ['pub', 'pr', 'other'];
     allEvents = list.filter(e => e.published && INTERNAL.indexOf(e.category) === -1);
     allInfoCards = (data && data.infoCards) || [];
+    allQuestions = Array.isArray(data && data.questions) ? data.questions : [];
     if (data && Array.isArray(data.team) && data.team.length) {
       TEAM = data.team;
       renderTeam();
@@ -307,6 +337,7 @@ async function loadEvents() {
   } catch (e) {
     allEvents = [];
     allInfoCards = [];
+    allQuestions = [];
   }
   renderSchedule();
   renderSelect();
@@ -411,11 +442,32 @@ function renderProgramTextCard() {
     </div>
   `).join('');
 
+  const answered = allQuestions.filter(q => q.published && q.answer).slice(-6);
+  const communityHTML = answered.length === 0 ? '' : `
+    <div class="ptc-community">
+      <div class="ptc-community-title">${lang === 'de' ? 'Aus der Community' : 'From the community'}</div>
+      ${answered.map(q => `
+        <div class="community-msg">
+          <div class="cm-q">${esc(q.text)}</div>
+          <div class="cm-a">${esc(q.answer)}</div>
+        </div>
+      `).join('')}
+    </div>`;
+
+  const askFormHTML = `
+    <form class="ptc-ask" id="ptc-ask">
+      <input type="text" name="question" maxlength="500" required
+             placeholder="${lang === 'de' ? 'Stell uns eine Frage…' : 'Ask us a question…'}">
+      <button type="submit" aria-label="Senden">→</button>
+    </form>`;
+
   return `<article class="program-text-card">
     <div class="ptc-inner">
       <span class="ptc-label">${esc(label)}</span>
       <div class="ptc-heading">${esc(heading)}</div>
       <div class="ptc-body">${lang === 'de' ? bodyDE : bodyEN}</div>
+      ${communityHTML}
+      ${askFormHTML}
       ${bubbles}
     </div>
   </article>`;
@@ -452,6 +504,7 @@ async function showThinking(el, duration) {
   el.innerHTML = '';
 }
 
+let bubbleZIndex = 5;
 function makeBubbleDraggable(bub) {
   let startX = 0, startY = 0, offsetX = 0, offsetY = 0, dragging = false;
   const onDown = (e) => {
@@ -460,6 +513,8 @@ function makeBubbleDraggable(bub) {
     startY = point.clientY;
     dragging = true;
     bub.classList.add('dragging');
+    bubbleZIndex += 1;
+    bub.style.zIndex = bubbleZIndex;
     e.preventDefault();
   };
   const onMove = (e) => {

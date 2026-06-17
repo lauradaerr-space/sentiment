@@ -6,7 +6,7 @@
   var API = '../api/events';
   var INTERNAL_CATS = ['pub', 'pr', 'other'];
 
-  var data = { events: [], tasks: [], infoCards: [], team: [] };
+  var data = { events: [], tasks: [], infoCards: [], team: [], questions: [] };
   var currentMonth = new Date();
   var editingEventId = null;
   var editingTaskId = null;
@@ -183,7 +183,8 @@
           events: (d && d.events) || [],
           tasks: (d && d.tasks) || [],
           infoCards: (d && d.infoCards) || [],
-          team: (d && d.team) || []
+          team: (d && d.team) || [],
+          questions: (d && d.questions) || []
         };
         dataSeeded = !!(d && d.seeded);
         console.log('loadData() got events:', data.events.length, 'tasks:', data.tasks.length, 'infoCards:', data.infoCards.length, 'seeded:', dataSeeded);
@@ -229,6 +230,7 @@
       tasks: data.tasks || [],
       infoCards: data.infoCards || [],
       team: data.team || [],
+      questions: data.questions || [],
       seeded: dataSeeded
     };
     console.log('saveData() called — events:', payload.events.length, 'tasks:', payload.tasks.length, 'infoCards:', payload.infoCards.length, 'seeded:', payload.seeded);
@@ -391,6 +393,65 @@
     renderTasks();
     renderInfoCards();
     renderTeam();
+    renderQuestions();
+  }
+
+  /* ────── COMMUNITY-FRAGEN ────── */
+  function renderQuestions() {
+    var container = document.getElementById('fragen-list');
+    if (!container) return;
+    container.innerHTML = '';
+
+    var qs = (data.questions || []).slice().reverse();
+    var countEl = document.getElementById('q-count');
+    if (countEl) {
+      var open = qs.filter(function (q) { return !q.published; }).length;
+      countEl.textContent = qs.length + ' insgesamt · ' + open + ' offen';
+    }
+
+    if (qs.length === 0) {
+      var empty = document.createElement('div');
+      empty.className = 'no-tasks';
+      empty.textContent = 'Noch keine Fragen aus der Community.';
+      container.appendChild(empty);
+      return;
+    }
+
+    qs.forEach(function (q) {
+      var card = document.createElement('div');
+      card.className = 'q-card' + (q.published ? ' published' : '');
+      var dateStr = q.createdAt ? new Date(q.createdAt).toLocaleString('de-DE', { dateStyle: 'medium', timeStyle: 'short' }) : '';
+      card.innerHTML =
+        '<div class="q-meta">' +
+          '<span class="q-date">' + escapeHtml(dateStr) + '</span>' +
+          (q.published ? '<span class="q-badge published">veröffentlicht</span>' : '<span class="q-badge open">offen</span>') +
+        '</div>' +
+        '<div class="q-text">' + escapeHtml(q.text) + '</div>' +
+        '<textarea class="q-answer" placeholder="Antwort eingeben…" rows="3">' + escapeHtml(q.answer || '') + '</textarea>' +
+        '<div class="q-actions">' +
+          '<label class="q-publish-lbl"><input type="checkbox" class="q-publish"' + (q.published ? ' checked' : '') + '> öffentlich anzeigen</label>' +
+          '<button class="btn-save q-save">Speichern</button>' +
+          '<button class="btn-delete q-delete">Löschen</button>' +
+        '</div>';
+
+      card.querySelector('.q-save').addEventListener('click', function () {
+        var src = data.questions.find(function (x) { return x.id === q.id; });
+        if (!src) return;
+        src.answer = card.querySelector('.q-answer').value.trim();
+        src.published = card.querySelector('.q-publish').checked;
+        if (src.published && !src.answeredAt) src.answeredAt = new Date().toISOString();
+        saveData();
+        renderQuestions();
+        showToast('Antwort gespeichert');
+      });
+      card.querySelector('.q-delete').addEventListener('click', function () {
+        if (!confirm('Frage wirklich löschen?')) return;
+        data.questions = data.questions.filter(function (x) { return x.id !== q.id; });
+        saveData();
+        renderQuestions();
+      });
+      container.appendChild(card);
+    });
   }
 
   /* ────── INFO CARDS (CRUD) ────── */

@@ -752,6 +752,44 @@ button, input, select, textarea { font: inherit; }
   transition: background .14s, border-color .14s;
 }
 .info-card-row:hover { background: var(--panel-mid); border-color: var(--border2); }
+.q-card {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 12px;
+}
+.q-card.published { border-color: rgba(102,255,170,.35); background: rgba(102,255,170,.04); }
+.q-card .q-meta {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-bottom: 8px; font-family: var(--mono); font-size: 10px;
+  color: var(--muted2); letter-spacing: .08em;
+}
+.q-card .q-badge {
+  font-family: var(--mono); font-size: 9px; letter-spacing: .14em;
+  text-transform: uppercase; padding: 3px 8px; border-radius: 999px;
+}
+.q-card .q-badge.open { background: rgba(229,92,44,.15); color: #e55c2c; }
+.q-card .q-badge.published { background: rgba(102,255,170,.2); color: #2da566; }
+.q-card .q-text {
+  font-size: 14px; line-height: 1.5; margin-bottom: 12px; color: var(--text);
+}
+.q-card .q-answer {
+  width: 100%; box-sizing: border-box;
+  background: var(--bg-soft); border: 1px solid var(--border2);
+  border-radius: 8px; padding: 10px 12px;
+  color: var(--text); font-family: inherit; font-size: 13px; line-height: 1.5;
+  margin-bottom: 12px; resize: vertical;
+}
+.q-card .q-actions {
+  display: flex; gap: 10px; align-items: center; flex-wrap: wrap;
+}
+.q-card .q-actions .btn-save { margin-left: auto; }
+.q-card .q-publish-lbl {
+  display: inline-flex; gap: 6px; align-items: center;
+  font-size: 12px; color: var(--muted); cursor: pointer;
+}
+
 .info-card-row .ic-thumb {
   width: 56px; height: 56px; border-radius: 8px;
   background: var(--panel-strong);
