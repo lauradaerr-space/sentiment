@@ -421,22 +421,64 @@ function renderProgramTextCard() {
   </article>`;
 }
 
+function typewriteInto(el, text, speed) {
+  return new Promise(resolve => {
+    el.textContent = '';
+    el.classList.add('active');
+    let i = 0;
+    const tick = () => {
+      if (i >= text.length) {
+        el.classList.remove('active');
+        resolve();
+        return;
+      }
+      el.textContent += text.charAt(i++);
+      const jitter = Math.random() * 24 - 8;
+      setTimeout(tick, Math.max(8, speed + jitter));
+    };
+    tick();
+  });
+}
+
 function initBubbleReveal() {
   const bubbles = document.querySelectorAll('.ptc-bubble');
   if (!bubbles.length) return;
+
+  // stash answer text and blank the visible content
+  bubbles.forEach(bub => {
+    bub.querySelectorAll('.b-a').forEach(a => {
+      if (!a.dataset.text) a.dataset.text = a.textContent;
+      a.textContent = '';
+    });
+  });
+
   if (!('IntersectionObserver' in window)) {
-    bubbles.forEach(b => b.classList.add('visible'));
+    bubbles.forEach(b => {
+      b.classList.add('visible');
+      b.querySelectorAll('.b-a').forEach(a => { a.textContent = a.dataset.text; });
+    });
     return;
   }
+
   const obs = new IntersectionObserver((entries) => {
-    entries.forEach((entry, idx) => {
-      if (entry.isIntersecting) {
-        const i = Array.prototype.indexOf.call(bubbles, entry.target);
-        setTimeout(() => entry.target.classList.add('visible'), i * 180);
-        obs.unobserve(entry.target);
-      }
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      const bub = entry.target;
+      obs.unobserve(bub);
+      bub.classList.add('visible');
+      bub.classList.add('typing');
+      const answers = Array.from(bub.querySelectorAll('.b-a'));
+      let chain = new Promise(r => setTimeout(r, 250));
+      answers.forEach(a => {
+        const txt = a.dataset.text || '';
+        const speed = txt.length > 220 ? 14 : 22;
+        chain = chain.then(() => typewriteInto(a, txt, speed))
+                     .then(() => new Promise(r => setTimeout(r, 220)));
+      });
+      chain.then(() => bub.classList.remove('typing'));
     });
-  }, { threshold: 0.15, rootMargin: '0px 0px -60px 0px' });
+  }, { threshold: 0.25, rootMargin: '0px 0px -40px 0px' });
+
   bubbles.forEach(b => obs.observe(b));
 }
 
