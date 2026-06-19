@@ -170,6 +170,32 @@
       "program": [],
       "id": "evt-1781873813243",
       "published": false
+    },
+    {
+      "title": "Designed to Be Loved, Built to Collect: An Ethics–Privacy–Psychology Dialogue on Intimate AI",
+      "titleDE": "",
+      "dateFrom": "2027-01-21",
+      "dateTo": "2026-01-21",
+      "time": "19:00",
+      "timeEnd": "21:00",
+      "format": "talk",
+      "category": "koeln",
+      "location": "",
+      "language": "EN",
+      "capacity": "",
+      "who": "",
+      "status": "Bestätigt",
+      "descEN": "The speakers\nRepresenting the SENTIMENT project:\nDr. Jessica Szczuka (Psychology, University of Duisburg-Essen) researches how people form emotional and intimate connections with AI and other technologies, and represents the project's psychological perspective.\nProf. Dr. Veelasha Moonsamy (Computer Science / Privacy, Ruhr University Bochum) researches user data privacy, privacy engineering and compliance, and applications of machine learning for security and privacy, and represents the project's computer science perspective.\nInvited guest speakers:\nRongjun Ma (Privacy / Human-AI Interaction, Aalto University) studies privacy, boundaries, and personal agency in human-AI relationships, including intimate and romantic ones, asking what control people retain over what they share.\nProf. Dr. Eva Weber-Guskar (Ethics, Ruhr University Bochum) works on the ethics of emotions and artificial intelligence, examining the moral questions raised when machines enter our emotional and relational lives.",
+      "descDE": "",
+      "image": "",
+      "program": [
+        {
+          "time": "19:00",
+          "titleEN": "Designed to Be Loved, Built to Collect: An Ethics–Privacy–Psychology Dialogue on Intimate AI"
+        }
+      ],
+      "id": "evt-1781873881477",
+      "published": false
     }
   ],
   "tasks": [
