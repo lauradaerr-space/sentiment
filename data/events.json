@@ -7,41 +7,24 @@
       "dateTo": "2026-12-11",
       "time": "18:00",
       "timeEnd": "",
-      "format": "exhibition",
+      "format": "other",
       "category": "koeln",
       "location": "Kunstwerk Köln",
       "language": "DE/EN",
       "capacity": 400,
       "who": "Laura + Joel",
       "status": "Bestätigt",
-      "descEN": "We are pleased to invite you to the opening reception of the final exhibition of the research project SENTIMENT on December 11, 2026, at 6:00 PM at Kunstwerk Köln.\n\nThrough films, installations, textile works, performances, sound pieces, and other media-based formats, participating artists offer audiences an experiential entry point for engaging with complex and often intangible topics. Their artistic research explores vulnerability, intimacy, and the handling of personal data. The works inhabit the intersection of digitality, human connection, and the discourses that shape our contemporary moment.",
-      "descDE": "Wir laden ein zur Vernissage der abschließenden Ausstellung des Forschungsprojekts SENTIMENT am 11.12.2026 um 18:00 Uhr im Kunstwerk Köln.\n\nMit Filmen, Installationen, Textilarbeiten, Performances, Soundpieces und anderen medialen Umsetzungen bieten Kunstschaffende Betrachtenden eine erlebbare Ebene, über schwer greifbare Thematiken in Austausch zu kommen. Ihre künstlerische Forschung thematisiert Verletzlichkeit, Intimität und den Umgang mit privaten Daten. Die Arbeiten bewegen sich im Spannungsfeld von Digitalität, Nähe und den Diskursen, die unsere Gegenwart prägen.",
+      "descEN": "",
+      "descDE": "",
       "id": "evt-1775824421996",
       "published": true,
       "program": [
         {
           "time": "18:00",
-          "titleDE": "Eroeffnung",
-          "titleEN": "Opening",
-          "descDE": "Die Eröffnung wird durch eine Begrüßung und ein gemeinsames Grußwort der Forschenden des Projekts SENTIMENT eingeleitet. Im Anschluss laden wir zu Austausch und Begegnung bei einem Empfang mit Getränken und kleinen Speisen ein.",
-          "descEN": "The opening will begin with a welcome and a joint address by the researchers of the SENTIMENT project. This will be followed by an opportunity for exchange and encounter at a reception with food and drinks."
-        },
-        {
-          "time": "19:30",
-          "titleDE": "Performance",
-          "titleEN": "Performance",
-          "descDE": "Die Performance findet im Ausstellungsraum als visuelle und audiovisuelle Intervention statt. Sie entfaltet sich in direkter Auseinandersetzung mit den installierten Arbeiten und dem räumlichen Kontext.",
-          "descEN": "The performance will take place within the exhibition space as a visual and audiovisual intervention. It unfolds directly in relation to the installed works and the surrounding spatial context."
-        },
-        {
-          "time": "20:00",
-          "titleDE": "Gathering",
-          "titleEN": "Gathering",
-          "descDE": "Ein gemeinsames Gathering mit einem audiovisuellen Intermezzo zwischen Radiokunst und performativem Erzählen eröffnet einen Rahmen für kollektives Erleben und lädt zur gemeinsamen Begegnung und zum Austausch ein.",
-          "descEN": "A shared gathering with an audiovisual intermezzo between radio art and performative storytelling opens a framework for collective experience and invites encounter and exchange."
+          "titleDE": "Eröffnung",
+          "titleEN": "Opening"
         }
-      ],
-      "image": ""
+      ]
     },
     {
       "title": "Finissage",
@@ -57,12 +40,18 @@
       "capacity": 400,
       "who": "Laura + Joel",
       "status": "Bestätigt",
-      "descEN": "tba",
-      "descDE": "tba",
+      "descEN": "",
+      "descDE": "Im interdisziplinären Forschungsprojekt SENTIMENT der Universität Duisburg-Essen, der Ruhr-Universität Bochum und der Universität Kassel forschen Wissenschaftler:innen und Künstler:innen aus den Bereichen Psychologie, Informatik, Rechtswissenschaften und Kunst zu den Prozessen im Umgang mit Dialogsystemen. \nWir laden ein zur Vernissage am 11.12.2026 im Kunstwerk Köln, mit einem vielfältigen Abendprogramm, bestehend aus Soundperformances, Musik uvm. Außerdem bieten wir Raum für Fragen wie zB „was zur Hölle ist eigentlich artistic reserach?“ oder „hast du auch schonmal deine Beziehungsprobleme mit ChatGPT besprochen?\". ",
       "id": "evt-1775824479895",
       "published": true,
       "image": "",
-      "program": []
+      "program": [
+        {
+          "time": "20:00",
+          "titleDE": "Performance Angelika Waniek",
+          "titleEN": "Performance Angelika Waniek"
+        }
+      ]
     },
     {
       "title": "CPDP - Culture Club",
@@ -138,32 +127,6 @@
       "descEN": "",
       "descDE": "",
       "id": "evt-1775849166451",
-      "published": true
-    },
-    {
-      "title": "Engineered for Intimacy: An Ethics–Privacy–Psychology Dialogue on Intimate AI",
-      "titleDE": "",
-      "dateFrom": "2027-01-21",
-      "dateTo": "2027-01-21",
-      "time": "19:00",
-      "timeEnd": "21:00",
-      "format": "talk",
-      "category": "koeln",
-      "location": "",
-      "language": "EN",
-      "capacity": "",
-      "who": "",
-      "status": "Offen",
-      "descEN": "What happens when we open up to a machine? As AI-based dialogue systems become confidants, companions, and even romantic partners, they raise entangled questions across disciplines: Why do we form emotional bonds with chatbots? What happens to the intimate data we share with them? And what do designers, companies, and society owe the people who trust them?\n\nThis public panel brings three perspectives into conversation — psychology, privacy and security research, and ethics — to explore intimate communication between humans and AI. Set within the SENTIMENT exhibition, where scientific research meets artistic practice, the discussion situates these questions in a space designed to make them tangible, debatable, and shared.\n\nOver 90 minutes, our speakers will trade perspectives and take questions from the audience, followed by an informal gathering to continue the conversation directly with the panelists. Free and open to all.\n\nThe speakers\n\nRepresenting the SENTIMENT project:\n\nDr. Jessica Szczuka (Psychology, University of Duisburg-Essen) researches how people form emotional and intimate connections with AI and other technologies, and represents the project's psychological perspective.\n\nProf. Dr. Veelasha Moonsamy (Computer Science / Privacy, Ruhr University Bochum) researches user data privacy, privacy engineering and compliance, and applications of machine learning for security and privacy, and represents the project's computer science perspective.\n\nInvited guest speakers:\n\nRongjun Ma (Privacy / Human-AI Interaction, Aalto University) studies privacy, boundaries, and personal agency in human-AI relationships, including intimate and romantic ones, asking what control people retain over what they share.\n\nProf. Dr. Eva Weber-Guskar (Ethics, Ruhr University Bochum) works on the ethics of emotions and artificial intelligence, examining the moral questions raised when machines enter our emotional and relational lives.",
-      "descDE": "",
-      "image": "",
-      "program": [
-        {
-          "time": "19:00",
-          "titleEN": "Engineered for Intimacy: An Ethics–Privacy–Psychology Dialogue on Intimate AI"
-        }
-      ],
-      "id": "evt-1781873706225",
       "published": true
     }
   ],
@@ -1906,24 +1869,21 @@
       "id": "card-about",
       "label_de": "Forschungs- und Kunstprojekt",
       "label_en": "Research & Art Project",
-      "title_de": "Intime Kommunikation mit Chatbots ” zwischen Nähe, Vertrauen und Verantwortung",
+      "title_de": "Intime Kommunikation mit Chatbots — zwischen Nähe, Vertrauen und Verantwortung",
       "title_en": "Intimate Communication with Chatbots — between Closeness, Trust, and Responsibility",
       "body_de": "Was passiert, wenn Menschen beginnen, Maschinen zu vertrauen — oder sich ihnen anzuvertrauen? In einer Zeit, in der KI immer öfter unser vertrautester Gesprächspartner wird, werden diese Begegnungen zur gesellschaftlichen Dringlichkeit.\n\nDas vom BMFTR geförderte Projekt SENTIMENT untersucht intime Kommunikation mit KI-basierten Chatbots an der Schnittstelle von Psychologie, Informatik, Rechtswissenschaft und künstlerischer Forschung. Installative, performative und diskursive Formate machen zentrale Fragen um dieses Thema erfahrbar.\n\nSENTIMENT navigiert die Grenzen zwischen Verbindung und Berechnung: Warum vertrauen sich Menschen KI an und wie kann Intimität gestaltet werden, ohne Autonomie zu gefährden?",
       "body_en": "What happens when people begin to trust machines — or confide in them? At a time when AI is increasingly becoming our most trusted conversation partner, these encounters have become a matter of urgent social concern.\n\nFunded by the BMFTR, SENTIMENT examines intimate communication with AI-based chatbots at the intersection of psychology, computer science, law, and artistic research. Installation, performance, and discursive formats make the central questions around this topic tangible.\n\nSENTIMENT navigates the boundaries between connection and calculus: asking not only why people confide in AI but how intimacy can be designed without compromising autonomy.",
-      "image": "public/img/uploads/1782110258988-sentiment_hero_image_1_4d0aab6487.jpeg",
-      "items": [],
-      "images": [
-        "public/img/uploads/1782110258988-sentiment_hero_image_1_4d0aab6487.jpeg"
-      ]
+      "image": "",
+      "items": []
     },
     {
       "id": "card-cpdp",
-      "label_de": "CPDP 2026  BRÜSSEL",
-      "label_en": "CPDP 2026 Brussels",
+      "label_de": "CPDP 2026 · Brüssel",
+      "label_en": "CPDP 2026 · Brussels",
       "title_de": "SENTIMENT bei den Computers, Privacy & Data Protection 2026",
       "title_en": "SENTIMENT at Computers, Privacy & Data Protection 2026",
-      "body_de": "https://www.cpdpconferences.org/panels/intimacy-by-design-governing-human-ai-relationships\n\nhttps://www.cpdpconferences.org/culture-club/intimate-unknowns-artistic-encounters-with-human-ai-relationships",
-      "body_en": "https://www.cpdpconferences.org/panels/intimacy-by-design-governing-human-ai-relationships\n\nhttps://www.cpdpconferences.org/culture-club/intimate-unknowns-artistic-encounters-with-human-ai-relationships",
+      "body_de": "",
+      "body_en": "",
       "image": "public\\img\\A7_06932.JPG",
       "items": [
         {
@@ -1942,12 +1902,6 @@
           "de": "Pop-up-Ausstellung SENTIMENT im CPDP-Konferenzgebäude",
           "en": "Pop-up exhibition SENTIMENT in the CPDP conference building"
         }
-      ],
-      "images": [
-        "public\\img\\A7_06932.JPG",
-        "public/img/uploads/1782109918124-a7_07544_lightroom.jpg",
-        "public/img/uploads/1782109965918-a7_07543_lightroom-12.jpg",
-        "public/img/uploads/1782109997058-a7_07543_lightroom-7.jpg"
       ]
     }
   ],
@@ -2055,15 +2009,35 @@
       "bio_short_de": "PD Dr. Geminn ist Privatdozent an der Universität Kassel und Berater für Ministerien und Organisationen, mit Forschungsschwerpunkten in Grundrechten, Datenschutz und Technologierecht.",
       "bio_long_en": "PD Dr. Christian Geminn is a private lecturer for Public Law and Law of the Digital Society at the University of Kassel. He is active as a consultant for ministries, non-profit organisations, and companies, and is a principal investigator in several third-party funded research projects. His research focuses on fundamental rights, comparative law, data protection, governance, and technology law.",
       "bio_long_de": "PD Dr. Christian Geminn ist Privatdozent für Öffentliches Recht und Recht der digitalen Gesellschaft an der Universität Kassel. Er ist als Berater für Ministerien, Non-Profit-Organisationen und Unternehmen tätig und Principal Investigator in mehreren drittmittelgeförderten Forschungsprojekten. Seine Forschungsschwerpunkte sind Grundrechte, Rechtsvergleichung, Datenschutz, Governance und Technologierecht."
+    },
+    {
+      "name": "Zeno Gries",
+      "initials": "ZG",
+      "type": "artist",
+      "role_de": "",
+      "role_en": "",
+      "image": "",
+      "bio_short_de": "Zeno Gries verfolgt einen offenen, kollaborativen Ansatz in seiner künstlerischen Arbeit. Aktuell untersucht er die Parallelen zwischen Technokapitalismus und magischen Narrativen, um die Ideologien hinter den digitalen Technologien offenzulegen.\n\nSchon vor seiner künstlerischen Ausbildung lernte er programmieren und sieht sich heute in dem Grenzbereich zwischen künstlerischer und technologischer Praxis positioniert. Sein Ansatz führt zu regelmäßiger Zusammenarbeit mit Wissenschaftler*innen, Künstler*innen verschiedenster Disziplinen und nicht-menschlichen Akteur*innen. Er arbeitet vor allem mit Film, Video und Software.\n\nZu den jüngsten Stipendien und Förderungen zählen das Stipendium für Filmentwicklung des Kuratoriums junger deutscher Film, ein Aufenthalt bei UmArts in Umeå, Schweden, sowie ein Stipendium als Styria-Artist-in-Residence in Graz, Österreich.",
+      "bio_short_en": "Zeno Gries has an open-ended and collaborative approach to artistic work. Their current practice explores the equivalences between techno-capitalism and magical narratives in order to bring the ideologies behind digital technologies to light.\n\nHaving learned to code even before their artistic education, they now see themselves as a citizen of the borderlands between artistic and technological practice. Their approach often leads them to collaborate with scholars, artists from various disciplines, and non-humans. They primarily work with film, video, and software.\n\nRecent fellowships and grants include the talent film development scholarship by the Kuratorium junger deutscher Film, a residency at UmArts, Umeå, Sweden, and a scholarship as Styria-Artist-in-Residence in Graz, Austria.",
+      "bio_long_de": "",
+      "bio_long_en": "",
+      "id": "zeno-gries"
     }
   ],
   "questions": [
     {
-      "id": "q-1781703713795-sxo73",
-      "text": "Hallo wer seid ihr?",
-      "answer": "",
+      "id": "q-1781699005202-jrvjw",
+      "text": "Halt die Backen",
+      "answer": "okay",
       "published": false,
-      "createdAt": "2026-06-17T13:41:53.795Z"
+      "createdAt": "2026-06-17T12:23:25.202Z"
+    },
+    {
+      "id": "q-1781699768464-cokcl",
+      "text": "was ist dein Problem?",
+      "answer": "kein problem",
+      "published": false,
+      "createdAt": "2026-06-17T12:36:08.464Z"
     }
   ],
   "seeded": true
