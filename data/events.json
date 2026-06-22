@@ -2042,6 +2042,22 @@
         "website": "https://geeskejanssen.com/"
       },
       "id": "geeske-janssen"
+    },
+    {
+      "name": "Judith Blijden",
+      "initials": "JB",
+      "type": "artist",
+      "role_de": "The Digital Period - Europe",
+      "role_en": "The Digital Period - Europe",
+      "image": "",
+      "bio_short_de": "Judith Zoë Blijden, LLM, MA, ist Juristin und Philosophin mit Sitz in den Niederlanden. Sie arbeitet an der Schnittstelle von Forschung, Politik und Kunst. Sie ist Gründerin von Is This Art Maybe sowie Initiatorin von The Digital Period, einem philosophischen Projekt, das sich mit der Beziehung zwischen Mensch und Technologie befasst.\n\nDarüber hinaus ist sie als Senior Legal Consultant bei Hooghiemstra & Partners tätig, einer auf Datenschutz spezialisierten Beratung. Zuvor war sie Vorstandsmitglied bei Bits of Freedom und arbeitete beim niederländischen Thinktank Kennisland sowie beim Sozial- und Wirtschaftsrats der Niederlande (SER).",
+      "bio_short_en": "Judith Zoë Blijden, LLM, MA, is a lawyer and philosopher based in the Netherlands. She works at the intersection of research, policy, and art. She is the founder of Is This Art Maybe and the creator of The Digital Period, a philosophy project exploring the relationship between humans and technology.\n\nIn addition, she works as a senior legal consultant at Hooghiemstra & Partners, a consultancy focusing on data protection. Previously, she served as a board member at Bits of Freedom and worked at the Dutch think tank Kennisland and the Social Economic Council of the Netherlands (SER).",
+      "bio_long_de": "Judith Zoë Blijden, LLM, MA, ist Juristin und Philosophin mit Sitz in den Niederlanden. Sie arbeitet an der Schnittstelle von Forschung, Politik und Kunst. Sie ist Gründerin von Is This Art Maybe sowie Initiatorin von The Digital Period, einem philosophischen Projekt, das sich mit der Beziehung zwischen Mensch und Technologie befasst.\n\nDarüber hinaus ist sie als Senior Legal Consultant bei Hooghiemstra & Partners tätig, einer auf Datenschutz spezialisierten Beratung. Zuvor war sie Vorstandsmitglied bei Bits of Freedom und arbeitete beim niederländischen Thinktank Kennisland sowie beim Sozial- und Wirtschaftsrats der Niederlande (SER).",
+      "bio_long_en": "Judith Zoë Blijden, LLM, MA, is a lawyer and philosopher based in the Netherlands. She works at the intersection of research, policy, and art. She is the founder of Is This Art Maybe and the creator of The Digital Period, a philosophy project exploring the relationship between humans and technology.\n\nIn addition, she works as a senior legal consultant at Hooghiemstra & Partners, a consultancy focusing on data protection. Previously, she served as a board member at Bits of Freedom and worked at the Dutch think tank Kennisland and the Social Economic Council of the Netherlands (SER).",
+      "links": {
+        "website": "https://thedigitalperiod.com/new-about/"
+      },
+      "id": "judith-blijden"
     }
   ],
   "questions": [
