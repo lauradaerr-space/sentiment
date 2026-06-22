@@ -518,6 +518,11 @@
       <div class="field">
         <label>Bild-URL (optional)</label>
         <input type="text" name="image" placeholder="public/img/team/...jpg oder https://...">
+        <div class="upload-row">
+          <input type="file" id="person-img-upload" accept="image/png,image/jpeg,image/webp,image/gif" style="display:none">
+          <button type="button" class="btn-upload" id="btn-person-img-upload">📷 Bild hochladen</button>
+          <span class="upload-status" id="person-img-status"></span>
+        </div>
       </div>
       <div class="field">
         <label>Kurz-Bio (DE) — erscheint in der Kachel</label>
@@ -535,6 +540,49 @@
         <label>Lange Bio (EN)</label>
         <textarea name="bio_long_en" rows="5"></textarea>
       </div>
+
+      <div class="form-section-divider">Links (alle optional, leer lassen falls nicht vorhanden)</div>
+      <div class="form-row">
+        <div class="field">
+          <label>Website</label>
+          <input type="url" name="link_website" placeholder="https://…">
+        </div>
+        <div class="field">
+          <label>LinkedIn</label>
+          <input type="url" name="link_linkedin" placeholder="https://linkedin.com/in/…">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="field">
+          <label>Instagram</label>
+          <input type="url" name="link_instagram" placeholder="https://instagram.com/…">
+        </div>
+        <div class="field">
+          <label>Mastodon</label>
+          <input type="url" name="link_mastodon" placeholder="https://mastodon.social/@…">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="field">
+          <label>Bluesky</label>
+          <input type="url" name="link_bluesky" placeholder="https://bsky.app/profile/…">
+        </div>
+        <div class="field">
+          <label>X / Twitter</label>
+          <input type="url" name="link_x" placeholder="https://x.com/…">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="field">
+          <label>ORCID</label>
+          <input type="url" name="link_orcid" placeholder="https://orcid.org/0000-…">
+        </div>
+        <div class="field">
+          <label>Google Scholar</label>
+          <input type="url" name="link_scholar" placeholder="https://scholar.google.com/…">
+        </div>
+      </div>
+
       <div class="modal-actions">
         <div class="modal-actions-left">
           <button type="button" class="btn-delete" id="person-btn-delete">Löschen</button>

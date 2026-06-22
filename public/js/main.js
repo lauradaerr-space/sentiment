@@ -188,14 +188,27 @@ function renderTeam() {
   grid.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
 }
 
+const PM_LINK_LABELS = {
+  website: 'Website', linkedin: 'LinkedIn', instagram: 'Instagram',
+  mastodon: 'Mastodon', bluesky: 'Bluesky', x: 'X',
+  orcid: 'ORCID', scholar: 'Google Scholar'
+};
+
 function openPersonModal(p) {
   const modal = document.getElementById('person-modal');
   const body = document.getElementById('person-modal-body');
+  const esc = s => String(s || '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const links = p.links || {};
+  const linksHtml = Object.keys(PM_LINK_LABELS)
+    .filter(k => links[k])
+    .map(k => `<a href="${esc(links[k])}" target="_blank" rel="noopener" class="pm-link">${PM_LINK_LABELS[k]} →</a>`)
+    .join('');
   body.innerHTML = `
     <div class="pm-avatar"><img src="${p.image}" alt="${p.name}" onerror="this.replaceWith(document.createTextNode('${p.initials}'))"></div>
     <div class="pm-name">${p.name}</div>
     <div class="pm-role">${lang === 'de' ? p.role_de : p.role_en}</div>
     <div class="pm-bio">${lang === 'de' ? p.bio_long_de : p.bio_long_en}</div>
+    ${linksHtml ? `<div class="pm-links">${linksHtml}</div>` : ''}
   `;
   modal.classList.add('open');
 }

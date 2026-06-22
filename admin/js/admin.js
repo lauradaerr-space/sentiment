@@ -768,6 +768,14 @@
     getTarget: function () { return cardForm && cardForm.images; }
   });
 
+  wireImageUpload({
+    btnId: 'btn-person-img-upload',
+    inputId: 'person-img-upload',
+    statusId: 'person-img-status',
+    multi: false,
+    getTarget: function () { return personForm && personForm.image; }
+  });
+
   /* ────── TEAM (CRUD) ────── */
   function slugify(s) {
     return String(s || '').toLowerCase()
@@ -858,6 +866,15 @@
       personForm.bio_short_en.value = p.bio_short_en || '';
       personForm.bio_long_de.value = p.bio_long_de || '';
       personForm.bio_long_en.value = p.bio_long_en || '';
+      var links = p.links || {};
+      personForm.link_website.value = links.website || '';
+      personForm.link_linkedin.value = links.linkedin || '';
+      personForm.link_instagram.value = links.instagram || '';
+      personForm.link_mastodon.value = links.mastodon || '';
+      personForm.link_bluesky.value = links.bluesky || '';
+      personForm.link_x.value = links.x || '';
+      personForm.link_orcid.value = links.orcid || '';
+      personForm.link_scholar.value = links.scholar || '';
       personBtnDelete.classList.remove('hidden');
     } else {
       document.getElementById('person-modal-title').textContent = 'Neue Person';
@@ -889,6 +906,19 @@
   personForm.addEventListener('submit', function (e) {
     e.preventDefault();
     var nameVal = personForm.name.value.trim();
+    var rawLinks = {
+      website: personForm.link_website.value.trim(),
+      linkedin: personForm.link_linkedin.value.trim(),
+      instagram: personForm.link_instagram.value.trim(),
+      mastodon: personForm.link_mastodon.value.trim(),
+      bluesky: personForm.link_bluesky.value.trim(),
+      x: personForm.link_x.value.trim(),
+      orcid: personForm.link_orcid.value.trim(),
+      scholar: personForm.link_scholar.value.trim()
+    };
+    var links = {};
+    Object.keys(rawLinks).forEach(function (k) { if (rawLinks[k]) links[k] = rawLinks[k]; });
+
     var obj = {
       name: nameVal,
       initials: (personForm.initials.value.trim() || autoInitials(nameVal)),
@@ -899,7 +929,8 @@
       bio_short_de: personForm.bio_short_de.value,
       bio_short_en: personForm.bio_short_en.value,
       bio_long_de: personForm.bio_long_de.value,
-      bio_long_en: personForm.bio_long_en.value
+      bio_long_en: personForm.bio_long_en.value,
+      links: links
     };
 
     if (editingPersonId) {
