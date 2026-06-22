@@ -394,6 +394,105 @@
     renderInfoCards();
     renderTeam();
     renderQuestions();
+    renderEventsAdmin();
+  }
+
+  /* ────── EVENTS LIST (clickable) ────── */
+  var eventsFilterCat = 'all';
+  var eventsFilterSel = document.getElementById('events-filter-cat');
+  if (eventsFilterSel) {
+    eventsFilterSel.addEventListener('change', function () {
+      eventsFilterCat = this.value;
+      renderEventsAdmin();
+    });
+  }
+
+  var btnAddEventTab = document.getElementById('btn-add-event-tab');
+  if (btnAddEventTab) {
+    btnAddEventTab.addEventListener('click', function () {
+      openEventModal(null);
+    });
+  }
+
+  var CAT_LABELS = {
+    cpdp: 'CPDP Brüssel', koeln: 'Köln',
+    pub: 'Publikation', pr: 'PR / Social', other: 'Other'
+  };
+  var FMT_LABELS = {
+    exhibition: 'Ausstellung', talk: 'Talk', workshop: 'Workshop',
+    tour: 'Führung', screening: 'Screening', lecture: 'Lecture', other: 'Sonstiges'
+  };
+
+  function fmtDateDE(s) {
+    if (!s) return '';
+    var p = s.split('-');
+    if (p.length !== 3) return s;
+    return p[2] + '.' + p[1] + '.' + p[0];
+  }
+
+  function renderEventsAdmin() {
+    var container = document.getElementById('events-admin-list');
+    if (!container) return;
+    container.innerHTML = '';
+
+    var events = (data.events || []).slice().sort(function (a, b) {
+      return (a.dateFrom || '').localeCompare(b.dateFrom || '');
+    });
+
+    if (eventsFilterCat !== 'all') {
+      events = events.filter(function (e) { return e.category === eventsFilterCat; });
+    }
+
+    if (events.length === 0) {
+      var empty = document.createElement('div');
+      empty.className = 'no-tasks';
+      empty.textContent = 'Keine Events in dieser Kategorie. Klick "+ Neues Event" zum Anlegen.';
+      container.appendChild(empty);
+      return;
+    }
+
+    var today = (new Date()).toISOString().slice(0, 10);
+    events.forEach(function (ev) {
+      var row = document.createElement('div');
+      var endDate = ev.dateTo || ev.dateFrom || '';
+      var isPast = endDate && endDate < today;
+      row.className = 'event-admin-row' +
+        (ev.published ? ' is-published' : ' is-draft') +
+        (isPast ? ' is-past' : '');
+      row.dataset.id = ev.id;
+
+      var date = fmtDateDE(ev.dateFrom || '');
+      if (ev.dateTo && ev.dateTo !== ev.dateFrom) date += ' – ' + fmtDateDE(ev.dateTo);
+      var time = (ev.time || '') + (ev.timeEnd ? '–' + ev.timeEnd : '');
+      var title = ev.titleDE || ev.title || '(ohne Titel)';
+      var fmtLabel = FMT_LABELS[ev.format] || ev.format || '';
+      var catLabel = CAT_LABELS[ev.category] || ev.category || '';
+      var statusLabel = ev.published ? 'Veröffentlicht' : (INTERNAL_CATS.indexOf(ev.category) !== -1 ? 'Intern' : 'Entwurf');
+
+      row.innerHTML =
+        '<div class="ea-date-block">' +
+          '<div class="ea-date">' + escapeHtml(date) + '</div>' +
+          (time ? '<div class="ea-time">' + escapeHtml(time) + '</div>' : '') +
+        '</div>' +
+        '<div class="ea-body">' +
+          '<div class="ea-meta-row">' +
+            (fmtLabel ? '<span class="ea-format">' + escapeHtml(fmtLabel) + '</span>' : '') +
+            '<span class="ea-cat cat-' + escapeHtml(ev.category || '') + '">' + escapeHtml(catLabel) + '</span>' +
+            (isPast ? '<span class="ea-past-badge">Vergangen</span>' : '') +
+          '</div>' +
+          '<div class="ea-title">' + escapeHtml(title) + '</div>' +
+          (ev.location ? '<div class="ea-loc">' + escapeHtml(ev.location) + '</div>' : '') +
+        '</div>' +
+        '<div class="ea-status">' +
+          '<span class="ea-status-badge ' + (ev.published ? 'published' : 'draft') + '">' + escapeHtml(statusLabel) + '</span>' +
+        '</div>' +
+        '<span class="ea-arrow">›</span>';
+
+      row.addEventListener('click', function () {
+        openEventModal(ev.id);
+      });
+      container.appendChild(row);
+    });
   }
 
   /* ────── COMMUNITY-FRAGEN ────── */
