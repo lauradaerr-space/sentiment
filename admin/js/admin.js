@@ -699,6 +699,75 @@
     renderInfoCards();
   });
 
+  /* Image upload to /api/upload — appends returned path into a target textarea/input */
+  function fileToBase64(file) {
+    return new Promise(function (resolve, reject) {
+      var reader = new FileReader();
+      reader.onload = function () {
+        var result = String(reader.result || '');
+        var idx = result.indexOf(',');
+        resolve(idx >= 0 ? result.slice(idx + 1) : result);
+      };
+      reader.onerror = reject;
+      reader.readAsDataURL(file);
+    });
+  }
+
+  function wireImageUpload(opts) {
+    var btn = document.getElementById(opts.btnId);
+    var input = document.getElementById(opts.inputId);
+    var status = document.getElementById(opts.statusId);
+    if (!btn || !input) return;
+
+    btn.addEventListener('click', function () { input.click(); });
+
+    input.addEventListener('change', async function (e) {
+      var files = Array.from(input.files || []);
+      if (!files.length) return;
+      var target = opts.getTarget();
+      if (!target) return;
+
+      for (var i = 0; i < files.length; i++) {
+        var f = files[i];
+        if (status) status.textContent = 'Lade hoch ' + (i + 1) + '/' + files.length + ': ' + f.name;
+        try {
+          var b64 = await fileToBase64(f);
+          var res = await fetch('../api/upload', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ filename: f.name, contentBase64: b64 })
+          });
+          var data = await res.json();
+          if (!res.ok || !data.ok || !data.path) {
+            throw new Error(data.error || data.detail || ('HTTP ' + res.status));
+          }
+          if (opts.multi) {
+            var cur = (target.value || '').trim();
+            target.value = cur ? cur + '\n' + data.path : data.path;
+          } else {
+            target.value = data.path;
+          }
+        } catch (err) {
+          if (status) status.textContent = 'Fehler: ' + err.message;
+          console.error('upload failed', err);
+          input.value = '';
+          return;
+        }
+      }
+      if (status) status.textContent = '✓ ' + files.length + ' Bild' + (files.length === 1 ? '' : 'er') + ' hochgeladen';
+      input.value = '';
+      setTimeout(function () { if (status) status.textContent = ''; }, 3500);
+    });
+  }
+
+  wireImageUpload({
+    btnId: 'btn-card-img-upload',
+    inputId: 'card-img-upload',
+    statusId: 'card-img-status',
+    multi: true,
+    getTarget: function () { return cardForm && cardForm.images; }
+  });
+
   /* ────── TEAM (CRUD) ────── */
   function slugify(s) {
     return String(s || '').toLowerCase()

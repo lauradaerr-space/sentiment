@@ -452,7 +452,12 @@
       </div>
       <div class="field">
         <label>Bilder (optional) — eine URL pro Zeile; mehrere = Slideshow</label>
-        <textarea name="images" rows="3" placeholder="public/img/foto1.jpg&#10;public/img/foto2.jpg&#10;public/img/foto3.jpg"></textarea>
+        <textarea name="images" rows="4" placeholder="public/img/foto1.jpg&#10;public/img/foto2.jpg&#10;public/img/foto3.jpg"></textarea>
+        <div class="upload-row">
+          <input type="file" id="card-img-upload" accept="image/png,image/jpeg,image/webp,image/gif,image/svg+xml" multiple style="display:none">
+          <button type="button" class="btn-upload" id="btn-card-img-upload">📷 Bilder hochladen</button>
+          <span class="upload-status" id="card-img-status"></span>
+        </div>
       </div>
       <div class="field">
         <label>Stichpunkte (optional) — eine Zeile pro Punkt, Format: DE | EN</label>

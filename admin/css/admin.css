@@ -752,6 +752,33 @@ button, input, select, textarea { font: inherit; }
   transition: background .14s, border-color .14s;
 }
 .info-card-row:hover { background: var(--panel-mid); border-color: var(--border2); }
+/* ── IMAGE UPLOAD ── */
+.upload-row {
+  display: flex; align-items: center; gap: 12px;
+  margin-top: 8px;
+}
+.btn-upload {
+  background: var(--panel-strong);
+  border: 1px dashed var(--border2);
+  color: var(--muted);
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-size: 12px; font-family: inherit;
+  cursor: pointer;
+  transition: border-color .15s, color .15s, background .15s;
+}
+.btn-upload:hover {
+  border-color: var(--orange);
+  color: var(--orange);
+  background: rgba(229,92,44,.06);
+}
+.upload-status {
+  font-family: var(--mono); font-size: 10px;
+  color: var(--muted2);
+  flex: 1;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+
 /* ── EVENTS LIST (clickable admin tab) ── */
 .events-admin-list {
   display: flex;
