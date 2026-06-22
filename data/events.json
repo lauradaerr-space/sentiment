@@ -7,24 +7,41 @@
       "dateTo": "2026-12-11",
       "time": "18:00",
       "timeEnd": "",
-      "format": "other",
+      "format": "exhibition",
       "category": "koeln",
       "location": "Kunstwerk KÃ¶ln",
       "language": "DE/EN",
       "capacity": 400,
       "who": "Laura + Joel",
       "status": "BestÃ¤tigt",
-      "descEN": "",
-      "descDE": "",
+      "descEN": "We are pleased to invite you to the opening reception of the final exhibition of the research project SENTIMENT on December 11, 2026, at 6:00 PM at Kunstwerk Köln.\n\nThrough films, installations, textile works, performances, sound pieces, and other media-based formats, participating artists offer audiences an experiential entry point for engaging with complex and often intangible topics. Their artistic research explores vulnerability, intimacy, and the handling of personal data. The works inhabit the intersection of digitality, human connection, and the discourses that shape our contemporary moment.",
+      "descDE": "Wir laden ein zur Vernissage der abschließenden Ausstellung des Forschungsprojekts SENTIMENT am 11.12.2026 um 18:00 Uhr im Kunstwerk Köln.\n\nMit Filmen, Installationen, Textilarbeiten, Performances, Soundpieces und anderen medialen Umsetzungen bieten Kunstschaffende Betrachtenden eine erlebbare Ebene, über schwer greifbare Thematiken in Austausch zu kommen. Ihre künstlerische Forschung thematisiert Verletzlichkeit, Intimität und den Umgang mit privaten Daten. Die Arbeiten bewegen sich im Spannungsfeld von Digitalität, Nähe und den Diskursen, die unsere Gegenwart prägen.",
       "id": "evt-1775824421996",
       "published": true,
       "program": [
         {
           "time": "18:00",
-          "titleDE": "ErÃ¶ffnung",
-          "titleEN": "Opening"
+          "titleDE": "Eroeffnung",
+          "titleEN": "Opening",
+          "descDE": "Die Eröffnung wird durch eine Begrüßung und ein gemeinsames Grußwort der Forschenden des Projekts SENTIMENT eingeleitet. Im Anschluss laden wir zu Austausch und Begegnung bei einem Empfang mit Getränken und kleinen Speisen ein.",
+          "descEN": "The opening will begin with a welcome and a joint address by the researchers of the SENTIMENT project. This will be followed by an opportunity for exchange and encounter at a reception with food and drinks."
+        },
+        {
+          "time": "19:30",
+          "titleDE": "Performance",
+          "titleEN": "Performance",
+          "descDE": "Die Performance findet im Ausstellungsraum als visuelle und audiovisuelle Intervention statt. Sie entfaltet sich in direkter Auseinandersetzung mit den installierten Arbeiten und dem räumlichen Kontext.",
+          "descEN": "The performance will take place within the exhibition space as a visual and audiovisual intervention. It unfolds directly in relation to the installed works and the surrounding spatial context."
+        },
+        {
+          "time": "20:00",
+          "titleDE": "Gathering",
+          "titleEN": "Gathering",
+          "descDE": "Ein gemeinsames Gathering mit einem audiovisuellen Intermezzo zwischen Radiokunst und performativem Erzählen eröffnet einen Rahmen für kollektives Erleben und lädt zur gemeinsamen Begegnung und zum Austausch ein.",
+          "descEN": "A shared gathering with an audiovisual intermezzo between radio art and performative storytelling opens a framework for collective experience and invites encounter and exchange."
         }
-      ]
+      ],
+      "image": ""
     },
     {
       "title": "Finissage",
