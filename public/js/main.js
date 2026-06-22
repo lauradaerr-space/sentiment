@@ -840,11 +840,16 @@ function renderSchedule() {
     </article>`;
   };
 
-  const upcoming = filtered.filter(e => !(e.dateTo || e.dateFrom || e.date || '') || (e.dateTo || e.dateFrom || e.date) >= today);
-  const past = filtered.filter(e => {
-    const end = e.dateTo || e.dateFrom || e.date || '';
-    return end && end < today;
-  });
+  const sortKey = e => e.dateFrom || e.date || e.dateTo || '';
+  const upcoming = filtered
+    .filter(e => !(e.dateTo || e.dateFrom || e.date || '') || (e.dateTo || e.dateFrom || e.date) >= today)
+    .sort((a, b) => sortKey(a).localeCompare(sortKey(b)));
+  const past = filtered
+    .filter(e => {
+      const end = e.dateTo || e.dateFrom || e.date || '';
+      return end && end < today;
+    })
+    .sort((a, b) => sortKey(b).localeCompare(sortKey(a)));
 
   const programCardHTML = renderProgramTextCard();
   let eventsInner = upcoming.length === 0
