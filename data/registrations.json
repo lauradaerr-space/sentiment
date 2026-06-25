@@ -23,5 +23,21 @@
     "personen": "2",
     "nachricht": "",
     "timestamp": "2026-06-17T16:08:45.023Z"
+  },
+  {
+    "id": "reg-1782400649916",
+    "vorname": "Tarmio",
+    "nachname": "Frei",
+    "email": "tarmio.frei@law-school.de",
+    "events": [
+      "Vernissage",
+      "Engineered for Intimacy: An Ethics–Privacy–Psychology Dialogue on Intimate AI",
+      "Finissage"
+    ],
+    "event": "Vernissage",
+    "bereich": "academia",
+    "personen": "1",
+    "nachricht": "",
+    "timestamp": "2026-06-25T15:17:29.916Z"
   }
 ]
