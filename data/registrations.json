@@ -39,5 +39,19 @@
     "personen": "1",
     "nachricht": "",
     "timestamp": "2026-06-25T15:17:29.916Z"
+  },
+  {
+    "id": "reg-1782470659140",
+    "vorname": "Michael",
+    "nachname": "Friedewald",
+    "email": "michael.friedewald@isi.fraunhofer.de",
+    "events": [
+      "Vernissage"
+    ],
+    "event": "Vernissage",
+    "bereich": "academia",
+    "personen": "1",
+    "nachricht": "",
+    "timestamp": "2026-06-26T10:44:19.140Z"
   }
 ]
