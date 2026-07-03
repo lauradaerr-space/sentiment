@@ -70,5 +70,22 @@
     "personen": "1",
     "nachricht": "XyQkSghqILxQjzpZEmYt",
     "timestamp": "2026-06-27T05:01:55.766Z"
+  },
+  {
+    "id": "reg-1783106108204",
+    "vorname": "nLUdMQTDsoOiRAtmyfXDLJ",
+    "nachname": "rsyikkJpQFncKtOgVZo",
+    "email": "i.ho.rup.ala.2.1@gmail.com",
+    "events": [
+      "Vernissage",
+      "Engineered for Intimacy: An Ethics–Privacy–Psychology Dialogue on Intimate AI",
+      "Finissage",
+      "Newsletter"
+    ],
+    "event": "Vernissage",
+    "bereich": "art",
+    "personen": "1",
+    "nachricht": "GURLOipLMliCxsNLweZQCjjK",
+    "timestamp": "2026-07-03T19:15:08.204Z"
   }
 ]
