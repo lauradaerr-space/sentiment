@@ -104,5 +104,22 @@
     "personen": "1",
     "nachricht": "wRWvAZRIHubHkCvMPpd",
     "timestamp": "2026-07-17T17:38:33.740Z"
+  },
+  {
+    "id": "reg-1784449988579",
+    "vorname": "gRgyMIVVuwulZcytY",
+    "nachname": "CSMvtUDPFOgYZvdWcgikblQ",
+    "email": "z.e.se.f.op.o0.2.1@gmail.com",
+    "events": [
+      "Vernissage",
+      "Engineered for Intimacy: An Ethics–Privacy–Psychology Dialogue on Intimate AI",
+      "Finissage",
+      "Newsletter"
+    ],
+    "event": "Vernissage",
+    "bereich": "student",
+    "personen": "1",
+    "nachricht": "BZIpniYPwMZZNDUj",
+    "timestamp": "2026-07-19T08:33:08.579Z"
   }
 ]
