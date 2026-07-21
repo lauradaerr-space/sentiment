@@ -135,5 +135,19 @@
     "personen": "1",
     "nachricht": "",
     "timestamp": "2026-07-20T15:34:14.792Z"
+  },
+  {
+    "id": "reg-1784638096563",
+    "vorname": "Murat",
+    "nachname": "Karaboga",
+    "email": "murat.karaboga@isi.fraunhofer.de",
+    "events": [
+      "Finissage"
+    ],
+    "event": "Finissage",
+    "bereich": "academia",
+    "personen": "1",
+    "nachricht": "",
+    "timestamp": "2026-07-21T12:48:16.563Z"
   }
 ]
