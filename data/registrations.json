@@ -149,5 +149,22 @@
     "personen": "1",
     "nachricht": "",
     "timestamp": "2026-07-21T12:48:16.563Z"
+  },
+  {
+    "id": "reg-1784879321334",
+    "vorname": "fpeqCWbEuhbhKVbq",
+    "nachname": "lrlEOiOyQYrmKguGcPwM",
+    "email": "bar.ra.kl.e.i.z.34@gmail.com",
+    "events": [
+      "Vernissage",
+      "Engineered for Intimacy: An Ethics–Privacy–Psychology Dialogue on Intimate AI",
+      "Finissage",
+      "Newsletter"
+    ],
+    "event": "Vernissage",
+    "bereich": "press",
+    "personen": "1",
+    "nachricht": "BntqjNAVcySfXLTDpetONz",
+    "timestamp": "2026-07-24T07:48:41.334Z"
   }
 ]
