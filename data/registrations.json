@@ -221,5 +221,19 @@
     "personen": "2",
     "nachricht": "",
     "timestamp": "2026-08-14T13:49:29.098Z"
+  },
+  {
+    "id": "reg-1786716750988",
+    "vorname": "Nur Efsan",
+    "nachname": "Cetinkaya",
+    "email": "nur.efsan68@live.de",
+    "events": [
+      "Vernissage"
+    ],
+    "event": "Vernissage",
+    "bereich": "academia",
+    "personen": "1",
+    "nachricht": "",
+    "timestamp": "2026-08-14T14:12:30.988Z"
   }
 ]
