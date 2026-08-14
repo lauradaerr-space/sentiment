@@ -214,5 +214,19 @@
     "personen": "1",
     "nachricht": "",
     "timestamp": "2026-08-14T10:44:40.604Z"
+  },
+  {
+    "id": "reg-1786705112446",
+    "vorname": "Johanna",
+    "nachname": "Benrhard",
+    "email": "johanna-bernhard@web.de",
+    "events": [
+      "Vernissage"
+    ],
+    "event": "Vernissage",
+    "bereich": "other",
+    "personen": "1",
+    "nachricht": "",
+    "timestamp": "2026-08-14T10:58:32.446Z"
   }
 ]
