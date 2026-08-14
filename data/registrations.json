@@ -235,5 +235,19 @@
     "personen": "1",
     "nachricht": "",
     "timestamp": "2026-08-14T14:12:30.988Z"
+  },
+  {
+    "id": "reg-1786723847544",
+    "vorname": "Marie-Christine",
+    "nachname": "Pomp",
+    "email": "mc_pomp@gmx.de",
+    "events": [
+      "Vernissage"
+    ],
+    "event": "Vernissage",
+    "bereich": "industry",
+    "personen": "1",
+    "nachricht": "",
+    "timestamp": "2026-08-14T16:10:47.544Z"
   }
 ]
