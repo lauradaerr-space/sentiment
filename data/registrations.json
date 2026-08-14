@@ -242,5 +242,19 @@
     "personen": "2",
     "nachricht": "SO EXCITING! ",
     "timestamp": "2026-08-14T11:19:14.673Z"
+  },
+  {
+    "id": "reg-1786706979018",
+    "vorname": "Clara",
+    "nachname": "Strathmann",
+    "email": "clara.strathmann@uni-due.de",
+    "events": [
+      "Vernissage"
+    ],
+    "event": "Vernissage",
+    "bereich": "academia",
+    "personen": "1",
+    "nachricht": "",
+    "timestamp": "2026-08-14T11:29:39.018Z"
   }
 ]
