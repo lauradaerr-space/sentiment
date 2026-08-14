@@ -284,5 +284,19 @@
     "personen": "1",
     "nachricht": "",
     "timestamp": "2026-08-14T11:59:20.532Z"
+  },
+  {
+    "id": "reg-1786711056764",
+    "vorname": "Jessica",
+    "nachname": "Szczuka",
+    "email": "jessica.szczuka@gmail.com",
+    "events": [
+      "Vernissage"
+    ],
+    "event": "Vernissage",
+    "bereich": "academia",
+    "personen": "2",
+    "nachricht": "",
+    "timestamp": "2026-08-14T12:37:36.764Z"
   }
 ]
