@@ -298,5 +298,19 @@
     "personen": "2",
     "nachricht": "",
     "timestamp": "2026-08-14T12:37:36.764Z"
+  },
+  {
+    "id": "reg-1786712820333",
+    "vorname": "Katjana",
+    "nachname": "Kröhling",
+    "email": "kati.kroehling@gmail.com",
+    "events": [
+      "Vernissage"
+    ],
+    "event": "Vernissage",
+    "bereich": "student",
+    "personen": "2",
+    "nachricht": "",
+    "timestamp": "2026-08-14T13:07:00.333Z"
   }
 ]
