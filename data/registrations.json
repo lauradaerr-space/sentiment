@@ -200,5 +200,19 @@
     "personen": "1",
     "nachricht": "GxubQmifYwoJmjJBPEzvmkNa",
     "timestamp": "2026-07-31T16:43:51.683Z"
+  },
+  {
+    "id": "reg-1786704280604",
+    "vorname": "Aike",
+    "nachname": "Horstmann",
+    "email": "aike.horstmann@uni-due.de",
+    "events": [
+      "Vernissage"
+    ],
+    "event": "Vernissage",
+    "bereich": "academia",
+    "personen": "1",
+    "nachricht": "",
+    "timestamp": "2026-08-14T10:44:40.604Z"
   }
 ]
