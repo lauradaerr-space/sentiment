@@ -256,5 +256,19 @@
     "personen": "1",
     "nachricht": "",
     "timestamp": "2026-08-14T11:29:39.018Z"
+  },
+  {
+    "id": "reg-1786707588096",
+    "vorname": "Anna",
+    "nachname": "von Bülow",
+    "email": "anna.vonbuelow@vdivde-it.de",
+    "events": [
+      "Vernissage"
+    ],
+    "event": "Vernissage",
+    "bereich": "industry",
+    "personen": "1",
+    "nachricht": "",
+    "timestamp": "2026-08-14T11:39:48.096Z"
   }
 ]
