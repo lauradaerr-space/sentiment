@@ -228,5 +228,19 @@
     "personen": "1",
     "nachricht": "",
     "timestamp": "2026-08-14T10:58:32.446Z"
+  },
+  {
+    "id": "reg-1786706354673",
+    "vorname": "Aimie",
+    "nachname": "Westermann",
+    "email": "ikg_westermann@yahoo.de",
+    "events": [
+      "Vernissage"
+    ],
+    "event": "Vernissage",
+    "bereich": "industry",
+    "personen": "2",
+    "nachricht": "SO EXCITING! ",
+    "timestamp": "2026-08-14T11:19:14.673Z"
   }
 ]
