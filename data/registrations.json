@@ -249,5 +249,19 @@
     "personen": "1",
     "nachricht": "",
     "timestamp": "2026-08-14T16:10:47.544Z"
+  },
+  {
+    "id": "reg-1786786970861",
+    "vorname": "Volker",
+    "nachname": "Mühl",
+    "email": "v.muehl@etl-mcp.de",
+    "events": [
+      "Vernissage"
+    ],
+    "event": "Vernissage",
+    "bereich": "industry",
+    "personen": "1",
+    "nachricht": "",
+    "timestamp": "2026-08-15T09:42:50.861Z"
   }
 ]
