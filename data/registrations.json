@@ -263,5 +263,19 @@
     "personen": "1",
     "nachricht": "",
     "timestamp": "2026-08-15T09:42:50.861Z"
+  },
+  {
+    "id": "reg-1786902513429",
+    "vorname": "Nora",
+    "nachname": "Arnold",
+    "email": "nora.arnold@ereignishaus.de",
+    "events": [
+      "Vernissage"
+    ],
+    "event": "Vernissage",
+    "bereich": "industry",
+    "personen": "1",
+    "nachricht": "",
+    "timestamp": "2026-08-16T17:48:33.429Z"
   }
 ]
