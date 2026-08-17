@@ -349,5 +349,19 @@
     "personen": "1",
     "nachricht": "",
     "timestamp": "2026-08-17T10:46:10.122Z"
+  },
+  {
+    "id": "reg-1786973552121",
+    "vorname": "Giulia",
+    "nachname": "Barbareschi",
+    "email": "Giulia.barbareschi@uni-due.de",
+    "events": [
+      "Newsletter"
+    ],
+    "event": "Newsletter",
+    "bereich": "academia",
+    "personen": "2",
+    "nachricht": "",
+    "timestamp": "2026-08-17T13:32:32.121Z"
   }
 ]
