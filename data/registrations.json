@@ -277,5 +277,19 @@
     "personen": "1",
     "nachricht": "",
     "timestamp": "2026-08-16T17:48:33.429Z"
+  },
+  {
+    "id": "reg-1786945743251",
+    "vorname": "Ina",
+    "nachname": "Mücke",
+    "email": "I.Muecke@etl-mcp.de",
+    "events": [
+      "Vernissage"
+    ],
+    "event": "Vernissage",
+    "bereich": "other",
+    "personen": "1",
+    "nachricht": "",
+    "timestamp": "2026-08-17T05:49:03.251Z"
   }
 ]
