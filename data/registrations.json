@@ -335,5 +335,19 @@
     "personen": "2",
     "nachricht": "",
     "timestamp": "2026-08-17T10:45:09.113Z"
+  },
+  {
+    "id": "reg-1786963570122",
+    "vorname": "Steffen",
+    "nachname": "Becker",
+    "email": "steffen.becker@rub.de",
+    "events": [
+      "Vernissage"
+    ],
+    "event": "Vernissage",
+    "bereich": "academia",
+    "personen": "1",
+    "nachricht": "",
+    "timestamp": "2026-08-17T10:46:10.122Z"
   }
 ]
