@@ -291,5 +291,21 @@
     "personen": "1",
     "nachricht": "",
     "timestamp": "2026-08-17T06:40:50.364Z"
+  },
+  {
+    "id": "reg-1786950710609",
+    "vorname": "Lisa",
+    "nachname": "Mühl",
+    "email": "lisa.muehl@uni-due.de",
+    "events": [
+      "Vernissage",
+      "Engineered for Intimacy: An Ethics–Privacy–Psychology Dialogue on Intimate AI",
+      "Finissage"
+    ],
+    "event": "Vernissage",
+    "bereich": "academia",
+    "personen": "1",
+    "nachricht": "",
+    "timestamp": "2026-08-17T07:11:50.609Z"
   }
 ]
