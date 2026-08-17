@@ -307,5 +307,19 @@
     "personen": "1",
     "nachricht": "",
     "timestamp": "2026-08-17T07:11:50.609Z"
+  },
+  {
+    "id": "reg-1786953948464",
+    "vorname": "Paula",
+    "nachname": "Ebner",
+    "email": "paula.ebner@uni-due.de",
+    "events": [
+      "Vernissage"
+    ],
+    "event": "Vernissage",
+    "bereich": "academia",
+    "personen": "2",
+    "nachricht": "",
+    "timestamp": "2026-08-17T08:05:48.464Z"
   }
 ]
