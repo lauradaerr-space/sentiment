@@ -363,5 +363,19 @@
     "personen": "2",
     "nachricht": "",
     "timestamp": "2026-08-17T13:32:32.121Z"
+  },
+  {
+    "id": "reg-1787125611113",
+    "vorname": "Anna",
+    "nachname": "Flöck",
+    "email": "floeck.a@gmx.de",
+    "events": [
+      "Vernissage"
+    ],
+    "event": "Vernissage",
+    "bereich": "press",
+    "personen": "2",
+    "nachricht": "",
+    "timestamp": "2026-08-19T07:46:51.113Z"
   }
 ]
