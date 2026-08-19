@@ -405,5 +405,19 @@
     "personen": "2",
     "nachricht": "",
     "timestamp": "2026-08-19T09:46:27.496Z"
+  },
+  {
+    "id": "reg-1787132883815",
+    "vorname": "Yannic",
+    "nachname": "Meier",
+    "email": "yannic.meier@uni-due.de",
+    "events": [
+      "Vernissage"
+    ],
+    "event": "Vernissage",
+    "bereich": "academia",
+    "personen": "3",
+    "nachricht": "",
+    "timestamp": "2026-08-19T09:48:03.815Z"
   }
 ]
