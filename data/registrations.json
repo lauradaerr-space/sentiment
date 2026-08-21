@@ -433,5 +433,19 @@
     "personen": "2",
     "nachricht": "",
     "timestamp": "2026-08-19T09:48:21.820Z"
+  },
+  {
+    "id": "reg-1787309729829",
+    "vorname": "Muhammad Bilal",
+    "nachname": "Zafar",
+    "email": "bilal.zafar@ruhr-uni-bochum.de",
+    "events": [
+      "Vernissage"
+    ],
+    "event": "Vernissage",
+    "bereich": "academia",
+    "personen": "1",
+    "nachricht": "",
+    "timestamp": "2026-08-21T10:55:29.829Z"
   }
 ]
