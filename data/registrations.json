@@ -447,5 +447,19 @@
     "personen": "1",
     "nachricht": "",
     "timestamp": "2026-08-21T10:55:29.829Z"
+  },
+  {
+    "id": "reg-1787576625613",
+    "vorname": "Johannes",
+    "nachname": "Breuer",
+    "email": "johannes.breuer@cais-research.de",
+    "events": [
+      "Vernissage"
+    ],
+    "event": "Vernissage",
+    "bereich": "academia",
+    "personen": "2",
+    "nachricht": "",
+    "timestamp": "2026-08-24T13:03:45.613Z"
   }
 ]
