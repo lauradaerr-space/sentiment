@@ -461,5 +461,19 @@
     "personen": "2",
     "nachricht": "",
     "timestamp": "2026-08-24T13:03:45.613Z"
+  },
+  {
+    "id": "reg-1787598957242",
+    "vorname": "Carolin",
+    "nachname": "Straßmann",
+    "email": "carolin.strassmann@hs-ruhrwest.de",
+    "events": [
+      "Vernissage"
+    ],
+    "event": "Vernissage",
+    "bereich": "academia",
+    "personen": "1",
+    "nachricht": "",
+    "timestamp": "2026-08-24T19:15:57.242Z"
   }
 ]
