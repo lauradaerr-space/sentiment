@@ -475,5 +475,19 @@
     "personen": "1",
     "nachricht": "",
     "timestamp": "2026-08-24T19:15:57.242Z"
+  },
+  {
+    "id": "reg-1787738558080",
+    "vorname": "Sarah",
+    "nachname": "Klosterkamp",
+    "email": "sarahklosterkamp@gmail.com",
+    "events": [
+      "Vernissage"
+    ],
+    "event": "Vernissage",
+    "bereich": "academia",
+    "personen": "2",
+    "nachricht": "",
+    "timestamp": "2026-08-26T10:02:38.080Z"
   }
 ]
