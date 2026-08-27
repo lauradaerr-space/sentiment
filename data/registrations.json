@@ -489,5 +489,19 @@
     "personen": "2",
     "nachricht": "",
     "timestamp": "2026-08-26T10:02:38.080Z"
+  },
+  {
+    "id": "reg-1787848217258",
+    "vorname": "Maja",
+    "nachname": "Dinspel",
+    "email": "dinspelmaja@gmx.de",
+    "events": [
+      "Vernissage"
+    ],
+    "event": "Vernissage",
+    "bereich": "student",
+    "personen": "2",
+    "nachricht": "",
+    "timestamp": "2026-08-27T16:30:17.258Z"
   }
 ]
