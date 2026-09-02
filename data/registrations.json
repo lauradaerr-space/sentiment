@@ -517,5 +517,19 @@
     "personen": "1",
     "nachricht": "",
     "timestamp": "2026-09-02T09:00:49.798Z"
+  },
+  {
+    "id": "reg-1788368332192",
+    "vorname": "Sophie",
+    "nachname": "Kraus",
+    "email": "sophie.kraus@uni-koeln.de",
+    "events": [
+      "Vernissage"
+    ],
+    "event": "Vernissage",
+    "bereich": "academia",
+    "personen": "2",
+    "nachricht": "",
+    "timestamp": "2026-09-02T16:58:52.192Z"
   }
 ]
