@@ -531,5 +531,22 @@
     "personen": "2",
     "nachricht": "",
     "timestamp": "2026-09-02T16:58:52.192Z"
+  },
+  {
+    "id": "reg-1788523175175",
+    "vorname": "Zuhws",
+    "nachname": "Tvdra",
+    "email": "a.x.ef.or.e.v.u.moq.08@gmail.com",
+    "events": [
+      "Vernissage",
+      "Engineered for Intimacy: An Ethics–Privacy–Psychology Dialogue on Intimate AI",
+      "Finissage",
+      "Newsletter"
+    ],
+    "event": "Vernissage",
+    "bereich": "academia",
+    "personen": "1",
+    "nachricht": "YkXOOPelzizaRIvpBGLfrP",
+    "timestamp": "2026-09-04T11:59:35.175Z"
   }
 ]
