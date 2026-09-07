@@ -548,5 +548,19 @@
     "personen": "1",
     "nachricht": "YkXOOPelzizaRIvpBGLfrP",
     "timestamp": "2026-09-04T11:59:35.175Z"
+  },
+  {
+    "id": "reg-1788761836551",
+    "vorname": "Tanja Terney",
+    "nachname": "Hansen-Schweitzer",
+    "email": "tanjaterney.hansen-schweitzer@vdivde-it.de",
+    "events": [
+      "Vernissage"
+    ],
+    "event": "Vernissage",
+    "bereich": "other",
+    "personen": "1",
+    "nachricht": "",
+    "timestamp": "2026-09-07T06:17:16.551Z"
   }
 ]
