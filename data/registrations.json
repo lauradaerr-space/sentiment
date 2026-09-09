@@ -604,5 +604,19 @@
     "personen": "2",
     "nachricht": "",
     "timestamp": "2026-09-09T13:13:04.792Z"
+  },
+  {
+    "id": "reg-1788960329022",
+    "vorname": "Markus",
+    "nachname": "Kösler",
+    "email": "cobushi@protonmail.com",
+    "events": [
+      "Vernissage"
+    ],
+    "event": "Vernissage",
+    "bereich": "art",
+    "personen": "2",
+    "nachricht": "",
+    "timestamp": "2026-09-09T13:25:29.022Z"
   }
 ]
