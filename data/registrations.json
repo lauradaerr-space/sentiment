@@ -649,5 +649,19 @@
     "personen": "2",
     "nachricht": "",
     "timestamp": "2026-10-08T15:56:39.879Z"
+  },
+  {
+    "id": "reg-1791636382806",
+    "vorname": "Marie",
+    "nachname": "Ghanem",
+    "email": "m.ghanem@uni-koeln.de",
+    "events": [
+      "Vernissage"
+    ],
+    "event": "Vernissage",
+    "bereich": "academia",
+    "personen": "1",
+    "nachricht": "",
+    "timestamp": "2026-10-10T12:46:22.806Z"
   }
 ]
