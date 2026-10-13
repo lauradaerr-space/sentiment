@@ -1868,7 +1868,7 @@
     {
       "title": "Transporter mieten",
       "category": "cpdp",
-      "status": "In Bearbeitung",
+      "status": "Erledigt",
       "due": "2026-04-27",
       "linkedEventId": "evt-1775849100666",
       "who": [
@@ -1879,7 +1879,7 @@
     {
       "title": "Kuration final",
       "category": "cpdp",
-      "status": "In Bearbeitung",
+      "status": "Erledigt",
       "due": "",
       "linkedEventId": "evt-1775849100666",
       "who": [
