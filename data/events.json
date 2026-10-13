@@ -1911,6 +1911,17 @@
         "Laura Därr"
       ],
       "id": "task-1791878076470"
+    },
+    {
+      "title": "TRAFO RADIO kommunikation @Elko",
+      "category": "koeln",
+      "status": "In Bearbeitung",
+      "due": "2026-10-13",
+      "linkedEventId": "evt-1775824421996",
+      "who": [
+        "Joel Baumann"
+      ],
+      "id": "task-1791890044632"
     }
   ],
   "infoCards": [
