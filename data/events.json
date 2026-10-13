@@ -1090,7 +1090,7 @@
         "Laura Därr"
       ],
       "dueDate": "April",
-      "status": "In Bearbeitung",
+      "status": "Erledigt",
       "priority": "Normal",
       "notes": "",
       "due": "2026-04-20",
@@ -1846,7 +1846,7 @@
     {
       "title": "WebUI Fragen/Kommentar für Panel",
       "category": "cpdp",
-      "status": "In Bearbeitung",
+      "status": "Erledigt",
       "due": "",
       "linkedEventId": "evt-1775848688849",
       "who": [
