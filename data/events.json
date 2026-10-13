@@ -1899,6 +1899,18 @@
         "Laura Därr"
       ],
       "id": "task-1775993408881"
+    },
+    {
+      "title": "Anfrage Ausleihe Digipool",
+      "category": "koeln",
+      "status": "Offen",
+      "due": "2026-11-02",
+      "linkedEventId": "",
+      "who": [
+        "Joel Baumann",
+        "Laura Därr"
+      ],
+      "id": "task-1791878076470"
     }
   ],
   "infoCards": [
