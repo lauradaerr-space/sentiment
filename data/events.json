@@ -2127,6 +2127,22 @@
         "website": "https://thedigitalperiod.com/new-about/"
       },
       "id": "judith-blijden"
+    },
+    {
+      "name": "Elko Braas",
+      "initials": "EB",
+      "type": "artist",
+      "role_de": "künstlerischer Mitarbeiter ",
+      "role_en": "artistic research-assistence",
+      "image": "",
+      "bio_short_de": "",
+      "bio_short_en": "",
+      "bio_long_de": "",
+      "bio_long_en": "",
+      "links": {
+        "website": "https://elkobraas.net"
+      },
+      "id": "elko-braas"
     }
   ],
   "questions": [
