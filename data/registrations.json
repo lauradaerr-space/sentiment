@@ -677,5 +677,19 @@
     "personen": "1",
     "nachricht": "",
     "timestamp": "2026-10-12T14:27:28.563Z"
+  },
+  {
+    "id": "reg-1791872283048",
+    "vorname": "Jennifer",
+    "nachname": "Klütsch",
+    "email": "kluetsch@psych.rwth-aachen.de",
+    "events": [
+      "Engineered for Intimacy: An Ethics–Privacy–Psychology Dialogue on Intimate AI"
+    ],
+    "event": "Engineered for Intimacy: An Ethics–Privacy–Psychology Dialogue on Intimate AI",
+    "bereich": "academia",
+    "personen": "1",
+    "nachricht": "",
+    "timestamp": "2026-10-13T06:18:03.048Z"
   }
 ]
